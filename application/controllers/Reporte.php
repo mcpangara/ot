@@ -1,0 +1,60 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Reporte extends CI_Controller{
+
+  public function __construct()
+  {
+    parent::__construct();
+    //Codeigniter : Write Less Do More
+    date_default_timezone_set('America/Bogota');
+  }
+
+  function index(){ }
+
+  public function listOT($base){
+  }
+
+  public function getReporte(){
+  }
+
+  public function add($idOT, $fecha){
+    $this->load->model('OT_db', 'otdb');
+    $ot = $this->otdb->getData($idOT);
+    $this->load->model('tarea_db', 'tarea');
+    $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
+    $this->load->view('reportes/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
+  }
+
+  public function insertRDP(){
+  }
+
+  public function getByOT($value='')
+  {
+    $reportes = array();
+		for ($i=15; $i <= 31 ; $i++) {
+			$fecha = date('Y-m-d', strtotime('2016-08-'.$i));
+			$report = array(
+				'idreporte'=>$i,
+				'OT_idOT' => '27',
+				'nombre_ot'=>'VITPCLLTEST',
+				'fecha_reporte'=>$fecha,
+				'dia'=> date('d', strtotime($fecha)),
+				'mes'=> date('m', strtotime($fecha)),
+				'valido'=> ( ($i%2==0)?true: false)
+			);
+			array_push($reportes, $report);
+		}
+		echo json_encode($reportes);
+  }
+
+  public function getOTs($base=NULL)
+  {
+    $this->load->database('ot');
+		$ots = $this->db->get('OT');
+    $this->load->view('reportes/listaOT',array('ots'=>$ots));
+  }
+
+
+
+}

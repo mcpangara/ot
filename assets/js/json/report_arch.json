@@ -1,0 +1,46 @@
+[
+  {
+    "titulo":"1. Antecedentes",
+    "tipo":"texto",
+    "status":false,
+    "subitems":[
+      {
+        "titulo":"1.1. Casos",
+        "tipo":"imagen",
+        "status":false
+      },
+      {
+        "titulo":"1.2. soportes",
+        "tipo":"adjunto",
+        "status":false
+      }
+    ]
+  },
+  {
+    "titulo":"2. Objetivo",
+    "tipo":"texto",
+    "status":false,
+    "subitems":[
+      {
+        "titulo":"2.1 Objetivos generales",
+        "tipo":"texto",
+        "status":false
+      }
+    ]
+  },
+  {
+    "titulo":"3. Introduccion",
+    "tipo":"texto",
+    "status":false
+  },
+  {
+    "titulo":"4. OTRO BLOQUE",
+    "tipo":"texto",
+    "status":false
+  },
+  {
+    "titulo":"5. OTRO BLOQUE",
+    "tipo":"texto",
+    "status":false
+  }
+]

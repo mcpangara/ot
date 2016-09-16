@@ -1,0 +1,283 @@
+h1, h2, h3, h4{
+  margin: 5px;
+}
+.clear-left{
+  clear: left;
+}
+nav{
+  background: #FFF;
+  box-shadow: 0 0 4px #333;
+  position:relative;
+  z-index:2;
+  overflow: hidden;
+  height: 2.5em;
+  border-bottom: 2px solid #5C92EA;
+}
+nav ul li{
+  line-height: normal;
+}
+nav ul a{
+  color:#486EAE;
+  height: 2.5em;
+}
+.controles a i{
+  display: block;
+  font-size: 4ex;
+}
+.padding1ex{
+  padding: 1ex;
+  line-height: normal;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+/* ---------------------- */
+section.contenidos{
+  background: #EEE;
+}
+section.contenidos > div{
+  margin-bottom: 3ex;
+}
+
+.tabContainer{
+  display:block;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  top:1px;
+}
+.tabContainer ul{
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1ex;
+}
+.tabContainer ul li.pestana{
+  float: left;
+  padding: 5px;
+  min-width: 15ex;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 1px;
+  border: 1px solid #AAA;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  bottom: -4px;
+  background: #F3F3F3;
+}
+.tabContainer ul li.pestana.active{
+  bottom: 0px;
+  background: #FFF;
+  border-bottom: 1px solid #FFF;
+}
+.tabContents{
+  background: #FFF;
+  min-height: 25ex;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  border:1px solid #888;
+}
+.tabContents > div{
+  display: none;
+  padding: 1ex;
+  overflow: hidden;
+}
+.tabContents > div.active{
+  display: block;
+}
+.icon-red{
+  color: red;
+}
+.controles{
+  text-align: center;
+}
+.informeContainer{
+  padding: 2ex;
+}
+
+section.area select, .windowCentered select{
+  display: inline;
+  height: auto;
+}
+
+/* ventana emergente */
+
+.nodisplay{
+  display: none;
+}
+
+#VentanaContainer{
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  min-height:120%;
+  width:100%;
+  background:rgba(200, 200, 200, 0.4);
+  padding-top: 2ex;
+}
+.windowCentered{
+  margin: 0 auto;
+  width: 60%;
+  background: #FFF;
+  padding: 1.5ex;
+  min-height: 10ex;
+  box-shadow: 0 0 8px 3px #999;
+}
+
+.windowCentered2{
+  margin: 0 auto;
+  width: 100%;
+  background: #FFF;
+  padding: 1.5ex;
+  min-height: 10ex;
+  box-shadow: 0 0 8px 3px #999;
+}
+#WindowOculta{
+  display: none;
+}
+#WindowOculta.WindowOculta{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.windowCentered2 .btnWindow button, .windowCentered .btnWindow button{
+  line-height: 0;
+  height: 3ex;
+}
+/* ============================================= */
+
+.col.row{
+  padding:2px;
+  margin: 3px;
+}
+section.area .filters-area{
+  background: #DDD;
+}
+section.area .filters-area input, section.area .filters-area select{
+  background: #FFF;
+}
+section.area{
+  position: relative;
+}
+section.area label{
+  color: #000;
+}
+section.area input{
+  border:1px solid #ccc;
+  border-radius: 4px;
+  max-height: 4ex;
+}
+
+section.area table{
+  font-size: 1.5ex;
+}
+section.area *{
+  box-sizing: border-box;
+}
+.col.row, .row{
+  margin: 0;
+}
+/* ========= Fomularios sin Diseñop material ==========  */
+.noMaterialStyles input, .noMaterialStyles select, .noMaterialStyles [type="checkbox"]:not(:checked), .noMaterialStyles [type="checkbox"]:checked{
+  height: auto;
+  width: auto;
+  position:inherit;;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  opacity: inherit;
+  margin: auto;
+  background: #FFF;
+  border: 1px solid #ccc;
+}
+.noMaterialStyles [type="radio"]:not(:checked)+label, .noMaterialStyles [type="radio"]:checked+label {
+  padding: 0;
+}
+.noMaterialStyles [type="radio"]+label:before, .noMaterialStyles [type="radio"]+label:after{
+  content: none;
+}
+.noMaterialStyles [type="radio"]:not(:checked), .noMaterialStyles [type="radio"]:checked{
+  display: inline-block;
+  position: relative;
+  left: auto;
+  opacity: 1;
+}
+
+.mini-btn{
+  padding: 1ex;
+  line-height:normal;;
+  height: auto;
+  max-height: 4ex;
+  margin-top: 5px;
+}
+
+.mini-btn2{
+  padding: 2px;
+  line-height:normal;
+  height: auto;
+  max-height: 4ex;
+}
+.mini-btn2:hover, .mini-btn2:active, .mini-btn2:focus{
+  box-shadow: 0px 0px 5px 1px #333;
+}
+
+/* ---------------------- */
+.ventanaItems{
+  position: fixed;
+  top: 2px;
+  padding: 1ex;
+  width: 95%;
+  background: #FFF;
+  box-shadow: 0px 0px 15px 3px; #444;
+  z-index: 3;
+  height: 85%;
+  overflow: auto;
+}
+.overflowAuto{
+  overflow: auto;
+}
+/*-------------------*/
+
+@media (min-width:700px){
+  nav img.logo{
+    padding:5px;
+    background: #FFF;
+    height: 2.6em;
+  }
+  section.contenidos{
+    padding: 4px;
+    /*box-shadow: 0px 0px 6px #AAA;*/
+    margin: 0 auto;
+  }
+  .controles a.boton{
+    padding: 3ex;
+    border-radius: 10px;
+    display: inline-block;
+  }
+}
+
+@media (max-width:699px){
+  nav img.logo{
+    padding:5px;
+    background: #FFF;
+    height: 2.6em;
+  }
+  section.contenidos{
+    padding: 4px;
+    /*box-shadow: 0px 0px 6px #AAA;*/
+    margin: 0 auto;
+  }
+  .controles a.boton{
+    padding: 3ex;
+    border-radius: 10px;
+    display: inline-block;
+  }
+}

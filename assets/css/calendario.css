@@ -1,0 +1,38 @@
+#calendario table{
+  width: auto;
+  min-height: 60ex;
+}
+#calendario table tbody tr td, #calendario table thead tr th{
+  width: 5em;
+  height: 5em;
+  font-size: 1.5ex;
+  border:1px solid #777;
+  border-radius: 0px;
+  text-align: center;
+}
+#calendario table tbody tr td{
+  background: #EEE;
+}
+#calendario table tbody tr td a{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  color: #05050f;
+}
+#calendario table tbody tr td.dia{
+  background: #FFF;
+}
+#calendario table tbody tr td.dia.activo{
+  background: #EDF77E;
+}
+#calendario table tbody tr td.dia.activo.true{
+  background: #60CE31;
+}
+#calendario table thead tr th{
+  background: #1261C9;
+  color:#FFF;
+  font-weight: bold;
+}
+.textcenter{
+ text-align: center;
+}

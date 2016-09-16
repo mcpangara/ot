@@ -1,0 +1,73 @@
+table thead tr th, table thead tr td, section.area table thead tr th, section.area table thead tr td{
+  margin:0;
+  padding: 0;
+}
+section.area input, section.area select{
+  margin-bottom: 0;
+  min-width: 4ex;
+  width: auto;
+  font-weight: normal;
+  background: #FFF;
+  border:1px solid #999;
+}
+.mytabla.inputsSmall input, .mytabla .inputsSmall input{
+  width: 8ex;
+}
+
+section.area input::-webkit-input-placeholder,
+section.area input::-moz-placeholder,
+section.area input::placeholder{
+  font-weight: normal;
+}
+
+/* listas de tipos de informes */
+section.area .listasDescriptivas ul{
+  margin-left: 3ex;
+  padding: 2px;
+  background: #FAFAFA;
+  border: 1px solid #777;
+}
+section.area .listasDescriptivas ul li{
+  margin: 2px;
+}
+
+.listasDescriptivas input, .listasDescriptivas select{
+  height: auto;
+  width: auto;
+  background: #FFF;
+  border:1px solid #999;
+}
+
+/*=== LISTADOS TABLAS MODIFY ===*/
+.largWidth{
+  width: 100%;
+  min-width: 500px;
+  overflow: auto;
+}
+table.mytabla tr{
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+  border-left: 1px solid #777;
+}
+table.mytabla thead tr th{
+  text-align: center;
+}
+table.mytabla tr th, table.mytabla tr td{
+  margin:0;
+  padding: 2px;
+  border-right: 1px solid #777;
+}
+table.mytabla tbody tr:active, table.mytabla tbody tr:hover, table.mytabla tbody tr:focus{
+  background: #CEE1FF;
+}
+.mytabla tr td input, .mytabla tr th input{
+  height: 2.5ex;
+  width: auto;
+}
+section .font10, section .font10 *, section .font10 label, .font10, .font10 * {
+  font-size: 10px;
+}
+
+section .font12, section .font12 *, section .font12 label, .font12, .font12 *{
+  font-size: 12px;
+}

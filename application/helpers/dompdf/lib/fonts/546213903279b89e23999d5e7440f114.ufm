@@ -1,0 +1,163 @@
+StartFontMetrics 4.1
+Notice Converted by PHP-font-lib
+Comment https://github.com/PhenX/php-font-lib
+EncodingScheme FontSpecific
+FontName untitled-font-1
+FontSubfamily font-1
+UniqueID FontForge 2.0 : untitled-font-1 : 29-4-2016
+FullName untitled-font-1
+Version Version 1.0
+PostScriptName untitled-font-1
+Weight Medium
+ItalicAngle 0
+IsFixedPitch true
+UnderlineThickness 0
+UnderlinePosition 0
+FontHeightOffset 90
+Ascender 1000
+Descender 0
+FontBBox -143 0 1143 1000
+StartCharMetrics 148
+U 38 ; WX 1000 ; N attach ; G 10
+U 39 ; WX 1000 ; N docs ; G 30
+U 42 ; WX 1000 ; N flow-cascade ; G 11
+U 43 ; WX 1000 ; N hourglass ; G 12
+U 44 ; WX 1000 ; N search ; G 13
+U 47 ; WX 1000 ; N vcard ; G 14
+U 49 ; WX 1000 ; N thumbnails-large ; G 8
+U 51 ; WX 1000 ; N clock ; G 29
+U 53 ; WX 1000 ; N stackoverflow ; G 9
+U 58 ; WX 1000 ; N cloud-1 ; G 24
+U 59 ; WX 1000 ; N print ; G 15
+U 63 ; WX 1000 ; N bubble ; G 16
+U 65 ; WX 1000 ; N female ; G 120
+U 66 ; WX 1000 ; N location ; G 28
+U 67 ; WX 1000 ; N android-car ; G 126
+U 68 ; WX 1000 ; N android-plane ; G 127
+U 69 ; WX 1000 ; N android-home ; G 128
+U 70 ; WX 1000 ; N android-phone-portrait ; G 129
+U 71 ; WX 1000 ; N bonfire ; G 130
+U 72 ; WX 1000 ; N microscope ; G 131
+U 73 ; WX 1000 ; N radio-tower ; G 132
+U 74 ; WX 1000 ; N sign-out ; G 133
+U 75 ; WX 1000 ; N sign-in ; G 134
+U 76 ; WX 1000 ; N comment-discussion ; G 40
+U 77 ; WX 1000 ; N refresh-1 ; G 138
+U 78 ; WX 1000 ; N fire-extinguisher ; G 139
+U 79 ; WX 1000 ; N ban ; G 140
+U 80 ; WX 1000 ; N barcode ; G 141
+U 81 ; WX 1000 ; N happy-outline ; G 142
+U 82 ; WX 1000 ; N smile ; G 7
+U 83 ; WX 1000 ; N robo ; G 143
+U 84 ; WX 1000 ; N phone-2 ; G 144
+U 85 ; WX 1000 ; N tripadvisor ; G 146
+U 86 ; WX 1000 ; N android-wifi ; G 147
+U 93 ; WX 1000 ; N chart-pie ; G 17
+U 94 ; WX 1000 ; N feather ; G 18
+U 95 ; WX 1000 ; N graduation-cap ; G 19
+U 96 ; WX 1000 ; N stethoscope ; G 20
+U 97 ; WX 1000 ; N archive ; G 145
+U 98 ; WX 1000 ; N ambulance ; G 135
+U 99 ; WX 1000 ; N file-word-o ; G 136
+U 100 ; WX 1000 ; N briefcase-case ; G 3
+U 101 ; WX 1000 ; N book ; G 121
+U 102 ; WX 1000 ; N bug ; G 4
+U 103 ; WX 1000 ; N code ; G 122
+U 104 ; WX 1000 ; N ptint ; G 108
+U 105 ; WX 1000 ; N plus ; G 137
+U 106 ; WX 1000 ; N chat-bubble ; G 5
+U 107 ; WX 1000 ; N rocket ; G 123
+U 108 ; WX 1000 ; N refresh ; G 124
+U 109 ; WX 1000 ; N t-shirt ; G 41
+U 110 ; WX 1000 ; N trash ; G 111
+U 111 ; WX 1000 ; N ellipsis ; G 110
+U 112 ; WX 1000 ; N dollar ; G 6
+U 113 ; WX 1000 ; N ellipsis-2 ; G 109
+U 114 ; WX 1000 ; N toggle-off ; G 112
+U 115 ; WX 1000 ; N toggle-on ; G 113
+U 116 ; WX 1000 ; N street-view ; G 114
+U 117 ; WX 1000 ; N stethoscope-1 ; G 115
+U 118 ; WX 1000 ; N ticket-1 ; G 116
+U 119 ; WX 1000 ; N thumb-tack ; G 117
+U 120 ; WX 1000 ; N print-1 ; G 118
+U 121 ; WX 1000 ; N android-refresh ; G 125
+U 122 ; WX 1000 ; N puzzle-piece ; G 119
+U 123 ; WX 1000 ; N traffic-cone ; G 21
+U 124 ; WX 1000 ; N tripit ; G 22
+U 125 ; WX 1000 ; N screen ; G 31
+U 126 ; WX 1000 ; N menu ; G 32
+U 57344 ; WX 1000 ; N home-1 ; G 33
+U 57345 ; WX 1000 ; N playback-rewind ; G 34
+U 57346 ; WX 1000 ; N playback-fast-forward ; G 35
+U 57349 ; WX 1000 ; N key ; G 36
+U 57352 ; WX 1000 ; N fork-and-knife ; G 37
+U 57353 ; WX 1000 ; N graph ; G 38
+U 57354 ; WX 1000 ; N zap ; G 39
+U 57358 ; WX 1000 ; N fire ; G 42
+U 57360 ; WX 1000 ; N banknote ; G 43
+U 57361 ; WX 1000 ; N dribbble ; G 44
+U 57362 ; WX 1000 ; N x ; G 45
+U 57365 ; WX 1000 ; N data ; G 46
+U 57368 ; WX 1000 ; N pin-map-2 ; G 47
+U 57370 ; WX 1000 ; N file-symlink-file ; G 48
+U 57371 ; WX 1000 ; N question-1 ; G 49
+U 57374 ; WX 1000 ; N pencil ; G 50
+U 57376 ; WX 1000 ; N ticket ; G 51
+U 57377 ; WX 1000 ; N email-plane ; G 52
+U 57378 ; WX 1000 ; N arrow-circle-o-down ; G 53
+U 57379 ; WX 1000 ; N arrow-circle-o-left ; G 54
+U 57380 ; WX 1000 ; N arrow-circle-o-right ; G 55
+U 57381 ; WX 1000 ; N arrow-circle-o-up ; G 56
+U 57382 ; WX 1000 ; N chevron-up ; G 63
+U 57383 ; WX 1000 ; N chevron-right ; G 64
+U 57384 ; WX 1000 ; N chevron-left ; G 65
+U 57385 ; WX 1000 ; N chevron-down ; G 66
+U 57386 ; WX 1000 ; N android ; G 57
+U 57387 ; WX 1000 ; N applelogo ; G 58
+U 57388 ; WX 1000 ; N bar-chart ; G 59
+U 57389 ; WX 1000 ; N calendar-check-o ; G 60
+U 57390 ; WX 1000 ; N cart-plus ; G 61
+U 57391 ; WX 1000 ; N cart-arrow-down ; G 62
+U 57392 ; WX 1000 ; N cloud-upload ; G 67
+U 57393 ; WX 1000 ; N cloud-download ; G 68
+U 57394 ; WX 1000 ; N database-1 ; G 69
+U 57395 ; WX 1000 ; N columns ; G 70
+U 57396 ; WX 1000 ; N eye-1 ; G 72
+U 57397 ; WX 1000 ; N envelope-o ; G 71
+U 57398 ; WX 1000 ; N eye-slash ; G 73
+U 57399 ; WX 1000 ; N exchange ; G 74
+U 57400 ; WX 1000 ; N exclamation-triangle ; G 75
+U 57401 ; WX 1000 ; N exclamation-circle ; G 76
+U 57402 ; WX 1000 ; N folder-open ; G 77
+U 57403 ; WX 1000 ; N file-excel-o ; G 78
+U 57404 ; WX 1000 ; N get-pocket ; G 79
+U 57405 ; WX 1000 ; N commenting ; G 80
+U 57406 ; WX 1000 ; N cogs ; G 81
+U 57407 ; WX 1000 ; N cog ; G 82
+U 57408 ; WX 1000 ; N university ; G 83
+U 57409 ; WX 1000 ; N table-1 ; G 84
+U 57410 ; WX 1000 ; N truck ; G 85
+U 57411 ; WX 1000 ; N user-md ; G 86
+U 57412 ; WX 1000 ; N user-secret ; G 87
+U 57413 ; WX 1000 ; N user-plus ; G 88
+U 57414 ; WX 1000 ; N user-times ; G 89
+U 57415 ; WX 1000 ; N users-1 ; G 90
+U 57416 ; WX 1000 ; N user-1 ; G 91
+U 57417 ; WX 1000 ; N wrench-1 ; G 92
+U 57418 ; WX 1000 ; N times-circle-o ; G 93
+U 57419 ; WX 1000 ; N check-circle-o ; G 94
+U 57420 ; WX 1000 ; N check-circle ; G 95
+U 57421 ; WX 1000 ; N times-circle ; G 96
+U 57422 ; WX 1000 ; N terminal ; G 97
+U 57423 ; WX 1000 ; N sitemap-1 ; G 98
+U 57424 ; WX 1000 ; N sliders ; G 99
+U 57425 ; WX 1000 ; N road-1 ; G 100
+U 57426 ; WX 1000 ; N plus-circle ; G 101
+U 57427 ; WX 1000 ; N picture-o ; G 102
+U 57428 ; WX 1000 ; N male-1 ; G 103
+U 57429 ; WX 1000 ; N lightbulb-o ; G 104
+U 57430 ; WX 1000 ; N life-ring ; G 105
+U 57431 ; WX 1000 ; N hourglass-half ; G 106
+U 57432 ; WX 1000 ; N floppy-o ; G 107
+EndCharMetrics
+EndFontMetrics

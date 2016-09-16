@@ -1,0 +1,39 @@
+.panel_informe{
+  overflow: hidden;
+}
+
+.panel_informe .opciones_informe{
+  float: left;
+  width: 20%;
+  box-sizing: border-box;
+}
+
+.panel_informe .opciones_informe ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-height: 60%;
+}
+.panel_informe .opciones_informe ul li{
+  padding: 1ex;
+  background: #EFEFEF;
+  cursor: pointer;
+}
+
+.panel_informe .opciones_informe ul li.active{
+  background: #FFF;
+  border:1px solid #999;
+  border-right: #FFF;
+}
+.panel_informe .contenido_informe{
+  float: left;
+  padding: 2ex;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+
+.myTable td{
+   /*border:1px solid #333;*/
+    cellspacing: 0;
+}

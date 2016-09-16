@@ -1,0 +1,54 @@
+.opciones-menu{
+  overflow: hidden;
+  float: left;
+  max-width: 40ex;
+  text-align: justify;
+}
+.opciones-menu ul{
+  margin: 0;
+  border-top: 1px solid #3165A2;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.opciones-menu li a{
+  border: 1px solid #3165A2;
+  border-top: none;
+  padding: 1ex;
+  display: block;
+  color: #FFF;
+  /*text-shadow: 1px 1px 2px #AAA;*/
+  background: #346EB2;
+  text-shadow: 1px 1px 2px #555;
+}
+.opciones-menu li a:hover, .opciones-menu li a:active{
+  color: #FFF;
+  background:#109EC9;
+}
+.opciones-area{
+  padding: 1ex;
+  overflow: hidden;
+  min-height: 30ex;
+  text-align: center;
+}
+.opciones-area > div{
+  display: none;
+}
+.hr-termo{
+  border:1px solid #5C92EA;
+}
+
+.btn-circle{
+  border-radius: 100%;
+  padding: 1ex;
+  line-height: 0;
+  height: auto;
+}
+
+/* ============= botones de la app ============ */
+.btn-panel{
+  border-radius: 7px;
+  border: 1px solid #AAA;
+  display: inline-block;
+  padding: 1ex;
+  min-width: 20ex;
+}

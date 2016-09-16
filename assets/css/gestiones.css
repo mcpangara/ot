@@ -1,0 +1,15 @@
+.gestion{
+	padding:1ex;
+}
+.gestion h2{
+	text-align: center;
+}
+.gestion .panel-normal{
+	background: #FFF;
+	text-align: justify;
+}
+.button.novo{
+	background: #FFF;
+	border: 1px solid #888;
+	color:#555;
+}

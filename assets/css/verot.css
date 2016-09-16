@@ -1,0 +1,68 @@
+table caption{
+	color:#5C92EA;
+}
+table tbody td b, table thead tr th{
+	color: #244A87;
+	font-size: 1rem;
+}
+table tbody td {
+	font-size: 1.1rem;
+}
+#myTable_length select{
+	display: inline;
+	margin: auto;
+	width: auto;
+}
+#ver{
+	padding: 1ex;
+}
+#ver h3.titulo{
+	color:#FFF; 
+	background: #275799;
+	display: block;
+}
+#info, #conceptos > div{
+	display: none;
+}
+.ul-table{
+	overflow: hidden;
+}
+.ul-table li.title{
+	padding: 1ex;			
+	text-transform: uppercase;
+	color: #511096;
+}
+.ul-table li.item{
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	width: 50%;
+	float: left;
+	box-sizing: border-box;
+	color: #511096;
+	border-bottom:1px solid #ccc; 
+	text-transform: uppercase;
+}
+
+.ul-table li.item2{
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	box-sizing: border-box;
+	border-bottom:1px solid #999; 
+	text-transform: uppercase;
+}
+.ul-table li b{
+	color: #000;
+}
+@media (max-width: 600px) {
+	#info{
+		padding: 0;
+	}
+	.ul-table li.item, .ul-table li.item2{
+		display: block;
+		float: none;
+		clear: left;
+		width: 100%;
+	}
+}

@@ -1,0 +1,4 @@
+.flexigrid div.form-div input[type="text"], .flexigrid div.form-div input[type="password"], input{
+  min-height: auto;
+  height: auto;
+}
