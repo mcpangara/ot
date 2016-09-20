@@ -39,6 +39,11 @@ var calendar = function($scope, $http, $timeout) {
         console.log(response.data);
         $scope.reportes = response.data;
         $scope.validarReportes($scope.reportes, $scope.semanas);
+        setTimeout(function () {
+          $('#tarj-cont').parent('div').css({
+            'height': $('#tarj2').height()+'px'
+          })
+        }, 200);
       },
       function(response) {
         console.log(response.data)

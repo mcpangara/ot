@@ -3,22 +3,11 @@ var reportes = function($scope, $http, $timeout) {
   $scope.slide  = function(tag){
     $(tag).toggleClass('slide');
     $(tag).removeClass('unslide');
-    setTimeout(function () {
-      $(tag).parent('div').css({
-        'height': $(tag).height()+'px'
-      })
-    }, 200);
   }
   $scope.unslide = function(tag){
     $(tag).toggleClass('slide');
     $(tag).addClass('unslide');
-    setTimeout(function () {
-      $(tag).parent('div').css({
-        'height': 'auto'
-      })
-    }, 200);
   }
-
   $scope.verCalendario = function(url, tag){
     console.log(url+" - "+tag);
     $timeout(function(){
@@ -75,6 +64,7 @@ var addReporte =  function($scope, $http, $timeout) {
             idrecurso_ot: val.idrecurso_ot,
             identificacion: val.identificacion,
             nombre_completo: val.nombre_completo,
+            facturable: true,
             nombre_ot: val.nombre_ot,
             itemf_codigo: val.itemf_codigo,
             descripcion: val.descripcion,

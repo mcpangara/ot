@@ -175,6 +175,20 @@ class Ot extends CI_Controller {
 		echo json_encode($reportes);
 	}
 
+	# ============================================================================
+	# Consltas de items
+	# ============================================================================
+
+	# Obtener items por tipo [AJAX]
+	public function getItemByTipeOT($idOT, $tipo, $llave = NULL)
+	{
+		$this->load->model('OT_db', 'ot_db');
+		$rows = $this->ot_db->getItemByTipeOT($idOT, $tipo);
+		echo json_encode($rows->rwsult());
+
+	}
+
+	# ============================================================================
 	public function foo($value=''){ echo 'foo';}
 }
 /* End of file Ot.php */

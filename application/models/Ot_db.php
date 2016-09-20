@@ -87,6 +87,32 @@ class Ot_db extends CI_Model {
 		$this->db->where('OT_idOT', $idOT);
 		return $this->db->get();
 	}
+
+
+	# ===========================================================================
+	# Consulta de items de OT
+	# ===========================================================================
+
+	# Obetner items por tipo de un OT
+	public function getItemByTipeOT($idOT, $tipo)	{
+		$this->load->database('ot');
+		$this->db->select('itf.itemc_idtemc, itef.itemc_item, itf.codigo, itf.decripcion, OT.nombre_ot, tot.nombre_tarea, itt.cantidad');
+		$this->db->from('item_tarea_ot AS itt');
+		$this->db->join('itemf AS itf', 'tot.itemf_iditemf = itf.iditemf');
+		$this->db->join('tarea_ot AS tot', 'itt.tarea_ot_idtarea_ot = tot.idtarea_ot');
+		$this->db->join('OT', 'OT.idOT = tot.OT_idOT');
+		$this->db->where('OT.idOT', $idOT);
+		$this->db->where('itf.tipo', $tipo);
+		$this->db->group_by('itf.codigo');
+		return $this->db->get();
+	}
+	# Obtener listado de items por OT
+	public function getItemsBy($idOT)
+	{
+		$this->load->database('ot');
+		$this->db->select('*');
+		$this->db->from('item_tarea_ot AS itt');
+	}
 }
 /* End of file Ot_db.php */
 /* Location: ./application/models/Ot_db.php */
