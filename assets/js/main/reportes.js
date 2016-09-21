@@ -30,7 +30,9 @@ var addReporte =  function($scope, $http, $timeout) {
   $scope.personalReporte = [];
   $scope.persOT = [];
   $scope.eqs =[];
+  $scope.actOT =[];
   $scope.equipoReporte =[];
+  $scope.actividadesReporte = [];
 
   $tiempoPersona = {};
 
@@ -40,13 +42,9 @@ var addReporte =  function($scope, $http, $timeout) {
   }
 
   $scope.getPersonaOT = function(ruta){
-    $http.post(
-      ruta,
-      {}
+    $http.post(  ruta,  {}
     ).then(
-      function(response){
-        $scope.persOT = response.data;
-      },
+      function(response){ $scope.persOT = response.data; },
       function(response){}
     );
   }
@@ -120,13 +118,9 @@ var addReporte =  function($scope, $http, $timeout) {
   }
 
   $scope.getEquipoOT = function(ruta){
-    $http.post(
-      ruta,
-      {}
+    $http.post( ruta, {}
     ).then(
-      function(response){
-        $scope.equOT = response.data;
-      },
+      function(response){ $scope.equOT = response.data; },
       function(response){}
     );
   }
@@ -169,12 +163,50 @@ var addReporte =  function($scope, $http, $timeout) {
   $scope.delEquipoReporte = function(elem) {
     $scope.equipoReporte.splice($scope.equipoReporte.indexOf(elem),1);
   }
+
+  // ====================== Actividades =============================
+  $scope.setActividadOT = function(tag) {
+    $(tag).toggleClass('nodisplay');
+  }
+
+  $scope.getActividadesOT = function(ruta) {
+    $http.post(ruta, {}).then(
+      function(response){$scope.actOT = response.data; console.log($scope.actOT);},
+      function(response){}
+    );
+  }
+
+  $scope.addActividadToReporte = function(list) {
+    angular.forEach(list, function(val, key){
+      console.log(val);
+      if(val.add && !$scope.existeListaReporte($scope.actividadesReporte, val.serial, 'serial')){
+        $scope.actividadesReporte.push(
+          {
+            iditemf:val.iditemf,
+    				itemc_iditemc:val.itemc_iditemc,
+    				itemc_item:val.itemc_item,
+    				codigo:val.codigoS,
+    				descripcion:val.descripcion,
+    				nombre_ot:val.nombre_ot,
+    				nombre_tarea:val.nombre_ot,
+    				unidad:val.unidad,
+    				planeado:val.planeado,
+            cantidad_dia: 0
+          }
+        );
+      }
+    })
+  }
+
+  $scope.endActividadOT = function(tag){
+    $scope.addActividadToReporte($scope.actOT);
+    $scope.setEquipoOT(tag);
+  }
+
   // ==== Procesos genericos ====
   $scope.existeListaReporte = function(listado, comparador, propiedad = 'identificacion') {
     for (var i = 0; i < listado.length; i++) {
-      if (listado[i][propiedad] == comparador) {
-        return true;
-      }
+      if (listado[i][propiedad] == comparador) {return true;}
     }
     return false;
   }

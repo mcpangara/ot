@@ -14,7 +14,7 @@
       <table class="mytabla">
         <thead>
           <tr>
-            <th>No.</th>
+            <th>#</th>
             <th>Identificacion</th>
             <th>Nombre de empleados</th>
             <th>OT</th>

@@ -96,14 +96,27 @@ class Ot_db extends CI_Model {
 	# Obetner items por tipo de un OT
 	public function getItemByTipeOT($idOT, $tipo)	{
 		$this->load->database('ot');
-		$this->db->select('itf.itemc_idtemc, itef.itemc_item, itf.codigo, itf.decripcion, OT.nombre_ot, tot.nombre_tarea, itt.cantidad');
+		$this->db->select(
+				'
+				itf.iditemf,
+				itf.itemc_iditemc,
+				itf.itemc_item,
+				itf.codigo,
+				itf.descripcion,
+				OT.nombre_ot,
+				tot.nombre_tarea,
+				itc.unidad,
+				SUM(itt.cantidad) AS planeado
+				'
+			);
 		$this->db->from('item_tarea_ot AS itt');
-		$this->db->join('itemf AS itf', 'tot.itemf_iditemf = itf.iditemf');
+		$this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
+		$this->db->join('itemc AS itc', 'itf.itemc_iditemc = itc.iditemc');
 		$this->db->join('tarea_ot AS tot', 'itt.tarea_ot_idtarea_ot = tot.idtarea_ot');
 		$this->db->join('OT', 'OT.idOT = tot.OT_idOT');
 		$this->db->where('OT.idOT', $idOT);
 		$this->db->where('itf.tipo', $tipo);
-		$this->db->group_by('itf.codigo');
+		$this->db->group_by('itf.iditemf');
 		return $this->db->get();
 	}
 	# Obtener listado de items por OT

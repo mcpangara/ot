@@ -36,7 +36,7 @@
             <td>
               <button type="button" class="btn indigo lighten-1 mini-btn" ng-click="setPersonalOT('#personalOT')">Personal</button>
               <button type="button" class="btn indigo lighten-1 mini-btn" ng-click="setPersonalOT('#equipoOT')">Equipos</button>
-              <button type="button" class="btn indigo lighten-1 mini-btn" data-click="setActividadOT('#actividadOT')">Actividades</button>
+              <button type="button" class="btn indigo lighten-1 mini-btn" ng-click="setActividadOT('#actividadOT')">Actividades</button>
               <button type="button" class="btn indigo lighten-1 mini-btn">Reembolsables</button>
               <button type="button" class="btn indigo lighten-1 mini-btn">A cargo TC</button>
             </td>
@@ -53,6 +53,7 @@
 
     <?php $this->load->view('reportes/add/personaOT', array('ot'=>$ot) ); ?>
     <?php $this->load->view('reportes/add/equipoOT', array('ot'=>$ot) ); ?>
+    <?php $this->load->view('reportes/add/actividadesOT', array('ot'=>$ot) ); ?>
 
     <hr>
     <h5>Personal:</h5>
@@ -61,6 +62,10 @@
 
     <h5>Equipo:</h5>
     <?php $this->load->view('reportes/add/equipoReporte', array('ot'=>$ot) ); ?>
+
+    <hr>
+    <h5>Actividad:</h5>
+    <?php $this->load->view('reportes/add/actividadesReporte', array('ot'=>$ot) ); ?>
 
     <br>
 

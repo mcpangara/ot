@@ -184,8 +184,13 @@ class Ot extends CI_Controller {
 	{
 		$this->load->model('OT_db', 'ot_db');
 		$rows = $this->ot_db->getItemByTipeOT($idOT, $tipo);
-		echo json_encode($rows->rwsult());
+		echo json_encode($rows->result());
+	}
 
+	# Obtener cantidades por item [AJAX]
+	public function getCantidadByItemf($item)
+	{
+		# pendiente
 	}
 
 	# ============================================================================
