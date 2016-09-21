@@ -5,6 +5,7 @@
         <th></th>
         <th>identificacion</th>
         <th>Nombre Completo</th>
+        <th>Facturable</th>
         <th style="max-width: 4ex">Hr. Ini.</th>
         <th style="max-width: 4ex">Hr. fin</th>
         <th style="max-width: 4ex">Horas dia</th>
@@ -21,6 +22,9 @@
         </td>
         <td ng-bind="pr.identificacion"></td>
         <td ng-bind="pr.nombre_completo"></td>
+        <td class="noMaterialStyles">
+          <input type="checkbox" ng-model="pr.facturable" ng-init="pr.facturable = true" >
+        </td>
         <td> <b ng-bind="pr.hora_inicio"></b> Hrs. </td>
         <td> <b ng-bind="pr.hora_fin"></b>  Hrs.</td>
         <td class="inputsSmall"> <input type="number" ng-model="pr.horas_dia"> </td>

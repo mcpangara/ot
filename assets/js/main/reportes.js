@@ -71,7 +71,7 @@ var addReporte =  function($scope, $http, $timeout) {
             hora_inicio: 7,
             hora_fin: 18,
             hr_almuerzo: true,
-            horas_dia: 8,
+            ordinario: 1,
             horas_hed: 0,
             horas_hen: 0,
             horas_rn: 0
