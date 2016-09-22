@@ -14,7 +14,10 @@
       <table class="mytabla">
         <thead>
           <tr>
-            <th>#</th>
+            <th class="noMaterialStyles">
+              <small>Todos</small><br>
+              <input type="checkbox" ng-click="FunSelectionAll(persOT, 'add')">
+            </th>
             <th>Identificacion</th>
             <th>Nombre de empleados</th>
             <th>OT</th>
@@ -35,7 +38,7 @@
             <td><input type="text" ng-click="fil_pOT.descripcion" placeholder="filtrar"></td>
           </tr>
           <tr ng-repeat="p in persOT | filter: fil_pOT | orderBy: 'descripcion'">
-            <td class="noMaterialStyles"> <input type="checkbox" ng-model="p.add" ng-init="p.add=true"> </td>
+            <td class="noMaterialStyles"> <input type="checkbox" ng-model="p.add" ng-init="p.add=undefined"> </td>
             <td ng-bind="p.identificacion"></td>
             <td ng-bind="p.nombre_completo"></td>
             <td ng-bind="p.nombre_ot"></td>

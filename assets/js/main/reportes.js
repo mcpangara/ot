@@ -264,4 +264,9 @@ var addReporte =  function($scope, $http, $timeout) {
   $scope.cambiarValorObjeto = function(obj, prop, value){
     if (obj[prop] == value) { obj[prop] = ''; }else{ obj[prop] = value; }
   }
+  $scope.FunSelectionAll = function(listObj, prop){
+    angular.forEach(listObj, function(val, key){
+      val[prop] = val[prop]==undefined?true:undefined;
+    });
+  }
 }

@@ -197,6 +197,7 @@ section.area *{
   margin: auto;
   background: #FFF;
   border: 1px solid #ccc;
+  display: inherit;
 }
 .noMaterialStyles [type="radio"]:not(:checked)+label, .noMaterialStyles [type="radio"]:checked+label {
   padding: 0;

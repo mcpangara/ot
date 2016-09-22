@@ -19,11 +19,20 @@ class Reporte extends CI_Controller{
   }
 
   public function add($idOT, $fecha){
-    $this->load->model('OT_db', 'otdb');
+    $this->load->model('Ot_db', 'otdb');
     $ot = $this->otdb->getData($idOT);
     $this->load->model('tarea_db', 'tarea');
     $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
     $this->load->view('reportes/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
+  }
+
+  public function testAdd($value='')
+  {
+    $this->load->model('Ot_db');
+    $data = array(
+      "bases" => $this->Ot_db->getBases()
+    );
+    $this->load->view('reportes/lista/getReportesByOT', $data);
   }
 
   public function insertRDP(){
