@@ -67,6 +67,9 @@
     <h5>Actividad:</h5>
     <?php $this->load->view('reportes/add/actividadesReporte', array('ot'=>$ot) ); ?>
 
+    <p>
+      <?php $this->load->view('reportes/add/observaciones'); ?>
+    </p>
     <br>
 
 		<div class="btnWindow">

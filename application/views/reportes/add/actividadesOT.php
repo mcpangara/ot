@@ -36,7 +36,7 @@
             <td><input type="text" ng-click="fil_acOT.planeado" placeholder="filtrar"></td>
             <td><input type="text" ng-click="fil_acOT.nombre_ot" placeholder="filtrar"></td>
           </tr>
-          <tr ng-repeat="ac in actOT | filter: fil_pOT">
+          <tr ng-repeat="ac in actOT | filter: fil_acOT">
             <td class="noMaterialStyles"> <input type="checkbox" ng-model="ac.add" ng-init="ac.add=false"> </td>
             <td class="noMaterialStyles"> <span ng-bind="ac.itemc_item"></span> </td>
             <td class="noMaterialStyles"> <span ng-bind="ac.codigo"></span> </td>

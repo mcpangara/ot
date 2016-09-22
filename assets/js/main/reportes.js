@@ -33,8 +33,14 @@ var addReporte =  function($scope, $http, $timeout) {
   $scope.actOT =[];
   $scope.equipoReporte =[];
   $scope.actividadesReporte = [];
-
   $tiempoPersona = {};
+
+  $scope.myTinyMCE = function(){
+		tinymce.init({
+  			selector: "textarea"
+  		});
+	}
+  $scope.myTinyMCE();
 
   // ==== procesos de personal en los reportes ====
   $scope.setPersonalOT = function(tag){
@@ -72,7 +78,8 @@ var addReporte =  function($scope, $http, $timeout) {
             ordinario: 1,
             horas_hed: 0,
             horas_hen: 0,
-            horas_rn: 0
+            horas_rn: 0,
+            clase: ''
           }
         );
       }
@@ -178,8 +185,8 @@ var addReporte =  function($scope, $http, $timeout) {
 
   $scope.addActividadToReporte = function(list) {
     angular.forEach(list, function(val, key){
-      console.log(val);
-      if(val.add && !$scope.existeListaReporte($scope.actividadesReporte, val.serial, 'serial')){
+      if(val.add && !$scope.existeListaReporte($scope.actividadesReporte, val.iditemf, 'iditemf')){
+        console.log(val);
         $scope.actividadesReporte.push(
           {
             iditemf:val.iditemf,
@@ -203,6 +210,9 @@ var addReporte =  function($scope, $http, $timeout) {
     $scope.setEquipoOT(tag);
   }
 
+  $scope.delActividadReporte = function(elem){
+    $scope.actividadesReporte.splice($scope.actividadesReporte.indexOf(elem),1);
+  }
   // ==== Procesos genericos ====
   $scope.existeListaReporte = function(listado, comparador, propiedad = 'identificacion') {
     for (var i = 0; i < listado.length; i++) {
@@ -216,6 +226,13 @@ var addReporte =  function($scope, $http, $timeout) {
 			fil.add = true;
 		}else if (fil.add == true) {
 			fil.add = undefined;
+		};
+	}
+  $scope.changeFilterSelect2 = function(fil,propiedad){
+		if(fil[propiedad] == undefined){
+			fil[propiedad] = true;
+		}else if (fil[propiedad] == true) {
+			fil[propiedad] = undefined;
 		};
 	}
 
@@ -239,5 +256,12 @@ var addReporte =  function($scope, $http, $timeout) {
       }
     });
   }
-
+  $scope.verificadorNumericoFilter = function(filtro, propiedad,inferior, superior = undefined){
+    if(filtro[propiedad] < inferior){ filtro[propiedad] = undefined; }
+    if(filtro[propiedad] < inferior){ filtro[propiedad] = undefined; }
+    if(filtro[propiedad] == ''){ filtro[propiedad] = undefined; }
+  }
+  $scope.cambiarValorObjeto = function(obj, prop, value){
+    if (obj[prop] == value) { obj[prop] = ''; }else{ obj[prop] = value; }
+  }
 }
