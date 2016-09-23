@@ -173,6 +173,9 @@ app.controller('calendar', function($scope, $http, $timeout){
 app.controller('reportes', function($scope, $http, $timeout){
   reportes($scope, $http, $timeout);
 });
+app.controller('listOTReportes', function($scope, $http, $timeout){
+  listOTReportes($scope, $http, $timeout);
+});
 app.controller('addReporte', function($scope, $http, $timeout){
   addReporte($scope, $http, $timeout);
 });

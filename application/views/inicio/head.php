@@ -48,6 +48,8 @@
     <script src="<?= base_url('assets/js/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
     <script src="<?= base_url('assets/js/vendor/tinymce-angular.js') ?>" type="text/javascript"></script>
 
+    <!-- Charts JS -->
+    <script src="<?= base_url('assets/js/vendor/Chart.min.js') ?>" type="text/javascript"></script>
 
     <!-- Mainer JS -->
     <script type="text/javascript">

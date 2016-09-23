@@ -5,11 +5,11 @@
         <th style="width:15%">Terreno</th>
         <th>Seguridad ambiental</th>
         <th>Noche Ant.</th>
-        <th>Condiciones Climaticas</th>
+        <th colspan="2">Condiciones Climaticas</th>
       </tr>
     </thead>
     <tbody>
-      <tr style="background:#FFF" class="noMaterialStyles left-align font10">
+      <tr class="noMaterialStyles left-align font10">
         <td>
           <label for="">
             Terreno:
@@ -36,13 +36,11 @@
         <td>
           <input type="text" name="name" value="">
         </td>
-        <td>
-          <div>
-            Hora inicio lluvia (24h): <input type="number" name="name" value="" >
-            Hora fin lluvia (24h): <input type="number" name="name" value="" >
-            <br>
-            Total Horas: {{ '' }}
-          </div>
+        <td class="inputsSmall">
+            Hr. inicio lluvia: <input type="number" name="name" value="" >
+        </td>
+        <td class="inputsSmall">
+          Hr. fin lluvia: <input type="number" name="name" value="" >
         </td>
       </tr>
     </tbody>
@@ -51,7 +49,7 @@
   <table class="mytabla inputsSmall">
     <thead>
       <tr>
-        <th colspan="2"> Actividades </th>
+        <th colspan="2"> ACTIVIDADES </th>
       </tr>
     </thead>
     <tbody>

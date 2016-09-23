@@ -23,7 +23,7 @@
     <div class="">
       <table class="mytabla centered">
         <thead>
-          <tr>
+          <tr style="background: #97D664">
             <th>No. de O.T.:</th>
             <th>Fecha reporte (Y/m/d): </th>
             <th>Maestros: </th>
@@ -32,7 +32,7 @@
         <tbody>
           <tr>
             <td><b><?= $ot->nombre_ot ?></b></td>
-            <td><?= date('Y/m/d',strtotime($fecha)) ?></td>
+            <td> <b><?= date('Y/m/d',strtotime($fecha)) ?></b> </td>
             <td>
               <button type="button" class="btn indigo lighten-1 mini-btn" ng-click="setPersonalOT('#personalOT')">Personal</button>
               <button type="button" class="btn indigo lighten-1 mini-btn" ng-click="setPersonalOT('#equipoOT')">Equipos</button>

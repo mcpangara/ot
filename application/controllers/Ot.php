@@ -37,6 +37,13 @@ class Ot extends CI_Controller {
 		echo json_encode($arr);
 	}
 
+	public function getByBase($base)
+	{
+		$this->load->model('ot_db', 'otdb');
+		$ots = $this->otdb->getAllOTs($base);
+		echo json_encode($ots->result());
+	}
+
 	#=============================================================================
 	# GUARDAR UNA ORDEN DE TRABAJO
 	public function saveOT(){

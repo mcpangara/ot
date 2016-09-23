@@ -67,7 +67,7 @@ class Ot_db extends CI_Model {
 		$this->db->join('municipio AS mun', 'mun.idpoblado = OT.municipio_idpoblado');
 		$this->db->join('tipo_ot AS tp', 'tp.idtipo_ot = OT.tipo_ot_idtipo_ot');
 		if (isset($base)) {
-			$this->db->where('base.idebase', $base);
+			$this->db->where('b.idbase', $base);
 		}
 		return $this->db->get();
 	}

@@ -23,6 +23,57 @@ var reportes = function($scope, $http, $timeout) {
   }
 }
 
+var listOTReportes = function($scope, $http, $timeout){
+  $scope.ot = {};
+  $scope.consulta = { base:'', ot:''};
+  $scope.myOts = [];
+  $scope.getOTs= function(url){
+    console.log(url+"/"+$scope.consulta.base);
+    $http.post(url+"/"+$scope.consulta.base, {})
+    .then(
+      function(response){
+        console.log(response.data)
+        $scope.myOts = response.data;
+        $scope.consulta.ot  = response.data[0].idOT;
+      },
+      function(){}
+    );
+  }
+  $scope.initCharts = function(){
+    var ctx = $("#myChart");
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["item1", "item2", "item3", "item4", "item5", "item6"],
+          datasets: [{
+              label: '# de pruebas',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+      }
+    });
+  }
+
+}
+
 //------------------------------------------------------------------------------
 // controlador de agregar reporte
 
