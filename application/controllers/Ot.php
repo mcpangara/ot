@@ -156,13 +156,7 @@ class Ot extends CI_Controller {
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
 		doPDF($html);
 	}
-
-	public function testCalendar($ot='')
-	{
-		$this->load->model('ot_db', 'myot');
-		$ot = $this->myot->getData($ot);
-		$this->load->view('reportes/calendar', array('ot'=>$ot->row()));
-	}
+	
 	public function getMyReportes($value='')
 	{
 		$reportes = array();

@@ -65,5 +65,14 @@ class Reporte extends CI_Controller{
   }
 
 
+  //calendario js+angular
+  public function calendar($ot='')
+	{
+		$this->load->model('ot_db', 'myot');
+		$ot = $this->myot->getData($ot);
+		$this->load->view('reportes/calendar', array('ot'=>$ot->row()));
+	}
+
+
 
 }

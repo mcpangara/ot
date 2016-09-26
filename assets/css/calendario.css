@@ -1,6 +1,6 @@
 #calendario table{
   width: auto;
-  min-height: 60ex;
+  min-height: 50ex;
 }
 #calendario table tbody tr td, #calendario table thead tr th{
   width: 5em;

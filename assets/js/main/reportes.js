@@ -25,20 +25,28 @@ var reportes = function($scope, $http, $timeout) {
 
 var listOTReportes = function($scope, $http, $timeout){
   $scope.ot = {};
-  $scope.consulta = { base:'', ot:''};
+  $scope.rd = {};
+  $scope.consulta = {};
   $scope.myOts = [];
+
+  $scope.initBase = function(url ,base){
+    $scope.consulta.base = base;
+    $scope.getOTs(url);
+  }
+
   $scope.getOTs= function(url){
     console.log(url+"/"+$scope.consulta.base);
     $http.post(url+"/"+$scope.consulta.base, {})
     .then(
       function(response){
-        console.log(response.data)
         $scope.myOts = response.data;
-        $scope.consulta.ot  = response.data[0].idOT;
+        if(response.data.length == 0 || response.data[0] == undefined){alert('No hay OT activas para esta base')}
+        else{}{$scope.consulta.ot  = response.data[0].idOT;}
       },
       function(){}
     );
   }
+
   $scope.initCharts = function(){
     var ctx = $("#myChart");
     var myChart = new Chart(ctx, {
@@ -72,6 +80,40 @@ var listOTReportes = function($scope, $http, $timeout){
     });
   }
 
+  $scope.getReportesView = function(site_url){
+      angular.forEach($scope.myOts, function(val, key){
+        if(val.idOT == $scope.consulta.ot){
+          var fecha = new Date();
+          $scope.rd.fecha = fecha;
+          $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
+          $scope.ot = val;
+          $scope.verCalendario(site_url+"/"+$scope.consulta.ot);
+          $scope.ot.selected = true;
+        }
+      });
+  }
+
+  //Calendario
+  $scope.verCalendario = function(url){
+    $timeout(function(){ $scope.calendarLink = url; });
+  }
+  $scope.ocultarCalendario = function(){
+    $timeout(function(){ $scope.calendarLink = ''; });
+  }
+
+  $scope.seleccionarFecha = function(dia, mes, year, url, $e){
+    if( url == undefined ){
+      var d = new Date(year, mes, dia);
+      $scope.rd.fecha = d;
+      $scope.rd.fecha_selected = year+'-'+mes+'-'+dia;
+    }
+  }
+
+  $scope.enlazarClick = function(url, $e){
+    $e.preventDefault();
+    var link = url+'/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected;
+    $scope.$parent.getAjaxWindow(link, $e, null)
+  }
 }
 
 //------------------------------------------------------------------------------

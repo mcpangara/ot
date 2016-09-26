@@ -36,7 +36,6 @@ var calendar = function($scope, $http, $timeout) {
   $scope.getMyReportes = function(url){
     $http.post(url, {}).then(
       function(response) {
-        console.log(response.data);
         $scope.reportes = response.data;
         $scope.validarReportes($scope.reportes, $scope.semanas);
         setTimeout(function () {
@@ -49,11 +48,6 @@ var calendar = function($scope, $http, $timeout) {
         console.log(response.data)
       }
     );
-  }
-
-  $scope.enlazarFecha = function(url, $e, dia, mes, year){
-    console.log(url+'/'+year+'-'+mes+'-'+dia);
-    $scope.$parent.getAjaxWindow(url+'/'+year+'-'+mes+'-'+dia, $e, null)
   }
 
   //Calendario
@@ -119,5 +113,10 @@ var calendar = function($scope, $http, $timeout) {
       $scope.year = $scope.year+1;
     }
     $scope.getDays($scope.year, $scope.mes);
+  }
+  //procesoas externos
+  $scope.enlazarFecha = function(url, $e, dia, mes, year){
+    console.log(url+'/'+year+'-'+mes+'-'+dia);
+    $scope.$parent.getAjaxWindow(url+'/'+year+'-'+mes+'-'+dia, $e, null)
   }
 }
