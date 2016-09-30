@@ -129,8 +129,8 @@ class Ot extends CI_Controller {
 	# LISTAR ORDENES
 	public function listOT($value=''){
 		$this->load->database('ot');
-		$ots = $this->db->get('OT');
-		$this->load->view('ot/listOT', array('ots'=>$ots));
+		$bases = $this->db->get('base');
+		$this->load->view('ot/listOT', array('bases'=>$bases));
 	}
 	#=============================================================================
 	# Generar OT impresión
@@ -156,7 +156,7 @@ class Ot extends CI_Controller {
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
 		doPDF($html);
 	}
-	
+
 	public function getMyReportes($value='')
 	{
 		$reportes = array();

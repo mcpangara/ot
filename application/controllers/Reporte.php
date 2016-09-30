@@ -56,15 +56,7 @@ class Reporte extends CI_Controller{
 		}
 		echo json_encode($reportes);
   }
-
-  public function getOTs($base=NULL)
-  {
-    $this->load->database('ot');
-		$ots = $this->db->get('OT');
-    $this->load->view('reportes/listaOT',array('ots'=>$ots));
-  }
-
-
+  
   //calendario js+angular
   public function calendar($ot='')
 	{
