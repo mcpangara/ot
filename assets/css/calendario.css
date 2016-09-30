@@ -11,30 +11,36 @@
   text-align: center;
 }
 #calendario table thead tr th{
-  font-size: 1.3ex;
+  font-size: 1.4ex;
 }
 #calendario table tbody tr td{
+  padding: 0;
+  margin: 0;
   background: #EEE;
+  line-height: normal;
 }
 #calendario table tbody tr td a{
   width: 100%;
   height: 100%;
-  display: inline-block;
+  display: block;
   color: #05050f;
+  padding-top: 5px;
 }
 #calendario table tbody tr td.dia{
   background: #FFF;
 }
+#calendario table tbody tr td.dia.selected, #calendario table tbody tr td.dia.selected a{
+  background: #ADBFC6;
+}
 #calendario table tbody tr td.dia.activo{
-  background: #EDF77E;
+  background: #F2D879 ;
 }
 #calendario table tbody tr td.dia.activo.true{
-  background: #60CE31;
+  background: #2AE4EA;
 }
 #calendario table thead tr th{
   background: #1261C9;
   color:#FFF;
-  font-weight: bold;
 }
 .textcenter{
  text-align: center;

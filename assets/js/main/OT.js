@@ -1,3 +1,18 @@
+var listaOT = function($scope, $http, $timeout){
+	$scope.linkLista = '';
+	$scope.consulta = {};
+	$scope.findOTsByBase = function(url){
+		var mybase = $scope.consulta.base;
+		$scope.linkLista = url+'/'+mybase;
+		$http.post($scope.linkLista, {}).then(
+				function(response) {
+					$scope.ots = response.data;
+				},
+				function(response){}
+			);
+	}
+}
+
 var addOT = function($scope, $http, $timeout) {
 	$scope.filtro = {};
 

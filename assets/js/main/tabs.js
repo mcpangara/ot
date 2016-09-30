@@ -167,11 +167,14 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
 app.controller('addOT', function($scope, $http, $timeout){
   addOT($scope, $http, $timeout);
 });
-app.controller('calendar', function($scope, $http, $timeout){
-  calendar($scope, $http, $timeout);
+app.controller('listaOT', function($scope, $http, $timeout){
+  listaOT($scope, $http, $timeout);
 });
 app.controller('reportes', function($scope, $http, $timeout){
   reportes($scope, $http, $timeout);
+});
+app.controller('calendar', function($scope, $http, $timeout){
+  calendar($scope, $http, $timeout);
 });
 app.controller('listOTReportes', function($scope, $http, $timeout){
   listOTReportes($scope, $http, $timeout);

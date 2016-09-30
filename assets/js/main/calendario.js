@@ -26,6 +26,7 @@ var calendar = function($scope, $http, $timeout) {
         fecha.idreporte = reportes[i].idreporte;
         fecha.OT_idOT = reportes[i].OT_idOT;
         fecha.clase = 'dia activo';
+        fecha.clase2 = '';
         fecha.activo = reportes[i].valido;
         return true;
       }
@@ -118,5 +119,13 @@ var calendar = function($scope, $http, $timeout) {
   $scope.enlazarFecha = function(url, $e, dia, mes, year){
     console.log(url+'/'+year+'-'+mes+'-'+dia);
     $scope.$parent.getAjaxWindow(url+'/'+year+'-'+mes+'-'+dia, $e, null)
+  }
+  $scope.seleccionarFecha = function(fecha, mes, year, url, $e){
+    angular.forEach($scope.semanas, function(valor, llave){
+      angular.forEach(valor, function(val, keys){
+        if(val.dia != fecha.dia){ val.clase2 = ''; }
+      });
+    });
+    $scope.$parent.seleccionarFecha(fecha, mes, year, url, $e);
   }
 }

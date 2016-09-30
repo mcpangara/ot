@@ -1,4 +1,6 @@
-<div id="calendario" ng-controller="calendar" >
+<div id="calendario">
+  <br>
+  
   <style media="screen">
     #calendario tr > td{
       color:red;
@@ -29,7 +31,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="week in semanas">
-        <td ng-repeat="d in week" class="{{d.clase +' '+ d.activo}}"> <a ng-if="d.clase == 'dia' || d.clase == 'dia activo'" href="#" ng-click="seleccionarFecha(d.dia, d.mes+1, year, undefined, $event)">{{d.dia}}</a> </td>
+        <td ng-repeat="d in week" class="{{d.clase +' '+ d.activo + ' '+ d.clase2}}"> <a ng-if="d.clase == 'dia' || d.clase == 'dia activo'" href="#" ng-click="seleccionarFecha(d, d.mes+1, year, undefined, $event)">{{d.dia}}</a> </td>
       </tr>
     </tbody>
   </table>

@@ -68,6 +68,10 @@ section .font10, section .font10 *, section .font10 label, .font10, .font10 * {
   font-size: 10px;
 }
 
+section .font11, section .font11 *, section .font11 label, .font11, .font11 * {
+  font-size: 11px;
+}
+
 section .font12, section .font12 *, section .font12 label, .font12, .font12 *{
   font-size: 12px;
 }

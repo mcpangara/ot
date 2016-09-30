@@ -49,23 +49,27 @@
 
     <div class="row col l12" ng-show="ot.selected" ng-init="ot.selected = false">
 
-      <div class="col l3" ng-include="calendarLink"> </div>
+      <div class="col l12" style="margin:0px;padding:">
+        <div class="card row">
+          <div class="col l8">
+            
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+              <h5  style="background: #3A4B52; color: #FFF;"> {{ot.nombre_ot}} - {{rd.fecha_label}}</h5>
+              <p>Por favor elije una de las siguientes opciones:</p>
+            </div>
+            <div class="card-action">
+              <button type="button" class="btn mini-btn" ng-click="enlazarClick('<?= site_url('reporte/add') ?>', $event)">Agregar</button>
+              <button type="button" class="btn mini-btn">Editar</button>
+              <button type="button" class="btn mini-btn">Imprimir</button>
+            </div>
 
-      <div class="col l6" style="margin:0px;padding:">
-        <div class="card">
-          <div class="card-image">
           </div>
-          <div class="card-content">
-            <h5 style="text-shadow: 0px 0px 8px #FFF"> {{ot.nombre_ot}} - {{rd.fecha_selected}}</h5>
-            <p>Por favor elije una de las siguientes opciones:</p>
-          </div>
-          <div class="card-action">
-            <button type="button" class="btn mini-btn" ng-click="enlazarClick('<?= site_url('reporte/add') ?>', $event)">Agregar</button>
-            <button type="button" class="btn mini-btn">Editar</button>
-            <button type="button" class="btn mini-btn">Imprimir</button>
-          </div>
+
+          <div class="col l4" ng-include="calendarLink" ng-controller="calendar"> </div>
         </div>
-      </div>
+      </div>      
 
     </div>
 

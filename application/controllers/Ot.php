@@ -130,7 +130,7 @@ class Ot extends CI_Controller {
 	public function listOT($value=''){
 		$this->load->database('ot');
 		$bases = $this->db->get('base');
-		$this->load->view('ot/listOT', array('bases'=>$bases));
+		$this->load->view('ot/lista/listOT', array('bases'=>$bases));
 	}
 	#=============================================================================
 	# Generar OT impresión
