@@ -29,7 +29,7 @@
 		          <td>{{ 1 }}</td>
 		          <td>{{ '' }}</td>
 		          <td>
-		            <button type="button" class="btn mini-btn" name="button" data-icon="&#xe03e;" ng-click="clickeableLink( '#', $event, 'test')"></button>
+		            <button type="button" class="btn mini-btn" name="button" data-icon="&#xe03e;"  ng-click="getAjaxWindow('<?= site_url('ot/edit') ?>', $event, 'Editar OT');"></button>
 		            <a href="<?= site_url('ot/imprimirOT') ?>/{{ot.idOT}}" class="btn mini-btn orange black-text" data-icon=";"></a>
 		          </td>
 		        </tr>

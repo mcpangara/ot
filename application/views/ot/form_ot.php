@@ -44,24 +44,21 @@
 		<style type="text/css">
 			.mypanel{
 				border: 1px solid #999;
+				padding: 1px;
 			}
-			.divbtn{
-				border-right:1px solid #999;
-				margin:1px;
-				border-radius: 5px;
-				padding: 5px;				
-				float: left;
+			.mypanel .btn{
+				margin: 0;
+				font-size: 12px;
 			}
 		</style>
 
 		<div class="row mypanel">
-			<div class="divbtn">Descripción</div>
-			<div class="divbtn">Planeación (items)</div>
-			<div class="divbtn">Indirectos</div>
-			<div class="divbtn">Gastos de viaje</div>
-			<div class="divbtn">Reembolsables</div>
-			<div class="divbtn">horas extra</div>
-			<div class="divbtn">resumen</div>
+			<button class="btn mini-btn">Descripción</button>
+			<button class="btn mini-btn light-green darken-4">Planeación (items)</button>
+			<button class="btn mini-btn light-blue darken-3">Gastos de viaje</button>
+			<button class="btn mini-btn light-blue darken-3">horas extra</button>
+			<button class="btn mini-btn">Reembolsables</button>
+			<button class="btn mini-btn">resumen</button>
 		</div>
 
 		<!-- panel de contenidos -->
