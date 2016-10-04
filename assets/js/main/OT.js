@@ -1,3 +1,27 @@
+var OT = function($scope, $http, $timeout){
+
+
+	$scope.getDataITems = function(url, ambito){
+		$scope.tinyMCE();
+		$http.get(url).then(
+			function(response) {
+				ambito.bases = JSON.parse(response.data.bases);
+				ambito.items = JSON.parse(response.data.items);
+			},
+			function (response) {
+				alert("Algo ha salido mal al cargar esta interfaz, cierra la vista e intenta de nuevo, si el problema persiste comunicate a el area TIC.");
+			}
+		);
+	}
+
+	//Vendors
+	$scope.tinyMCE = function(){
+		tinymce.init({
+  			selector: "textarea"
+  		});
+	}
+}
+
 var listaOT = function($scope, $http, $timeout){
 	$scope.linkLista = '';
 	$scope.consulta = {};
@@ -458,6 +482,18 @@ var addOT = function($scope, $http, $timeout) {
 	}
 	$scope.validateFields = function(){
 	}
+}
 
+var editarOT = function($scope, $htttp, $timeout) {
+	$scope.ot = {};
+	$scope.items = {};
 
+	$scope.getItemsBy = function(url){
+		$scope.$parent.getDataITems(url, $scope);
+	}
+
+	$scope.toggleContent = function(tag, clase, section){
+		if(section != undefined){  $(tag).toggleClass(class); 	}
+		$(tag).toggleClass(clase);
+	}
 }

@@ -10,7 +10,6 @@ class Ot extends CI_Controller {
 
 	public function index()
 	{
-
 	}
 
 	public function getByBase($base)
@@ -46,7 +45,8 @@ class Ot extends CI_Controller {
 		echo json_encode($arr);
 	}
 
-	public function saveOT(){
+	public function saveOT()
+	{
 		$ots = json_decode(file_get_contents('php://input'));
 		$ot = $ots->ot;
 		#Crear la OT
@@ -175,7 +175,7 @@ class Ot extends CI_Controller {
 		}
 		echo json_encode($reportes);
 	}
-	
+
 	# ============================================================================
 	# Editar/Ver
 	# ============================================================================
@@ -183,7 +183,7 @@ class Ot extends CI_Controller {
 	public function edit()
 	{
 		$data = array('titulo_gestion' => 'Edición de Orden de Trabajo' );
-		$this->load->view('ot/form_ot', $data);
+		$this->load->view('ot/edit/editarOT', $data);
 	}
 
 	public function getItemsBy($value='')

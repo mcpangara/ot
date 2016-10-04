@@ -164,11 +164,15 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
   // }
 });
 
+app.controller('OT', function($scope, $http, $timeout){ OT($scope, $http, $timeout); });
 app.controller('addOT', function($scope, $http, $timeout){
   addOT($scope, $http, $timeout);
 });
 app.controller('listaOT', function($scope, $http, $timeout){
   listaOT($scope, $http, $timeout);
+});
+app.controller('editarOT', function($scope, $http, $timeout){
+  editarOT($scope, $http, $timeout);
 });
 app.controller('reportes', function($scope, $http, $timeout){
   reportes($scope, $http, $timeout);

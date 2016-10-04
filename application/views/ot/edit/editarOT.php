@@ -1,4 +1,4 @@
-<div class="windowCentered2 row">
+<div class="windowCentered2 row" ng-controller="OT">
 	<section class="area" ng-controller="editarOT">
 
 		<div class="btnWindow">
@@ -9,7 +9,7 @@
 		<h4 class="center-align"><?= $titulo_gestion ?></h4>
 
 		<!-- Información de la básica OT -->
-		<table class="mytabla">
+		<table class="mytabla" ng-init="getItemsBy('<?= site_url('Ot/getDataNewForm') ?>')">
 			<thead>
 				<tr>
 					<th>Nombre de OT</th>
@@ -17,10 +17,12 @@
 					<th>Departamento</th>
 					<th>Municipio</th>
 					<th>Vereda</th>
+					<th>Estado</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -37,36 +39,37 @@
 				<option>Tarea1</option>
 			</select>
 		</div>
-		
+
 		<br>
 
 		<!-- Panel de opciones -->
 		<style type="text/css">
 			.mypanel{
 				border: 1px solid #999;
+				padding: 3px;
 			}
-			.divbtn{
-				border-right:1px solid #999;
-				margin:1px;
-				border-radius: 5px;
-				padding: 5px;				
-				float: left;
+			.mybtn{
+				background: #346EB2;
+				color: #FFF;
+				border:1px solid #999;
 			}
 		</style>
 
 		<div class="row mypanel">
-			<div class="divbtn">Descripción</div>
-			<div class="divbtn">Planeación (items)</div>
-			<div class="divbtn">Indirectos</div>
-			<div class="divbtn">Gastos de viaje</div>
-			<div class="divbtn">Reembolsables</div>
-			<div class="divbtn">horas extra</div>
-			<div class="divbtn">resumen</div>
+			<div>
+				Selecciona una de las siguientes opciones:
+			</div>
+			<button class="btn mini-btn">Descripción</button>
+			<button class="btn blue darken-4 mini-btn">Planeación (items)</button>
+			<button class="btn blue darken-4 mini-btn">Gastos de viaje</button>
+			<button class="btn blue darken-4 mini-btn">horas extra</button>
+			<button class="btn blue darken-4 mini-btn">Reembolsables</button>
+			<button class="btn orange mini-btn">resumen</button>
 		</div>
 
 		<!-- panel de contenidos -->
-		<div class="panel">
-			
+		<div class="mypanel">
+
 		</div>
 
 		<br>
@@ -74,7 +77,6 @@
 		<!-- opciones -->
 		<div class="btnWindow">
 			<button type="button" class="waves-effect waves-light btn" ng-click="guardarOT('<?= site_url('ot/saveOT') ?>')">Guardar</button>
-			<button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Cerrar</button>
 			<button type="button" class="waves-effect waves-light btn grey" ng-click="toggleWindow()">Ocultar</button>
 	  	</div>
 
