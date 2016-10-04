@@ -6,7 +6,7 @@
 	      <button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Salir</button>
 	    </div>
 
-		<h4 class="center-align"><?= $titulo_gestion ?></h4>
+		<h4 class="center-align" ng-init="getOTData('<?= site_url('ot/') ?>')"><?= $titulo_gestion ?></h4>
 
 		<!-- Información de la básica OT -->
 		<table class="mytabla" ng-init="getItemsBy('<?= site_url('Ot/getDataNewForm') ?>')">
@@ -14,9 +14,9 @@
 				<tr>
 					<th>Nombre de OT</th>
 					<th>Base</th>
-					<th>Departamento</th>
-					<th>Municipio</th>
-					<th>Vereda</th>
+					<th>Zona</th>
+					<th>Especialidad</th>
+					<th>Tipo OT</th>
 					<th>Estado</th>
 				</tr>
 			</thead>
@@ -69,6 +69,14 @@
 
 		<!-- panel de contenidos -->
 		<div class="mypanel">
+
+			<div id="descripcion" class="font11 nodisplay">
+				<?php $this->load->view('ot/forms/info'); ?>
+			</div>
+
+			<div class="planeacion">
+
+			</div>
 
 		</div>
 

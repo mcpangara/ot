@@ -180,15 +180,54 @@ class Ot extends CI_Controller {
 	# Editar/Ver
 	# ============================================================================
 
-	public function edit()
+	public function edit($id)
 	{
-		$data = array('titulo_gestion' => 'Edición de Orden de Trabajo' );
+		$this->load->model('miscelanio_db');
+		$depars = $this->miscelanio_db->getDepartamentos();
+		$tipos_ot = $this->miscelanio_db->getTiposOT();
+		$especialidades = $this->miscelanio_db->getEspecialidadesOT();
+		$tarifagv = $this->miscelanio_db->getTarifasGV();
+
+		$data = array(
+			'titulo_gestion' => 'Edición de Orden de Trabajo',
+			'depars'=>$depars,
+			'tipos_ot'=>$tipos_ot,
+			'especialidades'=>$especialidades,
+			'tarifagv'=>$tarifagv
+		);
 		$this->load->view('ot/edit/editarOT', $data);
 	}
 
-	public function getItemsBy($value='')
+	#=================================================================================
+	# Consultas
+	#=================================================================================
+
+	# Obtener datos de una OT en JSON
+	public function getData($id)
 	{
-		# code...
+		$this->load->model('ot_db');
+		$ot = $this->ot_db->getData($id)->row();
+		$trs = $this->ot_db->getTareasByOT($id);
+		$ot->trs = $trs;
+		print_r($ot);
+	}
+	# Obtener un listado de tareas de una OT
+	public function getTareasByOT($id)
+	{
+		$this->load->model('ot_db');
+		$trs = $this->ot_db->getTareas($id);
+		foreach ($trs->result() as $t) {
+			$t->personal = $this->getItemsByTipoT($id, 2);
+		}
+		return $trs->result();
+	}
+
+	# Obetener un listado de items por tarea de ot
+	public function getItemsByTipoT($id)
+	{
+		$this->load->model('ot_db');
+		$items = $this->tarea_db->getItemsByTipoT($id);
+		return $items->result();
 	}
 
 	# ============================================================================
@@ -208,9 +247,6 @@ class Ot extends CI_Controller {
 	{
 		# pendiente
 	}
-
-	# ============================================================================
-	public function foo($value=''){ echo 'foo';}
 }
 /* End of file Ot.php */
 /* Location: ./application/controllers/Ot.php */

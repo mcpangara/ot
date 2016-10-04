@@ -1,6 +1,5 @@
 var OT = function($scope, $http, $timeout){
 
-
 	$scope.getDataITems = function(url, ambito){
 		$scope.tinyMCE();
 		$http.get(url).then(
@@ -19,6 +18,26 @@ var OT = function($scope, $http, $timeout){
 		tinymce.init({
   			selector: "textarea"
   		});
+	}
+	//--------------------------------------------------------------------------------------
+	// Municipios y locaciones
+	$scope.obtenerMunicipios = function(depart,url){
+		$scope.poblado = '';
+		$http.post(url, {departamento: depart}).then(
+				function(response){	$scope.munis= response.data;	},
+				function(response){ alert("Falló comunicación con server");	}
+			);
+	}
+
+	$scope.obtenerVeredas = function(municip,url){
+		$http.post(url, {municipio: municip}).then(
+				function(response){
+					$scope.poblados= response.data;
+					$scope.poblado = $scope.poblados[0].idpoblado;
+					$scope.getMapa();
+				},
+				function(response){	alert("Falló comunicación con server");	}
+			);
 	}
 }
 
@@ -493,7 +512,9 @@ var editarOT = function($scope, $htttp, $timeout) {
 	}
 
 	$scope.toggleContent = function(tag, clase, section){
-		if(section != undefined){  $(tag).toggleClass(class); 	}
+		if(section != undefined){
+			$(tag).toggleClass(clase);
+		}
 		$(tag).toggleClass(clase);
 	}
 }
