@@ -19,9 +19,10 @@
     <div class="tabs_aplier row">
         <div class="row col m2"></div>
         <div id="myform" class="row col m8">
-        	<div class="col m6">
+        	<div class="col m8">
         		<form action="<?= base_url('')?>" method="POST">
-        				<h5>Inicio de sesion:</h5>
+        				<h5>Sistema de información para ordenes de trabajo</h5>
+                        <h6>Inicio de sesion:</h6>
                         <hr>
 
         				<div class="row">
@@ -37,7 +38,7 @@
         		</form>
         	</div>
 
-        	<div class="col m6">
+        	<div class="col m4">
                 <br><br>
         		<img src="<?= base_url("assets/img/termotecnica.png") ?>" alt="" style="width: 200px;" />
         	</div>
