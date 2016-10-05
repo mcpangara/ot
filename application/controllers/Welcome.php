@@ -19,8 +19,12 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->load->view('inicio/indice',array("content"=>$this->load->view('inicio/pestanas','',TRUE)));
+	{	
+		if (FALSE) {
+			$this->load->view('inicio/indice',array("content"=>$this->load->view('inicio/pestanas','',TRUE)));	
+		}else{
+			$this->load->view('login/login');
+		}		
 	}
 
 	public function loadOptions()

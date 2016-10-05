@@ -8,31 +8,31 @@
   <br>
 
   <div class="col l12 row">
-    <div class="col l3 row">
-      <p>
-        <input type="checkbox" id="p1" ng-model="ot.p1" />
+    <div class="col l12 row">
+      <div class="col s12 l6">
+        <input type="checkbox" id="p1" ng-model="ot.json.p1" />
         <label for="p1">PERMISO DE PREDIO</label>
-      </p>
+      </div>
 
-      <p>
-        <input type="checkbox" id="p2" ng-model="ot.p2" />
+      <div class="col s12 l6">
+        <input type="checkbox" id="p2" ng-model="ot.json.p2" />
         <label for="p2">PERMISO DE OCUPACION DE CAUSE</label>
-      </p>
+      </div>
 
-      <p>
-        <input type="checkbox" id="p3" ng-model="ot.p3" />
+      <div class="col s12 l6">
+        <input type="checkbox" id="p3" ng-model="ot.json.p3" />
         <label for="p3">CURSO T.F.S</label>
-      </p>
+      </div>
 
-      <p>
-        <input type="checkbox" id="p4" ng-model="ot.p4" />
+      <div class="col s12 l6">
+        <input type="checkbox" id="p4" ng-model="ot.json.p4" />
         <label for="p4">PERMISO APROVECHAMIENTO FORESTAL</label>
-      </p>
+      </div>
 
-      <p>
-        <input type="checkbox" id="p5" ng-model="ot.p5" />
+      <div class="col s12 l6">
+        <input type="checkbox" id="p5" ng-model="ot.json.p5" />
         <label for="p5">DIVULGACION A COMUNIDAD</label>
-      </p>
+      </div>
   </div>
 
   <div class="col l12 s12 row">
@@ -68,24 +68,29 @@
 
   <div class="col l12 s12 row">
     <label><b>Departamento (*):</b></label>
-    <select name="" id="depart" ng-model="depart" style="width:  75%" ng-change="obtenerMunicipios(depart, '<?= site_url('Miscelanio/getMunicipios') ?>')">
-      <option value="">Seleccione departamento</option>
+    <span ng-bind="ot.departamento"></span>
+    <select id="depart" ng-model="depart" ng-change="obtenerMunicipios(ot.departamento, '<?= site_url('Miscelanio/getMunicipios') ?>')">
+      <option value="">Seleccione nuevo departamento del país</option>
       <?php foreach ($depars->result() as $depar) {
       ?>
       <option value="<?= $depar->departamento ?>"><?= $depar->departamento ?></option>
       <?php
       } ?>
+    
     </select>
   </div>
   <div class="col l6 s12 row">
     <label><b>Municipio (*):</b></label>
-    <select name=""  style="width: 75%" id="munic" ng-model="munic" ng-change="obtenerVeredas(munic, '<?= site_url('Miscelanio/getVeredas') ?>')">
+    <span ng-bind="ot.municipio"></span>
+    <select id="munic" ng-model="munic" ng-change="obtenerVeredas(munic, '<?= site_url('Miscelanio/getVeredas') ?>')">
+      <option value="">seleccione nuevo municipio</option>
       <option ng-repeat="m in munis track by $index" value="{{ m.municipio }}">{{ m.municipio }}</option>
     </select>
   </div>
   <div class="col l6 s12 row">
     <label><b> Poblado/Vereda </b></label>
-    <select name="" style="width:  75%" id="poblado" ng-model="ot.municipio_idpoblado" ng-init="" ng-change="getMapa()">
+    <span ng-bind="ot.centropoblado"></span>
+    <select id="poblado" ng-model="ot.idpoblado" ng-init="" ng-change="getMapa()">
       <option ng-repeat="p in poblados" value="{{ p.idpoblado }}">{{ p.centropoblado }}</option>
     </select>
   </div>

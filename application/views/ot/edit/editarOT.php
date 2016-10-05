@@ -2,16 +2,16 @@
 	<section class="area" ng-controller="editarOT">
 
 		<div class="btnWindow">
-	      <img class="logo" src="<?= base_url("assets/img/termotecnica.png") ?>" width="100px" />
-	      <button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Salir</button>
+		    <h5 ng-init="getData('<?= site_url('ot/getData/'.$idot) ?>')">
+				<img class="logo" src="<?= base_url("assets/img/termotecnica.png") ?>" width="80px" />
+				<?= $titulo_gestion ?>
+			</h5>
 	    </div>
-
-		<h4 class="center-align" ng-init="getOTData('<?= site_url('ot/') ?>')"><?= $titulo_gestion ?></h4>
 
 		<!-- Información de la básica OT -->
 		<table class="mytabla" ng-init="getItemsBy('<?= site_url('Ot/getDataNewForm') ?>')">
 			<thead>
-				<tr>
+				<tr style="background: #3A4B52; color: #FFF">
 					<th>Nombre de OT</th>
 					<th>Base</th>
 					<th>Zona</th>
@@ -22,31 +22,26 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td ng-bind="ot.nombre_ot"></td>
+					<td ng-bind="ot.base_idbase"></td>
+					<td ng-bind="ot.zona"></td>
+					<td ng-bind="ot.nombre_especialidad"></td>
+					<td ng-bind="ot.nombre_tipo_ot"></td>
+					<td> pendiente </td>
 				</tr>
 			</tbody>
 		</table>
-		<br>
-		<!-- seleccion de tarea -->
-		<div>
-			<label>Seleccione una tarea:</label>
-			<select>
-				<option>Tarea1</option>
-			</select>
-		</div>
-
-		<br>
-
 		<!-- Panel de opciones -->
 		<style type="text/css">
+			.inset{
+				box-shadow: inset 0px 0px 5px #AAA;
+			}
 			.mypanel{
-				border: 1px solid #999;
+				border: 1px solid #AAA;
 				padding: 3px;
+				margin-bottom: 5px;
+				max-height: 400px;
+				overflow: auto;
 			}
 			.mybtn{
 				background: #346EB2;
@@ -56,19 +51,25 @@
 		</style>
 
 		<div class="row mypanel">
-			<div>
-				Selecciona una de las siguientes opciones:
+			<!-- seleccion de tarea -->
+			<div class="noMaterialStyles">
+				<label>Tarea:</label>
+				<select>
+					<option>Tarea1</option>
+				</select>
 			</div>
-			<button class="btn mini-btn">Descripción</button>
-			<button class="btn blue darken-4 mini-btn">Planeación (items)</button>
-			<button class="btn blue darken-4 mini-btn">Gastos de viaje</button>
-			<button class="btn blue darken-4 mini-btn">horas extra</button>
-			<button class="btn blue darken-4 mini-btn">Reembolsables</button>
-			<button class="btn orange mini-btn">resumen</button>
+
+			<br>
+			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', undefined)">Info </button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Planeación</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Gastos de viaje</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">horas extra</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Reembolsables</button>
+			<button class="btn blue darken-4 orange mini-btn" ng-click="toggleContent()">resumen</button>
 		</div>
 
 		<!-- panel de contenidos -->
-		<div class="mypanel">
+		<div class="mypanel inset">
 
 			<div id="descripcion" class="font11 nodisplay">
 				<?php $this->load->view('ot/forms/info'); ?>
@@ -85,6 +86,7 @@
 		<!-- opciones -->
 		<div class="btnWindow">
 			<button type="button" class="waves-effect waves-light btn" ng-click="guardarOT('<?= site_url('ot/saveOT') ?>')">Guardar</button>
+			<button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Cerrar</button>
 			<button type="button" class="waves-effect waves-light btn grey" ng-click="toggleWindow()">Ocultar</button>
 	  	</div>
 

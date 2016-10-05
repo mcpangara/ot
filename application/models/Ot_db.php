@@ -72,6 +72,7 @@ class Ot_db extends CI_Model {
 		return $this->db->get();
 	}
 
+	#Obtiene una tarea de una OT
 	public function getTarea($idOt, $idTarea)
 	{
 		$this->load->database('ot');
@@ -79,6 +80,7 @@ class Ot_db extends CI_Model {
 		$this->db->where('OT_idOT', $idOT);
 		$this->db->where_in('idtarea_ot', $idTarea);
 	}
+
 	public function getTarea1($idOT)
 	{
 		$this->load->database('ot');
@@ -87,7 +89,14 @@ class Ot_db extends CI_Model {
 		$this->db->where('OT_idOT', $idOT);
 		return $this->db->get();
 	}
-
+	# Obtiene un listado de taras
+	public function getTareas($id)
+	{
+		$this->load->database('ot');
+		$this->db->from('tarea_ot');
+		$this->db->where('OT_idOT', $id);
+		return $this->db->get();
+	}
 
 	# ===========================================================================
 	# Consulta de items de OT

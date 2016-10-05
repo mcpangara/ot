@@ -13,6 +13,15 @@ var OT = function($scope, $http, $timeout){
 		);
 	}
 
+	$scope.getData = function(url, ambito){
+		$http.post(url, {}).then(
+				function(response){
+					ambito.ot = response.data;
+				},
+				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
+			);
+	}
+
 	//Vendors
 	$scope.tinyMCE = function(){
 		tinymce.init({
@@ -510,11 +519,13 @@ var editarOT = function($scope, $htttp, $timeout) {
 	$scope.getItemsBy = function(url){
 		$scope.$parent.getDataITems(url, $scope);
 	}
+	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
 
 	$scope.toggleContent = function(tag, clase, section){
 		if(section != undefined){
-			$(tag).toggleClass(clase);
+			$(section).toggleClass(clase);
 		}
 		$(tag).toggleClass(clase);
+		 console.log($scope.ot);
 	}
 }

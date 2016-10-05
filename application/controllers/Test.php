@@ -10,11 +10,6 @@ class Test extends CI_Controller{
 
   function index()
   {
-
-  }
-
-  public function test($value='')
-  {
-
+    $this->load->view('login/login');
   }
 }

@@ -42,6 +42,22 @@ class Tarea_db extends CI_Model{
     return $this->db->insert_id();
   }
 
+  # Obtener los items de una tarea por tipo
+  public function getItemsByTipo($idtarea, $tipo)
+  {
+    $this->load->database('ot');
+    $this->db->select('itf.descripcion, itf.itemc_item, itf.iditemf, tar.OT_idOT AS idot, tarif.tarifa, itt.iditem_tarea_ot');
+    $this->db->from('item_tarea_ot AS itt');
+    $this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
+    $this->db->join('tarifa AS tarif','tarif.itemf_iditemf = itf.iditemf');
+    $this->db->join('tarea_ot AS tar', 'tar.idtarea_ot = itt.tarea_ot_idtarea_ot');
+    $this->db->where('tarif.estado_tarifa', TRUE);
+    $this->db->where('itf.tipo',$tipo);
+    $this->db->where('itt.tarea_ot_idtarea_ot',$idtarea);
+    return $this->db->get();
+  }
+
+  # Obtener todos los items de una tarea
   public function getTareasItemsResumenBy($idot)
   {
     $this->load->database('ot');

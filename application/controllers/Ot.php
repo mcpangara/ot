@@ -189,7 +189,8 @@ class Ot extends CI_Controller {
 		$tarifagv = $this->miscelanio_db->getTarifasGV();
 
 		$data = array(
-			'titulo_gestion' => 'Edición de Orden de Trabajo',
+			'idot'=>$id,
+			'titulo_gestion' => ' Edición de Orden de Trabajo:',
 			'depars'=>$depars,
 			'tipos_ot'=>$tipos_ot,
 			'especialidades'=>$especialidades,
@@ -207,9 +208,11 @@ class Ot extends CI_Controller {
 	{
 		$this->load->model('ot_db');
 		$ot = $this->ot_db->getData($id)->row();
-		$trs = $this->ot_db->getTareasByOT($id);
-		$ot->trs = $trs;
-		print_r($ot);
+		$ot->json = json_decode($ot->json);
+		$trs = $this->getTareasByOT($id);
+		$ot->tareas = $trs;
+		echo json_encode($ot);
+		#echo '<pre>'.json_encode($ot).'</pre>';
 	}
 	# Obtener un listado de tareas de una OT
 	public function getTareasByOT($id)
@@ -217,16 +220,24 @@ class Ot extends CI_Controller {
 		$this->load->model('ot_db');
 		$trs = $this->ot_db->getTareas($id);
 		foreach ($trs->result() as $t) {
-			$t->personal = $this->getItemsByTipoT($id, 2);
+			$t->json_indirectos = json_decode($t->json_indirectos);
+			$t->json_viaticos = json_decode($t->json_viaticos);
+			$t->json_horas_extra = json_decode($t->json_horas_extra);
+			$t->json_raciones = json_decode($t->json_raciones);
+			$t->json_recursos = json_decode($t->json_recursos);
+			$t->json_reembolsables = json_decode($t->json_reembolsables);
+			$t->actividades = $this->getItemsByTipo($t->idtarea_ot, 1);
+			$t->personal = $this->getItemsByTipo($t->idtarea_ot, 2);
+			$t->equipos = $this->getItemsByTipo($t->idtarea_ot, 3);
 		}
 		return $trs->result();
 	}
 
 	# Obetener un listado de items por tarea de ot
-	public function getItemsByTipoT($id)
+	public function getItemsByTipo($id, $tipo)
 	{
-		$this->load->model('ot_db');
-		$items = $this->tarea_db->getItemsByTipoT($id);
+		$this->load->model('tarea_db');
+		$items = $this->tarea_db->getItemsByTipo($id, $tipo);
 		return $items->result();
 	}
 
