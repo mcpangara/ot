@@ -37,12 +37,12 @@
 
   <div class="col l12 s12 row">
     <label for=""><b>Actividad:</b></label>
-    <textarea  id="actividad" ng-model="ot.actividad"></textarea>
+    <textarea  id="actividad" ng-model="ot.actividad" ng-init="setTextarea('#actividad', ot.actividad)"></textarea>
   </div>
 
   <div class="col l12 s12 row">
     <label for=""><b>Justificación:</b></label>
-    <textarea id="justificacion"  ng-model="ot.justificacion"></textarea>
+    <textarea id="justificacion"  ng-model="ot.justificacion" ng-init="setTextarea('#justificacion', ot.justificacion)"></textarea>
   </div>
 
   </div>

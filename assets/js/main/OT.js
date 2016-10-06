@@ -1,11 +1,11 @@
 var OT = function($scope, $http, $timeout){
 
 	$scope.getDataITems = function(url, ambito){
-		$scope.tinyMCE();
 		$http.get(url).then(
 			function(response) {
 				ambito.bases = JSON.parse(response.data.bases);
 				ambito.items = JSON.parse(response.data.items);
+				$scope.tinyMCE();
 			},
 			function (response) {
 				alert("Algo ha salido mal al cargar esta interfaz, cierra la vista e intenta de nuevo, si el problema persiste comunicate a el area TIC.");
@@ -17,6 +17,7 @@ var OT = function($scope, $http, $timeout){
 		$http.post(url, {}).then(
 				function(response){
 					ambito.ot = response.data;
+					$scope.tinyMCE();
 				},
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
 			);
@@ -519,7 +520,7 @@ var editarOT = function($scope, $htttp, $timeout) {
 	$scope.getItemsBy = function(url){
 		$scope.$parent.getDataITems(url, $scope);
 	}
-	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
+	$scope.getData = function(url){ $scope.$parent.getData(url, $scope);}
 
 	$scope.toggleContent = function(tag, clase, section){
 		if(section != undefined){

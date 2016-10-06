@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{	
-		if (FALSE) {
+		if (TRUE) {
 			$this->load->view('inicio/indice',array("content"=>$this->load->view('inicio/pestanas','',TRUE)));	
 		}else{
 			$this->load->view('login/login');

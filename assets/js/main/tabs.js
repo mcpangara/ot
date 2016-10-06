@@ -150,18 +150,9 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
     $("#VentanaContainer").toggleClass('nodisplay');
     $("#WindowOculta").toggleClass('WindowOculta');
   }
-
-  // $scope.getAjaxDataJSON = function(ruta, scopeElement, dataPOST){
-  //   $http.post(ruta,
-  //     dataPOST
-  //   ).then(
-  //     function(response){
-  //       scopeElement = response.data;
-  //       console.log(scopeElement);
-  //     },
-  //     function(response){}
-  //   );
-  // }
+  $scope.setTextarea = function(tag, content){
+    $(tag).html(content);
+  }
 });
 
 app.controller('OT', function($scope, $http, $timeout){ OT($scope, $http, $timeout); });

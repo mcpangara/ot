@@ -40,7 +40,7 @@
 				border: 1px solid #AAA;
 				padding: 3px;
 				margin-bottom: 5px;
-				max-height: 400px;
+				max-height: 450px;
 				overflow: auto;
 			}
 			.mybtn{
@@ -60,7 +60,7 @@
 			</div>
 
 			<br>
-			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', undefined)">Info </button>
+			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', undefined)">Descripción</button>
 			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Planeación</button>
 			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Gastos de viaje</button>
 			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">horas extra</button>
