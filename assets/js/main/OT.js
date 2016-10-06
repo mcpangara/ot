@@ -23,11 +23,137 @@ var OT = function($scope, $http, $timeout){
 			);
 	}
 
+	$scope.selectTarea = function(ot, ambito, indice){
+		ambito.tr = ot.tareas[indice];
+	}
+
+	$scope.unset_item = function(lista, item){
+		lista.splice(lista.indexOf(item),1);
+	}
+
+	$scope.addTarea = function(ambito){
+		ambito.ot.tareas.push(
+			{
+				nombre_tarea:'TAREA '+(ambito.ot.tareas.length+1),
+				fecha_inicio:'',
+				fecha_fin:'',
+				json_indirectos:{},
+				json_recursos:{},
+				json_horas_extra:{},
+				json_reembolsables:{},
+				json_viaticos:{},
+				actividades:[],
+				personal:[],
+				equipos:[],
+
+			});
+	}
+		//==============================================================================
+	// Gestion de items de OT
+	//Muestra items por agregar de un tipo en la ventana. Debe llamarse desde un controller hijo.
+	$scope.selectItemsType =  function(type, ambito){		
+		if(type == 1){
+			ambito.myItems = angular.copy(ambito.items['actividad']);
+		}else if(type == 2){
+			ambito.myItems = angular.copy(ambito.items['personal']);
+		}else if(type == 3){
+			ambito.myItems = angular.copy(ambito.items['equipo']);
+		}
+		console.log(ambito.myItems);
+	}
+	//Muestra la ventana para add items. Debe llamarse desde un controller hijo.
+	$scope.VwITems = function(tipo, ambito){
+		$scope.selectItemsType(tipo, ambito);
+		$("#ventana_add_items").removeClass('nodisplay');
+	}
+	$scope.setSelecteState = function(add){
+		if(!add){
+			add = true;
+		}else{
+			add = false;
+		}
+	}
+
+	$scope.addSelectedItems = function(ambito){
+		var size = ambito.myItems.length;
+		var i = 0;
+		ambito.filtro = [];
+		angular.forEach(ambito.myItems, function(v,k){
+			i++;
+			ambito.indexer++;
+			if (v.add == true) {
+				v.id = ambito.indexer;
+				v.fecha_agregado = '';
+				v.cantidad = 1;
+				v.duracion = 1;
+				if (v.tipo_item == 1){
+					ambito.ot.items[0].actividades.push(v);
+				}else if(v.tipo_item == 2) {
+					ambito.ot.items[0].personal.push(v);
+					//generar listado de items de personal para calc. gastos de viaje.
+					ambito.ot.items[0].viaticos.json_viaticos = angular.copy(ambito.ot.items[0].personal);
+					ambito.ot.items[0].horas_extra.json_horas_extra = angular.copy(ambito.ot.items[0].personal);
+				}else if(v.tipo_item == 3){
+					ambito.ot.items[0].equipos.push(v);
+				}
+			};
+			if (i == size){
+				ambito.myItems = null;
+			}
+		});
+		ambito.calcularSubtotales(ambito);
+		$("#ventana_add_items").addClass('nodisplay');
+	}
+
+	$scope.changeFilterSelect = function(fil){
+		if(fil.add == undefined){
+			fil.add = true;
+		}else if (fil.add == true) {
+			fil.add = undefined;
+		};
+	}
+
+	$scope.calcularSubtotales = function(ambito){
+		angular.forEach(ambito.ot.items, function(value, key){
+			ambito.actsubtotal = ambito.recorrerSubtotales(value.actividades);
+			ambito.persubtotal = ambito.recorrerSubtotales(value.personal);
+			ambito.eqsubtotal = ambito.recorrerSubtotales(value.equipos);
+			value.valor_recursos.equipos = ambito.eqsubtotal;
+			value.valor_recursos.personal = ambito.persubtotal;
+			value.valor_recursos.apu = ambito.actsubtotal;
+			value.valor_recursos.total_recursos = ambito.actsubtotal+$scope.persubtotal+$scope.eqsubtotal;
+		});
+	}
+
+	$scope.setTareaAdministracion = function(value, tr){
+		tr.indirectos.administracion = value;
+		return value;
+	}
+	$scope.setTareaImprevistos = function(value, tr){
+		tr.indirectos.imprevistos = value;
+		return value;
+	}
+	$scope.setTareaUtilidad = function(value, tr){
+		tr.indirectos.utilidad = value;
+		return value;
+	}
+
+	$scope.recorrerSubtotales = function(obj){
+		var valor = 0;
+		for (var i = 0; i < obj.length; i++) {
+			valor += obj[i].tarifa * (obj[i].cantidad * obj[i].duracion);
+		};
+		return valor;
+	}
 	//Vendors
 	$scope.tinyMCE = function(){
 		tinymce.init({
   			selector: "textarea"
   		});
+	}
+	$scope.strtonum = function(model)
+	{
+		return parseFloat(model);
 	}
 	//--------------------------------------------------------------------------------------
 	// Municipios y locaciones
@@ -206,7 +332,7 @@ var addOT = function($scope, $http, $timeout) {
 			$scope.myItems = angular.copy($scope.items['actividad']);
 		}else if(type == 2){
 			$scope.myItems = angular.copy($scope.items['personal']);
-		}else{
+		}else if(type == 3){
 			$scope.myItems = angular.copy($scope.items['equipo']);
 		}
 	}
@@ -513,20 +639,44 @@ var addOT = function($scope, $http, $timeout) {
 	}
 }
 
+// FUNCIONES PROPIAS DE EDICION DE OT
 var editarOT = function($scope, $htttp, $timeout) {
 	$scope.ot = {};
+	$scope.myItems;
 	$scope.items = {};
+	$scope.itemsEliminados = [];
 
 	$scope.getItemsBy = function(url){
 		$scope.$parent.getDataITems(url, $scope);
 	}
-	$scope.getData = function(url){ $scope.$parent.getData(url, $scope);}
-
-	$scope.toggleContent = function(tag, clase, section){
+	$scope.getData = function(url){ 
+		$scope.$parent.getData(url, $scope);
+	}
+	$scope.selectTarea = function(ot, indice){
+		$timeout(function(){
+			$scope.$parent.selectTarea(ot, $scope, indice);
+		});
+	}
+	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
+	$scope.unset_item = function(lista, item){
+		$scope.$parent.unset_item(lista, item);
+		$scope.itemsEliminados.push(item);
+	}
+	// procesos para items added a la OT
+	$scope.selectItemsType =  function(type){ $scope.$parent.selectItemsType($scope); }
+	$scope.VwITems = function(tipo){ $scope.$parent.VwITems($scope);}
+	$scope.addSelectedItems = function(){ $scope.addSelectedItems($scope);	}
+	$scope.calcularSubtotales = function(){	$scope.calcularSubtotales($scope);	}
+	//
+	$scope.toggleContent = function(tag, clase, section){			
 		if(section != undefined){
-			$(section).toggleClass(clase);
-		}
+			if ($(tag).hasClass(clase)) { 
+				$(section).addClass(clase);
+			}else{
+				$(section).addClass(clase);				
+				$(tag).removeClass(clase);
+			}
+		}		
 		$(tag).toggleClass(clase);
-		 console.log($scope.ot);
 	}
 }

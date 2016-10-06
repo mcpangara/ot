@@ -258,6 +258,12 @@ class Ot extends CI_Controller {
 	{
 		# pendiente
 	}
+
+	# Existe orden de trabajo
+	public function existeOT($nombre_ot)
+	{
+		# code...
+	}
 }
 /* End of file Ot.php */
 /* Location: ./application/controllers/Ot.php */

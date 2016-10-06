@@ -15,14 +15,14 @@
 		    <tbody>
 		    	<tr>
 		    		<td></td>
-		    		<td><input type="text" placeholder="Filtro " =""></td>
+		    		<td><input type="text" ng-model="filtro.nombre_ot" placeholder="Filtro " =""></td>
 		    		<td></td>
 		    		<td></td>
 		    		<td></td>
 		    		<td></td>
 		    	</tr>
 
-		        <tr ng-repeat="ot in ots">
+		        <tr ng-repeat="ot in ots | filter: filtro">
 		          <td>{{ ot.base_idbase }}</td>
 		          <td>{{ ot.nombre_ot }}</td>
 		          <td>{{ ot.fecha_creacion }}</td>

@@ -44,27 +44,26 @@
 				overflow: auto;
 			}
 			.mybtn{
-				background: #346EB2;
-				color: #FFF;
-				border:1px solid #999;
+				background: #FFF;
+				color: #111;
+				border:1px solid #555;
 			}
 		</style>
 
-		<div class="row mypanel">
+		<div class="row">
+			<br>
 			<!-- seleccion de tarea -->
 			<div class="noMaterialStyles">
 				<label>Tarea:</label>
-				<select>
-					<option>Tarea1</option>
+				<select ng-model="selected_tarea" ng-init="selected_tarea = '0'" ng-change="selectTarea(ot, selected_tarea)">
+					<option ng-repeat="tar in ot.tareas track by $index" value="{{$index}}" ng-init="selectTarea(ot, 0)">{{tar.nombre_tarea}}</option>
 				</select>
+				<button class="btn mini-btn" style="margin-top: 0" data-icon="&#xe052;" ng-click="addTarea()"></button>
 			</div>
 
-			<br>
-			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', undefined)">Descripción</button>
-			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Planeación</button>
-			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Gastos de viaje</button>
-			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">horas extra</button>
-			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">Reembolsables</button>
+			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', '.mypanel > div')">Descripción</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent('#planeacion', 'nodisplay', '.mypanel > div')">Planeación</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">G.V. / H.E / Otros</button>
 			<button class="btn blue darken-4 orange mini-btn" ng-click="toggleContent()">resumen</button>
 		</div>
 
@@ -75,14 +74,14 @@
 				<?php $this->load->view('ot/forms/info'); ?>
 			</div>
 
-			<div class="planeacion">
-
+			<div id="planeacion" class="font11 nodisplay">
+				<?php $this->load->view('ot/forms/planeacion') ?>
 			</div>
 
 		</div>
 
 		<br>
-
+		
 		<!-- opciones -->
 		<div class="btnWindow">
 			<button type="button" class="waves-effect waves-light btn" ng-click="guardarOT('<?= site_url('ot/saveOT') ?>')">Guardar</button>

@@ -46,7 +46,7 @@ class Tarea_db extends CI_Model{
   public function getItemsByTipo($idtarea, $tipo)
   {
     $this->load->database('ot');
-    $this->db->select('itf.descripcion, itf.itemc_item, itf.iditemf, tar.OT_idOT AS idot, tarif.tarifa, itt.iditem_tarea_ot');
+    $this->db->select('itf.descripcion, itf.itemc_item, itf.iditemf, tar.OT_idOT AS idot, tarif.tarifa, itt.iditem_tarea_ot, itt.cantidad, itt.duracion, itt.unidad, itt.fecha_agregado, itt.valor_plan, itt.itemf_iditemf, itt.itemf_codigo, itt.tarea_ot_idtarea_ot');
     $this->db->from('item_tarea_ot AS itt');
     $this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
     $this->db->join('tarifa AS tarif','tarif.itemf_iditemf = itf.iditemf');
@@ -61,7 +61,7 @@ class Tarea_db extends CI_Model{
   public function getTareasItemsResumenBy($idot)
   {
     $this->load->database('ot');
-    $this->db->select('itf.descripcion, itf.itemc_item, itf.iditemf, tar.OT_idOT AS idot, tarif.tarifa, itt.iditem_tarea_ot');
+    $this->db->select('itf.codigo, itf.descripcion, itf.itemc_item, itf.iditemf, tar.OT_idOT AS idot, tarif.tarifa, itt.iditem_tarea_ot');
 		$this->db->from('item_tarea_ot AS itt');
 		$this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
     $this->db->join('tarifa AS tarif','tarif.itemf_iditemf = itf.iditemf');
@@ -69,7 +69,7 @@ class Tarea_db extends CI_Model{
     $this->db->where('tar.OT_idOT', $idot);
     $this->db->where('tarif.estado_tarifa', TRUE);
     $this->db->where('itf.tipo',2);
-    $this->db->group_by('itf.descripcion');
+    $this->db->group_by('itf.codigo');
     return $this->db->get();
   }
 
