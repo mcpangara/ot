@@ -194,7 +194,8 @@ class Ot extends CI_Controller {
 			'depars'=>$depars,
 			'tipos_ot'=>$tipos_ot,
 			'especialidades'=>$especialidades,
-			'tarifagv'=>$tarifagv
+			'tarifagv'=>$tarifagv,
+			'isEdit'=>TRUE
 		);
 		$this->load->view('ot/edit/editarOT', $data);
 	}

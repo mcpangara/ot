@@ -1,12 +1,4 @@
 <section class="">
-	<?php $this->load->view('ot/add/windowItems') ?>
-
-	<p >
-		<button type="button" ng-click="VwITems(1)" class="btn green mini-btn" data-icon="&#xe052;"> Actividades</button>
-		<button type="button" ng-click="VwITems(2)" class="btn green mini-btn" data-icon="&#xe052;"> Personal</button>
-		<button type="button" ng-click="VwITems(3)" class="btn green mini-btn" data-icon="&#xe052;"> Equipo</button>
-	</p>
-
 	<div class="col s12 overflowAuto">
 		<table class="mytabla largWidth">
 			<thead>
@@ -25,7 +17,7 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">ACTIVIDADES DE MTTO.</th>
 				</tr>
-				<tr ng-repeat="act in tr.actividades">
+				<tr ng-repeat="act in mytr.actividades">
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
@@ -34,13 +26,12 @@
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">
 						{{ (act.cantidad * act.duracion)*act.tarifa | currency:'$':0  }}
-						<button type="button" ng-click="unset_item(tr.actividades, act)" class="btn red mini-btn2"> x </button></td>
 					<td>{{ act.fecha_agregado }}</td>
 				</tr>
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">PERSONAL</th>
 				</tr>
-				<tr ng-repeat="per in tr.personal">
+				<tr ng-repeat="per in mytr.personal">
 					<td>{{ per.itemc_item }}</td>
 					<td>{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
@@ -49,14 +40,13 @@
 					<td style="text-align: right">{{ per.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (per.cantidad * per.duracion)*per.tarifa | currency:'$':0  }}
-						<button type="button" ng-click="unset_item(tr.personal, per)" class="btn red mini-btn2"> x </button>
 					</td>
 					<td>{{ per.fecha_agregado }}</td>
 				</tr>
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">EQUIPOS</th>
 				</tr>
-				<tr ng-repeat="eq in tr.equipos">
+				<tr ng-repeat="eq in mytr.equipos">
 					<td>{{ eq.itemc_item }}</td>
 					<td>{{ eq.descripcion }}</td>
 					<td>{{ eq.unidad }}</td>
@@ -64,13 +54,12 @@
 					<td> <input type="number" ng-model="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
-						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }} 
-						<button type="button" ng-click="unset_item(tr.equipos, eq)" class="btn red mini-btn2"> x </button></td>
+						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}
 					<td>{{ eq.fecha_agregado }}</td>
 				</tr>
 				<tr>
 					<td colspan="6" rowspan="" style="text-align: right">Sutotal de recursos: </td>
-					<td colspan="2" rowspan="" headers=""><b>{{ (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) | currency:'$':0 }}</b></td>
+					<td colspan="2" rowspan="" headers=""><b>{{ (mytr.eqsubtotal+mytr.actsubtotal+mytr.persubtotal) | currency:'$':0 }}</b></td>
 				</tr>
 			</tbody>
 		</table>

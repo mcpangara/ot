@@ -29,9 +29,9 @@
 						<input type="checkbox" class="nomaterialstyle" id="add{{it.iditemf}}" ng-model="it.add" />
 						<label for="add{{ it.iditemf }}"  ng-click="setSelecteState(it.add)"></label>
 					</td>
-					<td style="width: 100px">{{ it.item }}</td>
-					<td>{{ it.descripcion_itemf }}</td>
-					<td>{{ it.unidad_item }}</td>
+					<td style="width: 100px">{{ it.itemc_item }}</td>
+					<td>{{ it.descripcion }}</td>
+					<td>{{ it.unidad }}</td>
 					<td style="text-align: right">{{ it.tarifa | currency}}</td>
 				</tr>
 			</tbody>

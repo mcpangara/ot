@@ -23,8 +23,8 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="itv in itemsViaticos">
-						<td>{{itv.item}}</td>
-						<td>{{itv.descripcion_itemf}}</td>
+						<td>{{itv.itemc_item}}</td>
+						<td>{{itv.descripcion}}</td>
 						<td>
 							<select name="" ng-model="itv.destino" ng-change="applyViatico(itv, '<?= site_url('miscelanio/getTarifaGV') ?>')">
 								<?php foreach ($tarifagv->result() as $tarf): ?>

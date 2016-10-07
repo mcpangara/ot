@@ -40,7 +40,6 @@
 				border: 1px solid #AAA;
 				padding: 3px;
 				margin-bottom: 5px;
-				max-height: 450px;
 				overflow: auto;
 			}
 			.mybtn{
@@ -63,8 +62,9 @@
 
 			<button class="btn blue mini-btn" ng-click="toggleContent('#descripcion', 'nodisplay', '.mypanel > div')">Descripción</button>
 			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent('#planeacion', 'nodisplay', '.mypanel > div')">Planeación</button>
-			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent()">G.V. / H.E / Otros</button>
-			<button class="btn blue darken-4 orange mini-btn" ng-click="toggleContent()">resumen</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent('#indirectos_ot', 'nodisplay', '.mypanel > div')">G.V. / H.E / Otros</button>
+			<button class="btn blue darken-4 mini-btn" ng-click="toggleContent('#general', 'nodisplay', '.mypanel > div')">General</button>
+			<button class="btn blue darken-4 orange mini-btn" ng-click="toggleContent('#resumen', 'nodisplay', '.mypanel > div')">resumen</button>
 		</div>
 
 		<!-- panel de contenidos -->
@@ -76,6 +76,14 @@
 
 			<div id="planeacion" class="font11 nodisplay">
 				<?php $this->load->view('ot/forms/planeacion') ?>
+			</div>
+
+			<div id="indirectos_ot" class="font11 nodisplay">
+				<?php $this->load->view('ot/forms/indirectos_ot') ?>
+			</div>
+
+			<div id="general" class="font11 nodisplay">
+				<?php $this->load->view('ot/forms/resumen') ?>
 			</div>
 
 		</div>

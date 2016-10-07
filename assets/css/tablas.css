@@ -75,3 +75,12 @@ section .font11, section .font11 *, section .font11 label, .font11, .font11 * {
 section .font12, section .font12 *, section .font12 label, .font12, .font12 *{
   font-size: 12px;
 }
+.font11 h3{
+  font-size: 2.92rem;
+}
+.font11 h4{
+  font-size: 2rem;
+}
+.font11 h5{
+  font-size: 1.5rem;
+}
