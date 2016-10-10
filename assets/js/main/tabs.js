@@ -156,8 +156,8 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
 });
 
 app.controller('OT', function($scope, $http, $timeout){ OT($scope, $http, $timeout); });
-app.controller('addOT', function($scope, $http, $timeout){
-  addOT($scope, $http, $timeout);
+app.controller('agregarOT', function($scope, $http, $timeout){
+  agregarOT($scope, $http, $timeout);
 });
 app.controller('listaOT', function($scope, $http, $timeout){
   listaOT($scope, $http, $timeout);

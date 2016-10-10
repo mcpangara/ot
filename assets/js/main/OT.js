@@ -419,7 +419,59 @@ var addOT = function($scope, $http, $timeout) {
 		);
 	}
 }
+// FUNCIONES PROPIAS DE AGREGAR UNA OT
+var agregarOT = function($scope, $http, $timeout){
+	$scope.ot = {};
+	$scope.ot.tareas = [];
+	$scope.myItems;
+	$scope.items = {};
+	$scope.itemsEliminados = [];
+	$scope.eqsubtotal=0;
+	$scope.actsubtotal=0;
+	$scope.persubtotal=0;
+	$scope.reembs=[];
 
+	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
+	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
+	$scope.selectTarea = function(ot, indice){
+		$timeout(function(){
+			$scope.$parent.selectTarea(ot, $scope, indice);
+			$scope.calcularSubtotales();
+		});
+	}
+	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
+	$scope.unset_item = function(lista, item){
+		$scope.$parent.unset_item(lista, item);
+		$scope.itemsEliminados.push(item);
+		$scope.calcularSubtotales();
+	}
+	// procesos para items added a la OT
+	//items planeación
+	$scope.VwITems = function(tipo){ $scope.$parent.VwITems(tipo, $scope); }
+	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr);	}
+	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr);	}
+	//viaticos
+	$scope.setViaticos= function(tag, tr){ $scope.$parent.setViaticos(tag, tr, $scope); }
+	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); }
+	//reembolsables
+	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); }
+	$scope.addReemb = function(){ $scope.$parent.addReemb($scope); }
+	//horas extra
+	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
+	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
+	//Utils
+	$scope.toggleContent = function(tag, clase, section){
+		if(section != undefined){
+			if ($(tag).hasClass(clase)) { 
+				$(section).addClass(clase);
+			}else{
+				$(section).addClass(clase);				
+				$(tag).removeClass(clase);
+			}
+		}		
+		$(tag).toggleClass(clase);
+	}
+}
 // FUNCIONES PROPIAS DE EDICION DE OT
 var editarOT = function($scope, $htttp, $timeout) {
 	$scope.ot = {};

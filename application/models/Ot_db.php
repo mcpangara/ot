@@ -107,6 +107,7 @@ class Ot_db extends CI_Model {
 		$this->load->database('ot');
 		$this->db->select(
 				'
+				itt.iditem_tarea_ot,
 				itf.iditemf,
 				itf.itemc_iditemc,
 				itf.itemc_item,

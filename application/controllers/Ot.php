@@ -28,7 +28,14 @@ class Ot extends CI_Controller {
 		$tipos_ot = $this->miscelanio_db->getTiposOT();
 		$especialidades = $this->miscelanio_db->getEspecialidadesOT();
 		$tarifagv = $this->miscelanio_db->getTarifasGV();
-		$this->load->view('ot/add/addOT', array("depars"=>$depars, "tipos_ot"=>$tipos_ot, "especialidades"=>$especialidades, "tarifagv"=>$tarifagv));
+		$this->load->view('ot/add/agregarOT', array(
+				"depars"=>$depars, 
+				"tipos_ot"=>$tipos_ot, 
+				"especialidades"=>$especialidades, 
+				"tarifagv"=>$tarifagv,
+				"titulo_gestion"=>"Agregar una nueva Orden de Trabajo:"
+			)
+		);
 	}
 
 	public function getDataNewForm()
