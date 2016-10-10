@@ -55,7 +55,7 @@ class Tarea_db extends CI_Model{
         itt.valor_plan, 
         itt.itemf_iditemf, 
         itt.itemf_codigo, 
-        itt.tarea_ot_idtarea_ot
+        itt.tarea_ot_idtarea_ot,
         itf.descripcion, 
         itf.itemc_item, 
         itf.iditemf, 
