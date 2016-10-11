@@ -7,7 +7,6 @@ class Ot_db extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-
 	}
 
 	public function getBases($value='')
@@ -15,39 +14,45 @@ class Ot_db extends CI_Model {
 		$this->load->database('ot');
 		return $this->db->get('base');
 	}
-
-	public function addOT($ot){
+	// Registrar una nueva OT.
+	public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado) {
 		$this->load->database('ot');
 		$data = array(
-			'nombre_ot' => $ot->nombre_ot->data,
-			'base_idbase'=> $ot->idbase,
-			'tipo_ot_idtipo_ot'=>$ot->tipo_ot->data,
-			'especialidad_idespecialidad'=>$ot->especialidad->data,
-			'municipio_idpoblado'=>$ot->idpoblado,
-			'json' => json_encode($ot)
+		"nombre_ot"=>$nombre_ot,
+		'base_idbase'=>$base,
+		"zona"=>$zona,
+		"fecha_creacion"=>$fecha_creacion,
+		"especialidad_idespecialidad"=>$especialidad,
+		"tipo_ot_idtipo_ot"=>$tipo_ot,
+		"actividad"=>$actividad,
+		"justificacion"=>$justificacion,
+		"locacion"=>$locacion,
+		"abscisa"=>$abscisa,
+		"municipio_idpoblado"=>$idpoblado
 		);
-		return $this->db->insert('OT', $data);
-	}
-
-  public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado) {
-    $this->load->database('ot');
-    $data = array(
-      "nombre_ot"=>$nombre_ot,
-      'base_idbase'=>$base,
-      "zona"=>$zona,
-      "fecha_creacion"=>$fecha_creacion,
-      "especialidad_idespecialidad"=>$especialidad,
-      "tipo_ot_idtipo_ot"=>$tipo_ot,
-      "actividad"=>$actividad,
-      "justificacion"=>$justificacion,
-      "locacion"=>$locacion,
-      "abscisa"=>$abscisa,
-      "municipio_idpoblado"=>$idpoblado
-    );
-    $this->db->insert('ot', $data);
+		$this->db->insert('ot', $data);
 		return $this->db->insert_id();
-  }
-
+	}
+	//Editar daos info de una OT.
+	public function update( $idot, $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado) {
+		$this->load->database('ot');
+		$data = array(
+		"nombre_ot"=>$nombre_ot,
+		'base_idbase'=>$base,
+		"zona"=>$zona,
+		"fecha_creacion"=>$fecha_creacion,
+		"especialidad_idespecialidad"=>$especialidad,
+		"tipo_ot_idtipo_ot"=>$tipo_ot,
+		"actividad"=>$actividad,
+		"justificacion"=>$justificacion,
+		"locacion"=>$locacion,
+		"abscisa"=>$abscisa,
+		"municipio_idpoblado"=>$idpoblado
+		);
+		return $this->db->update('ot', $data, "idOT =".$idot);
+	}
+  
+  // obetener información de una OT
 	public function getData($idot){
 		$this->load->database('ot');
 		$this->db->from('OT');
@@ -58,7 +63,7 @@ class Ot_db extends CI_Model {
 		$this->db->where('OT.idOT', $idot);
 		return $this->db->get();
 	}
-
+	//Obtener un listado de todas las OT
 	public function getAllOTs($base = NULL){
 		$this->load->database('ot');
 		$this->db->from('OT');

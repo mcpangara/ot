@@ -58,18 +58,8 @@ class Item_db extends CI_Model {
 		$this->db->order_by('itemf.itemc_iditemc', 'asc');
 		return $this->db->get();
 	}
-
-	public function setItemTarea(
-		$cantidad,
-		$duracion,
-		$unidad,
-		$tarifa,
-		$valor_plan,
-		$fecha_creacion,
-		$itemf_iditemf,
-		$itemf_codigo,
-		$idTr
-	){
+	# Guarda la un item planeado de una tarea de OT
+	public function setItemTarea($cantidad,	$duracion, $unidad, $tarifa, $valor_plan, $fecha_creacion, $itemf_iditemf, $itemf_codigo, $idTr	){
 		$data = array(
 			'cantidad'=>$cantidad,
 			'duracion'=>$duracion,
@@ -83,7 +73,27 @@ class Item_db extends CI_Model {
 		);
 		$this->db->insert('item_tarea_ot', $data);
 	}
+	#Actuliza un items de una tarea perteneciente a una Orden de Trabajo
+	public function updateItemTarea($iditem_tarea_ot, $cantidad, $duracion, $unidad, $tarifa, $valor_plan, $fecha_creacion, $itemf_iditemf, $itemf_codigo, $idTr){
+		$data = array(
+			'cantidad'=>$cantidad,
+			'duracion'=>$duracion,
+			'unidad'=>$unidad,
+			'tarifa'=>$tarifa,
+			'valor_plan'=>$valor_plan,
+			'fecha_agregado'=>$fecha_creacion,
+			'itemf_iditemf'=>$itemf_iditemf,
+			'itemf_codigo'=>$itemf_codigo,
+			'tarea_ot_idtarea_ot'=>$idTr
+		);
+		$this->db->update('item_tarea_ot', $data, 'iditem_tarea_ot = '.$iditem_tarea_ot);
+	}
 
+	# ================================================================================================
+	# Consultas
+	# ================================================================================================
+
+	# Obtener items de una tarea especifica por tipo
 	public function getItemsByTarea($idTarea, $idTipo_item)
 	{
 		$this->load->database('ot');

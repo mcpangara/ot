@@ -42,6 +42,28 @@ class Tarea_db extends CI_Model{
     return $this->db->insert_id();
   }
 
+  //Actualiza una tarea de una Ot
+  public function update($idtarea_ot, $nombre_tarea_ot, $fecha_inicio, $fecha_fin, $valor_recursos, $valor_tarea_ot,
+      $json_indirectos, $json_viaticos, $json_horas_extra, $json_reembolsables, $json_racion, $json_recursos, $OT_idOT)
+  {
+    $data = array(
+      'nombre_tarea'=>$nombre_tarea_ot,
+      'fecha_inicio'=>$fecha_inicio,
+      'fecha_fin'=>$fecha_fin,
+      'valor_recursos'=>$valor_recursos,
+      'valor_tarea_ot'=>$valor_tarea_ot,
+      'json_indirectos'=>$json_indirectos,
+      'json_viaticos'=>$json_viaticos,
+      'json_horas_extra'=>$json_horas_extra,
+      'json_reembolsables'=>$json_reembolsables,
+      'json_raciones'=>$json_racion,
+      'json_recursos'=>$json_recursos,
+      'OT_idOT'=>$OT_idOT
+    );
+    $this->db->update('tarea_ot', $data, 'idtarea_ot = '.$idtarea_ot);
+    return $this->db->insert_id();
+  }
+
   # Obtener los items de una tarea por tipo
   public function getItemsByTipo($idtarea, $tipo)
   {
