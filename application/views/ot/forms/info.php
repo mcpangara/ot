@@ -69,14 +69,13 @@
   <div class="col l12 s12 row">
     <label><b>Departamento (*):</b></label>
     <span ng-bind="ot.departamento"></span>
-    <select id="depart" ng-model="depart" ng-change="obtenerMunicipios(ot.departamento, '<?= site_url('Miscelanio/getMunicipios') ?>')">
+    <select id="depart" ng-model="depart" ng-init="depart = ot.departamento" ng-change="obtenerMunicipios(depart, '<?= site_url('Miscelanio/getMunicipios') ?>')">
       <option value="">Seleccione nuevo departamento del país</option>
       <?php foreach ($depars->result() as $depar) {
       ?>
       <option value="<?= $depar->departamento ?>"><?= $depar->departamento ?></option>
       <?php
-      } ?>
-    
+      } ?>    
     </select>
   </div>
   <div class="col l6 s12 row">
@@ -90,7 +89,7 @@
   <div class="col l6 s12 row">
     <label><b> Poblado/Vereda </b></label>
     <span ng-bind="ot.centropoblado"></span>
-    <select id="poblado" ng-model="ot.idpoblado" ng-init="" ng-change="getMapa()">
+    <select id="poblado" ng-model="ot.idpoblado" ng-change="getMapa()">
       <option ng-repeat="p in poblados" value="{{ p.idpoblado }}">{{ p.centropoblado }}</option>
     </select>
   </div>

@@ -5,7 +5,6 @@ var OT = function($scope, $http, $timeout){
 			function(response) {
 				ambito.bases = JSON.parse(response.data.bases);
 				ambito.items = JSON.parse(response.data.items);
-				$scope.tinyMCE();
 			},
 			function (response) {
 				alert("Algo ha salido mal al cargar esta interfaz, cierra la vista e intenta de nuevo, si el problema persiste comunicate a el area TIC.");
@@ -17,7 +16,6 @@ var OT = function($scope, $http, $timeout){
 		$http.post(url, {}).then(
 				function(response){
 					ambito.ot = response.data;
-					$scope.tinyMCE();
 				},
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
 			);
@@ -287,23 +285,48 @@ var OT = function($scope, $http, $timeout){
 	}
 	//--------------------------------------------------------------------------------------
 	// Municipios y locaciones
-	$scope.obtenerMunicipios = function(depart,url){
-		$scope.poblado = '';
+	$scope.obtenerMunicipios = function(depart,url,ambito){
+		ambito.poblado = '';
 		$http.post(url, {departamento: depart}).then(
-				function(response){	$scope.munis= response.data;	},
+				function(response){ ambito.munis= response.data;	},
 				function(response){ alert("Falló comunicación con server");	}
 			);
 	}
 
-	$scope.obtenerVeredas = function(municip,url){
+	$scope.obtenerVeredas = function(municip,url, ambito){
 		$http.post(url, {municipio: municip}).then(
 				function(response){
-					$scope.poblados= response.data;
-					$scope.poblado = $scope.poblados[0].idpoblado;
-					$scope.getMapa();
+					ambito.poblados= response.data;
+					ambito.poblado = ambito.poblados[0].idpoblado;
+					$scope.getMapa(ambito);
 				},
 				function(response){	alert("Falló comunicación con server");	}
 			);
+	}
+
+	$scope.getMapa = function(ambito){
+		if(ambito.ot.idpoblado != ''){
+			$.ajax({
+				url: baseUrl+"/miscelanio/getMaps/"+$scope.ot.idpoblado,
+				success: function(data){
+					$("#mapa").html(data);
+				},
+				error: function(){
+					alert("error");
+				}
+			});
+		}
+	}
+	$scope.toggleContent = function(tag, clase, section){
+		if(section != undefined){
+			if ($(tag).hasClass(clase)) { 
+				$(section).addClass(clase);
+			}else{
+				$(section).addClass(clase);				
+				$(tag).removeClass(clase);
+			}
+		}		
+		$(tag).toggleClass(clase);
 	}
 }
 
@@ -423,6 +446,9 @@ var addOT = function($scope, $http, $timeout) {
 var agregarOT = function($scope, $http, $timeout){
 	$scope.ot = {};
 	$scope.ot.tareas = [];
+	$scope.ot.departamento = '';
+	$scope.ot.municipio = '';
+	$scope.ot.idpoblado = '';
 	$scope.myItems;
 	$scope.items = {};
 	$scope.itemsEliminados = [];
@@ -430,6 +456,7 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.actsubtotal=0;
 	$scope.persubtotal=0;
 	$scope.reembs=[];
+	$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
 	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
@@ -460,16 +487,41 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
 	//Utils
-	$scope.toggleContent = function(tag, clase, section){
-		if(section != undefined){
-			if ($(tag).hasClass(clase)) { 
-				$(section).addClass(clase);
-			}else{
-				$(section).addClass(clase);				
-				$(tag).removeClass(clase);
+	$scope.obtenerMunicipios = function(depart,url){
+		$scope.$parent.obtenerMunicipios(depart,url,$scope);
+	}
+	$scope.obtenerVeredas =function(municip,url){
+		$scope.$parent.obtenerVeredas(municip,url, $scope);
+	};
+	//===================================================================================================================
+	$scope.guardarOT = function(url){
+		tinyMCE.triggerSave();
+		$scope.ot.justificacion = $('#justificacion').val();
+		$scope.ot.actividad = $('#actividad').val();
+		$scope.ot.idpoblado = $scope.poblado;
+		console.log($scope.ot);
+		$http.post(
+			url,
+			{
+				ot: $scope.ot
 			}
-		}		
-		$(tag).toggleClass(clase);
+		).then(
+			function(response) {
+				if(response.data == 'Orden de trabajo guardada correctamente'){
+					alert('Orden de trabajo guardada correctamente');
+					$timeout(function(){
+						$scope.$parent.cerrarWindow();
+						$scope.$parent.refreshTabs();
+					});
+				}else{
+					alert('Algo ha salido mal!');
+				}
+				//console.log(response.data);
+			},
+			function(response) {
+				console.log(response.data)
+			}
+		);
 	}
 }
 // FUNCIONES PROPIAS DE EDICION DE OT
@@ -482,6 +534,7 @@ var editarOT = function($scope, $htttp, $timeout) {
 	$scope.actsubtotal=0;
 	$scope.persubtotal=0;
 	$scope.reembs=[];
+	$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
 	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
@@ -512,15 +565,10 @@ var editarOT = function($scope, $htttp, $timeout) {
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
 	//Utils
-	$scope.toggleContent = function(tag, clase, section){
-		if(section != undefined){
-			if ($(tag).hasClass(clase)) { 
-				$(section).addClass(clase);
-			}else{
-				$(section).addClass(clase);				
-				$(tag).removeClass(clase);
-			}
-		}		
-		$(tag).toggleClass(clase);
+	$scope.obtenerMunicipios = function(depart,url){
+		$scope.$parent.obtenerMunicipios(depart,url,ambito);
 	}
+	$scope.obtenerVeredas =function(municip,url){
+		$scope.$parent.obtenerMunicipios(municip,url, $scope);
+	};
 }

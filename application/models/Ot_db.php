@@ -51,8 +51,7 @@ class Ot_db extends CI_Model {
 		);
 		return $this->db->update('ot', $data, "idOT =".$idot);
 	}
-  
-  // obetener información de una OT
+  	// obetener información de una OT
 	public function getData($idot){
 		$this->load->database('ot');
 		$this->db->from('OT');

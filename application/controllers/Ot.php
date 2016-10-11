@@ -60,28 +60,29 @@ class Ot extends CI_Controller {
 		$orden = $ots->ot;
 		$this->load->model('Ot_db','ot');
 		$orden->fecha_creacion = date('Y-m-d H:i:s');
+		echo "TEST";
 
 		try {
 			# --------------------
 			#crear la OT
 			$idot = $this->ot->add(
-					$orden->nombre_ot->data,
+					$orden->nombre_ot,
 					$orden->base,
-					$orden->zona->data,
+					$orden->zona,
 					$orden->fecha_creacion,
-					$orden->especialidad->data,
-					$orden->tipo_ot->data,
-					$orden->actividad->data,
-					$orden->justificacion->data,
-					$orden->locacion->data,
-					$orden->abscisa->data,
+					$orden->especialidad,
+					$orden->tipo_ot,
+					$orden->actividad,
+					$orden->justificacion,
+					$orden->locacion,
+					$orden->abscisa,
 					$orden->idpoblado
 				);
 			#-----------------------
 			#Adicionar tarea nueva
 			$this->load->model('Tarea_db','tr');
 			$i = 0;
-			foreach ($ot->items as $tar){
+			foreach ($ot->tareas as $tar){
 				$i++;
 				# creamos la tarea
 				$idTr = $this->crearTareaOT($tar, $idot, 'TAREA '.$i);
@@ -101,16 +102,16 @@ class Ot extends CI_Controller {
 	{
 		return $this->tr->add(
 				$nombre_tarea,
-				date('Y-m-d', strtotime($tar->fecha_inicio->data)),
-				date('Y-m-d', strtotime($tar->fecha_fin->data)),
+				date('Y-m-d', strtotime($tar->fecha_inicio)),
+				date('Y-m-d', strtotime($tar->fecha_fin)),
 				$tar->valor_recursos->total_recursos,
 				0,
-				json_encode($tar->indirectos),
-				json_encode($tar->viaticos),
-				json_encode($tar->horas_extra),
-				json_encode($tar->reembolsables),
+				json_encode($tar->json_indirectos),
+				json_encode($tar->json_viaticos),
+				json_encode($tar->json_horas_extra),
+				json_encode($tar->json_reembolsables),
 				'',
-				json_encode($tar->valor_recursos),
+				json_encode($tar->json_valor_recursos),
 				$idot
 			);
 	}

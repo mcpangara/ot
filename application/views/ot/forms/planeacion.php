@@ -7,6 +7,15 @@
 		<button type="button" ng-click="VwITems(3)" class="btn green mini-btn" data-icon="&#xe052;"> Equipo</button>
 	</p>
 
+	<div>
+		<label class="col m1 right-align"><b>{{tr.fecha_inicio.label}}</b></label>
+		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_inicio" placeholder=" fecha" style="cursor: pointer" readonly/>
+	</div>
+	<div>
+		<label class="col m1 right-align"><b>{{tr.fecha_fin.label}}</b></label>
+		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_fin" placeholder=" fecha" style="cursor: pointer"  readonly/>
+	</div>
+
 	<div class="col s12 overflowAuto">
 		<table class="mytabla largWidth">
 			<thead>
