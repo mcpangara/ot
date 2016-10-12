@@ -153,6 +153,7 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
   $scope.setTextarea = function(tag, content){
     $(tag).html(content);
   }
+  $scope.datepicker_init = function(){$('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });}
 });
 
 app.controller('OT', function($scope, $http, $timeout){ OT($scope, $http, $timeout); });

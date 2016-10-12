@@ -59,7 +59,18 @@ class Item_db extends CI_Model {
 		return $this->db->get();
 	}
 	# Guarda la un item planeado de una tarea de OT
-	public function setItemTarea($cantidad,	$duracion, $unidad, $tarifa, $valor_plan, $fecha_creacion, $itemf_iditemf, $itemf_codigo, $idTr	){
+	public function setItemTarea(
+		$cantidad,	
+		$duracion, 
+		$unidad, 
+		$tarifa, 
+		$valor_plan, 
+		$fecha_creacion, 
+		$itemf_iditemf, 
+		$itemf_codigo, 
+		$idTr,
+		$debug
+		){
 		$data = array(
 			'cantidad'=>$cantidad,
 			'duracion'=>$duracion,
@@ -69,12 +80,24 @@ class Item_db extends CI_Model {
 			'fecha_agregado'=>$fecha_creacion,
 			'itemf_iditemf'=>$itemf_iditemf,
 			'itemf_codigo'=>$itemf_codigo,
-			'tarea_ot_idtarea_ot'=>$idTr
+			'tarea_ot_idtarea_ot'=>$idTr,
+			"debug"=>$debug
 		);
 		$this->db->insert('item_tarea_ot', $data);
 	}
 	#Actuliza un items de una tarea perteneciente a una Orden de Trabajo
-	public function updateItemTarea($iditem_tarea_ot, $cantidad, $duracion, $unidad, $tarifa, $valor_plan, $fecha_creacion, $itemf_iditemf, $itemf_codigo, $idTr){
+	public function updateItemTarea(
+		$iditem_tarea_ot, 
+		$cantidad, 
+		$duracion, 
+		$unidad, 
+		$tarifa, 
+		$valor_plan, 
+		$fecha_creacion, 
+		$itemf_iditemf, 
+		$itemf_codigo, 
+		$idTr
+		){
 		$data = array(
 			'cantidad'=>$cantidad,
 			'duracion'=>$duracion,
@@ -111,6 +134,8 @@ class Item_db extends CI_Model {
 		$this->db->select($select)->from($table)->where($where);
 		return $this->db->get();
 	}
+
+
 }
 
 /* End of file Item_db.php */

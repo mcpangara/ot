@@ -21,8 +21,15 @@ class Tarea_db extends CI_Model{
 
   #===========================================================================
   # Agregar tarea
-  public function add($nombre_tarea_ot, $fecha_inicio, $fecha_fin, $valor_recursos, $valor_tarea_ot,
-      $json_indirectos, $json_viaticos, $json_horas_extra, $json_reembolsables, $json_racion, $json_recursos, $OT_idOT)
+  public function add(
+    $nombre_tarea_ot, 
+    $fecha_inicio, 
+    $fecha_fin, 
+    $valor_recursos, 
+    $valor_tarea_ot,
+    $json_indirectos, $json_viaticos, $json_horas_extra, 
+    $json_reembolsables, $json_racion, $json_recursos, 
+    $OT_idOT)
   {
     $data = array(
       'nombre_tarea'=>$nombre_tarea_ot,
@@ -60,9 +67,12 @@ class Tarea_db extends CI_Model{
       'json_recursos'=>$json_recursos,
       'OT_idOT'=>$OT_idOT
     );
-    $this->db->update('tarea_ot', $data, 'idtarea_ot = '.$idtarea_ot);
-    return $this->db->insert_id();
+    return $this->db->update('tarea_ot', $data, 'idtarea_ot = '.$idtarea_ot);
   }
+
+  #====================================================================================================
+  # Consultas
+  #====================================================================================================
 
   # Obtener los items de una tarea por tipo
   public function getItemsByTipo($idtarea, $tipo)

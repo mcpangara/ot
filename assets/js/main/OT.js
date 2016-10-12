@@ -30,6 +30,7 @@ var OT = function($scope, $http, $timeout){
 	}
 
 	$scope.addTarea = function(ambito){
+		var idot = (ambito.ot.idOT != undefined)?ambito.ot.idOT:"";
 		ambito.ot.tareas.push(
 				{
 					"idtarea_ot": "",
@@ -61,7 +62,7 @@ var OT = function($scope, $http, $timeout){
 					},
 					"json_raciones": null,
 					"estado_tarea_ot": "",
-					"OT_idOT": "",
+					"OT_idOT": idot,
 					"actividades": [],
 					"personal": [],
 					"equipos": []
@@ -71,7 +72,7 @@ var OT = function($scope, $http, $timeout){
 		//==============================================================================
 	// Gestion de items de OT
 	//Muestra items por agregar de un tipo en la ventana. Debe llamarse desde un controller hijo.
-	$scope.selectItemsType =  function(type, ambito){		
+	$scope.selectItemsType =  function(type, ambito){
 		if(type == 1){
 			ambito.myItems = angular.copy(ambito.items['actividad']);
 			console.log(ambito.items['actividad']);
@@ -103,7 +104,7 @@ var OT = function($scope, $http, $timeout){
 			i++;
 			ambito.indexer++;
 			if (v.add == true) {
-				console.log(v);
+				//console.log(v);
 				v.id = ambito.indexer;
 				v.fecha_agregado = '';
 				v.cantidad = v.cantidad==undefined?1:v.cantidad;
@@ -137,10 +138,10 @@ var OT = function($scope, $http, $timeout){
 		tr.actsubtotal = ambito.recorrerSubtotales(tr.actividades);
 		tr.persubtotal = ambito.recorrerSubtotales(tr.personal);
 		tr.eqsubtotal = ambito.recorrerSubtotales(tr.equipos);
-		tr.valor_recursos.equipos = tr.eqsubtotal;
-		tr.valor_recursos.personal = tr.persubtotal;
-		tr.valor_recursos.apu = tr.actsubtotal;
-		tr.valor_recursos.total_recursos = tr.actsubtotal+tr.persubtotal+tr.eqsubtotal;
+		tr.json_recursos.equipos = tr.eqsubtotal;
+		tr.json_recursos.personal = tr.persubtotal;
+		tr.json_recursos.apu = tr.actsubtotal;
+		tr.valor_recursos = tr.actsubtotal+tr.persubtotal+tr.eqsubtotal;
 	}
 	$scope.setTareaAdministracion = function(value, tr){
 		if(tr == undefined){ return 0;}
@@ -304,10 +305,10 @@ var OT = function($scope, $http, $timeout){
 			);
 	}
 
-	$scope.getMapa = function(ambito){
-		if(ambito.ot.idpoblado != ''){
+	$scope.getMapa = function(sc){
+		if(sc.ot.idpoblado != ''){
 			$.ajax({
-				url: baseUrl+"/miscelanio/getMaps/"+$scope.ot.idpoblado,
+				url: baseUrl+"/miscelanio/getMaps/"+sc.ot.idpoblado,
 				success: function(data){
 					$("#mapa").html(data);
 				},
@@ -345,103 +346,6 @@ var listaOT = function($scope, $http, $timeout){
 	}
 }
 
-var addOT = function($scope, $http, $timeout) {
-	$scope.filtro = {};
-
-	$scope.persubtotal = 0;
-	$scope.actsubtotal = 0;
-	$scope.eqsubtotal = 0;
-	$scope.indexer = 0;
-
-	$scope.reembolsables = 0;
-	$scope.viaticos = 0;
-	$scope.valor_horas_extra = 0;
-	$scope.raciones = 0;
-	$scope.reemb = [];
-
-	$scope.ot = {};
-	$scope.reembs = [];
-	$scope.mapUrl = '';
-	$scope.viaticos = 0;
-	//--------------------------------------------------------------------------------------
-	// Municipios y locaciones
-	$scope.obtenerMunicipios = function(depart,url){
-		$scope.poblado = '';
-		$http.post(url, {departamento: depart})
-			.then(
-				function(response){
-					$scope.munis= response.data;
-					//$scope.munic = $scope.munis[0].municipio;
-					// $("#depart")
-					// $("#munic")
-				}
-				,
-				function(response){
-					alert("Falló comunicación con server");
-				}
-			);
-	}
-
-	$scope.obtenerVeredas = function(municip,url){
-		$http.post(url, {municipio: municip})
-			.then(
-				function(response){
-					$scope.poblados= response.data;
-					$scope.poblado = $scope.poblados[0].idpoblado;
-					//$("#poblado")
-					$scope.getMapa();
-				}
-				,
-				function(response){
-					alert("Falló comunicación con server");
-				}
-			);
-	}
-
-	$scope.getMapa = function(){
-		if($scope.poblado != ''){
-			$.ajax({
-				url: baseUrl+"/miscelanio/getMaps/"+$scope.poblado,
-				success: function(data){
-					$("#mapa").html(data);
-				},
-				error: function(){
-					alert("error");
-				}
-			});
-		}
-	}
-	//===================================================================================================================
-	$scope.guardarOT = function(url){
-		tinyMCE.triggerSave();
-		$scope.ot.justificacion.data = $('#justificacion').val();
-		$scope.ot.actividad.data = $('#actividad').val();
-		$scope.ot.idpoblado = $scope.poblado;
-		console.log($scope.ot);
-		$http.post(
-			url,
-			{
-				ot: $scope.ot
-			}
-		).then(
-			function(response) {
-				if(response.data == 'Orden de trabajo guardada correctamente'){
-					alert('Orden de trabajo guardada correctamente');
-					$timeout(function(){
-						$scope.$parent.cerrarWindow();
-						$scope.$parent.refreshTabs();
-					});
-				}else{
-					alert('Algo ha salido mal!');
-				}
-				//console.log(response.data);
-			},
-			function(response) {
-				console.log(response.data)
-			}
-		);
-	}
-}
 // FUNCIONES PROPIAS DE AGREGAR UNA OT
 var agregarOT = function($scope, $http, $timeout){
 	$scope.ot = {};
@@ -487,12 +391,9 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
 	//Utils
-	$scope.obtenerMunicipios = function(depart,url){
-		$scope.$parent.obtenerMunicipios(depart,url,$scope);
-	}
-	$scope.obtenerVeredas =function(municip,url){
-		$scope.$parent.obtenerVeredas(municip,url, $scope);
-	};
+	$scope.obtenerMunicipios = function(depart,url){	$scope.$parent.obtenerMunicipios(depart,url,$scope);	}
+	$scope.obtenerVeredas =function(municip,url){	$scope.$parent.obtenerVeredas(municip,url, $scope);	};
+	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	//===================================================================================================================
 	$scope.guardarOT = function(url){
 		tinyMCE.triggerSave();
@@ -500,12 +401,7 @@ var agregarOT = function($scope, $http, $timeout){
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
 		console.log($scope.ot);
-		$http.post(
-			url,
-			{
-				ot: $scope.ot
-			}
-		).then(
+		$http.post(	  url, { ot: $scope.ot }   ).then(
 			function(response) {
 				if(response.data == 'Orden de trabajo guardada correctamente'){
 					alert('Orden de trabajo guardada correctamente');
@@ -513,19 +409,14 @@ var agregarOT = function($scope, $http, $timeout){
 						$scope.$parent.cerrarWindow();
 						$scope.$parent.refreshTabs();
 					});
-				}else{
-					alert('Algo ha salido mal!');
-				}
-				//console.log(response.data);
+				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
 			},
-			function(response) {
-				console.log(response.data)
-			}
+			function(response) {console.log(response.data)}
 		);
 	}
 }
 // FUNCIONES PROPIAS DE EDICION DE OT
-var editarOT = function($scope, $htttp, $timeout) {
+var editarOT = function($scope, $http, $timeout) {
 	$scope.ot = {};
 	$scope.myItems;
 	$scope.items = {};
@@ -565,10 +456,25 @@ var editarOT = function($scope, $htttp, $timeout) {
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
 	//Utils
-	$scope.obtenerMunicipios = function(depart,url){
-		$scope.$parent.obtenerMunicipios(depart,url,ambito);
+	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,ambito); }
+	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerMunicipios(municip,url, $scope); }
+	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
+	$scope.guardarOT = function(url){
+		tinyMCE.triggerSave();
+		$scope.ot.justificacion = $('#justificacion').val();
+		$scope.ot.actividad = $('#actividad').val();
+		console.log($scope.ot);
+		$http.post(	  url, { ot: $scope.ot }   ).then(
+			function(response) {
+				if(response.data == 'Orden de trabajo guardada correctamente'){
+					alert('Orden de trabajo guardada correctamente');
+					/*$timeout(function(){
+						$scope.$parent.cerrarWindow();
+						$scope.$parent.refreshTabs();
+					});*/
+				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
+			},
+			function(response) {console.log(response.data)}
+		);
 	}
-	$scope.obtenerVeredas =function(municip,url){
-		$scope.$parent.obtenerMunicipios(municip,url, $scope);
-	};
 }

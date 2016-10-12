@@ -15,7 +15,7 @@ class Ot_db extends CI_Model {
 		return $this->db->get('base');
 	}
 	// Registrar una nueva OT.
-	public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado) {
+	public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
 		$this->load->database('ot');
 		$data = array(
 		"nombre_ot"=>$nombre_ot,
@@ -28,13 +28,14 @@ class Ot_db extends CI_Model {
 		"justificacion"=>$justificacion,
 		"locacion"=>$locacion,
 		"abscisa"=>$abscisa,
-		"municipio_idpoblado"=>$idpoblado
+		"municipio_idpoblado"=>$idpoblado,
+		'json'=>$json
 		);
 		$this->db->insert('ot', $data);
 		return $this->db->insert_id();
 	}
 	//Editar daos info de una OT.
-	public function update( $idot, $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado) {
+	public function update( $idot, $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
 		$this->load->database('ot');
 		$data = array(
 		"nombre_ot"=>$nombre_ot,
@@ -47,7 +48,8 @@ class Ot_db extends CI_Model {
 		"justificacion"=>$justificacion,
 		"locacion"=>$locacion,
 		"abscisa"=>$abscisa,
-		"municipio_idpoblado"=>$idpoblado
+		"municipio_idpoblado"=>$idpoblado,
+		'json'=>$json
 		);
 		return $this->db->update('ot', $data, "idOT =".$idot);
 	}
@@ -139,6 +141,27 @@ class Ot_db extends CI_Model {
 		$this->load->database('ot');
 		$this->db->select('*');
 		$this->db->from('item_tarea_ot AS itt');
+	}
+
+	//
+
+	public function init_transact()
+	{
+		$this->load->database('ot');
+		$this->db->trans_begin();
+	}
+
+	public function end_transact()
+	{
+		$this->load->database('ot');
+		$status = $this->db->trans_status();
+		if ($status === FALSE){
+		        $this->db->trans_rollback();
+		}
+		else{
+		        $this->db->trans_commit();
+		}
+		return $status;
 	}
 }
 /* End of file Ot_db.php */

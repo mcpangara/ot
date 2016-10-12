@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<td colspan="6" rowspan="" style="text-align: right">Sutotal de recursos: </td>
-					<td colspan="2" rowspan="" headers=""><b>{{ (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) | currency:'$':0 }}</b></td>
+					<td colspan="2" rowspan="" headers=""><big><b>{{ (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) | currency:'$':0 }}</b></big></td>
 				</tr>
 			</tbody>
 		</table>

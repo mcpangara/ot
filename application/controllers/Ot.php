@@ -33,7 +33,8 @@ class Ot extends CI_Controller {
 				"tipos_ot"=>$tipos_ot, 
 				"especialidades"=>$especialidades, 
 				"tarifagv"=>$tarifagv,
-				"titulo_gestion"=>"Agregar una nueva Orden de Trabajo:"
+				"titulo_gestion"=>"Agregar una nueva Orden de Trabajo:",
+				'isEdit'=>FALSE
 			)
 		);
 	}
@@ -60,14 +61,12 @@ class Ot extends CI_Controller {
 		$orden = $ots->ot;
 		$this->load->model('Ot_db','ot');
 		$orden->fecha_creacion = date('Y-m-d H:i:s');
-		echo "TEST";
-
 		try {
 			# --------------------
 			#crear la OT
 			$idot = $this->ot->add(
 					$orden->nombre_ot,
-					$orden->base,
+					$orden->base_idbase,
 					$orden->zona,
 					$orden->fecha_creacion,
 					$orden->especialidad,
@@ -76,7 +75,8 @@ class Ot extends CI_Controller {
 					$orden->justificacion,
 					$orden->locacion,
 					$orden->abscisa,
-					$orden->idpoblado
+					$orden->idpoblado,
+					json_encode($orden->json)
 				);
 			#-----------------------
 			#Adicionar tarea nueva
@@ -100,18 +100,18 @@ class Ot extends CI_Controller {
 
 	private function crearTareaOT($tar, $idot, $nombre_tarea)
 	{
-		return $this->tr->add(
+		return $this->tarea->add(
 				$nombre_tarea,
 				date('Y-m-d', strtotime($tar->fecha_inicio)),
 				date('Y-m-d', strtotime($tar->fecha_fin)),
-				$tar->valor_recursos->total_recursos,
+				$tar->valor_recursos,
 				0,
 				json_encode($tar->json_indirectos),
 				json_encode($tar->json_viaticos),
 				json_encode($tar->json_horas_extra),
 				json_encode($tar->json_reembolsables),
 				'',
-				json_encode($tar->json_valor_recursos),
+				json_encode($tar->json_recursos),
 				$idot
 			);
 	}
@@ -123,13 +123,14 @@ class Ot extends CI_Controller {
 			$this->it->setItemTarea(
 					$per->cantidad,
 					$per->duracion,
-					$per->unidad_item,
+					$per->unidad,
 					$per->tarifa,
 					($per->tarifa * ($per->cantidad * $per->duracion)),
 					date('Y-m-d H:i:s'),
 					$per->iditemf,
 					$per->codigo,
-					$idTr
+					$idTr,
+					json_encode($per)
 				);
 		}
 	}
@@ -168,8 +169,8 @@ class Ot extends CI_Controller {
 	public function getMyReportes($value='')
 	{
 		$reportes = array();
-		for ($i=15; $i <= 31 ; $i++) {
-			$fecha = date('Y-m-d', strtotime('2016-08-'.$i));
+		for ($i=11; $i <= 28 ; $i++) {
+			$fecha = date('Y-m-d', strtotime('2016-09-'.$i));
 			$report = array(
 				'idreporte'=>$i,
 				'OT_idOT' => '27',
@@ -206,6 +207,95 @@ class Ot extends CI_Controller {
 			'isEdit'=>TRUE
 		);
 		$this->load->view('ot/edit/editarOT', $data);
+	}
+
+	public function update($idOT=NULL){
+		$ots = json_decode(file_get_contents('php://input'));
+		$ot = $ots->ot;
+		$orden = $ots->ot;
+		$this->load->model(array('ot_db'=>'ot_db', 'tarea_db'=>'tarea', 'item_db'=>'item' ));
+		# inicio de seguimiento de transacciones
+		$this->ot_db->init_transact();
+				
+		$this->ot_db->update(
+				$orden->idOT,
+				$orden->nombre_ot,
+				$orden->base_idbase,
+				$orden->zona,
+				$orden->fecha_creacion,
+				$orden->especialidad_idespecialidad,
+				$orden->tipo_ot_idtipo_ot,
+				$orden->actividad,
+				$orden->justificacion,
+				$orden->locacion,
+				$orden->abscisa,
+				$orden->idpoblado,
+				json_encode($orden->json)
+			);
+		foreach($orden->tareas as $tr){
+			if(isset($tr->idtarea_ot) &&  $tr->idtarea_ot != 0 ){
+				$valid = $this->update_tarea($tr);
+				$this->recorrerItems($tr->actividades, $tr->idtarea_ot);
+				$this->recorrerItems($tr->personal, $tr->idtarea_ot);
+				$this->recorrerItems($tr->equipos, $tr->idtarea_ot);
+			}else{
+				$idTr = $this->crearTareaOT($tr, $orden->idOT, $tr->nombre_tarea);
+				$this->insetarITemsTarea($idTr, $tar->personal);
+				$this->insetarITemsTarea($idTr, $tar->actividades);
+				$this->insetarITemsTarea($idTr, $tar->equipos);
+			}
+		}
+		# fin de seguimiento de transacciones concapacidad de RollBack
+		$status = $this->ot_db->end_transact();
+		if($status != FALSE){
+			echo 'Orden de trabajo guardada correctamente';
+		}else{
+			echo 'ha sucedido un error inesperado, estamos trabajando para mejorar.';
+		}
+	}
+
+	# Proceso para actualizar una tarea de una OT
+	public function update_tarea($tr){
+		return $this->tarea->update(
+				$tr->idtarea_ot, 
+				$tr->nombre_tarea,
+				$tr->fecha_inicio,
+				$tr->fecha_fin,
+				$tr->valor_recursos, 
+				0,
+				json_encode($tr->json_indirectos),
+				json_encode($tr->json_viaticos),
+				json_encode($tr->json_horas_extra),
+				json_encode($tr->json_reembolsables),
+				json_encode($tr->json_raciones),
+				json_encode($tr->json_recursos),
+				$tr->OT_idOT
+			);
+	}
+	# proceso que recorre los items de las tareas e inserta o actualiza los cambios
+	public function recorrerItems($items, $idTr){
+		foreach($items as $it){
+			if(isset($it->iditem_tarea_ot)){
+				$this->update_item_tarea($it);
+			}else{
+				$this->insetarITemsTarea($idTr, $items);
+			}
+		}
+	}
+	# Proceso que actualiza los items de las tareas
+	public function update_item_tarea($it){
+		return $this->item->updateItemTarea(
+				$it->iditem_tarea_ot,
+				$it->cantidad,
+				$it->duracion,
+				$it->unidad,
+				$it->tarifa,
+				($it->tarifa * ($it->cantidad * $it->duracion)),
+				date('Y-m-d H:i:s'),
+				$it->itemf_iditemf,
+				$it->itemf_codigo,
+				$it->tarea_ot_idtarea_ot
+			);
 	}
 
 	#=================================================================================

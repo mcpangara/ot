@@ -21,7 +21,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td> <input type="" name=""> </td>
+					<td> <input type="" ng-model="ot.nombre_ot"> </td>
 					<td>
 						<select class="col m7" ng-model="ot.base_idbase" id="bases">
 							<option value=""> Seleccione una base </option>
@@ -38,7 +38,7 @@
 						</select>
 					</td>
 					<td>
-						<select name="" style="width: 50%" id="espacialiad" ng-model="ot.especialidad.data">
+						<select name="" style="width: 50%" id="espacialiad" ng-model="ot.especialidad">
 							<option value="">seleccione una opción</option>}
 							option
 							<?php foreach ($especialidades->result() as $esp) {
@@ -49,7 +49,7 @@
 						</select>
 					</td>
 					<td>
-						<select name="" style="width: 50%" id="tipo_ot" ng-model="ot.tipo_ot.data">
+						<select name="" style="width: 50%" id="tipo_ot" ng-model="ot.tipo_ot">
 							<option value="">seleccione una opción</option>}
 							option
 							<?php foreach ($tipos_ot->result() as $tp) {

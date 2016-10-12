@@ -19,9 +19,9 @@
 					<td class="noMaterialStyles">
 						<button type="button" ng-click="changeFilterSelect(filtro)" class="btn mini-btn2"> <span data-icon="&#xe04c;"></span> </button>
 					</td>
-					<td style="width: 102px"> <input style="width: 100px" type="text" ng-model="filtro.item" placeholder="filtro"/> </td>
-					<td> <input type="text" ng-model="filtro.descripcion_itemf" placeholder="filtro"/> </td>
-					<td> <input type="text" ng-model="filtro.unidad_item" placeholder="filtro"/> </td>
+					<td style="width: 102px"> <input style="width: 100px" type="text" ng-model="filtro.itemc_item" placeholder="filtro"/> </td>
+					<td> <input type="text" ng-model="filtro.descripcion" placeholder="filtro"/> </td>
+					<td> <input type="text" ng-model="filtro.unidad" placeholder="filtro"/> </td>
 					<td> </td>
 				</tr>
 				<tr ng-repeat="it in myItems | filter: filtro" >
