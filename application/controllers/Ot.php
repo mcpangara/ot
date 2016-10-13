@@ -270,10 +270,8 @@ class Ot extends CI_Controller {
 	public function recorrerItems($items, $idTr){
 		foreach($items as $it){
 			if(isset($it->iditem_tarea_ot)){
-				echo "test: ".$it->iditem_tarea_ot;
 				$this->update_item_tarea($it);
 			}else{
-				print_r($it);
 				$this->addNewItemTarea($idTr, $it);
 			}
 		}
