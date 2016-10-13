@@ -469,10 +469,10 @@ var editarOT = function($scope, $http, $timeout) {
 			function(response) {
 				if(response.data == 'Orden de trabajo guardada correctamente'){
 					alert('Orden de trabajo guardada correctamente');
-					/*$timeout(function(){
+					$timeout(function(){
 						$scope.$parent.cerrarWindow();
 						$scope.$parent.refreshTabs();
-					});*/
+					});
 				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
 			},
 			function(response) {console.log(response.data)}

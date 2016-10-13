@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //reference the Dompdf namespace
-require_once('/dompdf/autoload.inc.php');
+require_once('dompdf/autoload.inc.php');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -18,14 +18,3 @@ function doPDF($html = ''){
   write_file('./uploads/name.pdf', $pdf);
   force_download('./uploads/name.pdf', NULL);
 }
-
-// function doPDF($html)
-// {
-//     require_once("dompdf/dompdf_config.inc.php");
-//     $dompdf = new DOMPDF();
-//     $dompdf->load_html($html);
-//     $dompdf->render();
-//     $pdf = $dompdf->output();
-//     write_file('./uploads/name.pdf', $pdf);
-//     force_download('./uploads/name.pdf', NULL);
-// }

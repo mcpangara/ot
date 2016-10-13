@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 function config_upload($nombre="termo"){
-	
+
 }
 function app_termo($app="app.termo"){
 	$ci =& get_instance();
@@ -21,4 +21,3 @@ function addlog($ip, $accion, $privilegio, $user){
 	$ci->load->database();
 	$ci->db->insert("log_movimientos",$data);
 }
-
