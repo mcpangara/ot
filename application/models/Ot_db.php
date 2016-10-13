@@ -31,7 +31,7 @@ class Ot_db extends CI_Model {
 			"municipio_idpoblado"=>$idpoblado,
 			'json'=>$json
 		);
-		$this->db->insert('ot', $data);
+		$this->db->insert('OT', $data);
 		return $this->db->insert_id();
 	}
 	//Editar daos info de una OT.
@@ -51,7 +51,7 @@ class Ot_db extends CI_Model {
 			"municipio_idpoblado"=>$idpoblado,
 			'json'=>$json
 		);
-		return $this->db->update('ot', $data, "idOT =".$idot);
+		return $this->db->update('OT', $data, "idOT =".$idot);
 	}
   	// obetener información de una OT
 	public function getData($idot){
