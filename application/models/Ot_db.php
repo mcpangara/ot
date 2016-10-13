@@ -18,18 +18,18 @@ class Ot_db extends CI_Model {
 	public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
 		$this->load->database('ot');
 		$data = array(
-		"nombre_ot"=>$nombre_ot,
-		'base_idbase'=>$base,
-		"zona"=>$zona,
-		"fecha_creacion"=>$fecha_creacion,
-		"especialidad_idespecialidad"=>$especialidad,
-		"tipo_ot_idtipo_ot"=>$tipo_ot,
-		"actividad"=>$actividad,
-		"justificacion"=>$justificacion,
-		"locacion"=>$locacion,
-		"abscisa"=>$abscisa,
-		"municipio_idpoblado"=>$idpoblado,
-		'json'=>$json
+			"nombre_ot"=>$nombre_ot,
+			'base_idbase'=>$base,
+			"zona"=>$zona,
+			"fecha_creacion"=>$fecha_creacion,
+			"especialidad_idespecialidad"=>$especialidad,
+			"tipo_ot_idtipo_ot"=>$tipo_ot,
+			"actividad"=>$actividad,
+			"justificacion"=>$justificacion,
+			"locacion"=>$locacion,
+			"abscisa"=>$abscisa,
+			"municipio_idpoblado"=>$idpoblado,
+			'json'=>$json
 		);
 		$this->db->insert('ot', $data);
 		return $this->db->insert_id();
@@ -38,18 +38,18 @@ class Ot_db extends CI_Model {
 	public function update( $idot, $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
 		$this->load->database('ot');
 		$data = array(
-		"nombre_ot"=>$nombre_ot,
-		'base_idbase'=>$base,
-		"zona"=>$zona,
-		"fecha_creacion"=>$fecha_creacion,
-		"especialidad_idespecialidad"=>$especialidad,
-		"tipo_ot_idtipo_ot"=>$tipo_ot,
-		"actividad"=>$actividad,
-		"justificacion"=>$justificacion,
-		"locacion"=>$locacion,
-		"abscisa"=>$abscisa,
-		"municipio_idpoblado"=>$idpoblado,
-		'json'=>$json
+			"nombre_ot"=>$nombre_ot,
+			'base_idbase'=>$base,
+			"zona"=>$zona,
+			"fecha_creacion"=>$fecha_creacion,
+			"especialidad_idespecialidad"=>$especialidad,
+			"tipo_ot_idtipo_ot"=>$tipo_ot,
+			"actividad"=>$actividad,
+			"justificacion"=>$justificacion,
+			"locacion"=>$locacion,
+			"abscisa"=>$abscisa,
+			"municipio_idpoblado"=>$idpoblado,
+			'json'=>$json
 		);
 		return $this->db->update('ot', $data, "idOT =".$idot);
 	}

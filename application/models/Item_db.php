@@ -13,8 +13,8 @@ class Item_db extends CI_Model {
 	public function getAll($value='')
 	{
 		$this->load->database('ot');
-		$this->db->select('
-			itemf.iditemf,
+		$this->db->select(
+			'itemf.iditemf,
 			itemf.codigo,
 			itemc.unidad AS unidad,
 			itemc_item,
@@ -36,8 +36,8 @@ class Item_db extends CI_Model {
 	public function getByTipo($value='')
 	{
 		$this->load->database('ot');
-		$this->db->select('
-			itemf.iditemf,
+		$this->db->select(
+			'itemf.iditemf,
 			itemf.codigo,
 			itemc.unidad AS unidad,
 			itemc_item,
@@ -68,8 +68,7 @@ class Item_db extends CI_Model {
 		$fecha_creacion, 
 		$itemf_iditemf, 
 		$itemf_codigo, 
-		$idTr,
-		$debug
+		$idTr
 		){
 		$data = array(
 			'cantidad'=>$cantidad,
@@ -80,8 +79,7 @@ class Item_db extends CI_Model {
 			'fecha_agregado'=>$fecha_creacion,
 			'itemf_iditemf'=>$itemf_iditemf,
 			'itemf_codigo'=>$itemf_codigo,
-			'tarea_ot_idtarea_ot'=>$idTr,
-			"debug"=>$debug
+			'tarea_ot_idtarea_ot'=>$idTr
 		);
 		$this->db->insert('item_tarea_ot', $data);
 	}

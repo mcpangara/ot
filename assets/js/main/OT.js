@@ -69,7 +69,7 @@ var OT = function($scope, $http, $timeout){
 				}
 			);
 	}
-		//==============================================================================
+	//==============================================================================
 	// Gestion de items de OT
 	//Muestra items por agregar de un tipo en la ventana. Debe llamarse desde un controller hijo.
 	$scope.selectItemsType =  function(type, ambito){
@@ -331,6 +331,7 @@ var OT = function($scope, $http, $timeout){
 	}
 }
 
+// Listado de OTs
 var listaOT = function($scope, $http, $timeout){
 	$scope.linkLista = '';
 	$scope.consulta = {};
