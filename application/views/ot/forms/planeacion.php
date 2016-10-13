@@ -8,11 +8,11 @@
 	</p>
 
 	<div>
-		<label class="col m1 right-align"><b>{{tr.fecha_inicio.label}}</b></label>
+		<label class="col m1 right-align"><b>fecha inicio: </b></label>
 		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_inicio" placeholder=" fecha" style="cursor: pointer" readonly/>
 	</div>
 	<div>
-		<label class="col m1 right-align"><b>{{tr.fecha_fin.label}}</b></label>
+		<label class="col m1 right-align"><b>fecha fin: </b></label>
 		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_fin" placeholder=" fecha" style="cursor: pointer"  readonly/>
 	</div>
 
@@ -73,7 +73,7 @@
 					<td> <input type="number" ng-model="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
-						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }} 
+						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}
 						<button type="button" ng-click="unset_item(tr.equipos, eq)" class="btn red mini-btn2"> x </button></td>
 					<td>{{ eq.fecha_agregado }}</td>
 				</tr>

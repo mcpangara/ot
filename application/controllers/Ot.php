@@ -107,7 +107,7 @@ class Ot extends CI_Controller {
 				date('Y-m-d', strtotime($tar->fecha_inicio)),
 				date('Y-m-d', strtotime($tar->fecha_fin)),
 				$tar->valor_recursos,
-				0,
+				$tr->valor_tarea_ot,
 				json_encode($tar->json_indirectos),
 				json_encode($tar->json_viaticos),
 				json_encode($tar->json_horas_extra),
@@ -156,8 +156,7 @@ class Ot extends CI_Controller {
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id);
 		$tr = $this->ot_db->getTarea1($id)->row();
-		#$idTarea = 14;
-		#$tarea = %$this->ot_db->getTarea($id, $idTarea);
+
 		$acts = $this->item_db->getItemsByTarea($tr->idtarea_ot, 1);
 		$pers = $this->item_db->getItemsByTarea($tr->idtarea_ot, 2);
 		$equs = $this->item_db->getItemsByTarea($tr->idtarea_ot, 3);
@@ -256,7 +255,7 @@ class Ot extends CI_Controller {
 				$tr->fecha_inicio,
 				$tr->fecha_fin,
 				$tr->valor_recursos,
-				0,
+				$tr->valor_tarea_ot,
 				json_encode($tr->json_indirectos),
 				json_encode($tr->json_viaticos),
 				json_encode($tr->json_horas_extra),

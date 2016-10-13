@@ -60,7 +60,7 @@
             TOTAL COSTO DIRECTO
           </td>
           <td>
-            $
+            $ 
           </td>
         </tr>
       </tbody>

@@ -11,7 +11,6 @@ var OT = function($scope, $http, $timeout){
 			}
 		);
 	}
-
 	$scope.getData = function(url, ambito){
 		$http.post(url, {}).then(
 				function(response){
@@ -20,15 +19,13 @@ var OT = function($scope, $http, $timeout){
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
 			);
 	}
-
 	$scope.selectTarea = function(ot, ambito, indice){
 		ambito.tr = ot.tareas[indice];
 	}
-
 	$scope.unset_item = function(lista, item){
 		lista.splice(lista.indexOf(item),1);
 	}
-
+	$scope.consola = function(tr){console.log(tr)}
 	$scope.addTarea = function(ambito){
 		var idot = (ambito.ot.idOT != undefined)?ambito.ot.idOT:"";
 		ambito.ot.tareas.push(
@@ -68,6 +65,7 @@ var OT = function($scope, $http, $timeout){
 					"equipos": []
 				}
 			);
+		console.log(ambito.ot.tareas);
 	}
 	//==============================================================================
 	// Gestion de items de OT
@@ -191,15 +189,17 @@ var OT = function($scope, $http, $timeout){
 	$scope.calcularViaticos =  function(tr, ambito){
 		ambito.viaticos = 0;
 		angular.forEach(ambito.itemsViaticos, function(v,k){
-			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){}
+			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){ 
+				ambito.viaticos += 0; 
+			}
 			else {
-				ambito.viaticos += (v.alojamiento + v.transporte + v.alimentacion + v.miscelanios) * (v.cantidad_gv * v.duracion_gv);
-				//console.log($scope.viaticos + " - "+ v.destino);
+				ambito.viaticos += (v.alojamiento + v.transporte + v.alimentacion + v.miscelanios) * (v.cantidad_gv * v.duracion_gv) ;
 			}
 		});
-		if (ambito.itemsViaticos == undefined || ambito.itemsViaticos.length == 0) {
+		if (ambito.itemsViaticos.length == 0 || ambito.itemsViaticos == undefined ) {
 			ambito.viaticos = 0;
 		}
+		console.log("Valor calculado es: ".ambito.viaticos);
 		tr.json_viaticos.valor_viaticos = ambito.viaticos;
 		tr.json_viaticos.administracion = ( tr.json_viaticos.valor_viaticos* ( 4.58 /100) );
 		$("#addViaticosOT").addClass('nodisplay');
@@ -210,9 +210,11 @@ var OT = function($scope, $http, $timeout){
 		$(tag).toggleClass('nodisplay');
 	}
 	$scope.calcularReembolsables = function(tr, ambito){
+		tr.json_reembolsables.valor_reembolsables = 0;
+		tr.json_reembolsables.administracion = 0;
 		angular.forEach(ambito.reembs, function(v, k){
-			tr.json_reembolsables.valor_reembolsables =(v.cantidad * v.valor_und);
-			tr.json_reembolsables.administracion = tr.json_reembolsables.valor_reembolsables * 0.01;
+			tr.json_reembolsables.valor_reembolsables +=(v.cantidad * v.valor_und);
+			tr.json_reembolsables.administracion += tr.json_reembolsables.valor_reembolsables * 0.01;
 		});
 	}
 	$scope.endReembolsables = function(tag, tr, ambito){
@@ -273,6 +275,19 @@ var OT = function($scope, $http, $timeout){
 	$scope.endHorasExtra = function(tag, tr, ambito){
 		$scope.calcularHorasExtra(tr, ambito);
 		$(tag).toggleClass('nodisplay');
+	}
+	//Calculos de OT
+	$scope.calcularValorOT = function(ambito){
+		ambito.ot.valor_ot = 0;
+		angular.forEach(ambito.ot.tareas, function(tarea, key){
+			var he = tarea.json_horas_extra.valor_horas_extra;
+			var rm = tarea.json_reembolsables.administracion + tarea.json_reembolsables.administracion;
+			var gv = tarea.json_viaticos.valor_viaticos = ambito.viaticos + tarea.json_viaticos.administracion;
+			var id = tarea.json_indirectos.administracion + tarea.json_indirectos.utilidad + tarea.json_indirectos.imprevistos;
+			var tar = tarea.valor_tarea_ot;
+			tarea.valor_tarea_ot = he + rm + gv + id + tar;
+			ambito.ot.valor_ot += tarea.valor_tarea_ot;
+		});
 	}
 	//Vendors
 	$scope.tinyMCE = function(){
@@ -361,7 +376,7 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.actsubtotal=0;
 	$scope.persubtotal=0;
 	$scope.reembs=[];
-	$scope.$parent.tinyMCE();
+	////$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
 	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
@@ -369,6 +384,7 @@ var agregarOT = function($scope, $http, $timeout){
 		$timeout(function(){
 			$scope.$parent.selectTarea(ot, $scope, indice);
 			$scope.calcularSubtotales();
+			$scope.$parent.calcularValorOT($scope);
 		});
 	}
 	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
@@ -376,28 +392,30 @@ var agregarOT = function($scope, $http, $timeout){
 		$scope.$parent.unset_item(lista, item);
 		$scope.itemsEliminados.push(item);
 		$scope.calcularSubtotales();
+		$scope.$parent.calcularValorOT($scope);
 	}
 	// procesos para items added a la OT
 	//items planeación
 	$scope.VwITems = function(tipo){ $scope.$parent.VwITems(tipo, $scope); }
 	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr);	}
-	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr);	}
+	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr); $scope.$parent.calcularValorOT($scope);	}
 	//viaticos
 	$scope.setViaticos= function(tag, tr){ $scope.$parent.setViaticos(tag, tr, $scope); }
-	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); }
+	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//reembolsables
-	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); }
+	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	$scope.addReemb = function(){ $scope.$parent.addReemb($scope); }
 	//horas extra
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
-	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
+	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){	$scope.$parent.obtenerMunicipios(depart,url,$scope);	}
 	$scope.obtenerVeredas =function(municip,url){	$scope.$parent.obtenerVeredas(municip,url, $scope);	};
 	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	//===================================================================================================================
 	$scope.guardarOT = function(url){
-		tinyMCE.triggerSave();
+		//tinyMCE.triggerSave();
+		$scope.$parent.calcularValorOT($scope);
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
@@ -426,7 +444,7 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.actsubtotal=0;
 	$scope.persubtotal=0;
 	$scope.reembs=[];
-	$scope.$parent.tinyMCE();
+	//$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
 	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
@@ -434,6 +452,7 @@ var editarOT = function($scope, $http, $timeout) {
 		$timeout(function(){
 			$scope.$parent.selectTarea(ot, $scope, indice);
 			$scope.calcularSubtotales();
+			$scope.$parent.calcularValorOT($scope);
 		});
 	}
 	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
@@ -441,27 +460,29 @@ var editarOT = function($scope, $http, $timeout) {
 		$scope.$parent.unset_item(lista, item);
 		$scope.itemsEliminados.push(item);
 		$scope.calcularSubtotales();
+		$scope.$parent.calcularValorOT($scope);
 	}
 	// procesos para items added a la OT
 	//items planeación
 	$scope.VwITems = function(tipo){ $scope.$parent.VwITems(tipo, $scope); }
 	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr);	}
-	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr);	}
+	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr); $scope.$parent.calcularValorOT($scope);}
 	//viaticos
 	$scope.setViaticos= function(tag, tr){ $scope.$parent.setViaticos(tag, tr, $scope); }
-	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); }
+	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//reembolsables
-	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); }
+	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	$scope.addReemb = function(){ $scope.$parent.addReemb($scope); }
 	//horas extra
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
-	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope) }
+	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,ambito); }
 	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerMunicipios(municip,url, $scope); }
 	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	$scope.guardarOT = function(url){
-		tinyMCE.triggerSave();
+		//tinyMCE.triggerSave();
+		$scope.$parent.calcularValorOT($scope);
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
 		console.log($scope.ot);

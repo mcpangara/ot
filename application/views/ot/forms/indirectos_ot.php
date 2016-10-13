@@ -112,6 +112,8 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<button type="button" class="btn mini-btn" ng-click="consola(tr)">log </button>
 	</div>
 
 </div>

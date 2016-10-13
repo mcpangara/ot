@@ -33,7 +33,7 @@
       SUB-TOTAL: <?= $gestion ?>
     </td>
     <td>
-      $
+      $ <?= $tr->valor_tarea_ot ?>
     </td>
   </tr>
 </tbody>

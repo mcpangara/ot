@@ -105,5 +105,5 @@
 			</tbody>
 		</table>
 	</div>
-
+	<h4>{{ mytr.valor_tarea_ot}}</h4>
 </div>

@@ -1,6 +1,4 @@
-
 	<div>
-	<br>
 		<table class="noMaterialStyles mytabla font12">
 		    <thead>
 		      <tr style="background: #3A4B52; color: #FFF">
