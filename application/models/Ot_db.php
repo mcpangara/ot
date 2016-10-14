@@ -83,8 +83,9 @@ class Ot_db extends CI_Model {
 	{
 		$this->load->database('ot');
 		$this->db->from('tarea_ot');
-		$this->db->where('OT_idOT', $idOT);
-		$this->db->where_in('idtarea_ot', $idTarea);
+		$this->db->where('OT_idOT', $idOt);
+		$this->db->where('idtarea_ot', $idTarea);
+		return $this->db->get();
 	}
 
 	public function getTarea1($idOT)

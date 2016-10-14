@@ -16,6 +16,7 @@
   </tr>
 </thead>
 <tbody>
+  <?php $valor_gestion = 0; ?>
   <?php foreach ($items->result() as $it): ?>
     <tr>
       <td> <?= $it->item ?></td>
@@ -26,14 +27,15 @@
       <td class="textright"> <?= number_format( ($it->cantidad * $it->duracion), 2 ) ?> </td>
       <td class="textright">$ <?= number_format($it->tarifa) ?></td>
       <td class="textright">$ <?= number_format($it->valor_plan) ?> </td>
+      <?php $valor_gestion += $it->valor_plan; ?>
     </tr>
   <?php endforeach; ?>
   <tr>
     <td colspan="7" class="textcenter">
       SUB-TOTAL: <?= $gestion ?>
     </td>
-    <td>
-      $ <?= $tr->valor_tarea_ot ?>
+    <td class="textright">
+      $ <?= number_format($valor_gestion, 0) ?>
     </td>
   </tr>
 </tbody>

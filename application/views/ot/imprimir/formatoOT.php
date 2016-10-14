@@ -51,16 +51,16 @@
     </div>
 
     <table>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES')); ?>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL')); ?>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS')); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES', 'tr'=>$tr)); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL', 'tr'=>$tr)); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS', 'tr'=>$tr)); ?>
       <tbody>
         <tr style="background: #F2F989">
           <td colspan="7" class="textcenter">
             TOTAL COSTO DIRECTO
           </td>
           <td>
-            $ 
+            $
           </td>
         </tr>
       </tbody>
@@ -78,7 +78,7 @@
       <thead>
         <tr>
           <th style="background: #F2F989">VALOR TOTAL ORDEN DE TRABAJO No. <?= $ot->nombre_ot ?></th>
-          <th style="background: #F2F989">$ 000000000000000.00</th>
+          <th style="background: #F2F989">$  <?= number_format($tr->valor_tarea_ot, 0); ?></th>
         </tr>
       </thead>
     </table>

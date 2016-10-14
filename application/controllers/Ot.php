@@ -148,23 +148,24 @@ class Ot extends CI_Controller {
 	}
 	#=============================================================================
 	# Generar OT impresión
-	public function imprimirOT($id)
+	public function imprimirOT($id, $idtr)
 	{
 		$this->load->helper('pdf');
 		$this->load->helper('file');
 		$this->load->helper('download');
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id);
-		$tr = $this->ot_db->getTarea1($id)->row();
+		$tr = $this->ot_db->getTarea($id, $idtr)->row();
 
-		$acts = $this->item_db->getItemsByTarea($tr->idtarea_ot, 1);
-		$pers = $this->item_db->getItemsByTarea($tr->idtarea_ot, 2);
-		$equs = $this->item_db->getItemsByTarea($tr->idtarea_ot, 3);
+		$acts = $this->item_db->getItemsByTarea($idtr, 1);
+		$pers = $this->item_db->getItemsByTarea($idtr, 2);
+		$equs = $this->item_db->getItemsByTarea($idtr, 3);
 		$data = array(
 			'ot' => $ot->row(),
 			'pers'=>$pers,
 			'equs'=>$equs,
-			'acts'=>$acts
+			'acts'=>$acts,
+			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
 		doPDF($html);
