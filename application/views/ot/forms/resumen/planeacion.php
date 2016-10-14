@@ -1,5 +1,5 @@
 <section class="">
-	<div class="col s12 overflowAuto">
+	<div class="col s12 overflowAuto" style="padding:0px">
 		<table class="mytabla largWidth">
 			<thead>
 				<tr>

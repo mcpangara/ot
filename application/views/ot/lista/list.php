@@ -4,7 +4,7 @@
 		      <tr style="background: #3A4B52; color: #FFF">
 		        <th>Base</th>
 		        <th>Nombre</th>
-		        <th>fecha de creacion</th>
+		        <th>fecha creacion en sistema</th>
 		        <th># Tareas</th>
 		        <th>Estado</th>
 		        <th>Opciones</th>

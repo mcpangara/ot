@@ -8,7 +8,7 @@
   <div class="row" style="margin:2px; padding:2px; border:1px solid #999;border-radius:7px;">
 
     <div class="col m7 row noMaterialStyles">
-      <label style="color: #332" class="col m5">Consulta centro de operación (base):</label>
+      <label style="color: #332" class="col m5 right-align">Consulta OTs, centro de operación (base):</label>
       <select ng-model="consulta.base" class="col m5" ng-init="consulta.base = '169'" style="height:4ex;">
         <?php foreach ($bases->result() as $b): ?>
           <option value="<?= $b->idbase ?>"><?= $b->idbase." - ".$b->nombre_base ?></option>

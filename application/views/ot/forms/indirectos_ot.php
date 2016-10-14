@@ -14,15 +14,15 @@
 				<tbody>
 					<tr>
 						<td> Administración (18%): </td>
-						<td> {{ setTareaAdministracion( (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) * 0.18, tr) | currency:'$':0 }} </td>
+						<td> <span ng-bind="tr.json_indirectos.administracion | currency:'$':0 "></span></td>
 					</tr>
 					<tr>
 						<td> Imprevistos (1%): </td>
-						<td> {{ setTareaImprevistos( (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) * 0.01, tr ) | currency:'$':0 }} </td>
+						<td> <span ng-bind="tr.json_indirectos.imprevistos | currency:'$':0 "></span></td>
 					</tr>
 					<tr>
 						<td> Utilidad (4%): </td>
-						<td>{{ setTareaUtilidad( (tr.eqsubtotal+tr.actsubtotal+tr.persubtotal) * 0.04, tr ) | currency:'$':0 }} </td>
+						<td> <span ng-bind="tr.json_indirectos.utilidad | currency:'$':0 "></span> </td>
 					</tr>
 				</tbody>
 			</table>
@@ -112,8 +112,9 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<button type="button" class="btn mini-btn" ng-click="consola(tr)">log </button>
 	</div>
 
+	<div class="col s12 l12 m12">
+		<h5>Valor tarea: {{ tr.valor_tarea_ot | currency:'$':0}}</h5>
+	</div>
 </div>

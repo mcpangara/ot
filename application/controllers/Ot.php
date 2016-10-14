@@ -107,7 +107,7 @@ class Ot extends CI_Controller {
 				date('Y-m-d', strtotime($tar->fecha_inicio)),
 				date('Y-m-d', strtotime($tar->fecha_fin)),
 				$tar->valor_recursos,
-				$tr->valor_tarea_ot,
+				$tar->valor_tarea_ot,
 				json_encode($tar->json_indirectos),
 				json_encode($tar->json_viaticos),
 				json_encode($tar->json_horas_extra),

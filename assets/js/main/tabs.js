@@ -59,7 +59,6 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
       }
     });
   }
-
   //Refrecar las pestañas
   $scope.refreshTabs = function(){
     angular.forEach($scope.tabs,
@@ -75,7 +74,6 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
       }
     );
   }
-
   //============================================================================
   //carga una archivo JSON desde un init para que se genere una vista
   $scope.loadViewJSON = function(route, idtab){
@@ -101,7 +99,6 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
     i.class = 'active';
     $scope.estructuraActualContent = i;
   }
-
   //============================================================================
   // EFECTOS VISUALES DE LA VISTA
   $scope.getFromMenu = function(target, slide){
