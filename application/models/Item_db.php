@@ -60,14 +60,14 @@ class Item_db extends CI_Model {
 	}
 	# Guarda la un item planeado de una tarea de OT
 	public function setItemTarea(
-		$cantidad,	
-		$duracion, 
-		$unidad, 
-		$tarifa, 
-		$valor_plan, 
-		$fecha_creacion, 
-		$itemf_iditemf, 
-		$itemf_codigo, 
+		$cantidad,
+		$duracion,
+		$unidad,
+		$tarifa,
+		$valor_plan,
+		$fecha_creacion,
+		$itemf_iditemf,
+		$itemf_codigo,
 		$idTr
 		){
 		$data = array(
@@ -85,15 +85,15 @@ class Item_db extends CI_Model {
 	}
 	#Actuliza un items de una tarea perteneciente a una Orden de Trabajo
 	public function updateItemTarea(
-		$iditem_tarea_ot, 
-		$cantidad, 
-		$duracion, 
-		$unidad, 
-		$tarifa, 
-		$valor_plan, 
-		$fecha_creacion, 
-		$itemf_iditemf, 
-		$itemf_codigo, 
+		$iditem_tarea_ot,
+		$cantidad,
+		$duracion,
+		$unidad,
+		$tarifa,
+		$valor_plan,
+		$fecha_creacion,
+		$itemf_iditemf,
+		$itemf_codigo,
 		$idTr
 		){
 		$data = array(
@@ -126,6 +126,15 @@ class Item_db extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function getRecursosFromTarea($idOT, $idTarea)
+	{
+		$this->load->database('ot');
+		$this->db->from('item_tarea_ot AS itt');
+		$this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
+		$this->db->join('itemc AS itc', 'itf.itemc_iditemc = itc.iditemc');
+		$this->db->where('itt.tarea_ot_idtarea_ot', $idTarea);
+		return $this->db->get();
+	}
 	public function getField($where, $select, $table)
 	{
 		$this->load->database('ot');

@@ -27,7 +27,6 @@
       <td class="textright"> <?= number_format( ($it->cantidad * $it->duracion), 2 ) ?> </td>
       <td class="textright">$ <?= number_format($it->tarifa) ?></td>
       <td class="textright">$ <?= number_format($it->valor_plan) ?> </td>
-      <?php $valor_gestion += $it->valor_plan; ?>
     </tr>
   <?php endforeach; ?>
   <tr>
@@ -35,7 +34,7 @@
       SUB-TOTAL: <?= $gestion ?>
     </td>
     <td class="textright">
-      $ <?= number_format($valor_gestion, 0) ?>
+      $ <?= number_format($subTotal, 0) ?>
     </td>
   </tr>
 </tbody>

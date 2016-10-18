@@ -1,5 +1,5 @@
 
-	<section id="resumen">
+	<section id="resumen" ng-init="calcularSubtotales()">
 		<div ng-repeat="mytr in ot.tareas">
 			<h5> {{mytr.nombre_tarea}} </h5>
 			<?php $this->load->view('ot/forms/resumen/planeacion'); ?>

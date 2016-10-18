@@ -11,10 +11,13 @@ var OT = function($scope, $http, $timeout){
 			}
 		);
 	}
-	$scope.getData = function(url, ambito){
+	$scope.getData = function(url, ambito, edit){
 		$http.post(url, {}).then(
 				function(response){
 					ambito.ot = response.data;
+					if(edit){
+						ambito.recorrerTareas();
+					}
 				},
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
 			);
@@ -133,9 +136,9 @@ var OT = function($scope, $http, $timeout){
 		tr.actsubtotal = ambito.recorrerSubtotales(tr.actividades);
 		tr.persubtotal = ambito.recorrerSubtotales(tr.personal);
 		tr.eqsubtotal = ambito.recorrerSubtotales(tr.equipos);
-		tr.json_recursos.equipos = tr.eqsubtotal;
-		tr.json_recursos.personal = tr.persubtotal;
-		tr.json_recursos.apu = tr.actsubtotal;
+		//tr.json_recursos.equipos = tr.eqsubtotal;
+		//tr.json_recursos.personal = tr.persubtotal;
+		//tr.json_recursos.apu = tr.actsubtotal;
 		tr.valor_recursos = tr.actsubtotal+tr.persubtotal+tr.eqsubtotal;
 		tr.json_indirectos.administracion = (tr.valor_recursos * 0.18);
 		tr.json_indirectos.imprevistos = (tr.valor_recursos * 0.01);
@@ -188,7 +191,7 @@ var OT = function($scope, $http, $timeout){
 	}
 	$scope.calcularViaticos =  function(tr, ambito){
 		ambito.viaticos = 0;
-		angular.forEach(ambito.itemsViaticos, function(v,k){
+		angular.forEach(tr.json_viaticos.json_viaticos, function(v,k){
 			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){ 
 				ambito.viaticos += 0; 
 			}
@@ -196,7 +199,7 @@ var OT = function($scope, $http, $timeout){
 				ambito.viaticos += (v.alojamiento + v.transporte + v.alimentacion + v.miscelanios) * (v.cantidad_gv * v.duracion_gv) ;
 			}
 		});
-		if ( ambito.itemsViaticos == undefined || ambito.itemsViaticos.length == 0 ) {
+		if ( tr.json_viaticos.json_viaticos == undefined || tr.json_viaticos.json_viaticos.length == 0 ) {
 			ambito.viaticos = 0;
 		}
 		tr.json_viaticos.valor_viaticos = ambito.viaticos;
@@ -265,10 +268,11 @@ var OT = function($scope, $http, $timeout){
 		$scope.calcularTotalItem(item);
 	}
 	$scope.calcularHorasExtra = function(tr, ambito){
-		ambito.valor_horas_extra = 0;
-		angular.forEach(ambito.horas_extra, function(v,k){
-			ambito.valor_horas_extra += v.total;
-			tr.json_horas_extra.valor_horas_extra = ambito.valor_horas_extra;
+		val = 0;
+		angular.forEach(tr.json_horas_extra.json_horas_extra, function(v,k){
+			val += v.total;
+			tr.json_horas_extra.valor_horas_extra = val;
+			tr.json_horas_extra.administracion = (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.01;
 		});
 	}
 	$scope.endHorasExtra = function(tag, tr, ambito){
@@ -279,10 +283,12 @@ var OT = function($scope, $http, $timeout){
 	$scope.calcularValorOT = function(ambito){
 		ambito.ot.valor_ot = 0;
 		angular.forEach(ambito.ot.tareas, function(tarea, key){
+			$scope.calcularSubtotales(ambito, tarea);
+
 			$scope.calcularHorasExtra(tarea, ambito);
 			$scope.calcularReembolsables(tarea, ambito);
 			$scope.calcularViaticos(tarea, ambito);
-			console.log(">>>> Calculando OT:");
+
 			var he = tarea.json_horas_extra.valor_horas_extra;
 			var rm = tarea.json_reembolsables.administracion + tarea.json_reembolsables.administracion;
 			var gv = tarea.json_viaticos.valor_viaticos + ambito.viaticos + tarea.json_viaticos.administracion;
@@ -290,7 +296,7 @@ var OT = function($scope, $http, $timeout){
 			var tar = tarea.valor_recursos;
 			tarea.valor_tarea_ot = (he + rm + gv + id + tar);
 			ambito.ot.valor_ot += tarea.valor_tarea_ot;
-			console.log('Valor OT: '+ambito.ot.valor_ot);
+			console.log('>> Valor OT: '+ambito.ot.valor_ot);
 		});
 		console.log(ambito.ot.tareas);
 	}
@@ -385,7 +391,7 @@ var agregarOT = function($scope, $http, $timeout){
 	////$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
-	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
+	$scope.getData = function(url){ $scope.$parent.getData(url, $scope, false); }
 	$scope.selectTarea = function(ot, indice){
 		$timeout(function(){
 			$scope.$parent.selectTarea(ot, $scope, indice);
@@ -422,7 +428,7 @@ var agregarOT = function($scope, $http, $timeout){
 	//===================================================================================================================
 	$scope.guardarOT = function(url){
 		//tinyMCE.triggerSave();
-		$scope.$parent.calcularValorOT($scope);
+		$scope.calcularSubtotales();
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
@@ -452,10 +458,15 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.persubtotal=0;
 	$scope.reembs=[];
 	$scope.viaticos = 0;
-	//$scope.$parent.tinyMCE();
 
-	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
-	$scope.getData = function(url){ $scope.$parent.getData(url, $scope); }
+	$scope.recorrerTareas = function(){
+		angular.forEach($scope.ot.tareas, function(val, key){
+			$scope.$parent.calcularSubtotales($scope, val);
+		});
+	}
+	
+	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope);}
+	$scope.getData = function(url){ $scope.$parent.getData(url, $scope, true); }
 	$scope.selectTarea = function(ot, indice){
 		$timeout(function(){
 			$scope.$parent.selectTarea(ot, $scope, indice);
@@ -488,7 +499,7 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	$scope.guardarOT = function(url){
 		//tinyMCE.triggerSave();
-		$scope.$parent.calcularValorOT($scope);
+		$scope.calcularSubtotales();
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
 		console.log($scope.ot);

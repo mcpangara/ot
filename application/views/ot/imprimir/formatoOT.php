@@ -51,16 +51,16 @@
     </div>
 
     <table>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES', 'tr'=>$tr)); ?>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL', 'tr'=>$tr)); ?>
-      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS', 'tr'=>$tr)); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES', 'tr'=>$tr, 'subTotal'=>$sub_acts) ); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL', 'tr'=>$tr, 'subTotal'=>$sub_pers) ); ?>
+      <?php $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS', 'tr'=>$tr, 'subTotal'=>$sub_equs) ); ?>
       <tbody>
         <tr style="background: #F2F989">
           <td colspan="7" class="textcenter">
             TOTAL COSTO DIRECTO
           </td>
-          <td>
-            $
+          <td class="textright">
+            <b>$ <?= number_format(($sub_acts+$sub_pers+$sub_equs), 0) ?></b>
           </td>
         </tr>
       </tbody>

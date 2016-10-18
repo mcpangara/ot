@@ -157,14 +157,29 @@ class Ot extends CI_Controller {
 		$ot = $this->ot_db->getData($id);
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
 
+		$indirectos = json_decode($tr->json_indirectos);
+		$viaticos = json_decode($tr->json_viaticos);
+		$reembolsables = json_decode($tr->json_reembolsables);
+		$horas_extra = json_decode($tr->json_horas_extra);
+
 		$acts = $this->item_db->getItemsByTarea($idtr, 1);
+		$sub_acts = $this->subtotales($acts);
 		$pers = $this->item_db->getItemsByTarea($idtr, 2);
+		$sub_pers = $this->subtotales($pers);
 		$equs = $this->item_db->getItemsByTarea($idtr, 3);
+		$sub_equs = $this->subtotales($equs);
 		$data = array(
 			'ot' => $ot->row(),
 			'pers'=>$pers,
 			'equs'=>$equs,
 			'acts'=>$acts,
+			'sub_acts'=>$sub_acts,
+			'sub_pers'=>$sub_pers,
+			'sub_equs'=>$sub_equs,
+			'indirectos'=>$indirectos,
+			'viaticos'=>$viaticos,
+			'reembolsables'=>$reembolsables,
+			'horas_extra'=>$horas_extra,
 			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
@@ -188,6 +203,15 @@ class Ot extends CI_Controller {
 			array_push($reportes, $report);
 		}
 		echo json_encode($reportes);
+	}
+
+	public function subtotales($items)
+	{
+		$valor = 0;
+		foreach ($items->result() as $value) {
+			$valor += $value->valor_plan;
+		}
+		return $valor;
 	}
 
 	# ============================================================================

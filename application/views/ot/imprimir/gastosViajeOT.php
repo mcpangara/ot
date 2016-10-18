@@ -15,7 +15,7 @@
       <td style="width:5%"></td>
       <td style="width:5%"></td>
       <td style="width:8%"></td>
-      <td style="width:8%">$ </td>
+      <td style="width:8%">$ <?= number_format( ceil($viaticos->valor_viaticos), 0) ?></td>
     </tr>
     <tr>
       <td></td>
@@ -25,11 +25,11 @@
       <td></td>
       <td>1%</td>
       <td></td>
-      <td>$ </td>
+      <td>$ <?= number_format( ceil($viaticos->administracion), 0) ?> </td>
     </tr>
     <tr class="ligth-yellow">
       <td colspan="7" class="textcenter">TOTAL GASTOS DE VIAJE</td>
-      <td>$ </td>
+      <td>$ <?= number_format( ceil($viaticos->valor_viaticos+$viaticos->administracion), 0)  ?> </td>
     </tr>
   </tbody>
 </table>

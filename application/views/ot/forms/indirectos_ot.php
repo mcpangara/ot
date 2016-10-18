@@ -108,7 +108,7 @@
 				</tr>
 				<tr>
 					<td>Administración (1%):</td>
-					<td> {{ (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.01 | currency:'$':0 }} </td>
+					<td> {{ tr.json_horas_extra.administracion | currency:'$':0 }} </td>
 				</tr>
 			</tbody>
 		</table>
