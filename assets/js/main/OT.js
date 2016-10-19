@@ -136,13 +136,11 @@ var OT = function($scope, $http, $timeout){
 		tr.actsubtotal = ambito.recorrerSubtotales(tr.actividades);
 		tr.persubtotal = ambito.recorrerSubtotales(tr.personal);
 		tr.eqsubtotal = ambito.recorrerSubtotales(tr.equipos);
-		//tr.json_recursos.equipos = tr.eqsubtotal;
-		//tr.json_recursos.personal = tr.persubtotal;
-		//tr.json_recursos.apu = tr.actsubtotal;
-		tr.valor_recursos = tr.actsubtotal+tr.persubtotal+tr.eqsubtotal;
-		tr.json_indirectos.administracion = (tr.valor_recursos * 0.18);
-		tr.json_indirectos.imprevistos = (tr.valor_recursos * 0.01);
-		tr.json_indirectos.utilidad = (tr.valor_recursos * 0.04);
+		//Redondeado de totales
+		tr.valor_recursos = Math.round(tr.actsubtotal+tr.persubtotal+tr.eqsubtotal);
+		tr.json_indirectos.administracion = Math.round(tr.valor_recursos * 0.18);
+		tr.json_indirectos.imprevistos = Math.round(tr.valor_recursos * 0.01);
+		tr.json_indirectos.utilidad = Math.round(tr.valor_recursos * 0.04);
 	}
 	$scope.setTareaAdministracion = function(value, tr){
 		if(tr == undefined){ return 0;}
@@ -203,7 +201,9 @@ var OT = function($scope, $http, $timeout){
 			ambito.viaticos = 0;
 		}
 		tr.json_viaticos.valor_viaticos = ambito.viaticos;
+		tr.json_viaticos.valor_viaticos = Math.round( tr.json_viaticos.valor_viaticos );
 		tr.json_viaticos.administracion = ( tr.json_viaticos.valor_viaticos* ( 4.58 /100) );
+		tr.json_viaticos.administracion = Math.round( tr.json_viaticos.administracion );
 		$("#addViaticosOT").addClass('nodisplay');
 	}
 	//===================================================================================================================
@@ -216,7 +216,9 @@ var OT = function($scope, $http, $timeout){
 		tr.json_reembolsables.administracion = 0;
 		angular.forEach(ambito.reembs, function(v, k){
 			tr.json_reembolsables.valor_reembolsables +=(v.cantidad * v.valor_und);
+			tr.json_reembolsables.valor_reembolsables = Math.round(tr.json_reembolsables.valor_reembolsables);
 			tr.json_reembolsables.administracion += tr.json_reembolsables.valor_reembolsables * 0.01;
+			tr.json_reembolsables.administracion = Math.round( tr.json_reembolsables.administracion );
 		});
 	}
 	$scope.endReembolsables = function(tag, tr, ambito){
@@ -251,7 +253,7 @@ var OT = function($scope, $http, $timeout){
 		item.total += (item.total_hefd);
 		item.total += (item.total_hefn);
 		item.total += (item.total_hfr);
-		item.total = (item.total * 1.6196) * item.cantidad_he;
+		item.total = Math.round( (item.total * 1.6196) * item.cantidad_he );
 	}
 	$scope.subtotal_he = function(item, base, porcentaje, cantidad, tipo){
 		if (tipo == 'hed') {
@@ -271,8 +273,8 @@ var OT = function($scope, $http, $timeout){
 		val = 0;
 		angular.forEach(tr.json_horas_extra.json_horas_extra, function(v,k){
 			val += v.total;
-			tr.json_horas_extra.valor_horas_extra = val;
-			tr.json_horas_extra.administracion = (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.01;
+			tr.json_horas_extra.valor_horas_extra = Math.round(val);
+			tr.json_horas_extra.administracion = Math.round( (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.01 );
 		});
 	}
 	$scope.endHorasExtra = function(tag, tr, ambito){
@@ -289,9 +291,9 @@ var OT = function($scope, $http, $timeout){
 			$scope.calcularReembolsables(tarea, ambito);
 			$scope.calcularViaticos(tarea, ambito);
 
-			var he = tarea.json_horas_extra.valor_horas_extra;
+			var he = tarea.json_horas_extra.valor_horas_extra + tarea.json_horas_extra.administracion;
 			var rm = tarea.json_reembolsables.administracion + tarea.json_reembolsables.administracion;
-			var gv = tarea.json_viaticos.valor_viaticos + ambito.viaticos + tarea.json_viaticos.administracion;
+			var gv = tarea.json_viaticos.valor_viaticos + tarea.json_viaticos.administracion;
 			var id = tarea.json_indirectos.administracion + tarea.json_indirectos.utilidad + tarea.json_indirectos.imprevistos;
 			var tar = tarea.valor_recursos;
 			tarea.valor_tarea_ot = (he + rm + gv + id + tar);
@@ -508,7 +510,6 @@ var editarOT = function($scope, $http, $timeout) {
 				if(response.data == 'Orden de trabajo guardada correctamente'){
 					alert('Orden de trabajo guardada correctamente');
 					$timeout(function(){
-						$scope.$parent.cerrarWindow();
 						$scope.$parent.refreshTabs();
 					});
 				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
