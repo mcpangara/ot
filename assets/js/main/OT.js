@@ -408,8 +408,13 @@ var agregarOT = function($scope, $http, $timeout){
 	}
 	// procesos para items added a la OT
 	//items planeación
-	$scope.VwITems = function(tipo){ $scope.$parent.VwITems(tipo, $scope); }
-	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr); $scope.calcularSubtotales();}
+	$scope.VwITems = function(tipo){
+		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); } 
+		else{ alert('No se han agregado tareas');}
+	}
+	$scope.addSelectedItems = function(){
+		$scope.$parent.addSelectedItems($scope,$scope.tr); $scope.calcularSubtotales();
+	}
 	$scope.calcularSubtotales = function(){	
 		$scope.$parent.calcularSubtotales($scope, $scope.tr); 
 		$scope.$parent.calcularValorOT($scope);		
@@ -483,7 +488,10 @@ var editarOT = function($scope, $http, $timeout) {
 	}
 	// procesos para items added a la OT
 	//items planeación
-	$scope.VwITems = function(tipo){ $scope.$parent.VwITems(tipo, $scope); }
+	$scope.VwITems = function(tipo){ 
+		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); } 
+		else{ alert('No se han agregado tareas');}
+	}
 	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr); $scope.calcularSubtotales(); }
 	$scope.calcularSubtotales = function(){	$scope.$parent.calcularSubtotales($scope, $scope.tr); $scope.$parent.calcularValorOT($scope);}
 	//viaticos
