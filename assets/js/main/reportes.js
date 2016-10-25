@@ -34,6 +34,11 @@ var listOTReportes = function($scope, $http, $timeout){
     $scope.getOTs(url);
   }
 
+  $scope.setDefaultFilter = function(){
+    $scope.consulta.ot = '';
+    $scope.myOts = [];
+  }
+
   $scope.getOTs= function(url){
     console.log(url+"/"+$scope.consulta.base);
     $http.post(url+"/"+$scope.consulta.base, {})

@@ -11,12 +11,6 @@ class Reporte extends CI_Controller{
   }
 
   function index(){ }
-
-  public function listOT($base){
-  }
-
-  public function getReporte(){
-  }
   #===========================================================================================================
   #
   public function add($idOT, $fecha){
@@ -40,6 +34,9 @@ class Reporte extends CI_Controller{
     );
     $this->load->view('reportes/lista/getReportesByOT', $data);
   }
+  
+  # ============================================================================================================
+  # Datos de relleno para pruebas
   public function getByOT($value='')
   {
     $reportes = array();
