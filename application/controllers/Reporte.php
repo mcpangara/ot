@@ -17,7 +17,8 @@ class Reporte extends CI_Controller{
 
   public function getReporte(){
   }
-
+  #===========================================================================================================
+  #
   public function add($idOT, $fecha){
     $this->load->model('Ot_db', 'otdb');
     $ot = $this->otdb->getData($idOT);
@@ -26,7 +27,12 @@ class Reporte extends CI_Controller{
     $this->load->view('reportes/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
   }
 
-  public function testAdd($value='')
+  public function insert(){
+  }
+
+  #=============================================================================================================
+  # LISTADO DE REPORTES POR ORDEN
+  public function listado($value='')
   {
     $this->load->model('Ot_db');
     $data = array(
@@ -34,10 +40,6 @@ class Reporte extends CI_Controller{
     );
     $this->load->view('reportes/lista/getReportesByOT', $data);
   }
-
-  public function insertRDP(){
-  }
-
   public function getByOT($value='')
   {
     $reportes = array();
@@ -56,7 +58,7 @@ class Reporte extends CI_Controller{
 		}
 		echo json_encode($reportes);
   }
-  
+
   //calendario js+angular
   public function calendar($ot='')
 	{

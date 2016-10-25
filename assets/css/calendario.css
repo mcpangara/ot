@@ -2,10 +2,14 @@
   width: auto;
   min-height: 50ex;
 }
+#calendario table thead, #calendario table tbody{
+  width: 100%;
+  display: block;
+}
 #calendario table tbody tr td, #calendario table thead tr th{
   width: 3em;
   height: 3em;
-  font-size: 2ex;
+  font-size: 1.4ex;
   border:1px solid #777;
   border-radius: 0px;
   text-align: center;
@@ -24,7 +28,7 @@
   height: 100%;
   display: block;
   color: #05050f;
-  padding-top: 5px;
+  padding-top: 1px;
 }
 #calendario table tbody tr td.dia{
   background: #FFF;

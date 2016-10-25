@@ -47,39 +47,6 @@ var listOTReportes = function($scope, $http, $timeout){
     );
   }
 
-  $scope.initCharts = function(){
-    var ctx = $("#myChart");
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ["item1", "item2", "item3", "item4", "item5", "item6"],
-          datasets: [{
-              label: '# de pruebas',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-      }
-    });
-  }
-
   $scope.getReportesView = function(site_url){
       angular.forEach($scope.myOts, function(val, key){
         if(val.idOT == $scope.consulta.ot){
@@ -102,14 +69,14 @@ var listOTReportes = function($scope, $http, $timeout){
   }
 
   $scope.seleccionarFecha = function(fecha, mes, year, url, $e){
-    if( url == undefined ){
+    if( url != undefined ){
       var d = new Date(year, mes, fecha.dia);
       $scope.rd.fecha = d;
       $scope.rd.fecha_label = fecha.dia+'/'+mes+'/'+year
       $scope.rd.fecha_selected = year+'-'+mes+'-'+fecha.dia;
       fecha.clase2 = 'selected';
+      $scope.enlazarClick(url, $e);
     }
-    console.log($scope)
   }
 
   $scope.enlazarClick = function(url, $e){

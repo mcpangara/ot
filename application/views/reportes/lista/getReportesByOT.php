@@ -49,35 +49,17 @@
 
     <div class="row col l12" ng-show="ot.selected" ng-init="ot.selected = false">
 
-      <div class="col l12" style="margin:0px;padding:">
-        <div class="card row">
-          <div class="col l8">
-            
-            <div class="card-image">
-            </div>
-            <div class="card-content">
-              <h5  style="background: #3A4B52; color: #FFF;"> {{ot.nombre_ot}} - {{rd.fecha_label}}</h5>
-              <p>Por favor elije una de las siguientes opciones:</p>
-            </div>
-            <div class="card-action">
-              <button type="button" class="btn mini-btn" ng-click="enlazarClick('<?= site_url('reporte/add') ?>', $event)">Agregar</button>
-              <button type="button" class="btn mini-btn">Editar</button>
-              <button type="button" class="btn mini-btn">Imprimir</button>
-            </div>
+      <div class="col l12" style="margin:0px;padding:0px;">
 
+          <div class="col l9">
+            <?php $this->load->view('reportes/lista/list'); ?>
           </div>
 
-          <div class="col l4" ng-include="calendarLink" ng-controller="calendar"> </div>
+          <div class="col l3" ng-include="calendarLink" ng-controller="calendar"> </div>
         </div>
-      </div>      
+      </div>
 
     </div>
-
-    <!--<div class="row">
-      <div class="col l4" ng-init="initCharts()">
-          <canvas id="myChart"></canvas>
-      </div>
-    </div>-->
   </div>
 
 </div>
