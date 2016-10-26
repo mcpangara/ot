@@ -18,7 +18,7 @@ class Reporte extends CI_Controller{
     $ot = $this->otdb->getData($idOT);
     $this->load->model('tarea_db', 'tarea');
     $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
-    $this->load->view('reportes/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
+    $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
   }
 
   public function insert(){
@@ -34,7 +34,20 @@ class Reporte extends CI_Controller{
     );
     $this->load->view('reportes/lista/getReportesByOT', $data);
   }
+
+
+  #=============================================================================================================
+  # Obtener el reporte siguiente por fecha de la OT
+  public function getNext($idOT, $idReporte, $date)
+  {
+    # code...
+  }
   
+  # Obtener el reporte anterior por fecha de una OT
+  public function getPrevious($idOT, $idReporte, $date)
+  {
+    # code...
+  }
   # ============================================================================================================
   # Datos de relleno para pruebas
   public function getByOT($value='')
