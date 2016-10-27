@@ -68,6 +68,11 @@ class Reporte extends CI_Controller{
 		}
 		echo json_encode($reportes);
   }
+  #===============================================================================================================
+  # Obtener recursos preparados para agregar a la O.T.
+  public function getRecursoOtByType(){
+      $this->load->model();
+  }
 
   //calendario js+angular
   public function calendar($ot='')

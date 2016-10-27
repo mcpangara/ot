@@ -118,7 +118,11 @@ section.area select, .windowCentered select{
   min-height:120%;
   width:100%;
   background:rgba(200, 200, 200, 0.4);
-  padding-top: 2ex;
+  padding-top: 1.5ex;
+}
+#VentanaContainer .loader{
+  margin: 0;
+  padding: 2px;
 }
 .windowCentered{
   margin: 0 auto;
@@ -133,7 +137,7 @@ section.area select, .windowCentered select{
   margin: 0 auto;
   width: 100%;
   background: #FFF;
-  padding: 1.5ex;
+  padding: 1ex;
   min-height: 10ex;
   box-shadow: 0 0 8px 3px #999;
 }
