@@ -91,10 +91,23 @@ var listOTReportes = function($scope, $http, $timeout){
   }
 }
 
-//------------------------------------------------------------------------------
+//=============================================================================
 // controlador de agregar reporte
+var addReporte = function(){
+  $scope.rd = {
+    info:{},
+    recursos:[],
+    firmas:{}
+  }
+  $scope.personalOT = [];
+  $scope.equiposOT = [];
+  $scope.actividadesOT = [];
 
-var addReporte =  function($scope, $http, $timeout) {
+}
+
+//=============================================================================
+
+var addReporteAnt =  function($scope, $http, $timeout) {
   $scope.personalReporte = [];
   $scope.persOT = [];
   $scope.eqs =[];
