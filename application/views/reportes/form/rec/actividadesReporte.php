@@ -1,4 +1,4 @@
-<div class="">
+<div class="noMaterialStyles">
   <table class="mytabla">
     <thead>
       <tr style="background: #EEE">

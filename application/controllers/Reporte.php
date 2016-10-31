@@ -22,6 +22,8 @@ class Reporte extends CI_Controller{
   }
 
   public function insert(){
+    $post = json_decode( file_get_contents("php://input") );
+    
   }
 
   #=============================================================================================================
@@ -40,7 +42,7 @@ class Reporte extends CI_Controller{
   # Obtener el reporte siguiente por fecha de la OT
   public function getNext($idOT, $idReporte, $date)
   {
-    # code...
+    
   }
   
   # Obtener el reporte anterior por fecha de una OT

@@ -93,7 +93,8 @@ var listOTReportes = function($scope, $http, $timeout){
 
 //=============================================================================
 // controlador de agregar reporte
-var addReporte = function(){
+var addReporte = function($scope, $http, $timeout) {
+  // estructuras JSON y array
   $scope.rd = {
     info:{},
     recursos:[],
@@ -103,6 +104,32 @@ var addReporte = function(){
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
 
+  // Utilidades
+  $scope.toggleContent = function(tag, clase, section){
+    if(section != undefined){
+			if ($(tag).hasClass(clase)) { 
+				$(section).addClass(clase);
+			}else{
+				$(section).addClass(clase);				
+				$(tag).removeClass(clase);
+			}
+		}		
+		$(tag).toggleClass(clase);
+  }
+  //------------------------------------------------------------------
+  // Recursos
+  //------------------------------------------------------------------
+  //
+  $scope.getRecursosByOT = function(url, ot){
+    $http.post(url, data)
+      .then(
+        function(response){},
+        function(response){}
+      )
+  }
+  //Recursos By OT
+  $scope.ventanaAddRecursos = function(tipo){}
+  $scope.addRecursosToReporte = function(tipo){}
 }
 
 //=============================================================================

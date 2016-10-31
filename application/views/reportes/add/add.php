@@ -13,6 +13,9 @@
         button.btn, button.mini-btn2{
           margin-top: 0;
         }
+        .noHoverColor {
+          background: #FFF;
+        }
       </style>
 
       <div class="font10">

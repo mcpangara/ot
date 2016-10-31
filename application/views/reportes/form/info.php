@@ -1,7 +1,7 @@
-<div>
+<div class="">
   <table class="mytabla centered">
     <thead>
-      <tr>
+      <tr class="noHoverColor">
         <th style="width:15%">Terreno</th>
         <th>Seguridad ambiental</th>
         <th>Noche Ant.</th>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="noMaterialStyles left-align font10">
+      <tr class="noMaterialStyles left-align font10 noHoverColor">
         <td>
           <label for="">
             Terreno:
@@ -48,16 +48,16 @@
 
   <table class="mytabla inputsSmall">
     <thead>
-      <tr>
+      <tr class="noHoverColor">
         <th colspan="2"> ACTIVIDADES </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="noHoverColor">
         <td>
           <div class="font10 row">
               <big class="col s12 center-align"><b>ILICITAS</b></big>
-              <label class="col m4" for="">
+              <label class="col m4 noMaterialStyles">
                 EXTENSION:
                 <select ng-model="rdp.actividades.ext" >
                   <option value="SI">SI</option>
