@@ -119,12 +119,18 @@ var addReporte = function($scope, $http, $timeout) {
   //------------------------------------------------------------------
   // Recursos
   //------------------------------------------------------------------
-  //
+  // Obtener datos para formularios 
   $scope.getRecursosByOT = function(url, ot){
     $http.post(url, data)
       .then(
-        function(response){},
-        function(response){}
+        function(response){
+          $scope.personalOT = response.personal;
+          $scope.equiposOT = response.equipos;
+          $scope.actividadesOT = response.actividades;
+        },
+        function(response){
+          alert("Problemas a la cargar los datos de los formularios, por favor cierra la ventana y vuelve a ingresar.")
+        }
       )
   }
   //Recursos By OT
