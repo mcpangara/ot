@@ -76,7 +76,18 @@ class Miscelanio extends CI_Controller {
 		echo $date;*/
 		echo date( 'Ymd', strtotime( '-1 day', strtotime('01-03-2016') ) );
 	}
+	#============================================================================================
+	# Funciones de maestros
+	# =============================================================================
 
+	# subir personas
+	public function formUpPersona(){
+    $this->load->view('persona/uploadPerOT');
+  }
+	# subir equipos
+	public function formUpEquipo(){
+    $this->load->view('equipo/uploadEquOT');
+  }
 }
 
 /* End of file Miscelanio.php */
