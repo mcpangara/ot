@@ -150,8 +150,14 @@ app.controller("test", function($scope, $sce, $compile, $http, $templateCache, $
   $scope.setTextarea = function(tag, content){
     $(tag).html(content);
   }
-  $scope.datepicker_init = function(){$('.datepicker').datepicker(
+  $scope.datepicker_init = function(){
+    $('.datepicker').datepicker(
     { 
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+      dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+      dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
       dateFormat: 'yy-mm-dd',
       changeMonth: true,
       changeYear: true 
