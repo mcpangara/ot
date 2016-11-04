@@ -504,7 +504,7 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//Utils
-	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,ambito); }
+	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,$scope); }
 	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerMunicipios(municip,url, $scope); }
 	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	$scope.guardarOT = function(url){
