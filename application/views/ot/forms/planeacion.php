@@ -6,12 +6,17 @@
 		<button type="button" ng-click="VwITems(2)" class="btn green mini-btn" data-icon="&#xe052;"> Personal</button>
 		<button type="button" ng-click="VwITems(3)" class="btn green mini-btn" data-icon="&#xe052;"> Equipo</button>
 	</p>
+	<style media="screen">
+		.ui-datepicker-div select{
+			display: inline-block;
+		}
+	</style>
 
-	<div>
+	<div class="selectEnabled">
 		<label class="col m1 right-align"><b>fecha inicio: </b></label>
 		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_inicio" placeholder=" fecha" style="cursor: pointer" readonly/>
 	</div>
-	<div>
+	<div class="selectEnabled">
 		<label class="col m1 right-align"><b>fecha fin: </b></label>
 		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_fin" placeholder=" fecha" style="cursor: pointer"  readonly/>
 	</div>

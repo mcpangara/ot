@@ -316,8 +316,9 @@ var OT = function($scope, $http, $timeout){
 	// Municipios y locaciones
 	$scope.obtenerMunicipios = function(depart,url,ambito){
 		ambito.poblado = '';
+		console.log(depart)
 		$http.post(url, {departamento: depart}).then(
-				function(response){ ambito.munis= response.data;	},
+				function(response){ ambito.munis= response.data; console.log(response.data)	},
 				function(response){ alert("Falló comunicación con server");	}
 			);
 	}
@@ -505,7 +506,7 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,$scope); }
-	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerMunicipios(municip,url, $scope); }
+	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerVeredas(municip, url, $scope); }
 	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
 	$scope.guardarOT = function(url){
 		//tinyMCE.triggerSave();
