@@ -11,10 +11,10 @@ class Excel extends PHPExcel {
 
   function getData($ruta, $dataOnly=FALSE)
 	{
-    include APPPATH."/third_party/PHPExcel_1.8/PHPExcel/Reader/Excel2003XML.php";
-		//include APPPATH."/third_party/PHPExcel_1.8/PHPExcel/IOFactory.php";
-    //$reader = PHPExcel_IOFactory::createReaderForFile($ruta);
-    $reader = PHPExcel_IOFactory::createReader('HTML');
+    //include APPPATH."/third_party/PHPExcel_1.8/PHPExcel/Reader/Excel2003XML.php";
+		include APPPATH."/third_party/PHPExcel_1.8/PHPExcel/IOFactory.php";
+    $reader = PHPExcel_IOFactory::createReaderForFile($ruta);
+    //$reader = PHPExcel_IOFactory::createReader('HTML');
 
   	$objPHPExcel = $reader->load($ruta);
 		return $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);

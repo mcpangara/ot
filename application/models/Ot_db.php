@@ -105,6 +105,15 @@ class Ot_db extends CI_Model {
 		return $this->db->get();
 	}
 
+	#=============================================================================
+
+	# Obetener una Ot por un campo especificado por parametro
+	public function getOtBy($campo, $valorbuscado)
+	{
+		$this->load->database('ot');
+		return $this->db->get_where('OT',array($campo=>$valorbuscado));
+	}
+
 	# ===========================================================================
 	# Consulta de items de OT
 	# ===========================================================================

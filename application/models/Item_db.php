@@ -135,6 +135,7 @@ class Item_db extends CI_Model {
 		$this->db->where('itt.tarea_ot_idtarea_ot', $idTarea);
 		return $this->db->get();
 	}
+
 	public function getField($where, $select, $table)
 	{
 		$this->load->database('ot');
@@ -142,6 +143,12 @@ class Item_db extends CI_Model {
 		return $this->db->get();
 	}
 
+
+	public function getItemfBy($campo, $valorB, $tabla)
+	{
+		$this->load->database('ot');
+		return $this->db->get_where($tabla, array($campo=>$valorB));
+	}
 
 }
 

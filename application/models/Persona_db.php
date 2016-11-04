@@ -38,7 +38,6 @@ class Persona_db extends CI_Model{
     } catch (Exception $e) {
       echo $e->getMessege().'   ';
     }
-
   }
 
   #====================================================================================
@@ -79,16 +78,16 @@ class Persona_db extends CI_Model{
     return $rows->num_rows() > 0?TRUE:FALSE;
   }
 
-  public function existeRecursoOT($persona)
+  public function getRecursoOT($idPersona, $idOT, $idItemf)
   {
-    $rows = $this->db->get_where('recurso_ot',
-        array(
-          'persona_identificacion'=>$persona->identificacion,
-          'OT_idOT'=>$persona->OT_idOT,
-          'itemf_codigo'=>$persona->itemf_codigo
-        )
-      );
-    return $rows->num_rows() > 0?TRUE:FALSE;
+    $this->load->database('ot');
+    $this->db->select('rot.*, r.fecha_ingreso, r.centro_costo, r.nombre_ot, r.unidad_negocio');
+    $this->db->from('recurso_ot AS rot');
+    $this->db->join('recurso AS r', 'rot.recurso_idrecurso = r.idrecurso');
+    $this->db->where('r.persona_identificacion', $idPersona);
+    $this->db->where('rot.OT_idOT', $idOT);
+    $this->db->where('rot.itemf_iditemf', $idItemf);
+    return $this->db->get();
   }
   public function setPersonaOT($persona)
   {
@@ -106,6 +105,11 @@ class Persona_db extends CI_Model{
   #===============================================================================================================
   #===============================================================================================================
   #fields
+
+  public function getBy($campo, $valorbuscado, $tabla)
+  {
+    return $this->db->get_where($tabla, array($campo=>$valorbuscado));
+  }
   public function getField($where, $select, $table)
 	{
 		$this->load->database('ot');

@@ -133,6 +133,7 @@ var addReporte = function($scope, $http, $timeout) {
         }
       )
   }
+  $scope.
   //Recursos By OT
   $scope.ventanaAddRecursos = function(tipo){}
   $scope.addRecursosToReporte = function(tipo){}

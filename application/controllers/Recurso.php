@@ -3,9 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Recurso extends CI_Controller{
 
-  public function __construct(){ parent::__construct(); }
+  public function __construct(){
+    parent::__construct();
+    date_default_timezone_set("America/bogota");
+  }
 
-  function index(){ }
+  function index(){
+
+  }
 
 
   # =============================================================================
@@ -34,22 +39,45 @@ class Recurso extends CI_Controller{
     $this->load->library('upload', $config);
     if ($this->upload->do_upload('myfile')) {
       $dataup = $this->upload->data();
-      $this->procesaCarga($subcarpeta, $dir.$dataup['file_name']);
+      $this->recorrerFilasMaestro($subcarpeta, $dir.$dataup['file_name']);
     }else{
       echo  $this->upload->display_errors();
     }
   }
 
   # Recorrer excel
-  public function recorrerFilasMaestro($process, $ruta)
+  public function recorrerFilasMaestro($process, $ruta='./uploads/personal/04112016/prueba.xlsx')
   {
-    print_r($this->leerExcel($ruta));
-    /*foreach ($this->leerExcel($ruta, TRUE) as $key => $value) {
-      foreach ($value as $k => $v) {
-        echo $v." - ";
+    $rows = $this->leerExcel($ruta, TRUE);
+    $this->load->helper("excel");
+    $this->load->model('ot_db', 'ot');
+    $this->load->model('item_db', 'item');
+    $this->load->model('equipo_db', 'equ');
+
+    $noValid = array();
+    foreach ($rows as $key => $cell) {
+      if($cell['B'] != 'Id C.O.' || $cell['C'] != 'Empleado'){
+        $ots = $this->ot->getOtBy( 'nombre_ot', $cell['F'] );
+        $items = $this->item->getItemfBy( 'codigo', $cell['G'], 'itemf' );
+        # echo "No.OT:".$ots->num_rows()." | No.Items:".$items->num_rows()."<br>";
+        if ($ots->num_rows() > 0 && $items->num_rows() > 0) {
+          $orden = $ots->row();
+          $myitemf = $items->row();
+          if ($process == 'personal') {
+            $cell = $this->registrarPersona($cell, $orden, $myitemf, $noValid);
+          }else if($process ==  'equipo'){
+            $this->registrarEquipo($cell, $orden, $myitemf, $noValid);
+          }
+        }else{
+          $cell["A"] = "OT y/o id CCosto no encontrados";
+        }
+      }else{
+        $cell["A"] = "Comentario App";
       }
-      echo "<br>";
-    }*/
+      array_push($noValid, $cell);
+    }
+    $html = $this->load->view('miscelanios/reporteCargaXLS',array("filas"=>$noValid),TRUE);
+    $this->load->view('miscelanios/resultadoUpdateMAestro', array("html"=>$html));
   }
   # ------------------------------------------------------------------
   # AUXILIARES:
@@ -64,19 +92,38 @@ class Recurso extends CI_Controller{
   public function leerExcel($ruta)
   {
     $this->load->library('excel');
-    return $this->excel->getData('./uploads/'.$ruta);
+    return $this->excel->getData($ruta);
   }
-
-  # Comprueba que la O.T. este registrada para agregar el personal a la O.T.
-  public function existeOtBy($field, $elemento)
-  {
-    # code...
-  }
-
   # Comprueba si existe la persona previamente
   public function existePersona($value='')
   {
     # code...
+  }
+  # Proceso que realiza el registro de datos por persona
+  public function registrarPersona($row, $ot, $itemf, $noValid)
+  {
+    $this->load->model('persona_db', 'per');
+    $personas  = $this->per->getBy("identificacion", $row['C'], "persona");
+    if($personas->num_rows() < 1){
+      $obj = new stdClass();
+      $obj->identificacion = $row['C'];
+      $obj->nombre_completo = $row['D'];
+      $obj->fecha_registro = date('Y-m-d');
+      $this->per->addObj($obj);
+      $row['A'] = 'Agregado persona - ';
+    }
+    if( $this->per->existePersona( $row['C'] ) ){
+      $recursos = $this->per->getRecursoOT($row["C"], $ot->idOT, $itemf->iditemf);
+      if ($recursos->num_rows() < 1) { //si no existe el recurso add
+        $this->load->model('recurso_db','recurso');
+        $id = $this->recurso->add($row['H'], date('Y-m-d'), $row["F"], $row['E'], $row['I'], $row['C'], 'persona');
+        $this->recurso->addRecursoOT($id, $ot, $itemf, TRUE, TRUE, 'persona');
+        $row['A'] = $row['A'].'Agregado Recurso';
+      }else{
+        $row['A'] = 'Registro ya existente';
+      }
+    }
+    return $row;
   }
 
   public function existeEquipo($value='')
@@ -84,8 +131,13 @@ class Recurso extends CI_Controller{
     # code...
   }
 
-  public function recorrer($value='')
+
+  # Exportar html aexcel
+  public function exporExcel($value='')
   {
-    # code...
+    $html = $this->input->post('html');
+    header("Content-type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=Informe.xls");
+    echo $html;
   }
 }

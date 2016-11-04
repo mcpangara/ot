@@ -22,3 +22,8 @@ function readExcelAlltypes($archivo='', $dataOnly=FALSE)
 	#$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 	#var_dump($sheetData);
 }
+
+function ubicarCabeceras($row, $cabeceras)
+{
+	# code...
+}

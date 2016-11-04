@@ -2,28 +2,15 @@
 	<section class="area" ng-controller="personalUp">
     <h4>Carga de personal por OT</h4>
 
-    <div class="" ng-init="initAdjunto('<?= site_url("persona/uploadFile") ?>')">
+    <div class="" ng-init="initAdjunto('<?= site_url("recurso/uploadFile/personal") ?>')">
       <div id="fileuploader">Archivo</div>
     </div>
 
 		<br><br>
-		Campos invalidos:
-		<table class="mytabla">
-			<thead>
-				<tr>
-					<th>identificacion</th>
-					<th>Nombre</th>
-					<th>Problema</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+
+		<section id="resultado" style="overflow:auto; max-height: 200px;">
+
+		</section>
 
     <br>
     <div class="btnWindow">

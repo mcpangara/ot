@@ -9,7 +9,7 @@
     <img src="<?= base_url('assets/img/loader.gif') ?>" width="100px" />
   </div>
 
-  <table class="mytabla font12" ng-init="cargaListaPersona('<?= site_url('persona/personalByOT/') ?>')">
+  <table class="mytabla font12">
     <thead>
       <tr>
          <th>No.</th>
