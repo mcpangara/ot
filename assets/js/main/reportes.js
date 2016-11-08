@@ -21,6 +21,14 @@ var reportes = function($scope, $http, $timeout) {
       $scope.CalendarLink = '';
     });
   }
+
+  $scope.changeFilterSelect2 = function(fil,propiedad){
+		if(fil[propiedad] == undefined){
+			fil[propiedad] = true;
+		}else if (fil[propiedad] == true) {
+			fil[propiedad] = undefined;
+		};
+	}
 }
 
 var listOTReportes = function($scope, $http, $timeout){
@@ -64,7 +72,6 @@ var listOTReportes = function($scope, $http, $timeout){
         }
       });
   }
-
   //Calendario
   $scope.verCalendario = function(url){
     $timeout(function(){ $scope.calendarLink = url; });
@@ -100,6 +107,8 @@ var addReporte = function($scope, $http, $timeout) {
     recursos:[],
     firmas:{}
   }
+
+  $scope.fil_pOT = {};
   $scope.personalOT = [];
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
@@ -119,24 +128,42 @@ var addReporte = function($scope, $http, $timeout) {
   //------------------------------------------------------------------
   // Recursos
   //------------------------------------------------------------------
+  // Datos para agregar al reporte
   // Obtener datos para formularios 
-  $scope.getRecursosByOT = function(url, ot){
-    $http.post(url, data)
+  $scope.getRecursosByOT = function(url){
+    $http.post(url, {})
       .then(
         function(response){
-          $scope.personalOT = response.personal;
-          $scope.equiposOT = response.equipos;
-          $scope.actividadesOT = response.actividades;
+          $scope.personaOT = response.data.personal;
+          $scope.equiposOT = response.data.equipos;
+          $scope.actividadesOT = response.data.actividades;
+          console.log(response.data.personal);
         },
         function(response){
           alert("Problemas a la cargar los datos de los formularios, por favor cierra la ventana y vuelve a ingresar.")
         }
       )
   }
-  $scope.
+  // mostrar una sección para agregar elementos al reporte
+  $scope.showRecursosReporte = function(section, tag){
+    $(section).hide(section);
+    $(tag).show();
+  }
+  // Ocultar una seccion de agregar recursos y ejecutar una funcion de inicio
+  $scope.closeRecursoReporte = function(section, method){
+    $(section).hide(section);
+    if(method == 1 ){
+      $scope.agregarPersonal();
+    }else if(method == 2){
+      $scope.agregarEquipos();
+    }else if(method == 3){
+      $scope.agregarActividades();
+    }
+  }
   //Recursos By OT
-  $scope.ventanaAddRecursos = function(tipo){}
-  $scope.addRecursosToReporte = function(tipo){}
+  // 
+  $scope.agregarPersonal = function(){
+  }
 }
 
 //=============================================================================

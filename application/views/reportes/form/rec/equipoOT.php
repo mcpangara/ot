@@ -2,7 +2,7 @@
   <div class="">
     <div class="">
       <h5 class="center-align blue white-text">Equipo agregado a esta OT: <?= $ot->nombre_ot ?></h5>
-      <button type="button" ng-click="endEquipoOT('#equipoOT')" class="btn green mini-btn2" name="button">Finalizar</button>
+      <button type="button" ng-click="closeRecursoReporte('#equipoOT',1)" class="btn green mini-btn2" name="button">Finalizar</button>
 
       <p class="padding1ex">
         Hola, aqui puedes elejir el equipo que deseas agreagar al reporte diario que estas desarrollando. Recuerda, una vez hecho esto podras duplicar el reporte para agilizar este proceso
@@ -10,7 +10,7 @@
 
     </div>
 
-    <div class="" style="overflow:auto" ng-init="getEquipoOT('<?= site_url('equipo/equiposByOT/'.$ot->idOT) ?>')">
+    <div class="" style="overflow:auto">
       <table class="mytabla">
         <thead>
           <tr>
@@ -36,7 +36,7 @@
             <td><input type="text" ng-click="fil_eOT.item" placeholder="filtrar"></td>
             <td><input type="text" ng-click="fil_eOT.item_descripcion" placeholder="filtrar"></td>
           </tr>
-          <tr ng-repeat="e in equOT | filter: fil_eOT">
+          <tr ng-repeat="e in equipoOT | filter: fil_eOT">
             <td class="noMaterialStyles"> <input type="checkbox" ng-model="e.add" ng-init="e.add=false"> </td>
             <td ng-bind="e.serial"></td>
             <td ng-bind="e.descripcion"></td>

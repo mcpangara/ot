@@ -2,7 +2,7 @@
   <div class="">
     <div class="">
       <h5 class="center-align blue white-text">Actividades planeadas en esta OT: <?= $ot->nombre_ot ?></h5>
-      <button type="button" ng-click="endActividadOT('#actividadOT')" class="btn green mini-btn2" name="button">Finalizar</button>
+      <button type="button" ng-click="closeRecursoReporte('#actividadOT',3)" class="btn green mini-btn2" name="button">Finalizar</button>
 
       <p class="padding1ex">
         Selecciona las actividades que deseas reportar hoy.
@@ -10,7 +10,7 @@
 
     </div>
 
-    <div class="" style="overflow:auto" ng-init="getActividadesOT('<?= site_url('OT/getItemByTipeOT/'.$ot->idOT.'/1') ?>')">
+    <div class="" style="overflow:auto">
       <table class="mytabla">
         <thead>
           <tr>

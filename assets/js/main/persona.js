@@ -1,6 +1,19 @@
 var lista_personal = function($scope, $http, $timeout)
 {
   $scope.pers = [];
+  $scope.consulta = {};
+  $scope.getPersonalByOtBase = function(ruta){
+    $http.post(ruta, {base : $scope.consulta.base} )
+    .then(
+      function(response){
+        console.log(response.data)
+        $scope.pers = response.data;
+      },
+      function(response){
+        console.log(response)
+      }
+    );
+  }
   $scope.cargandoConsulta = false;
   $scope.filtro_lp = [];
   $scope.cargaListaPersona = function(ruta, key=null){

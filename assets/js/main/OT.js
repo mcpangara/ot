@@ -133,14 +133,17 @@ var OT = function($scope, $http, $timeout){
 		};
 	}
 	$scope.calcularSubtotales = function(ambito, tr){
-		tr.actsubtotal = ambito.recorrerSubtotales(tr.actividades);
-		tr.persubtotal = ambito.recorrerSubtotales(tr.personal);
-		tr.eqsubtotal = ambito.recorrerSubtotales(tr.equipos);
-		//Redondeado de totales
-		tr.valor_recursos = Math.round(tr.actsubtotal+tr.persubtotal+tr.eqsubtotal);
-		tr.json_indirectos.administracion = Math.round(tr.valor_recursos * 0.18);
-		tr.json_indirectos.imprevistos = Math.round(tr.valor_recursos * 0.01);
-		tr.json_indirectos.utilidad = Math.round(tr.valor_recursos * 0.04);
+		if( tr == undefined) {
+		}else{
+			tr.actsubtotal = ambito.recorrerSubtotales(tr.actividades);
+			tr.persubtotal = ambito.recorrerSubtotales(tr.personal);
+			tr.eqsubtotal = ambito.recorrerSubtotales(tr.equipos);
+			//Redondeado de totales
+			tr.valor_recursos = Math.round(tr.actsubtotal+tr.persubtotal+tr.eqsubtotal);
+			tr.json_indirectos.administracion = Math.round(tr.valor_recursos * 0.18);
+			tr.json_indirectos.imprevistos = Math.round(tr.valor_recursos * 0.01);
+			tr.json_indirectos.utilidad = Math.round(tr.valor_recursos * 0.04);
+		}		
 	}
 	$scope.setTareaAdministracion = function(value, tr){
 		if(tr == undefined){ return 0;}
@@ -358,6 +361,19 @@ var OT = function($scope, $http, $timeout){
 		}		
 		$(tag).toggleClass(clase);
 	}
+	// Validar Valores
+	$scope.validateValues = function(it){
+		it.cantidad_he = $scope.validVal(it.cantidad_he);
+		it.cantidad_hed = $scope.validVal(it.cantidad_hed);
+		it.cantidad_hen = $scope.validVal(it.cantidad_hen);
+		it.cantidad_hefd = $scope.validVal(it.cantidad_hefd);
+		it.cantidad_hefn = $scope.validVal(it.cantidad_hefn);
+		it.cantidad_hfr = $scope.validVal(it.cantidad_hfr);
+		it.total = $scope.validVal(it.total);
+	}
+	$scope.validVal = function(val){
+		return (val==undefined || val=='')?parseInt(0):val; 
+	}
 }
 
 // Listado de OTs
@@ -504,6 +520,8 @@ var editarOT = function($scope, $http, $timeout) {
 	//horas extra
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
+	$scope.calcularHorasExtra = function(tr){ $scope.$parent.calcularValorOT($scope); }
+	$scope.validateValues = function(it){$scope.$parent.validateValues(it);}
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,$scope); }
 	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerVeredas(municip, url, $scope); }

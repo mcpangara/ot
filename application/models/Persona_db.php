@@ -102,6 +102,20 @@ class Persona_db extends CI_Model{
     );
     $this->db->insert('recurso_ot', $data);
   }
+
+  # Obtener personas de OT por base
+  public function getPersonasOtByBase($where)
+  {
+    $this->load->database('ot');
+    return $this->db->select('p.*, r.*, rot.*, OT.base_idbase, OT.ccosto, itf.*')
+      ->from('persona AS p')
+      ->join('recurso AS r', 'p.identificacion = r.persona_identificacion')
+      ->join('recurso_ot AS rot', 'r.idrecurso = rot.recurso_idrecurso')
+      ->join('itemf AS itf', 'rot.itemf_iditemf = itf.iditemf')
+      ->join('OT', 'rot.OT_idOT = OT.idOT')
+      ->where($where)
+      ->get();
+  }
   #===============================================================================================================
   #===============================================================================================================
   #fields

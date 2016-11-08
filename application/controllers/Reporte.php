@@ -72,8 +72,18 @@ class Reporte extends CI_Controller{
   }
   #===============================================================================================================
   # Obtener recursos preparados para agregar a la O.T.
-  public function getRecursoOtByType(){
-      $this->load->model();
+  public function getRecursosByOT($idOT){
+      $this->load->model('recurso_db', 'recdb');
+      $this->load->model('ot_db');
+      $pers = $this->recdb->getPersonalOtBy($idOT, 'persona');
+      $equs = $this->recdb->getEquiposOtBy($idOT, 'equipo');
+      $acts = $this->ot_db->getItemByTipeOT($idOT,1);
+      $data = array(
+          'personal' => $pers->result(), 
+          'equipo' => $equs->result(),
+          'actividad'=> $acts->result()
+        );
+      echo json_encode($data);
   }
 
   //calendario js+angular

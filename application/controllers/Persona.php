@@ -23,7 +23,9 @@ class Persona extends CI_Controller{
 
 
   public function byOT(){
-    $this->load->view('persona/personaByOT', array());
+    $this->load->model('ot_db');
+    $bases = $this->ot_db->getBases();
+    $this->load->view('persona/personaByOT', array('bases'=>$bases));
   }
 
   public function crudByOT($idOT=NULL)
@@ -41,6 +43,14 @@ class Persona extends CI_Controller{
     echo json_encode($personas->result());
   }
 
+  # Personal de OTs By Base
+  public function getPersonasOtByBase()
+  {
+    $consulta = json_decode(file_get_contents('php://input'));
+    $this->load->model('persona_db', 'per_db');
+    $personas  =$this->per_db->getPersonasOtByBase('OT.base_idbase = '.$consulta->base);
+    echo json_encode($personas->result());
+  }
   #===============================================================================================
   #===============================================================================================
   #==================== PROCESO DE CARGA DE PERSONAL X OT DESDE UN ARCHIVO =======================
