@@ -22,7 +22,8 @@ var reportes = function($scope, $http, $timeout) {
     });
   }
 
-  $scope.changeFilterSelect2 = function(fil,propiedad){
+  $scope.changeFilterSelect = function(fil,propiedad){
+    console.log(propiedad);
 		if(fil[propiedad] == undefined){
 			fil[propiedad] = true;
 		}else if (fil[propiedad] == true) {
@@ -104,11 +105,13 @@ var addReporte = function($scope, $http, $timeout) {
   // estructuras JSON y array
   $scope.rd = {
     info:{},
-    recursos:[],
+    recursos:{
+      personal:[],
+      equipos:[],
+      actividades:[]
+    },
     firmas:{}
   }
-
-  $scope.fil_pOT = {};
   $scope.personalOT = [];
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
@@ -116,25 +119,25 @@ var addReporte = function($scope, $http, $timeout) {
   // Utilidades
   $scope.toggleContent = function(tag, clase, section){
     if(section != undefined){
-			if ($(tag).hasClass(clase)) { 
+			if ($(tag).hasClass(clase)) {
 				$(section).addClass(clase);
 			}else{
-				$(section).addClass(clase);				
+				$(section).addClass(clase);
 				$(tag).removeClass(clase);
 			}
-		}		
+		}
 		$(tag).toggleClass(clase);
   }
   //------------------------------------------------------------------
   // Recursos
   //------------------------------------------------------------------
   // Datos para agregar al reporte
-  // Obtener datos para formularios 
+  // Obtener datos para formularios
   $scope.getRecursosByOT = function(url){
     $http.post(url, {})
       .then(
         function(response){
-          $scope.personaOT = response.data.personal;
+          $scope.personalOT = response.data.personal;
           $scope.equiposOT = response.data.equipos;
           $scope.actividadesOT = response.data.actividades;
           console.log(response.data.personal);
@@ -151,7 +154,6 @@ var addReporte = function($scope, $http, $timeout) {
   }
   // Ocultar una seccion de agregar recursos y ejecutar una funcion de inicio
   $scope.closeRecursoReporte = function(section, method){
-    $(section).hide(section);
     if(method == 1 ){
       $scope.agregarPersonal();
     }else if(method == 2){
@@ -159,10 +161,30 @@ var addReporte = function($scope, $http, $timeout) {
     }else if(method == 3){
       $scope.agregarActividades();
     }
+    $timeout(function(){
+      $(section).hide(100);
+    });
   }
   //Recursos By OT
-  // 
+  //
   $scope.agregarPersonal = function(){
+    //$scope.rd.recursos.personal = [];
+    //var point = $scope.rd.recursos.personal;
+    angular.forEach($scope.personalOT, function(val, key){
+      if(val.add && !$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion)){
+        $scope.rd.recursos.personal.push(val);
+      }
+      console.log(val.add);
+    });
+  }
+
+  $scope.existeRegistro = function(list, prop, valor) {
+    angular.forEach(list, function(val, key){
+      if(val[prop] == valor){
+        return true;
+      }
+    });
+    return false;
   }
 }
 

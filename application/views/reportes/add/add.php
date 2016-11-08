@@ -16,6 +16,11 @@
         .noHoverColor {
           background: #FFF;
         }
+        .mypanel{
+          border:3px solid #888;
+          min-height: 30px;
+          /*box-shadow: 0px 0px 10px #AAA inset;*/
+        }
       </style>
 
       <div class="font10">
@@ -43,8 +48,8 @@
       </div>
       <br>
 
-      <div class="mypanel" style="border:1px solid #888; min-height: 20px; box-shadow: 0px 0px 5px #AAA inset;">
-        <div id="info" class="font11 nodisplay"> <?php $this->load->view('reportes/form/info'); ?> </div>
+      <div class="mypanel">
+        <div id="info" class="font11"> <?php $this->load->view('reportes/form/info'); ?> </div>
         <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT'); ?> </div>
         <div id="firmas" class="font11 nodisplay"> <?php $this->load->view('reportes/form/firmas'); ?> </div>
         <div id="validaciones" class="font11 nodisplay"> <?php $this->load->view('reportes/form/validaciones'); ?> </div>
