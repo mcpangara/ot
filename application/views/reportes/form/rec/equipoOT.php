@@ -14,6 +14,7 @@
 
     <div id="AddEquiposOtSection" class="sectionsEquiposRD nodisplay noMaterialStyles" style="border:2px solid #999; padding:2ex;">
       <fieldset class="row">
+        <h4>Busca y relaciona equipos a esta OT reporte para agregarlos</h4>
         <div class="col s6 m6 row">
           <label class="col s3 m4">Cod. siesa: </label>
           <input class="col s4 m4" type="text" ng-model="consultaEquiposOT.codigo_siesa">
@@ -74,6 +75,7 @@
     </div>
 
     <div id="AddEquiposReporteSection" class="sectionsEquiposRD " style="overflow:auto">
+      <h4>Equipos por agregar al reporte</h4>
       <table class="mytabla">
         <thead>
           <tr>
