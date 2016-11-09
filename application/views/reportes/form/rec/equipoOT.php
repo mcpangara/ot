@@ -7,8 +7,8 @@
 
     <div class="row">
       <br>
-      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposOtSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos NO relacionados a OT</button>
-      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposReporteSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos para reportar</button>
+      <button type="button" class="btn" ng-click="toggleContent('#AddEquiposOtSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos NO relacionados a OT</button>
+      <button type="button" class="btn" ng-click="toggleContent('#AddEquiposReporteSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos para reportar</button>
       <br>
     </div>
 
