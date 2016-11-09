@@ -157,7 +157,7 @@ class Ot extends CI_Controller {
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id);
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
-		print_r($ot->result());
+		print_r($ot->row());
 		/*
 		$indirectos = json_decode($tr->json_indirectos);
 		$viaticos = json_decode($tr->json_viaticos);
