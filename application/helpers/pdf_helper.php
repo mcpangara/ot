@@ -4,7 +4,7 @@ require_once('dompdf/autoload.inc.php');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-function doPDF($html = ''){
+function doPDF($html = '', $titulo='name'){
   $options = new Options();
   $options->setIsRemoteEnabled(true);
   // instantiate and use the dompdf class
@@ -15,6 +15,6 @@ function doPDF($html = ''){
   $dompdf->render();
   // Output the generated PDF to Browser
   $pdf = $dompdf->output();
-  write_file('./uploads/name.pdf', $pdf);
-  force_download('./uploads/name.pdf', NULL);
+  write_file('./uploads/ordenes/'.$titulo.'.pdf', $pdf);
+  force_download('./uploads//ordenes/'.$titulo.'.pdf', NULL);
 }

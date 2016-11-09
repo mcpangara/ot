@@ -155,7 +155,7 @@ class Ot extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->helper('download');
 		$this->load->model(array('ot_db', 'item_db'));
-		$ot = $this->ot_db->getData($id);
+		$ot = $this->ot_db->getData($id)->row();
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
 
 		$indirectos = json_decode($tr->json_indirectos);
@@ -170,7 +170,7 @@ class Ot extends CI_Controller {
 		$equs = $this->item_db->getItemsByTarea($idtr, 3);
 		$sub_equs = $this->subtotales($equs);
 		$data = array(
-			'ot' => $ot->row(),
+			'ot' => $ot,
 			'pers'=>$pers,
 			'equs'=>$equs,
 			'acts'=>$acts,
@@ -184,7 +184,7 @@ class Ot extends CI_Controller {
 			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
-		doPDF($html);
+		doPDF($html, $ot->nombre_ot);
 	}
 
 	public function getMyReportes($value='')
