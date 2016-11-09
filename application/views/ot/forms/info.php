@@ -21,7 +21,7 @@
 
       <div class="col s12 l6">
         <input type="checkbox" id="p3" ng-model="ot.json.p3" />
-        <label for="p3">CURSO T.F.S</label>
+        <label for="p3">CURSO F.T.S</label>
       </div>
 
       <div class="col s12 l6">
@@ -75,7 +75,7 @@
       ?>
       <option value="<?= $depar->departamento ?>"><?= $depar->departamento ?></option>
       <?php
-      } ?>    
+      } ?>
     </select>
   </div>
   <div class="col l6 s12 row">
