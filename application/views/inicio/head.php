@@ -40,9 +40,9 @@
     <script src="<?= base_url('assets/js/uploader/jquery.uploadfile.js') ?>" type="text/javascript"></script>
 
     <!-- datatables -->
-    <script src="<?= base_url('assets/js/datatables/Spanish.json') ?>" charset="utf-8"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/datatables/dataTables.min.js') ?>"></script>
-    <link rel="stylesheet" href="<?= base_url('assets/js/datatables/dataTables.min.css') ?>" media="screen" charset="utf-8">
+    <script src="<?= base_url('assets/js/datatables/spanish.json') ?>" charset="utf-8"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/datatables/datatables.min.js') ?>"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/js/datatables/datatables.min.css') ?>" media="screen" charset="utf-8">
 
     <!-- tinyMCE -->
     <script src="<?= base_url('assets/js/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
