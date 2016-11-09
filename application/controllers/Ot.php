@@ -184,7 +184,7 @@ class Ot extends CI_Controller {
 			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
-		doPDF($html, $ot->nombre_ot);
+		doPDF($html, 'MyOT');
 	}
 
 	public function getMyReportes($value='')
