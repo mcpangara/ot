@@ -18,12 +18,16 @@ class Reporte extends CI_Controller{
     $ot = $this->otdb->getData($idOT);
     $this->load->model('tarea_db', 'tarea');
     $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
-    $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result()));
+
+    //obtener unidades de negocio
+    $this->load->model('equipos_db', 'equ');
+    $un_equipos = $this->equ->getResumenUN();
+    $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result(), 'un_equipos'=>$un_equipos));
   }
 
   public function insert(){
     $post = json_decode( file_get_contents("php://input") );
-    
+
   }
 
   #=============================================================================================================
@@ -42,9 +46,9 @@ class Reporte extends CI_Controller{
   # Obtener el reporte siguiente por fecha de la OT
   public function getNext($idOT, $idReporte, $date)
   {
-    
+
   }
-  
+
   # Obtener el reporte anterior por fecha de una OT
   public function getPrevious($idOT, $idReporte, $date)
   {
@@ -79,7 +83,7 @@ class Reporte extends CI_Controller{
       $equs = $this->recdb->getEquiposOtBy($idOT, 'equipo');
       $acts = $this->ot_db->getItemByTipeOT($idOT,1);
       $data = array(
-          'personal' => $pers->result(), 
+          'personal' => $pers->result(),
           'equipo' => $equs->result(),
           'actividad'=> $acts->result()
         );
@@ -93,7 +97,5 @@ class Reporte extends CI_Controller{
 		$ot = $this->myot->getData($ot);
 		$this->load->view('reportes/calendar', array('ot'=>$ot->row()));
 	}
-
-
 
 }

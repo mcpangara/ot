@@ -38,10 +38,11 @@ var equipoUP = function($scope, $http, $timeout) {
           return data;
         },
         onSuccess: function(file, data){
-          alert(JSON.stringify(data));
-          console.log(JSON.stringify(data));
-          $scope.cerrarWindow();
-          $scope.refreshTabs();
+          $("#resultado").html(data);
+          $("#inputhtml").val(data)
+          //console.log(JSON.stringify(data));
+          //$scope.cerrarWindow();
+          //$scope.refreshTabs();
           $scope.cargandoConsulta = false;
         },
         onError: function(files,status,errMsg,pd){

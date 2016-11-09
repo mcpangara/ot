@@ -165,22 +165,36 @@ var addReporte = function($scope, $http, $timeout) {
       $(section).hide(100);
     });
   }
-  //Recursos By OT
-  //
+  
+  // Agregar el personal seleccionado al reporte
   $scope.agregarPersonal = function(){
-    //$scope.rd.recursos.personal = [];
-    //var point = $scope.rd.recursos.personal;
     angular.forEach($scope.personalOT, function(val, key){
       if(val.add && !$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion)){
         $scope.rd.recursos.personal.push(val);
       }
-      console.log(val.add);
+    });
+  }
+  // Agregar equipos seleccionados al reporte
+  $scope.agregarEquipos = function(){
+    angular.forEach($scope.equiposOT, function(val, key){
+      if(val.add && !$scope.existeRegistro($scope.rd.recursos.equipos, 'codigo_siesa', val.codigo_siesa)){
+        $scope.rd.recursos.equipos.push(val);
+      }
+    });
+  }
+  // Agregar actividades seleccionadas al reporte
+  $scope.agregarActividades = function(){
+    angular.forEach($scope.actividades, function(val, key){
+      if(val.add && !$scope.existeRegistro($scope.rd.recursos.actividades, 'itemc_iditemc', val.itemc_iditemc)){
+        $scope.rd.recursos.actividades.push(val);
+      }
     });
   }
 
   $scope.existeRegistro = function(list, prop, valor) {
     angular.forEach(list, function(val, key){
       if(val[prop] == valor){
+        console.log(true);
         return true;
       }
     });

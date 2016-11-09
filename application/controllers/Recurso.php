@@ -46,38 +46,44 @@ class Recurso extends CI_Controller{
   }
 
   # Recorrer excel
-  public function recorrerFilasMaestro($process, $ruta='./uploads/personal/04112016/prueba.xlsx')
+  public function recorrerFilasMaestro($process, $ruta='./uploads/equipos.xlsx')
   {
     $rows = $this->leerExcel($ruta, TRUE);
     $this->load->helper("excel");
     $this->load->model('ot_db', 'ot');
     $this->load->model('item_db', 'item');
     $this->load->model('equipo_db', 'equ');
+    $this->ot->init_transact();
 
     $noValid = array();
     foreach ($rows as $key => $cell) {
-      if($cell['B'] != 'Id C.O.' || $cell['C'] != 'Empleado'){
-        $ots = $this->ot->getOtBy( 'nombre_ot', $cell['F'] );
-        $items = $this->item->getItemfBy( 'codigo', $cell['G'], 'itemf' );
-        # echo "No.OT:".$ots->num_rows()." | No.Items:".$items->num_rows()."<br>";
-        if ($ots->num_rows() > 0 && $items->num_rows() > 0) {
-          $orden = $ots->row();
-          $myitemf = $items->row();
-          if ($process == 'personal') {
+      if ($process == 'personal') {
+        if($cell['B'] != 'Id C.O.' || $cell['C'] != 'Empleado'){
+          $ots = $this->ot->getOtBy( 'nombre_ot', $cell['F'] );
+          $items = $this->item->getItemfBy( 'codigo', $cell['G'], 'itemf' );
+          # echo "No.OT:".$ots->num_rows()." | No.Items:".$items->num_rows()."<br>";
+          if ($ots->num_rows() > 0 && $items->num_rows() > 0) {
+            $orden = $ots->row();
+            $myitemf = $items->row();
             $cell = $this->registrarPersona($cell, $orden, $myitemf, $noValid);
-          }else if($process ==  'equipo'){
-            $this->registrarEquipo($cell, $orden, $myitemf, $noValid);
+          }else{
+            $cell["A"] = "OT y/o id CCosto no encontrados";
           }
         }else{
-          $cell["A"] = "OT y/o id CCosto no encontrados";
+          $cell["A"] = "Comentario App";
         }
-      }else{
-        $cell["A"] = "Comentario App";
+      }else if($process ==  'equipos'){
+        $cell = $this->registrarEquipo($cell, $noValid);
       }
       array_push($noValid, $cell);
     }
-    $html = $this->load->view('miscelanios/reporteCargaXLS',array("filas"=>$noValid),TRUE);
-    $this->load->view('miscelanios/resultadoUpdateMAestro', array("html"=>$html));
+
+    if($this->ot->end_transact()){
+      $html = $this->load->view('miscelanios/reporteCargaXLS',array("filas"=>$noValid),TRUE);
+      $this->load->view('miscelanios/resultadoUpdateMAestro', array("html"=>$html));
+    }else{
+      echo "Fallo al insertar registros";
+    }
   }
   # ------------------------------------------------------------------
   # AUXILIARES:
@@ -89,15 +95,11 @@ class Recurso extends CI_Controller{
   }
 
   # Llama al helper para leer un xlsx y devuelve una coleccion PHP
-  public function leerExcel($ruta)
+  public function leerExcel($ruta='./uploads/equipos2.xlsx')
   {
     $this->load->library('excel');
     return $this->excel->getData($ruta);
-  }
-  # Comprueba si existe la persona previamente
-  public function existePersona($value='')
-  {
-    # code...
+    //print_r($this->excel->getData($ruta));
   }
   # Proceso que realiza el registro de datos por persona
   public function registrarPersona($row, $ot, $itemf, $noValid)
@@ -126,9 +128,30 @@ class Recurso extends CI_Controller{
     return $row;
   }
 
-  public function existeEquipo($value='')
+  public function registrarEquipo($row, $noValid)
   {
-    # code...
+    $this->load->model('equipo_db', 'equ');
+    $equipos  = $this->equ->getBy("codigo_siesa", $row['B'], "equipo");
+    if( $row['B'] == 'Activo fijo' || $row['B'] == 'referencia' ){
+
+    }
+    if($equipos->num_rows() < 1){
+      $obj = array();
+      $obj["codigo_siesa"] = $row['B'];
+      $obj["referencia"] = $row['C'];
+      $obj["descripcion"] = $row['D'];
+      $obj["desc_abreviada"] = $row['E'];
+      $obj["nit_responsable"] = $row['F'];
+      $obj["responsable"] = $row['G'];
+      $obj["ccosto"] = $row['I'];
+      $obj["un"] = $row['K'];
+      $obj["desc_un"] = $row['L'];
+      $id =$this->equ->addArray($obj);
+      $row['A'] = 'Agregado Equipo - ID: '.$id;
+    }else{
+      $row['A'] = 'Equipo ya existente';
+    }
+    return $row;
   }
 
 

@@ -3,14 +3,42 @@
     <div class="">
       <h5 class="center-align blue white-text">Equipo agregado a esta OT: <?= $ot->nombre_ot ?></h5>
       <button type="button" ng-click="closeRecursoReporte('#equipoOT',1)" class="btn green mini-btn2" name="button">Finalizar</button>
-
-      <p class="padding1ex">
-        Hola, aqui puedes elejir el equipo que deseas agreagar al reporte diario que estas desarrollando. Recuerda, una vez hecho esto podras duplicar el reporte para agilizar este proceso
-      </p>
-
     </div>
 
-    <div class="" style="overflow:auto">
+    <div class="">
+      <button type="button" class="btn mini-btn" ng-click="toggleContent('#')"></button>
+      <button type="button" class="btn mini-btn" ng-click="toggleContent('#')"></button>
+    </div>
+
+    <div id="AddEquiposOtSection">
+      <fieldset class="row">
+        <div class="col s6 m6 row">
+          <label for="col s4 m4">Cod. siesa: </label>
+          <input type="text" ng-model="consultaEquiposOT.codigo_siesa">
+        </div>
+
+        <div class="col s6 m6 row">
+          <label for="col s4 m4">Referencia: </label>
+          <input type="text" ng-model="consultaEquiposOT.referencia">
+        </div>
+
+        <div class="">
+          <label for="col s4 m4">descripcion: </label>
+          <input type="text" ng-model="consultaEquiposOT.descripcion">
+        </div>
+
+        <div class="">
+          <label for="col s4 m4">Unidad de negocio: </label>
+          <select ng-model="consultaEquiposOT.descripcion">
+            <?php foreach ($un_equipos as $value): ?>
+              <option value="<?= $value->un ?>"> <?= $value->desc_un ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="AddEquiposReporteSection" style="overflow:auto">
       <table class="mytabla">
         <thead>
           <tr>

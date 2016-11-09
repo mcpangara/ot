@@ -28,16 +28,10 @@ class Equipo_db extends CI_Model{
       return $status;
     }
 
-    public function addObj($equipo)
+    public function addArray($data)
     {
       try {
-        $this->load->database('ot');
-        $data = array(
-            'serial' => $equipo->serial,
-            'codigo_siesa'=>$equipo->codigo_siesa,
-            'descripcion'=>$equipo->descripcion,
-            'referencia'=>( isset($equipo->referencia)?$equipo->referencia:NULL )
-          );
+        $this->load->database('ot');;
         $this->db->insert('equipo', $data);
         return $this->db->insert_id();
       } catch (Exception $e) {
@@ -55,12 +49,6 @@ class Equipo_db extends CI_Model{
     {
       $this->load->database('ot');
       return $this->db->get('equipo');
-    }
-    # Equipos por Serial/Placa
-    public function getBy($serial)
-    {
-      $this->load->database('ot');
-      return $this->db->get('equipo', array('serial'=>$serial));
     }
     # consulta de equipos por OT
     public function getByOT($idOT)
@@ -120,9 +108,22 @@ class Equipo_db extends CI_Model{
       return $rows->num_rows() > 0?TRUE:FALSE;
     }
 
+    // Obtener
+    public function getResumenUN($value='')
+    {
+      $this->load->database('ot');
+      return $this->db->select('un, desc_un')->from('equipo')->group_by('dec_un')->get();
+    }
+
     #===============================================================================================================
     #===============================================================================================================
     #fields
+
+    public function getBy($campo, $valorbuscado, $tabla)
+    {
+      return $this->db->get_where($tabla, array($campo=>$valorbuscado));
+    }
+
     public function getField($where, $select, $table)
   	{
   		$this->load->database('ot');

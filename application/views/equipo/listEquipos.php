@@ -12,10 +12,11 @@
     <thead>
       <tr>
          <th>No.</th>
-         <th>Serial</th>
+         <th>Codigo siesa</th>
          <th>Referencia</th>
          <th>Descripción</th>
-         <th>Cod. Siesa</th>
+         <th>C. Costo</th>
+         <th>Unidad de negocio</th>
          <th>Opciones</th>
       </tr>
     </thead>
@@ -30,10 +31,11 @@
       </tr>
       <tr ng-repeat="q in equs | filter: filtro_lp track by $index ">
          <td ng-bind="$index+1"></td>
-         <td ng-bind="q.serial"></td>
+         <td ng-bind="q.codigo_siesa"></td>
          <td ng-bind="q.referencia"></td>
          <td ng-bind="q.descripcion"></td>
-         <td ng-bind="q.codigo_siesa"></td>
+         <td ng-bind="q.ccosto"></td>
+         <td ng-bind="q.desc_un"></td>
          <td>
            <button type="button" class="btn mini-btn">Historial de RDP</button>
            <button type="button" class="btn mini-btn">Sus OT´s</button>
