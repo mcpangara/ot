@@ -7,12 +7,12 @@
 
     <div class="row">
       <br>
-      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposOtSection', 'nodisplay', 'div#AddEquiposOtSection')">Equipos NO relacionados a OT</button>
-      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposReporteSection', 'nodisplay', 'div#AddEquiposReporteSection')">Equipos para reportar</button>
+      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposOtSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos NO relacionados a OT</button>
+      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposReporteSection', 'nodisplay', 'div.sectionsEquiposRD')">Equipos para reportar</button>
       <br>
     </div>
 
-    <div id="AddEquiposOtSection" class="nodisplay noMaterialStyles" style="border:2px solid #999; padding:2ex;">
+    <div id="AddEquiposOtSection" class="sectionsEquiposRD nodisplay noMaterialStyles" style="border:2px solid #999; padding:2ex;">
       <fieldset class="row">
         <div class="col s6 m6 row">
           <label class="col s3 m4">Cod. siesa: </label>
@@ -73,7 +73,7 @@
       </table>
     </div>
 
-    <div id="AddEquiposReporteSection" class="" style="overflow:auto">
+    <div id="AddEquiposReporteSection" class="sectionsEquiposRD " style="overflow:auto">
       <table class="mytabla">
         <thead>
           <tr>
