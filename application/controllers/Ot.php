@@ -150,6 +150,7 @@ class Ot extends CI_Controller {
 	# Generar OT impresión
 	public function imprimirOT($id, $idtr)
 	{
+		
 		$this->load->helper('pdf');
 		$this->load->helper('file');
 		$this->load->helper('download');

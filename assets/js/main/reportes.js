@@ -122,6 +122,7 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.resultEquiposBusqueda = [];
 
   $scope.buscarEquiposBy = function(url){
+    console.log(url)
     $http.post(url, {
       codigo_siesa: $scope.consultaEquiposOT.codigo_siesa,
       referencia: $scope.consultaEquiposOT.referencia, 
@@ -129,6 +130,7 @@ var addReporte = function($scope, $http, $timeout) {
       un: $scope.consultaEquiposOT.un
     }).then(
       function(response){
+        console.log(response.data)
         $scope.resultEquiposBusqueda = response.data;
       },
       function(response){

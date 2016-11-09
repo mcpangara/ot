@@ -59,10 +59,11 @@ class Ot_db extends CI_Model {
 		$this->db->from('OT');
 		$this->db->join('especialidad AS esp', 'OT.especialidad_idespecialidad = esp.idespecialidad');
 		$this->db->join('base AS b', 'OT.base_idbase = b.idbase');
-		$this->db->join('municipio AS mun', 'mun.idpoblado = OT.municipio_idpoblado');
-		$this->db->join('tipo_ot AS tp', 'tp.idtipo_ot = OT.tipo_ot_idtipo_ot');
+		$this->db->join('municipio AS mun', 'OT.municipio_idpoblado = mun.idpoblado');
+		$this->db->join('tipo_ot AS tp', 'OT.tipo_ot_idtipo_ot = tp.idtipo_ot');
 		$this->db->where('OT.idOT', $idot);
 		return $this->db->get();
+
 	}
 	//Obtener un listado de todas las OT
 	public function getAllOTs($base = NULL){
