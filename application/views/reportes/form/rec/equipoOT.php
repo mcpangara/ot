@@ -5,47 +5,83 @@
       <button type="button" ng-click="closeRecursoReporte('#equipoOT',1)" class="btn green mini-btn2" name="button">Finalizar</button>
     </div>
 
-    <div class="">
-      <button type="button" class="btn mini-btn" ng-click="toggleContent('#')"></button>
-      <button type="button" class="btn mini-btn" ng-click="toggleContent('#')"></button>
+    <div class="row">
+      <br>
+      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposOtSection', 'nodisplay', 'div#AddEquiposOtSection')">Equipos NO relacionados a OT</button>
+      <button type="button" class="btn mini-btn blue" ng-click="toggleContent('#AddEquiposReporteSection', 'nodisplay', 'div#AddEquiposReporteSection')">Equipos para reportar</button>
+      <br>
     </div>
 
-    <div id="AddEquiposOtSection">
+    <div id="AddEquiposOtSection" class="nodisplay noMaterialStyles" style="border:2px solid #999; padding:2ex;">
       <fieldset class="row">
         <div class="col s6 m6 row">
-          <label for="col s4 m4">Cod. siesa: </label>
-          <input type="text" ng-model="consultaEquiposOT.codigo_siesa">
+          <label class="col s3 m4">Cod. siesa: </label>
+          <input class="col s4 m4" type="text" ng-model="consultaEquiposOT.codigo_siesa">
         </div>
 
         <div class="col s6 m6 row">
-          <label for="col s4 m4">Referencia: </label>
-          <input type="text" ng-model="consultaEquiposOT.referencia">
+          <label class="col s3 m4">Referencia: </label>
+          <input class="col s4 m4" type="text" ng-model="consultaEquiposOT.referencia">
         </div>
 
-        <div class="">
-          <label for="col s4 m4">descripcion: </label>
-          <input type="text" ng-model="consultaEquiposOT.descripcion">
+        <div class="col s6 m6 row">
+          <label class="col s3 m4">Descripcion: </label>
+          <input class="col s4 m4" type="text" ng-model="consultaEquiposOT.descripcion">
         </div>
 
-        <div class="">
-          <label for="col s4 m4">Unidad de negocio: </label>
-          <select ng-model="consultaEquiposOT.descripcion">
-            <?php foreach ($un_equipos as $value): ?>
+        <div class="col s6 m6 row">
+          <label class="col s4 m4">Unidad de negocio: </label>
+          <select class="col s4 m4" ng-model="consultaEquiposOT.un">
+            <?php foreach ($un_equipos->result() as $value): ?>
               <option value="<?= $value->un ?>"> <?= $value->desc_un ?></option>
             <?php endforeach; ?>
           </select>
         </div>
+
+        <div class="col s6 m6 row">
+          <button type="button" class="btn mini-btn" ng.click="buscarEquiposBy('<?= site_url('equipo/findBy') ?>')">Buscar</button>
+        </div>
       </fieldset>
+
+
+      <table class="mytabla">
+        <thead>
+          <tr>
+            <th>Cod. Siesa</th>
+            <th>Referencia</th>
+            <th>Descripción</th>
+            <th>Unidad negocio</th>
+            <th>Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <input type="text" ng-model="filterResultEquiposBusqueda.codigo_siesa" value=""> </td>
+            <td> <input type="text" ng-model="filterResultEquiposBusqueda.referecia" value=""> </td>
+            <td> <input type="text" ng-model="filterResultEquiposBusqueda.descripcion" value=""> </td>
+            <td> <input type="text" ng-model="filterResultEquiposBusqueda.desc_un" value=""> </td>
+            <td></td>
+          </tr>
+          <tr ng-repeat="it in resultEquiposBusqueda | filter: filterResultEquiposBusqueda">
+            <td ng-bind="it.codigo_siesa"></td>
+            <td ng-bind="it.referencia"></td>
+            <td ng-bind="it.descripcion"></td>
+            <td ng-bind="it.desc_un"></td>
+            <td><button type="button" ng-click="add"> Add. </button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div id="AddEquiposReporteSection" style="overflow:auto">
+    <div id="AddEquiposReporteSection" class="" style="overflow:auto">
       <table class="mytabla">
         <thead>
           <tr>
             <th>No.</th>
-            <th>Serial/Placa</th>
-            <th>Descripcion</th>
-            <th>Codigo Siesa</th>
+            <th>Cod. Siesa</th>
+            <th>Referencia</th>
+            <th>Descripción</th>
+            <th>Unidad negocio</th>
             <th>item</th>
             <th>Item del cargo</th>
           </tr>

@@ -108,11 +108,24 @@ class Equipo_db extends CI_Model{
       return $rows->num_rows() > 0?TRUE:FALSE;
     }
 
-    // Obtener
+    // Obtener resumen de los tipo de unidades de negocio
     public function getResumenUN($value='')
     {
       $this->load->database('ot');
-      return $this->db->select('un, desc_un')->from('equipo')->group_by('dec_un')->get();
+      return $this->db->select('un, desc_un')->from('equipo')->group_by('desc_un')->get();
+    }
+
+    // Obtener bajo paramentrops
+    public function searchBy($codigo_siesa, $referencia, $descripcion, $un )
+    {
+      $this->load->database('ot');
+      $this->db->select('*');
+      $this->db->from('equipos');
+      $this->db->like('codigo_siesa', '%'.$codigo_siesa.'%');
+      $this->db->like('referencia', '%'.$referencia.'%');
+      $this->db->like('descripcion', '%'.$descripcion.'%');
+      $this->db->like('un', $un);
+      return $this->db->get();
     }
 
     #===============================================================================================================

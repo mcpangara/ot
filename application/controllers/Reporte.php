@@ -20,7 +20,7 @@ class Reporte extends CI_Controller{
     $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
 
     //obtener unidades de negocio
-    $this->load->model('equipos_db', 'equ');
+    $this->load->model('equipo_db', 'equ');
     $un_equipos = $this->equ->getResumenUN();
     $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result(), 'un_equipos'=>$un_equipos));
   }

@@ -50,7 +50,7 @@
 
       <div class="mypanel">
         <div id="info" class="font11"> <?php $this->load->view('reportes/form/info'); ?> </div>
-        <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT'); ?> </div>
+        <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT', array('un_equipos'=>$un_equipos)); ?> </div>
         <div id="firmas" class="font11 nodisplay"> <?php $this->load->view('reportes/form/firmas'); ?> </div>
         <div id="validaciones" class="font11 nodisplay"> <?php $this->load->view('reportes/form/validaciones'); ?> </div>
       </div>

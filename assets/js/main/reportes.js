@@ -116,6 +116,27 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
 
+
+  //Busque de equipos no relacionados
+  $scope.consultaEquiposOT = {};
+  $scope.resultEquiposBusqueda = [];
+
+  $scope.buscarEquiposBy = function(url){
+    $http.post(url, {
+      codigo_siesa: $scope.consultaEquiposOT.codigo_siesa,
+      referencia: $scope.consultaEquiposOT.referencia, 
+      descripcion: $scope.consultaEquiposOT.descripcion,
+      un: $scope.consultaEquiposOT.un
+    }).then(
+      function(response){
+        $scope.resultEquiposBusqueda = response.data;
+      },
+      function(response){
+        alert('Falló la consulta');
+      }
+    );
+  }
+
   // Utilidades
   $scope.toggleContent = function(tag, clase, section){
     if(section != undefined){

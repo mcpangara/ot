@@ -26,13 +26,11 @@ class Equipo extends CI_Controller{
     echo json_encode($equs->result());
   }
 
-  public function findBy($idSerial)
+  public function findBy()
   {
+    $post = json_decode( file_get_contents("php://input") );
     $this->load->model('equipo_db', 'equ');
-    if (!isset($idSerial)) {
-      $idSerial = $this->input->post('serial');
-    }
-    $equs = $this->equ->getBy($idSerial);
+    $equs = $this->equ->searchBy($post->codigo_siesa, $post->referencia, $post->descripcion, $post->un);
     echo json_encode( $equs->result() );
   }
 
