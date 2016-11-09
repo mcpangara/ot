@@ -150,14 +150,15 @@ class Ot extends CI_Controller {
 	# Generar OT impresión
 	public function imprimirOT($id, $idtr)
 	{
-		
+
 		$this->load->helper('pdf');
 		$this->load->helper('file');
 		$this->load->helper('download');
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id);
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
-
+		print_r($ot->result());
+		/*
 		$indirectos = json_decode($tr->json_indirectos);
 		$viaticos = json_decode($tr->json_viaticos);
 		$reembolsables = json_decode($tr->json_reembolsables);
@@ -185,6 +186,7 @@ class Ot extends CI_Controller {
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
 		doPDF($html);
+		*/
 	}
 
 	public function getMyReportes($value='')
