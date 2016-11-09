@@ -16,5 +16,5 @@ function doPDF($html = '', $titulo='name'){
   // Output the generated PDF to Browser
   $pdf = $dompdf->output();
   write_file('./uploads/ordenes/'.$titulo.'.pdf', $pdf);
-  force_download('./uploads//ordenes/'.$titulo.'.pdf', NULL);
+  force_download('./uploads/ordenes/'.$titulo.'.pdf', NULL);
 }
