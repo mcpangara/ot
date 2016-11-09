@@ -157,8 +157,7 @@ class Ot extends CI_Controller {
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id);
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
-		print_r($ot->row());
-		/*
+
 		$indirectos = json_decode($tr->json_indirectos);
 		$viaticos = json_decode($tr->json_viaticos);
 		$reembolsables = json_decode($tr->json_reembolsables);
@@ -185,8 +184,8 @@ class Ot extends CI_Controller {
 			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
-		doPDF($html);
-		*/
+		echo $html;
+		//doPDF($html);
 	}
 
 	public function getMyReportes($value='')
