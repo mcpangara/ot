@@ -7,7 +7,6 @@
   <body>
 
     <style media="screen">
-      table{border-collapse: collapse;}
       td, th{
         border: 1px solid #333;
       }
