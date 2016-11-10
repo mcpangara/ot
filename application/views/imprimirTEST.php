@@ -16,15 +16,12 @@
     <h1>test de impresion de tablas</h1>
 
     <table>
-      <thead>
         <tr>
           <th>Test</th>
           <th>Test</th>
           <th>Test</th>
           <th>Test</th>
         </tr>
-      </thead>
-      <tbody>
         <?php
         for ($i=0; $i < 20; $i++) {
         ?>
@@ -37,7 +34,6 @@
         <?php
         }
         ?>
-      </tbody>
     </table>
 
   </body>
