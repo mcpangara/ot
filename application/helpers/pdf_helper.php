@@ -4,7 +4,12 @@ require_once('dompdf/autoload.inc.php');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-function doPDF($html = '', $titulo='name'){
+function doPDF($html = '', $titulo='name', $ruta = './uploads/'){
+
+  if ('./uploads/ordenes/'.$titulo.'.pdf') {
+    unlink('./uploads/ordenes/'.$titulo.'.pdf');
+  }
+  
   $options = new Options();
   $options->setIsRemoteEnabled(true);
   // instantiate and use the dompdf class
