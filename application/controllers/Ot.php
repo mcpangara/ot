@@ -190,6 +190,15 @@ class Ot extends CI_Controller {
 	  //force_download('./uploads/ordenes/'.$titulo.'.pdf', NULL);
 	}
 
+	public function pruebaImprimir()
+	{
+		$this->load->helper('pdf');
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$html =$this->load->view('imprimirTEST','',TRUE);
+		doPDF($html, 'prueba', './uploads/');
+	}
+
 	public function getMyReportes($value='')
 	{
 		$reportes = array();

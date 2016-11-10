@@ -6,7 +6,7 @@ use Dompdf\Options;
 
 function doPDF($html = '', $titulo='name', $ruta = './uploads/ordenes/'){
 
-  if ($ruta.$titulo.'.pdf') {
+  if (file_exists($ruta.$titulo.'.pdf')) {
     unlink($ruta.$titulo.'.pdf');
   }
 
