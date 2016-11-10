@@ -6,6 +6,14 @@
   </head>
   <body>
 
+    <style media="screen">
+      table{border-collapse: collapse;}
+      td, th{
+        height: 4ex;
+        border: 1px solid #333;
+      }
+    </style>
+
     <h1>test de impresion de tablas</h1>
 
     <table>
