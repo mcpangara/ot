@@ -19,7 +19,6 @@
       padding: 2px;
       border: 1px solid #333;
       font-size: 9px;
-      height: 4ex;
     }
 
     table{
