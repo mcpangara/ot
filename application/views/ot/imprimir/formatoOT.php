@@ -12,6 +12,7 @@
         padding: 2px;
         border: 1px solid #333;
         font-size: 9px;
+        min-height: 15px;
       }
 
       table{
