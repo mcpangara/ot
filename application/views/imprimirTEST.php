@@ -9,9 +9,6 @@
     <style media="screen">
       table{border-collapse: collapse;}
       td, th{
-        overflow: visible;
-        height: 4ex;
-        width: 10ex;
         border: 1px solid #333;
       }
     </style>
