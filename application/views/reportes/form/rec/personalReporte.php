@@ -38,7 +38,7 @@
         <td></td>
         <td></td>
       </tr>
-      <tr ng-repeat="pr in personalReporte | filter: personalFilter | orderBy: 'descripcion' track by $index" ng-class='pr.clase'>
+      <tr ng-repeat="pr in rd.recursos.personal | filter: personalFilter | orderBy: 'descripcion' track by $index" ng-class='pr.clase'>
         <td>
           <button type="button" class="btn mini-btn2 red" ng-click="delPersonaReporte(pr)"> x </button>
         </td>

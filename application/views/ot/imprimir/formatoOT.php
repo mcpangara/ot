@@ -12,8 +12,6 @@
         padding: 2px;
         border: 1px solid #333;
         font-size: 9px;
-        font-size-adjust: auto;
-        line-height: normal;       
       }
 
       table{

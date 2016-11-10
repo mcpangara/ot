@@ -32,12 +32,12 @@
                 <big ng-if="fil_pOT.add == true" data-icon="&#xe04c;"></big>
               </button>
             </td>
-            <td><input type="text" ng-click="fil_pOT.identificacion" placeholder="filtrar"></td>
-            <td><input type="text" ng-click="fil_pOT.nombre_completo" placeholder="filtrar"></td>
-            <td><input type="text" ng-click="fil_pOT.nombre_ot" placeholder="filtrar"></td>
-            <td><input type="text" ng-click="fil_pOT.descripcion" placeholder="filtrar"></td>
+            <td><input type="text" ng-model="fil_pOT.identificacion" placeholder="filtrar"></td>
+            <td><input type="text" ng-model="fil_pOT.nombre_completo" placeholder="filtrar"></td>
+            <td><input type="text" ng-model="fil_pOT.nombre_ot" placeholder="filtrar"></td>
+            <td><input type="text" ng-model="fil_pOT.descripcion" placeholder="filtrar"></td>
           </tr>
-          <tr ng-repeat="p in personaOT | filter: fil_pOT | orderBy: 'descripcion'">
+          <tr ng-repeat="p in personalOT | filter: fil_pOT | orderBy: 'descripcion'">
             <td class="noMaterialStyles"> <input type="checkbox" ng-model="p.add" ng-init="p.add=undefined"> </td>
             <td ng-bind="p.identificacion"></td>
             <td ng-bind="p.nombre_completo"></td>

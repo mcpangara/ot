@@ -184,7 +184,10 @@ class Ot extends CI_Controller {
 			'tr'=>$tr
 		);
 		$html = $this->load->view('ot/imprimir/formatoOT',$data,TRUE);
-		doPDF($html, $ot->nombre_ot);
+		doPDF($html, $ot->nombre_ot, './uploads/ordenes/');
+
+		//write_file('./uploads/ordenes/'.$titulo.'.pdf', $pdf);
+	  //force_download('./uploads/ordenes/'.$titulo.'.pdf', NULL);
 	}
 
 	public function getMyReportes($value='')
