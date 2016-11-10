@@ -196,8 +196,7 @@ class Ot extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->helper('download');
 		$html =$this->load->view('imprimirTEST','',TRUE);
-		echo $html;
-		//doPDF($html, 'prueba', './uploads/');
+		doPDF($html, 'prueba', './uploads/');
 	}
 
 	public function getMyReportes($value='')
