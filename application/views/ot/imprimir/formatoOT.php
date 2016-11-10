@@ -45,7 +45,7 @@
 
     <div id="cabecera">
       <?php
-      #$this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot));
+      $this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot));
       ?>
     </div>
     <div class="spacer">
@@ -71,13 +71,13 @@
     </table>
 
     <?php
-      /*$this->load->view('ot/imprimir/costosIndOT', array());
+      $this->load->view('ot/imprimir/costosIndOT', array());
 
       $this->load->view('ot/imprimir/gastosViajeOT',array());
 
       $this->load->view('ot/imprimir/racionesHE', array());
 
-      $this->load->view('ot/imprimir/reembolsablesOT',array());*/
+      $this->load->view('ot/imprimir/reembolsablesOT',array());
     ?>
 
     <table>
