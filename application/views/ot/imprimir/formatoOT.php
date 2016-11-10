@@ -44,7 +44,9 @@
     </style>
 
     <div id="cabecera">
-      <?php $this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot)); ?>
+      <?php
+      #$this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot));
+      ?>
     </div>
     <div class="spacer">
 
@@ -52,9 +54,9 @@
 
     <table>
       <?php
-        #$this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES', 'tr'=>$tr, 'subTotal'=>$sub_acts) );
-        #$this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL', 'tr'=>$tr, 'subTotal'=>$sub_pers) );
-        #$this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS', 'tr'=>$tr, 'subTotal'=>$sub_equs) );
+        $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$acts, 'no_gestion'=>1, 'gestion'=>'ACTIVIDADES', 'tr'=>$tr, 'subTotal'=>$sub_acts) );
+        $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$pers, 'no_gestion'=>2, 'gestion'=>'PERSONAL', 'tr'=>$tr, 'subTotal'=>$sub_pers) );
+        $this->load->view('ot/imprimir/itemsplanOT', array('items'=>$equs, 'no_gestion'=>3, 'gestion'=>'EQUIPOS', 'tr'=>$tr, 'subTotal'=>$sub_equs) );
       ?>
       <tbody>
         <tr style="background: #F2F989">
@@ -68,13 +70,15 @@
       </tbody>
     </table>
 
-    <?php $this->load->view('ot/imprimir/costosIndOT', array()); ?>
+    <?php
+      /*$this->load->view('ot/imprimir/costosIndOT', array());
 
-    <?php $this->load->view('ot/imprimir/gastosViajeOT',array()); ?>
+      $this->load->view('ot/imprimir/gastosViajeOT',array());
 
-    <?php $this->load->view('ot/imprimir/racionesHE', array()); ?>
+      $this->load->view('ot/imprimir/racionesHE', array());
 
-    <?php $this->load->view('ot/imprimir/reembolsablesOT',array()); ?>
+      $this->load->view('ot/imprimir/reembolsablesOT',array());*/
+    ?>
 
     <table>
       <thead>
