@@ -1,4 +1,4 @@
-<section style="padding:1ex">
+<section>
   <div class="ventanasAdd" ng-init="getRecursosByOT('<?= site_url('reporte/getRecursosByOT/'.$ot->idOT) ?>')">
     <?php $this->load->view('reportes/form/rec/personaOT', array('ot'=>$ot) ); ?>
     <?php $this->load->view('reportes/form/rec/equipoOT', array('ot'=>$ot, 'un_equipos'=>$un_equipos) ); ?>

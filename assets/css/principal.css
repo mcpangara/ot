@@ -109,13 +109,13 @@ section.area select, .windowCentered select{
 }
 
 #VentanaContainer{
-  position: absolute;;
+  position: absolute;
   z-index: 3;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  height:150%;
+  min-height:120%;
   width:100%;
   background:rgba(200, 200, 200, 0.4);
   padding-top: 1.5ex;
@@ -129,9 +129,8 @@ section.area select, .windowCentered select{
   width: 60%;
   background: #FFF;
   padding: 1.5ex;
-  height: 90%;
+  min-height: 10ex;
   box-shadow: 0 0 8px 3px #999;
-  overflow: auto;
 }
 
 .windowCentered2{
@@ -139,9 +138,8 @@ section.area select, .windowCentered select{
   width: 100%;
   background: #FFF;
   padding: 1ex;
-  height: 90%;
+  min-height: 10ex;
   box-shadow: 0 0 8px 3px #999;
-  overflow: auto;
 }
 #WindowOculta{
   display: none;
