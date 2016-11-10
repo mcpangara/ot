@@ -7,12 +7,13 @@
   <body>
 
     <style media="screen">
+      body { font-family: DejaVu Sans; }
       td, th{
         border: 1px solid #333;
       }
     </style>
 
-    <h1>test de impresion de tablas</h1>
+    <h1>DomPDF</h1>
 
     <table>
         <tr>
