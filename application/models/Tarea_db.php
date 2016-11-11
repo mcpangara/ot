@@ -22,13 +22,13 @@ class Tarea_db extends CI_Model{
   #===========================================================================
   # Agregar tarea
   public function add(
-    $nombre_tarea_ot, 
-    $fecha_inicio, 
-    $fecha_fin, 
-    $valor_recursos, 
+    $nombre_tarea_ot,
+    $fecha_inicio,
+    $fecha_fin,
+    $valor_recursos,
     $valor_tarea_ot,
-    $json_indirectos, $json_viaticos, $json_horas_extra, 
-    $json_reembolsables, $json_racion, $json_recursos, 
+    $json_indirectos, $json_viaticos, $json_horas_extra,
+    $json_reembolsables, $json_racion, $json_recursos,
     $OT_idOT)
   {
     $data = array(
@@ -80,19 +80,19 @@ class Tarea_db extends CI_Model{
     $this->load->database('ot');
     $this->db->select('
         itt.iditem_tarea_ot,
-        itt.cantidad, 
-        itt.duracion, 
-        itt.unidad, 
-        itt.fecha_agregado, 
-        itt.valor_plan, 
-        itt.itemf_iditemf, 
-        itt.itemf_codigo, 
+        itt.cantidad,
+        itt.duracion,
+        itt.unidad,
+        itt.fecha_agregado,
+        itt.valor_plan,
+        itt.itemf_iditemf,
+        itt.itemf_codigo,
         itt.tarea_ot_idtarea_ot,
-        itf.descripcion, 
-        itf.itemc_item, 
-        itf.iditemf, 
-        tar.OT_idOT AS idot, 
-        tarif.tarifa, 
+        itf.descripcion,
+        itf.itemc_item,
+        itf.iditemf,
+        tar.OT_idOT AS idot,
+        tarif.tarifa,
         tarif.salario
         ');
     $this->db->from('item_tarea_ot AS itt');
@@ -106,16 +106,16 @@ class Tarea_db extends CI_Model{
   }
 
   # Obtener todos los items de una tarea
-  public function getTareasItemsResumenBy($idot)
+  public function getTareasItemsResumenBy($idot, $tipo=NULL)
   {
     $this->load->database('ot');
     $this->db->select('
-      itf.codigo, 
-      itf.descripcion, 
-      itf.itemc_item, 
-      itf.iditemf, 
-      tar.OT_idOT AS idot, 
-      tarif.tarifa, 
+      itf.codigo,
+      itf.descripcion,
+      itf.itemc_item,
+      itf.iditemf,
+      tar.OT_idOT AS idot,
+      tarif.tarifa,
       itt.iditem_tarea_ot'
       );
 		$this->db->from('item_tarea_ot AS itt');
@@ -124,7 +124,9 @@ class Tarea_db extends CI_Model{
 		$this->db->join('tarea_ot AS tar', 'tar.idtarea_ot = itt.tarea_ot_idtarea_ot');
     $this->db->where('tar.OT_idOT', $idot);
     $this->db->where('tarif.estado_tarifa', TRUE);
-    $this->db->where('itf.tipo',2);
+    if (isset($tipo)) {
+      $this->db->where('itf.tipo',$tipo);
+    }
     $this->db->group_by('itf.codigo');
     return $this->db->get();
   }

@@ -120,11 +120,19 @@ class Equipo_db extends CI_Model{
     {
       $this->load->database('ot');
       $this->db->select('*');
-      $this->db->from('equipos');
-      $this->db->like('codigo_siesa', '%'.$codigo_siesa.'%');
-      $this->db->like('referencia', '%'.$referencia.'%');
-      $this->db->like('descripcion', '%'.$descripcion.'%');
-      $this->db->like('un', $un);
+      $this->db->from('equipo');
+      if (isset($codigo_siesa)) {
+        $this->db->like('codigo_siesa', $codigo_siesa);
+      }
+      if (isset($referencia)) {
+        $this->db->like('referencia', $referencia);
+      }
+      if (isset($descripcion)) {
+        $this->db->like('descripcion', $descripcion);
+      }
+      if (isset($un)) {
+        $this->db->like('un', $un);
+      }
       return $this->db->get();
     }
 

@@ -121,9 +121,9 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.consultaEquiposOT = {};
   $scope.resultEquiposBusqueda = [];
 
-  $scope.buscarEquiposBy = function(url){
-    console.log(url)
-    $http.post(url, {
+  $scope.buscarEquiposBy = function(link){
+    console.log(link)
+    $http.post(link, {
       codigo_siesa: $scope.consultaEquiposOT.codigo_siesa,
       referencia: $scope.consultaEquiposOT.referencia, 
       descripcion: $scope.consultaEquiposOT.descripcion,
@@ -151,6 +151,11 @@ var addReporte = function($scope, $http, $timeout) {
 		}
 		$(tag).toggleClass(clase);
   }
+  $scope.showContent = function(tag, section){
+    $(section).hide();
+    $(tag).show();
+  }
+
   //------------------------------------------------------------------
   // Recursos
   //------------------------------------------------------------------

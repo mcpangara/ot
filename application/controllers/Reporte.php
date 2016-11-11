@@ -17,12 +17,12 @@ class Reporte extends CI_Controller{
     $this->load->model('Ot_db', 'otdb');
     $ot = $this->otdb->getData($idOT);
     $this->load->model('tarea_db', 'tarea');
-    $allitems = $this->tarea->getTareasItemsResumenBy($idOT);
+    $item_equipos = $this->tarea->getTareasItemsResumenBy($idOT,3);
 
     //obtener unidades de negocio
     $this->load->model('equipo_db', 'equ');
     $un_equipos = $this->equ->getResumenUN();
-    $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'itemList'=>$allitems->result(), 'un_equipos'=>$un_equipos));
+    $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'item_equipos'=>$item_equipos->result(), 'un_equipos'=>$un_equipos));
   }
 
   public function insert(){

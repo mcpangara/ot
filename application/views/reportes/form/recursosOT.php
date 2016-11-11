@@ -1,7 +1,7 @@
 <section style="padding:1ex">
   <div class="ventanasAdd" ng-init="getRecursosByOT('<?= site_url('reporte/getRecursosByOT/'.$ot->idOT) ?>')">
     <?php $this->load->view('reportes/form/rec/personaOT', array('ot'=>$ot) ); ?>
-    <?php $this->load->view('reportes/form/rec/equipoOT', array('ot'=>$ot, 'un_equipos'=>$un_equipos) ); ?>
+    <?php $this->load->view('reportes/form/rec/equipoOT', array('ot'=>$ot, 'un_equipos'=>$un_equipos, 'item_equipos'=>$item_equipos) ); ?>
     <?php $this->load->view('reportes/form/rec/actividadesOT', array('ot'=>$ot) ); ?>
   </div>
   <h5>Listados de recursos, cantidades y tiempos: </h5>

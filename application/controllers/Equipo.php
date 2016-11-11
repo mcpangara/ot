@@ -30,8 +30,21 @@ class Equipo extends CI_Controller{
   {
     $post = json_decode( file_get_contents("php://input") );
     $this->load->model('equipo_db', 'equ');
-    $equs = $this->equ->searchBy($post->codigo_siesa, $post->referencia, $post->descripcion, $post->un);
+    $equs = $this->equ->searchBy(
+      (isset($post->codigo_siesa)?$post->codigo_siesa:NULL),
+      (isset($post->referencia)?$post->referencia:NULL),
+      (isset($post->descripcion)?$post->descripcion:NULL),
+      (isset($post->un)?$post->un:NULL)
+    );
     echo json_encode( $equs->result() );
+  }
+
+  public function lastQuery($value='')
+  {
+    $this->load->database('ot');
+    $this->load->model('equipo_db', 'equ');
+    $equs = $this->equ->searchBy(1, 1, 1, 1);
+    echo $this->db->last_query();
   }
 
   #===============================================================================================
