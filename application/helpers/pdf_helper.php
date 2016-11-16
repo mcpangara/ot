@@ -19,7 +19,7 @@ function doPDF($html = '', $titulo='name', $ruta = './uploads/ordenes/'){
   // Render the HTML as PDF
   $dompdf->render();
   // Output the generated PDF to Browser
-  return $dompdf->stream($Titulo);
+  return $dompdf->stream($titulo);
   //$pdf = $dompdf->output();
   //write_file($ruta.$titulo.'.pdf', $pdf);
   //force_download($ruta.$titulo.'.pdf', NULL);
