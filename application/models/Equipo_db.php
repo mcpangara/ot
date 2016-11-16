@@ -73,19 +73,34 @@ class Equipo_db extends CI_Model{
       return $this->db->get();
     }
     # relacionar equipo con OT
-    public function setOT($equipo)
+    public function setEquipoRecurso($equipo)
     {
       $this->load->database('ot');
       $data = array(
-        'equipo_idequipo'=>$equipo->idequipo,
-        'equipo_serial'=>$equipo->serial,
+        'equipo_idequipo'=>$equipo->equipo_idequipo,
+        'nombre_ot'=>$equipo->nombre_ot,
+        'centro_costo'=>$equipo->centro_costo,
+        'unidad_negocio'=>$equipo->unidad_negocio,
+        'fecha_registro'=>$equipo->fecha_registro,
+        'fecha_ingreso'=>$equipo->fecha_registro,
+      );
+      $this->db->insert('recurso', $data);
+      return $this->db->insert_id();
+    }
+    public function setEquipoOT($equipo, $id)
+    {
+      $this->load->database('ot');
+      $data = array(
         'itemf_codigo'=>$equipo->itemf_codigo,
         'itemf_iditemf'=>$equipo->itemf_iditemf,
-        'nombre_ot'=>$equipo->nombre_ot,
+        'estado'=>TRUE,
+        'validado'=>TRUE,
+        'recurso_idrecurso'=>$id,
         'OT_idOT'=>$equipo->OT_idOT,
-        'tipo_recurso' => 'EQUIPO'
+        'tipo' => 'equipo'
       );
       $this->db->insert('recurso_ot', $data);
+      return $this->db->insert_id();
     }
     # saber si existe ya el equipo relacionado con la OT
     public function existeRecursoOT($equipo)

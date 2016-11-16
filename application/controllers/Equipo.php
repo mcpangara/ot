@@ -39,13 +39,28 @@ class Equipo extends CI_Controller{
     echo json_encode( $equs->result() );
   }
 
-  public function lastQuery($value='')
+  #===============================================================================================
+  # Procesos para reporte
+  #===============================================================================================
+  public function relacionarEquipo($value='')
   {
-    $this->load->database('ot');
-    $this->load->model('equipo_db', 'equ');
-    $equs = $this->equ->searchBy(1, 1, 1, 1);
-    echo $this->db->last_query();
+    $post = json_decode( file_get_contents("php://input") );
+    $this->load->model('equipo_db', 'equipo');
+    $this->load->model('item_db', 'item');
+    $rows = $this->item->getField('iditemf = '.$post->itemf_iditemf, 'codigo, iditemf', 'itemf');
+    if($rows->num_rows() > 0){
+      $myitemf = $rows->row();
+      $post->itemf_codigo = $myitemf->codigo;
+      $id = $this->equipo->setEquipoRecurso($post);
+      $this->equipo->setEquipoOT($post, $id);
+      $this->load->model('recurso_db', 'recdb');
+      $list_eq = $this->recdb->getEquiposOtBy($post->OT_idOT, 'equipo');
+      echo json_encode($list_eq->result());
+    }else{
+      show_404();
+    }
   }
+
 
   #===============================================================================================
   # consultas

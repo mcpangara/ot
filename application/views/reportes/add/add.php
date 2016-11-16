@@ -23,6 +23,11 @@
         }
       </style>
 
+      <form class="hidden" action="#">
+        <input type="hidden" ng-model="rd.info.idOT" ng-init="rd.info.idOT = '<?= $ot->idOT ?>'">
+        <input type="hidden" ng-model="rd.info.ccosto" ng-init="rd.info.ccosto = '<?= $ot->ccosto ?>'">
+      </form>
+
       <div class="font10">
         <table class="mytabla centered">
           <thead>
@@ -34,8 +39,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><b><?= $ot->nombre_ot ?></b></td>
-              <td> <b><?= date('Y/m/d',strtotime($fecha)) ?></b> </td>
+              <td><b><?= $ot->nombre_ot ?></b> <input type="hidden" ng-model="rd.info.nombre_ot" ng-init="rd.info.nombre_ot = '<?= $ot->nombre_ot ?>'"> </td>
+              <td> <b><?= date('Y/m/d',strtotime($fecha)) ?></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $fecha ?>'"></td>
               <td>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#info', 'nodisplay', '.mypanel > div')">Detalles</button>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#recursosOT', 'nodisplay', '.mypanel > div')">Tiempos y Recursos</button>

@@ -11,7 +11,7 @@ section.area input, section.area select{
   border:1px solid #999;
 }
 .mytabla.inputsSmall input, .mytabla .inputsSmall input{
-  width: 8ex;
+  width: 9ex;
 }
 
 section.area input::-webkit-input-placeholder,

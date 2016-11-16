@@ -49,7 +49,7 @@ class Recurso_db extends CI_Model{
     $this->load->database('ot');
     return $this->db->select('
         rot.idrecurso_ot, rot.tipo, rot.itemf_iditemf, rot.recurso_idrecurso, r.nombre_ot, r.centro_costo, r.unidad_negocio,
-        p.*, itf.iditemf, itf.descripcion, itf.codigo, itf.itemc_iditemc, itf.itemc_item'
+        p.*, itf.iditemf, itf.descripcion, itf.codigo, itf.itemc_iditemc, itf.itemc_item, itf.unidad'
       )->from('recurso_ot AS rot')
       ->join('recurso AS r', 'rot.recurso_idrecurso = r.idrecurso')
       ->join('itemf AS itf', 'rot.itemf_iditemf = itf.iditemf')
@@ -65,7 +65,8 @@ class Recurso_db extends CI_Model{
     $this->load->database('ot');
     return $this->db->select('
         rot.idrecurso_ot, rot.tipo, rot.itemf_iditemf, rot.recurso_idrecurso, r.nombre_ot, r.centro_costo, r.unidad_negocio,
-        e.*, itf.iditemf, itf.descripcion, itf.codigo, itf.itemc_iditemc, itf.itemc_item'
+        e.idequipo, e.descripcion AS descripcion_equipo, e.codigo_siesa, e.referencia, e.ccosto, e.un, e.desc_un,
+        itf.iditemf, itf.descripcion, itf.codigo, itf.itemc_iditemc, itf.itemc_item, itf.unidad'
       )->from('recurso_ot AS rot')
       ->join('recurso AS r', 'rot.recurso_idrecurso = r.idrecurso')
       ->join('itemf AS itf', 'rot.itemf_iditemf = itf.iditemf')

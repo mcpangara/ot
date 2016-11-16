@@ -143,7 +143,7 @@ var OT = function($scope, $http, $timeout){
 			tr.json_indirectos.administracion = Math.round(tr.valor_recursos * 0.18);
 			tr.json_indirectos.imprevistos = Math.round(tr.valor_recursos * 0.01);
 			tr.json_indirectos.utilidad = Math.round(tr.valor_recursos * 0.04);
-		}		
+		}
 	}
 	$scope.setTareaAdministracion = function(value, tr){
 		if(tr == undefined){ return 0;}
@@ -193,8 +193,8 @@ var OT = function($scope, $http, $timeout){
 	$scope.calcularViaticos =  function(tr, ambito){
 		ambito.viaticos = 0;
 		angular.forEach(tr.json_viaticos.json_viaticos, function(v,k){
-			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){ 
-				ambito.viaticos += 0; 
+			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){
+				ambito.viaticos += 0;
 			}
 			else {
 				ambito.viaticos += (v.alojamiento + v.transporte + v.alimentacion + v.miscelanios) * (v.cantidad_gv * v.duracion_gv) ;
@@ -352,13 +352,13 @@ var OT = function($scope, $http, $timeout){
 	}
 	$scope.toggleContent = function(tag, clase, section){
 		if(section != undefined){
-			if ($(tag).hasClass(clase)) { 
+			if ($(tag).hasClass(clase)) {
 				$(section).addClass(clase);
 			}else{
-				$(section).addClass(clase);				
+				$(section).addClass(clase);
 				$(tag).removeClass(clase);
 			}
-		}		
+		}
 		$(tag).toggleClass(clase);
 	}
 	// Validar Valores
@@ -372,7 +372,7 @@ var OT = function($scope, $http, $timeout){
 		it.total = $scope.validVal(it.total);
 	}
 	$scope.validVal = function(val){
-		return (val==undefined || val=='')?parseInt(0):val; 
+		return (val==undefined || val=='')?parseInt(0):val;
 	}
 }
 
@@ -426,15 +426,15 @@ var agregarOT = function($scope, $http, $timeout){
 	// procesos para items added a la OT
 	//items planeación
 	$scope.VwITems = function(tipo){
-		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); } 
+		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); }
 		else{ alert('No se han agregado tareas');}
 	}
 	$scope.addSelectedItems = function(){
 		$scope.$parent.addSelectedItems($scope,$scope.tr); $scope.calcularSubtotales();
 	}
-	$scope.calcularSubtotales = function(){	
-		$scope.$parent.calcularSubtotales($scope, $scope.tr); 
-		$scope.$parent.calcularValorOT($scope);		
+	$scope.calcularSubtotales = function(){
+		$scope.$parent.calcularSubtotales($scope, $scope.tr);
+		$scope.$parent.calcularValorOT($scope);
 	}
 	//viaticos
 	$scope.setViaticos= function(tag, tr){ $scope.$parent.setViaticos(tag, tr, $scope); }
@@ -462,7 +462,7 @@ var agregarOT = function($scope, $http, $timeout){
 				if(response.data == 'Orden de trabajo guardada correctamente'){
 					alert('Orden de trabajo guardada correctamente');
 					$timeout(function(){
-						$scope.$parent.cerrarWindow();
+						//$scope.$parent.cerrarWindow();
 						$scope.$parent.refreshTabs();
 					});
 				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
@@ -488,7 +488,7 @@ var editarOT = function($scope, $http, $timeout) {
 			$scope.$parent.calcularSubtotales($scope, val);
 		});
 	}
-	
+
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope);}
 	$scope.getData = function(url){ $scope.$parent.getData(url, $scope, true); }
 	$scope.selectTarea = function(ot, indice){
@@ -505,8 +505,8 @@ var editarOT = function($scope, $http, $timeout) {
 	}
 	// procesos para items added a la OT
 	//items planeación
-	$scope.VwITems = function(tipo){ 
-		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); } 
+	$scope.VwITems = function(tipo){
+		if($scope.ot.tareas != undefined && $scope.ot.tareas.length > 0){ $scope.$parent.VwITems(tipo, $scope); }
 		else{ alert('No se han agregado tareas');}
 	}
 	$scope.addSelectedItems = function(){ $scope.$parent.addSelectedItems($scope,$scope.tr); $scope.calcularSubtotales(); }

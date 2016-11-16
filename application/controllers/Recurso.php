@@ -67,7 +67,12 @@ class Recurso extends CI_Controller{
             $myitemf = $items->row();
             $cell = $this->registrarPersona($cell, $orden, $myitemf, $noValid);
           }else{
-            $cell["A"] = "OT y/o id CCosto no encontrados";
+            if($ots->num_rows() < 1){
+              $cell["A"] .= ">> OT no encontrada ";
+            }
+            if($items->num_rows() < 1) {
+              $cell["A"] .= ">> Itemf no encontrado";
+            }
           }
         }else{
           $cell["A"] = "Comentario App";

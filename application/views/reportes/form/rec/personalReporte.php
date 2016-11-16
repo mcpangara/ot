@@ -4,6 +4,7 @@
       <tr style="background: #EEE">
         <th></th>
         <th>#</th>
+        <th>Item</th>
         <th>identificacion</th>
         <th>Nombre Completo</th>
         <th>Cargo</th>
@@ -25,15 +26,17 @@
               ng-change="verificadorNumericoFilter(personalFilter, 'indice',1)"
               style="width:2em">
         </td>
+
+        <td> <input ng-model="personalFilter.itemc_item" > </td>
         <td><input type="text" ng-model="personalFilter.identificacion"></td>
         <td><input type="text" ng-model="personalFilter.nombre_completo"></td>
         <td><input type="text" ng-model="personalFilter.descripcion"></td>
+
         <td class="noMaterialStyles">
           <input type="checkbox"
               ng-click="changeFilterSelect2(personalFilter, 'facturable')" ng-init="personalFilter.facturable = undefined"></td>
         <td class="red lighten-3 inputsSmall"><input type="number" ng-model="defaultH.hora_inicio" ng-change="changeHora(defaultH,'hora_inicio')"></td>
         <td class="red lighten-3 inputsSmall"><input type="number" ng-model="defaultH.hora_fin" ng-change="changeHora(defaltH,'hora_fin')"></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -43,9 +46,12 @@
           <button type="button" class="btn mini-btn2 red" ng-click="delPersonaReporte(pr)"> x </button>
         </td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')" ng-bind="pr.indice" ng-init="pr.indice = ($index + 1)"></td>
+
+        <td> <a href="#" ng-bind="pr.itemc_item" ng-click="mensaje(pr.descripcion)"></a></td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')"> <b ng-bind="pr.identificacion"></b> </td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')"> <b ng-bind="pr.nombre_completo"></b> </td>
         <td> <b ng-bind="pr.descripcion"></b> </td>
+
         <td class="noMaterialStyles">
           <input type="checkbox" ng-model="pr.facturable" ng-init="pr.facturable = true" >
         </td>

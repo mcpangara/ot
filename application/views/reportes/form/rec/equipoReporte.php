@@ -3,14 +3,15 @@
     <thead style="background: #EEE">
       <tr>
         <th rowspan="2"></th>
-        <th rowspan="2">Codigo</th>
-        <th rowspan="2">Equipo</th>
+
         <th rowspan="2">Item</th>
+        <th rowspan="2">Codigo</th>
+        <th rowspan="2">Ref./AF</th>
+        <th rowspan="2">Equipo</th>
         <th rowspan="2">Operador / Conductor</th>
         <th rowspan="2">Cant.</th>
         <th rowspan="2">B/O</th>
-        <th rowspan="2">Unidad</th>
-        <th rowspan="2">Placa/AF</th>
+        <th rowspan="2">UND</th>
         <th colspan="2">Horometro</th>
         <th colspan="3">Reporte horas</th>
       </tr>
@@ -24,12 +25,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="eq in equipoReporte track by $index">
+      <tr ng-repeat="eq in rd.recursos.equipos track by $index">
         <td> <button type="button" class="btn mini-btn2 red" ng-click="delEquipoReporte(eq)"> x </button> </td>
+
+        <td> <a ng-bind="eq.itemc_item" ng-click="mensaje(eq.descripcion)" href="#" /> </td>
         <td ng-bind="eq.codigo_siesa"></td>
-        <td ng-bind="eq.item_descripcion"></td>
-        <td ng-bind="eq.itemc_item"></td>
-        <td> <input type="text" ng-model="eq.nombre_operador"> </td>
+        <td ng-bind="eq.referencia"></td>
+        <td ng-bind="eq.descripcion_equipo"></td>
+        <td> <input type="text" style="width:90%" ng-model="eq.nombre_operador"> </td>
         <td class="inputsSmall"> <input type="number" ng-model="eq.cantidad"> </td>
         <td class="inputsSmall noMaterialStyles">
           <select class="" ng-model="eq.tipo_equipo">
@@ -38,7 +41,6 @@
           </select>
         </td>
         <td class="inputsSmall"> <input type="text" ng-model="eq.unidad"> </td>
-        <td ng-bind="eq.placa"></td>
 
         <td class="inputsSmall"> <input type="text" ng-model="eq.horo_inicio"> </td>
         <td class="inputsSmall"> <input type="text" ng-model="eq.horo_fin"> </td>

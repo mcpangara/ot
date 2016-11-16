@@ -32,8 +32,8 @@
 								<?php endforeach; ?>
 							</select>
 						</td>
-						<td> <input type="number" ng-model="itv.cantidad_gv" style="width:5ex" name="name" value=""> </td>
-						<td> <input type="number" ng-model="itv.duracion_gv" style="width:5ex" name="name" value=""> </td>
+						<td> <input type="number" ng-model="itv.cantidad_gv" style="width:7ex" name="name" value=""> </td>
+						<td> <input type="number" ng-model="itv.duracion_gv" style="width:7ex" name="name" value=""> </td>
 						<td>{{ itv.alojamiento | currency:'$':0 }}</td>
 						<td>{{ itv.alimentacion | currency:'$':0 }}</td>
 						<td>{{ itv.transporte | currency:'$':0 }}</td>
