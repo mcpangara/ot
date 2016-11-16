@@ -77,8 +77,8 @@
         <tr>
           <td><?= $ot->justificacion ?></td>
           <td><?= date('Y-m-d', strtotime($ot->fecha_creacion)) ?></td>
-          <td></td>
-          <td></td>
+          <td><?= date('Y-m-d', strtotime($tr->fecha_inicio)) ?></td>
+          <td><?= date('Y-m-d', strtotime($tr->fecha_fin)) ?></td>
           <td></td>
         </tr>
       </tbody>
