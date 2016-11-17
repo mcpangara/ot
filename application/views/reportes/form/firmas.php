@@ -9,14 +9,14 @@
       </thead>
       <tbody>
         <tr>
-          <td>Nombre: <input type="text" ng-model="rd.firmas.elaborador_nombre" value=""> </td>
-          <td>Nombre: <input type="text" ng-model="rd.firmas.contratista_nombre" value=""> </td>
-          <td>Nombre: <input type="text" ng-model="rd.firmas.ecopetrol_nombre" value=""> </td>
+          <td>Nombre: <input type="text" ng-model="rd.info.elaborador_nombre" value=""> </td>
+          <td>Nombre: <input type="text" ng-model="rd.info.contratista_nombre" value=""> </td>
+          <td>Nombre: <input type="text" ng-model="rd.info.ecopetrol_nombre" value=""> </td>
         </tr>
         <tr>
-          <td>Cargo: <input type="text" ng-model="rd.firmas.elaborado_cargo" value=""> </td>
-          <td>Cargo: <input type="text" ng-model="rd.firmas.contratista_cargo" value=""> </td>
-          <td>Cargo: <input type="text" ng-model="rd.firmas.ecopetrol_cargo" value=""> </td>
+          <td>Cargo: <input type="text" ng-model="rd.info.elaborado_cargo" value=""> </td>
+          <td>Cargo: <input type="text" ng-model="rd.info.contratista_cargo" value=""> </td>
+          <td>Cargo: <input type="text" ng-model="rd.info.ecopetrol_cargo" value=""> </td>
         </tr>
       </tbody>
     </table>

@@ -28,7 +28,12 @@
       <tr ng-repeat="eq in rd.recursos.equipos track by $index">
         <td> <button type="button" class="btn mini-btn2 red" ng-click="quitarRegistroLista( rd.recursos.equipos, eq, '','')"> x </button> </td>
 
-        <td> <a ng-bind="eq.itemc_item" ng-click="mensaje(eq.placa+' '+eq.descripcion)" href="#" /> </td>
+        <td>
+          <div  class="valign-wrapper" >
+            <span ng-if="eq.valid != undefined && !eq.valid" class="valign red-text text-darken-2" style="font-size:3ex" data-icon="f"></span>
+            <a ng-bind="eq.itemc_item" class="valign" ng-click="mensaje(eq.placa+' '+eq.descripcion)" href="#" />
+          </div>
+        </td>
         <td ng-bind="eq.codigo_siesa"></td>
         <td ng-bind="eq.referencia"></td>
         <td ng-bind="eq.descripcion_equipo"></td>

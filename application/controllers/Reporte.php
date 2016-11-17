@@ -24,10 +24,44 @@ class Reporte extends CI_Controller{
     $un_equipos = $this->equ->getResumenUN();
     $this->load->view('reportes/add/add', array('ot'=>$ot->row(), 'fecha'=>$fecha, 'item_equipos'=>$item_equipos->result(), 'un_equipos'=>$un_equipos));
   }
-
+  # insetar el reporte
   public function insert(){
     $post = json_decode( file_get_contents("php://input") );
+    $info = $post->info;
+    $recusos = $post->recursos;
+    $this->load->model('reporte_db', 'repo');
+    foreach ($recursos as $key => $value) {
+    }
+    //
+  }
+  #===========================================================================================================
+  # Validaciones para guardar el reporte
 
+  # valida si un Recurso ya esta registrado en una fecha dada
+  public function validarRecurso($idrecurso_ot, $fecha)
+  {
+    $rows = $this->repo->recursoRepoFecha($idrecurso_ot, $fecha);
+    if($rows->num_rows() > 0){
+      return FALSE;
+    }
+    return TRUE;
+  }
+  # Valida un conjunto de recursos en una fecha a reportar
+  public function validarRecursos()
+  {
+    $this->load->model('reporte_db', 'repo');
+    $post = json_decode( file_get_contents("php://input") );
+    foreach ($post->recursos as $k => $v) {
+      if($k!='actividades'){
+        foreach ($v as $key => $value) {
+          $value->valid =  $this->validarRecurso(
+            $value->idrecurso_ot,
+            $post->fecha
+          );
+        }
+      }
+    }
+    echo json_encode($post);
   }
 
   #=============================================================================================================
@@ -78,10 +112,10 @@ class Reporte extends CI_Controller{
   # Obtener recursos preparados para agregar a la O.T.
   public function getRecursosByOT($idOT){
       $this->load->model('recurso_db', 'recdb');
-      $this->load->model('ot_db');
+      $this->load->model('tarea_db','tarea');
       $pers = $this->recdb->getPersonalOtBy($idOT, 'persona');
       $equs = $this->recdb->getEquiposOtBy($idOT, 'equipo');
-      $acts = $this->ot_db->getItemByTipeOT($idOT,1);
+      $acts = $this->tarea->getResumenCantItems($idOT,1);
       $data = array(
           'personal' => $pers->result(),
           'equipo' => $equs->result(),

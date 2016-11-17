@@ -16,7 +16,7 @@
           <tr>
             <th class="noMaterialStyles">
               <small>Todos</small><br>
-              <input type="checkbox" ng-click="FunSelectionAll(persOT, 'add')">
+              <input type="checkbox" ng-click="selectionAll(personalOT, 'add')">
             </th>
             <th>Identificacion</th>
             <th>Nombre de empleados</th>

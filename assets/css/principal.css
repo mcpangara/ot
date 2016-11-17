@@ -154,7 +154,7 @@ section.area select, .windowCentered select{
 }
 
 .windowCentered2 .btnWindow button, .windowCentered .btnWindow button{
-  line-height: 0;
+  line-height: normal;
   height: 3ex;
 }
 /* ============================================= */

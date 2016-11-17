@@ -28,7 +28,7 @@
         <input type="hidden" ng-model="rd.info.ccosto" ng-init="rd.info.ccosto = '<?= $ot->ccosto ?>'">
       </form>
 
-      <div class="font10">
+      <div class="font12">
         <table class="mytabla centered">
           <thead>
             <tr style="background: #6FA5ED">
@@ -42,9 +42,10 @@
               <td><b><?= $ot->nombre_ot ?></b> <input type="hidden" ng-model="rd.info.nombre_ot" ng-init="rd.info.nombre_ot = '<?= $ot->nombre_ot ?>'"> </td>
               <td> <b><?= date('Y/m/d',strtotime($fecha)) ?></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $fecha ?>'"></td>
               <td>
-                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#info', 'nodisplay', '.mypanel > div')">Detalles</button>
-                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#recursosOT', 'nodisplay', '.mypanel > div')">Tiempos y Recursos</button>
-                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#firmas', 'nodisplay', '.mypanel > div')">Firmas</button>
+                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#info', 'nodisplay', '.mypanel > div')" data-icon="&#xe021;"> Detalles Reporte</button>
+                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#recursosOT', 'nodisplay', '.mypanel > div')" data-icon="+"> Tiempo/Recursos</button>
+                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#firmas', 'nodisplay', '.mypanel > div')" data-icon="^">Firmas</button>
+                <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#observacion', 'nodisplay', '.mypanel > div')" data-icon="&#xe03d;"> Observaciones</button>
                 <button type="button" class="btn mini-btn orange" ng-click="toggleContent('#validaciones', 'nodisplay', '.mypanel > div')">Validaciones</button>
               </td>
             </tr>
@@ -62,10 +63,17 @@
       <br>
 
       <div class="btnWindow">
-        <button type="button" class="waves-effect waves-light btn mini-btn" ng-click="guardarReporte('<?= site_url('ot/saveOT') ?>')">Guardar</button>
-        <button type="button" class="waves-effect waves-light btn green mini-btn" ng-click="generarVistaPrevia('<?= site_url('ot/saveOT') ?>')">Imprimir</button>
-        <button type="button" class="waves-effect waves-light btn grey mini-btn" ng-click="toggleWindow()">Ocultar</button>
-        <button type="button" class="waves-effect waves-light btn red mini-btn" ng-click="cerrarWindow()">Cerrar</button>
+        <button type="button" class="waves-effect waves-light btn green mini-btn2" ng-click="validarRecursos('<?= site_url('reporte/validarRecursos') ?>')" data-icon="&#xe02d;">
+           Validar reporte
+        </button>
+        <br>
+        <br>
+
+        <button type="button" class="waves-effect waves-light btn mini-btn2" ng-click="guardarReporte('<?= site_url('ot/saveOT') ?>')">
+          <b data-icon="&#xe015;"></b> Guardar
+        </button>
+        <button type="button" class="waves-effect waves-light btn grey mini-btn2" ng-click="toggleWindow()" data-icon="&#xe036;"> Ocultar</button>
+        <button type="button" class="waves-effect waves-light btn red mini-btn2" ng-click="cerrarWindow()" data-icon="n"> Cerrar</button>
       </div>
     </div>
 

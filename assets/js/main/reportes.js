@@ -33,29 +33,38 @@ var reportes = function($scope, $http, $timeout) {
 
   // Relacionar un equipo a una OT
   $scope.relacionarEquipoAOt = function(it, url,ambito){
-    $http.post(
-      url,
-      {
-        equipo_idequipo: it.idequipo,
-        OT_idOT: ambito.rd.info.idOT,
-        centro_costo: ambito.rd.info.ccosto,
-        nombre_ot: ambito.rd.info.nombre_ot,
-        fecha_registro: ambito.rd.info.fecha_reporte,
-        itemf_iditemf: it.item,
-        codigo_siesa: it.codigo_siesa,
-        unidad_negocio: it.desc_un
-      }
-    ).then(
-      function(response){
-        ambito.equiposOT = response.data;
-        console.log(ambito.equiposOT);
-      },
-      function(response){
-        alert(response.data)
-      }
-    );
+      if(it.item == undefined || it.item == ''){
+        alert('Escoje el item a facturar para continuar con: '+it.codigo_siesa);
+      }else{
+        $http.post(
+          url,
+          {
+            equipo_idequipo: it.idequipo,
+            OT_idOT: ambito.rd.info.idOT,
+            centro_costo: ambito.rd.info.ccosto,
+            nombre_ot: ambito.rd.info.nombre_ot,
+            fecha_registro: ambito.rd.info.fecha_reporte,
+            itemf_iditemf: it.item,
+            codigo_siesa: it.codigo_siesa,
+            unidad_negocio: it.desc_un
+          }
+        ).then(
+          function(response){
+            ambito.equiposOT = response.data;
+            console.log(ambito.equiposOT);
+          },
+          function(response){
+            alert(response.data)
+          }
+        );
+    }
   }
 
+  $scope.selectionAll = function(listObj, prop){
+    angular.forEach(listObj, function(val, key){
+      val[prop] = val[prop]==undefined?true:undefined;
+    });
+  }
 
   $scope.mensaje = function(text){alert(text);}
 }
@@ -138,8 +147,7 @@ var addReporte = function($scope, $http, $timeout) {
       personal:[],
       equipos:[],
       actividades:[]
-    },
-    firmas:{}
+    }
   }
   $scope.personalOT = [];
   $scope.equiposOT = [];
@@ -184,7 +192,6 @@ var addReporte = function($scope, $http, $timeout) {
     $(section).hide();
     $(tag).show();
   }
-
   //------------------------------------------------------------------
   // Recursos
   //------------------------------------------------------------------
@@ -196,7 +203,7 @@ var addReporte = function($scope, $http, $timeout) {
         function(response){
           $scope.personalOT = response.data.personal;
           $scope.equiposOT = response.data.equipo;
-          $scope.actividadesOT = response.data.actividade;
+          $scope.actividadesOT = response.data.actividad;
           console.log(response.data);
         },
         function(response){
@@ -208,6 +215,12 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.showRecursosReporte = function(section, tag){
     $(section).hide(section);
     $(tag).show();
+  }
+  // seleccionar todo un listado
+  $scope.seleccionarTodosLista = function(lista){
+    angular.forEach(lista, function(val, key){
+      val.add = true;
+    });
   }
   // Ocultar una seccion de agregar recursos y ejecutar una funcion de inicio
   $scope.closeRecursoReporte = function(section, method){
@@ -225,9 +238,13 @@ var addReporte = function($scope, $http, $timeout) {
   // Agregar el personal seleccionado al reporte
   $scope.agregarPersonal = function(){
     angular.forEach($scope.personalOT, function(val, key){
-      var bandera = $scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion);
-      console.log(bandera);
-      if(!bandera && val.add){
+      if(!$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion) && val.add){
+        val.hora_inicio = 6;
+        val.hora_fin = 17;
+        val.ordinario = 8;
+        val.horas_rn = 0;
+        val.horas_hed = 0;
+        val.horas_hen = 0;
         $scope.rd.recursos.personal.push(val);
       }
     });
@@ -236,22 +253,22 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.agregarEquipos = function(){
     angular.forEach($scope.equiposOT, function(val, key){
       if(!$scope.existeRegistro($scope.rd.recursos.equipos, 'codigo_siesa', val.codigo_siesa) && val.add ){
+        val.horas_oper = 0;
+        val.horas_disp = 0;
         $scope.rd.recursos.equipos.push(val);
       }
     });
   }
   // Agregar actividades seleccionadas al reporte
   $scope.agregarActividades = function(){
-    angular.forEach($scope.actividades, function(val, key){
+    angular.forEach($scope.actividadesOT, function(val, key){
       if(val.add && !$scope.existeRegistro($scope.rd.recursos.actividades, 'itemc_iditemc', val.itemc_iditemc)){
         $scope.rd.recursos.actividades.push(val);
       }
     });
   }
 
-
   // Relacionar equipos desde esta vista
-
   $scope.relacionarEquipoAOt = function(it, url){
     console.log($scope.rd.info)
     $scope.$parent.relacionarEquipoAOt(it, url, $scope);
@@ -281,6 +298,29 @@ var addReporte = function($scope, $http, $timeout) {
       );
     }else{
       lista.splice(lista.indexOf(item),1);
+    }
+  }
+
+  $scope.validarRecursos = function(url){
+    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0){
+      alert('No hay recurso agregados');
+    }else{
+        $http.post(
+          url,
+          {
+            fecha: $scope.rd.info.fecha_reporte,
+            recursos: $scope.rd.recursos,
+            info: $scope.rd.info
+          }
+        ).then(
+          function(response){
+            console.log(response.data);
+            $scope.rd.recursos = response.data.recursos;
+          },
+          function(response) {
+            console.log(response.data);
+          }
+        );
     }
   }
 }

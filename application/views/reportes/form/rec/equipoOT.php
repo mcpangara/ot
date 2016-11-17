@@ -88,12 +88,20 @@
       <table class="mytabla">
         <thead>
           <tr>
-            <th>No.</th>
+            <th>No. </th>
             <th>Cod. Siesa</th>
             <th>Referencia</th>
             <th>Descripción</th>
             <th>item</th>
             <th>Unidad negocio</th>
+          </tr>
+          <tr>
+            <th class="noMaterialStyles">
+              Todos <input type="checkbox" ng-click="selectionAll(equiposOT, 'add');">
+            </th>
+            <th colspan="5">
+
+            </th>
           </tr>
         </thead>
         <tbody>

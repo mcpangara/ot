@@ -40,13 +40,18 @@
         <td></td>
         <td></td>
       </tr>
-      <tr ng-repeat="pr in rd.recursos.personal | filter: personalFilter | orderBy: 'descripcion' track by $index" ng-class='pr.clase'>
+      <tr ng-repeat="pr in rd.recursos.personal | filter: personalFilter | orderBy: 'itemc_item' track by $index" ng-class='pr.clase'>
         <td>
           <button type="button" class="btn mini-btn2 red" ng-click="quitarRegistroLista( rd.recursos.personal, pr, '', '')"> x </button>
         </td>
         <!-- <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')" ng-bind="pr.indice" ng-init="pr.indice = ($index + 1)"></td> -->
 
-        <td> <a href="#" ng-bind="pr.itemc_item" ng-click="mensaje(pr.descripcion)"></a></td>
+        <td>
+          <div class="valign-wrapper">
+            <span ng-if="pr.valid != undefined && !pr.valid" class="valign red-text text-darken-2" style="font-size:3ex" data-icon="f"></span>
+            <a href="#" ng-bind="pr.itemc_item" class="valign" ng-click="mensaje( pr.idrecurso_ot+' '+pr.descripcion)"></a>
+          </div>
+        </td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')"> <b ng-bind="pr.identificacion"></b> </td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')"> <b ng-bind="pr.nombre_completo"></b> </td>
         <td> <b ng-bind="pr.descripcion"></b> </td>

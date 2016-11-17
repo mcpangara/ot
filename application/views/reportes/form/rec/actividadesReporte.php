@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="act in actividadesReporte track by $index">
+      <tr ng-repeat="act in rd.recursos.actividades track by $index">
         <td>
           <button type="button" class="btn mini-btn2 red" ng-click="delActividadReporte(act)"> x </button>
         </td>

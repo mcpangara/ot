@@ -132,13 +132,21 @@ class Tarea_db extends CI_Model{
   }
 
   # Obterner valores planeados de items de una OT (varias tareas) agrupado por codido itemf
-  public function getResumenCantItems($idOT, $tipo = NULL, $idTr = NULL)
+  public function getResumenCantItems($idOT, $tipo = NULL, $idTr = NULL) //tipo 1 actividades, 2 personal, 3 equipos
   {
     $this->load->database('ot');
-    $this->db->select('
-      OT.idOT, OT.nombre_ot, OT.base_idbase, tr.idtarea_ot, tr.nombre_tarea, itt.iditem_tarea_ot,
-      SUM(itt.duracion) AS duracion_tot, SUM(itt.cantidad) AS cantidad_tot, itt.unidad, itt.tarifa,
-      itt.fecha_agregado, 
-    ');
+    return $this->db->select('
+          OT.idOT, OT.nombre_ot, OT.base_idbase, tr.idtarea_ot, tr.nombre_tarea, itt.iditem_tarea_ot,
+          SUM(itt.duracion) AS duracion_tot, SUM(itt.cantidad) AS planeado, itt.unidad, itt.tarifa,
+          itt.fecha_agregado, itt.valor_plan, itt.itemf_iditemf, itt.itemf_codigo, itt.fecha_agregado, itf.*
+        ')->from('OT')
+        ->join('tarea_ot AS tr', 'OT.idOT = tr.OT_idOT')
+        ->join('item_tarea_ot AS itt', 'tr.idtarea_ot = itt.tarea_ot_idtarea_ot')
+        ->join('itemf AS itf', 'itf.iditemf = itt.itemf_iditemf')
+        ->where('OT.idOT',$idOT)
+        ->where('itf.tipo', $tipo)
+        ->group_by('itf.codigo')
+        ->order_by('itf.codigo','ASC')
+        ->get();
   }
 }
