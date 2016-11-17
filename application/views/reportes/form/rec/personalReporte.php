@@ -3,7 +3,6 @@
     <thead>
       <tr style="background: #EEE">
         <th></th>
-        <th>#</th>
         <th>Item</th>
         <th>identificacion</th>
         <th>Nombre Completo</th>
@@ -20,14 +19,14 @@
     <tbody>
       <tr style="background: #EEE">
         <td></td>
-        <td>
+        <!-- <td>
           <input type="text"
               ng-model="personalFilter.indice"
               ng-change="verificadorNumericoFilter(personalFilter, 'indice',1)"
               style="width:2em">
-        </td>
+        </td> -->
 
-        <td> <input ng-model="personalFilter.itemc_item" > </td>
+        <td> <input ng-model="personalFilter.itemc_item" style="width:8ex;"> </td>
         <td><input type="text" ng-model="personalFilter.identificacion"></td>
         <td><input type="text" ng-model="personalFilter.nombre_completo"></td>
         <td><input type="text" ng-model="personalFilter.descripcion"></td>
@@ -43,9 +42,9 @@
       </tr>
       <tr ng-repeat="pr in rd.recursos.personal | filter: personalFilter | orderBy: 'descripcion' track by $index" ng-class='pr.clase'>
         <td>
-          <button type="button" class="btn mini-btn2 red" ng-click="delPersonaReporte(pr)"> x </button>
+          <button type="button" class="btn mini-btn2 red" ng-click="quitarRegistroLista( rd.recursos.personal, pr, '', '')"> x </button>
         </td>
-        <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')" ng-bind="pr.indice" ng-init="pr.indice = ($index + 1)"></td>
+        <!-- <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')" ng-bind="pr.indice" ng-init="pr.indice = ($index + 1)"></td> -->
 
         <td> <a href="#" ng-bind="pr.itemc_item" ng-click="mensaje(pr.descripcion)"></a></td>
         <td ng-click="cambiarValorObjeto(pr,'clase','green lighten-5')"> <b ng-bind="pr.identificacion"></b> </td>
@@ -57,10 +56,10 @@
         </td>
         <td class="inputsSmall"> <input ng-model="pr.hora_inicio" type="number" required  /> Hrs. </td>
         <td class="inputsSmall"> <input ng-model="pr.hora_fin" type="number" required  />  Hrs.</td>
-        <td class="inputsSmall"> <input type="number" ng-model="pr.ordinario"> </td>
-        <td class="inputsSmall"> <input type="number" ng-model="pr.horas_rn"> </td>
-        <td class="inputsSmall"> <input type="number" ng-model="pr.horas_hed"> </td>
-        <td class="inputsSmall"> <input type="number" ng-model="pr.horas_hen"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.ordinario"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_rn"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_hed"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_hen"> </td>
       </tr>
     </tbody>
   </table>

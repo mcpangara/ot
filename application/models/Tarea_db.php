@@ -99,7 +99,7 @@ class Tarea_db extends CI_Model{
     $this->db->join('itemf AS itf', 'itt.itemf_iditemf = itf.iditemf');
     $this->db->join('tarifa AS tarif','tarif.itemf_iditemf = itf.iditemf');
     $this->db->join('tarea_ot AS tar', 'tar.idtarea_ot = itt.tarea_ot_idtarea_ot');
-    $this->db->where('tarif.estado_tarifa', TRUE);
+    //$this->db->where('tarif.estado_tarifa', TRUE);
     $this->db->where('itf.tipo',$tipo);
     $this->db->where('itt.tarea_ot_idtarea_ot',$idtarea);
     return $this->db->get();
@@ -123,7 +123,7 @@ class Tarea_db extends CI_Model{
     $this->db->join('tarifa AS tarif','tarif.itemf_iditemf = itf.iditemf');
 		$this->db->join('tarea_ot AS tar', 'tar.idtarea_ot = itt.tarea_ot_idtarea_ot');
     $this->db->where('tar.OT_idOT', $idot);
-    $this->db->where('tarif.estado_tarifa', TRUE);
+    //$this->db->where('tarif.estado_tarifa', TRUE);
     if (isset($tipo)) {
       $this->db->where('itf.tipo',$tipo);
     }
@@ -131,4 +131,14 @@ class Tarea_db extends CI_Model{
     return $this->db->get();
   }
 
+  # Obterner valores planeados de items de una OT (varias tareas) agrupado por codido itemf
+  public function getResumenCantItems($idOT, $tipo = NULL, $idTr = NULL)
+  {
+    $this->load->database('ot');
+    $this->db->select('
+      OT.idOT, OT.nombre_ot, OT.base_idbase, tr.idtarea_ot, tr.nombre_tarea, itt.iditem_tarea_ot,
+      SUM(itt.duracion) AS duracion_tot, SUM(itt.cantidad) AS cantidad_tot, itt.unidad, itt.tarifa,
+      itt.fecha_agregado, 
+    ');
+  }
 }

@@ -67,6 +67,7 @@ class Ot extends CI_Controller {
 			#crear la OT
 			$idot = $this->ot->add(
 					$orden->nombre_ot,
+					$orden->ccosto,
 					$orden->base_idbase,
 					$orden->zona,
 					$orden->fecha_creacion,
@@ -77,6 +78,7 @@ class Ot extends CI_Controller {
 					$orden->locacion,
 					$orden->abscisa,
 					$orden->idpoblado,
+					$orden->cc_ecp,
 					json_encode($orden->json)
 				);
 			#-----------------------
@@ -259,7 +261,7 @@ class Ot extends CI_Controller {
 		# inicio de seguimiento de transacciones
 		$this->ot_db->init_transact();
 
-		$this->ot_db->update(	$orden->idOT,	$orden->nombre_ot,	$orden->base_idbase, $orden->zona, $orden->fecha_creacion,
+		$this->ot_db->update(	$orden->idOT,	$orden->nombre_ot, $orden->ccosto,	$orden->base_idbase, $orden->zona, $orden->fecha_creacion,
 				$orden->especialidad_idespecialidad, $orden->tipo_ot_idtipo_ot,	$orden->actividad, $orden->justificacion,
 				$orden->locacion,	$orden->abscisa, $orden->idpoblado,	json_encode($orden->json)
 			);

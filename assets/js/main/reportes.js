@@ -267,8 +267,21 @@ var addReporte = function($scope, $http, $timeout) {
     return bandera;
   }
 
-  $scope.quitarRegistroLista = function( lista, item, url){
-
+  $scope.quitarRegistroLista = function( lista, item, url, prop){
+    if(url!='' && prop!=''){
+      $http.post(url, { prop: item[prop], }
+      ).then(
+        function(response){
+          console.log(response.data)
+          lista.splice(lista.indexOf(item),1);
+        },
+        function(response) {
+          alert('Algo ha salido mal');
+        }
+      );
+    }else{
+      lista.splice(lista.indexOf(item),1);
+    }
   }
 }
 

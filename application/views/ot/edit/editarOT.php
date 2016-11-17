@@ -17,6 +17,7 @@
 					<th>Zona</th>
 					<th>Especialidad</th>
 					<th>Tipo OT</th>
+					<th>C.C. ECP</th>
 					<th>Estado</th>
 				</tr>
 			</thead>
@@ -27,7 +28,21 @@
 					<td ng-bind="ot.zona"></td>
 					<td ng-bind="ot.nombre_especialidad"></td>
 					<td ng-bind="ot.nombre_tipo_ot"></td>
+					<td ng-bind="ot.cc_ecp">
+					</td>
 					<td> pendiente </td>
+				</tr>
+				<tr>
+					<td>
+						Centro Costo termotecnica:
+					</td>
+					<td>
+						<input type="text" ng-model="ot.ccosto">
+					</td>
+					</td>
+					<td colspan="5">
+
+					</td>
 				</tr>
 			</tbody>
 		</table>

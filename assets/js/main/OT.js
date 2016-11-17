@@ -311,8 +311,7 @@ var OT = function($scope, $http, $timeout){
   			selector: "textarea"
   		});
 	}
-	$scope.strtonum = function(model)
-	{
+	$scope.strtonum = function(model){
 		return parseFloat(model);
 	}
 	//--------------------------------------------------------------------------------------
@@ -457,18 +456,22 @@ var agregarOT = function($scope, $http, $timeout){
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
 		console.log($scope.ot);
-		$http.post(	  url, { ot: $scope.ot }   ).then(
-			function(response) {
-				if(response.data == 'Orden de trabajo guardada correctamente'){
-					alert('Orden de trabajo guardada correctamente');
-					$timeout(function(){
-						//$scope.$parent.cerrarWindow();
-						$scope.$parent.refreshTabs();
-					});
-				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
-			},
-			function(response) {console.log(response.data)}
-		);
+		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == ''){
+			alert('No se ha agregado poblado/Vereda (DANE)');
+		}else{
+			$http.post(	  url, { ot: $scope.ot }   ).then(
+				function(response) {
+					if(response.data == 'Orden de trabajo guardada correctamente'){
+						alert('Orden de trabajo guardada correctamente');
+						$timeout(function(){
+							//$scope.$parent.cerrarWindow();
+							$scope.$parent.refreshTabs();
+						});
+					}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
+				},
+				function(response) {console.log(response.data)}
+			);
+		}
 	}
 }
 // FUNCIONES PROPIAS DE EDICION DE OT

@@ -26,9 +26,9 @@
     </thead>
     <tbody>
       <tr ng-repeat="eq in rd.recursos.equipos track by $index">
-        <td> <button type="button" class="btn mini-btn2 red" ng-click="delEquipoReporte(eq)"> x </button> </td>
+        <td> <button type="button" class="btn mini-btn2 red" ng-click="quitarRegistroLista( rd.recursos.equipos, eq, '','')"> x </button> </td>
 
-        <td> <a ng-bind="eq.itemc_item" ng-click="mensaje(eq.descripcion)" href="#" /> </td>
+        <td> <a ng-bind="eq.itemc_item" ng-click="mensaje(eq.placa+' '+eq.descripcion)" href="#" /> </td>
         <td ng-bind="eq.codigo_siesa"></td>
         <td ng-bind="eq.referencia"></td>
         <td ng-bind="eq.descripcion_equipo"></td>
@@ -45,8 +45,8 @@
         <td class="inputsSmall"> <input type="text" ng-model="eq.horo_inicio"> </td>
         <td class="inputsSmall"> <input type="text" ng-model="eq.horo_fin"> </td>
 
-        <td class="inputsSmall"> <input type="number" ng-model="eq.horas_oper"> </td>
-        <td class="inputsSmall"> <input type="number" ng-model="eq.horas_disp"> </td>
+        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_oper"> </td>
+        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_disp"> </td>
         <td class="inputsSmall noMaterialStyles"> <input type="checkbox" ng-model="eq.varado"> </td>
       </tr>
     </tbody>

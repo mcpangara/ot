@@ -17,6 +17,7 @@
 					<th>Zona</th>
 					<th>Especialidad</th>
 					<th>Tipo OT</th>
+					<th>C.C. ECP</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,6 +59,22 @@
 								<?php
 							} ?>
 						</select>
+					</td>
+
+					<td>
+						<input type="text" ng-model="ot.cc_ecp" value="TR-0">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Centro Costo termotecnica:
+					</td>
+					<td>
+						<input type="text" ng-model="ot.ccosto">
+					</td>
+					<td colspan="4">
+
 					</td>
 				</tr>
 			</tbody>
@@ -120,7 +137,7 @@
 		</div>
 
 		<br>
-		
+
 		<!-- opciones -->
 		<div class="btnWindow">
 			<button type="button" class="waves-effect waves-light btn" ng-click="guardarOT('<?= site_url('ot/saveOT') ?>')">Guardar</button>

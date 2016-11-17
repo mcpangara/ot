@@ -15,10 +15,11 @@ class Ot_db extends CI_Model {
 		return $this->db->get('base');
 	}
 	// Registrar una nueva OT.
-	public function add( $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
+	public function add( $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $cc_ecp, $json) {
 		$this->load->database('ot');
 		$data = array(
 			"nombre_ot"=>$nombre_ot,
+			'ccosto'=>$ccosto,
 			'base_idbase'=>$base,
 			"zona"=>$zona,
 			"fecha_creacion"=>$fecha_creacion,
@@ -29,16 +30,18 @@ class Ot_db extends CI_Model {
 			"locacion"=>$locacion,
 			"abscisa"=>$abscisa,
 			"municipio_idpoblado"=>$idpoblado,
+			"cc_ecp"=>$cc_ecp,
 			'json'=>$json
 		);
 		$this->db->insert('OT', $data);
 		return $this->db->insert_id();
 	}
 	//Editar daos info de una OT.
-	public function update( $idot, $nombre_ot, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
+	public function update( $idot, $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json) {
 		$this->load->database('ot');
 		$data = array(
 			"nombre_ot"=>$nombre_ot,
+			'ccosto'=>$ccosto,
 			'base_idbase'=>$base,
 			"zona"=>$zona,
 			"fecha_creacion"=>$fecha_creacion,

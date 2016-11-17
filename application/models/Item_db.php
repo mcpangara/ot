@@ -30,7 +30,8 @@ class Item_db extends CI_Model {
 		$this->db->from('itemf');
 		$this->db->join('itemc','itemf.itemc_iditemc = itemc.iditemc');
 		$this->db->join('tarifa','tarifa.itemf_iditemf = itemf.iditemf');
-		$this->db->where('tarifa.periodo_id = ( SELECT MAX(tarifa.periodo_id) as periodo FROM tarifa)', NULL, FALSE);
+		$this->db->where('tarifa.estado_tarifa', TRUE)
+		//$this->db->where('tarifa.periodo_id = ( SELECT MAX(tarifa.periodo_id) as periodo FROM tarifa)', NULL, FALSE);
 		return $this->db->get();
 	}
 	public function getByTipo($value='')
