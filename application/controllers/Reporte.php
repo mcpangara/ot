@@ -30,9 +30,27 @@ class Reporte extends CI_Controller{
     $info = $post->info;
     $recusos = $post->recursos;
     $this->load->model('reporte_db', 'repo');
-    foreach ($recursos as $key => $value) {
+    $this->repo->init_transact();
+    // Insertamos el reporte y devolvemos el ID
+    $idrepo = $this->repo->add($post->info);
+    //Recorremos los arregos de recursos
+    $this->insertarRecursoRep($post->recusos->actividades, $idrepo);
+    $this->insertarRecursoRep($post->recusos->personal, $idrepo);
+    $this->insertarRecursoRep($post->recusos->equipos, $idrepo);
+    $validProcc = $this->repo->end_transact();
+    if($validProcc){
+      $responsse = new stdClass();
+      $reponse->success = 'succcess';
+      $response->idreporte_diario = $idrepo;
+    }else{
+      show_404();
     }
-    //
+  }
+  public function insertarRecursoRep($list, $tipo)
+  {
+    foreach ($list as $key => $value) {
+      $this->repo->addRecusoRepo($value, $tipo);
+    }
   }
   #===========================================================================================================
   # Validaciones para guardar el reporte

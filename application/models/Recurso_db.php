@@ -77,4 +77,24 @@ class Recurso_db extends CI_Model{
       ->get();
   }
 
+  // TRANSACTION
+
+  public function init_transact()
+	{
+		$this->load->database('ot');
+		$this->db->trans_begin();
+	}
+
+	public function end_transact()
+	{
+		$this->load->database('ot');
+		$status = $this->db->trans_status();
+		if ($status === FALSE){
+		        $this->db->trans_rollback();
+		}
+		else{
+		        $this->db->trans_commit();
+		}
+		return $status;
+	}
 }

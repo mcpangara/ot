@@ -153,7 +153,6 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
 
-
   //Busque de equipos no relacionados
   $scope.consultaEquiposOT = {};
   $scope.resultEquiposBusqueda = [];
