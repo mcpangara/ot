@@ -73,7 +73,7 @@
     <br>
 
 		<div class="btnWindow">
-			<button type="button" class="waves-effect waves-light btn" ng-click="guardarReporte('<?= site_url('ot/saveOT') ?>')">Guardar</button>
+			<button type="button" class="waves-effect waves-light btn" ng-click="guardarRD('<?= site_url('reporte/insert') ?>')">Guardar</button>
       <button type="button" class="waves-effect waves-light btn green" ng-click="generarVistaPrevia('<?= site_url('ot/saveOT') ?>')">Generar</button>
 			<button type="button" class="waves-effect waves-light btn grey" ng-click="toggleWindow()">Ocultar</button>
       <button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Cerrar</button>

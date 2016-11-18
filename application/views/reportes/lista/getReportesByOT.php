@@ -25,7 +25,7 @@
               <option ng-repeat="ot in myOts" value="{{ot.idOT}}">{{ot.nombre_ot}}</option>
             </select>
             <div class="col s2 l2">
-              <button type="button" class="btn mini-btn" data-icon="," style="margin:0px;" ng-click="getReportesView('<?= site_url('reporte/calendar') ?>')"> ver reportes</button>
+              <button type="button" class="btn mini-btn" data-icon="," style="margin:0px;" ng-click="getReportesView('<?= site_url() ?>')"> ver reportes</button>
             </div>
           </div>
 

@@ -27,7 +27,7 @@
         <small>{{ reemb.valor_und | currency}}</small>
       </div>
 
-      <button type="button" name="button" ng-click="addReemb()" class="btn orange mini-btn">Add. reembolsable</button>
+      <button type="button" name="button" ng-click="addReemb(tr)" class="btn orange mini-btn">Add. reembolsable</button>
     </form>
 
     <div class="row" style="overflow:auto; min-height: 90%">
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="" ng-repeat="r in reembs track by $index  ">
+          <tr class="" ng-repeat="r in tr.json_reembolsables.json_reembolsables track by $index  ">
             <td>{{ (1+$index)  }}</td>
             <td>{{r.descripcion}}</td>
             <td>{{r.unidad}}</td>

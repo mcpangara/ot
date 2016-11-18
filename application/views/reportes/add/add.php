@@ -49,6 +49,10 @@
                 <button type="button" class="btn mini-btn orange" ng-click="toggleContent('#validaciones', 'nodisplay', '.mypanel > div')">Validaciones</button>
               </td>
             </tr>
+            <tr class="noMaterialStyles">
+              <td>Festivo: <input type="checkbox" ng-model="rd.info.festivo" ng-init="rd.info.festivo = false"></td>
+              <td colspan="2"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -69,7 +73,7 @@
         <br>
         <br>
 
-        <button type="button" class="waves-effect waves-light btn mini-btn2" ng-click="guardarReporte('<?= site_url('ot/saveOT') ?>')">
+        <button type="button" class="waves-effect waves-light btn mini-btn2" ng-click="guardarRD('<?= site_url('reporte/insert') ?>')">
           <b data-icon="&#xe015;"></b> Guardar
         </button>
         <button type="button" class="waves-effect waves-light btn grey mini-btn2" ng-click="toggleWindow()" data-icon="&#xe036;"> Ocultar</button>

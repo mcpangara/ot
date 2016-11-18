@@ -74,6 +74,7 @@ var listOTReportes = function($scope, $http, $timeout){
   $scope.rd = {};
   $scope.consulta = {};
   $scope.myOts = [];
+  $scope.listaReportes = [];
 
   $scope.initBase = function(url ,base){
     $scope.consulta.base = base;
@@ -105,8 +106,22 @@ var listOTReportes = function($scope, $http, $timeout){
           $scope.rd.fecha = fecha;
           $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
           $scope.ot = val;
-          $scope.verCalendario(site_url+"/"+$scope.consulta.ot);
+          $scope.verCalendario(site_url+'/reporte/calendar'+"/"+$scope.consulta.ot);
           $scope.ot.selected = true;
+          $http.post(
+              site_url+'/reporte/getReportesByOT',
+              {
+                idOT: val.idOT
+              }
+            ).then(
+              function(response) {
+                $scope.listaReportes = undefined;
+                $scope.listaReportes = response.data;
+                console.log(response.data)
+              },
+              function(response) {
+              }
+            );
         }
       });
   }
@@ -240,7 +255,7 @@ var addReporte = function($scope, $http, $timeout) {
       if(!$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion) && val.add){
         val.hora_inicio = 6;
         val.hora_fin = 17;
-        val.ordinario = 1;
+        val.cantidad = 1;
         val.horas_rn = 0;
         val.horas_hed = 0;
         val.horas_hen = 0;
@@ -315,6 +330,36 @@ var addReporte = function($scope, $http, $timeout) {
           function(response){
             console.log(response.data);
             $scope.rd.recursos = response.data.recursos;
+          },
+          function(response) {
+            console.log(response.data);
+          }
+        );
+    }
+  }
+
+  // Guardar reporte
+  $scope.guardarRD = function(url){
+    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0){
+      alert('No hay recurso agregados');
+    }else{
+        $http.post(
+          url,
+          {
+            fecha: $scope.rd.info.fecha_reporte,
+            recursos: $scope.rd.recursos,
+            info: $scope.rd.info
+          }
+        ).then(
+          function(response){
+            console.log(response.data);
+            if(response.data.success == 'success'){
+              alert("reporte guardado correctamente");
+              timeout(function(){
+                //$scope.$parent.cerrarWindow();
+                $scope.$parent.refreshTabs();
+              });
+            }
           },
           function(response) {
             console.log(response.data);

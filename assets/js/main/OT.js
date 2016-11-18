@@ -31,12 +31,15 @@ var OT = function($scope, $http, $timeout){
 	$scope.consola = function(tr){console.log(tr)}
 	$scope.addTarea = function(ambito){
 		var idot = (ambito.ot.idOT != undefined)?ambito.ot.idOT:"";
+		var d = new Date();
 		ambito.ot.tareas.push(
 				{
 					"idtarea_ot": "",
 					"nombre_tarea": "TAREA "+(ambito.ot.tareas.length+1),
 					"valor_recursos": "0",
 					"valor_tarea_ot": "0",
+					"fecha_inicio": (d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()),
+					"fecha_fin": (d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()),
 					"json_indirectos": {
 						"administracion": 0,
 						"imprevistos": 0,
@@ -217,7 +220,7 @@ var OT = function($scope, $http, $timeout){
 	$scope.calcularReembolsables = function(tr, ambito){
 		tr.json_reembolsables.valor_reembolsables = 0;
 		tr.json_reembolsables.administracion = 0;
-		angular.forEach(ambito.reembs, function(v, k){
+		angular.forEach(tr.json_reembolsables.json_reembolsables, function(v, k){
 			tr.json_reembolsables.valor_reembolsables +=(v.cantidad * v.valor_und);
 			tr.json_reembolsables.valor_reembolsables = Math.round(tr.json_reembolsables.valor_reembolsables);
 			tr.json_reembolsables.administracion += tr.json_reembolsables.valor_reembolsables * 0.01;
@@ -227,10 +230,9 @@ var OT = function($scope, $http, $timeout){
 	$scope.endReembolsables = function(tag, tr, ambito){
 		$(tag).toggleClass('nodisplay');
 		$scope.calcularReembolsables(tr, ambito);
-		tr.json_reembolsables.json_reembolsables = ambito.reembs;
 	}
-	$scope.addReemb = function(ambito){
-		ambito.reembs.push(
+	$scope.addReemb = function(ambito, tr){
+		tr.json_reembolsables.json_reembolsables.push(
 			{
 				descripcion:ambito.reemb.descripcion,
 				unidad: ambito.reemb.unidad,
@@ -440,7 +442,7 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//reembolsables
 	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
-	$scope.addReemb = function(){ $scope.$parent.addReemb($scope); }
+	$scope.addReemb = function(tr){ $scope.$parent.addReemb($scope, tr); }
 	//horas extra
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
@@ -456,8 +458,8 @@ var agregarOT = function($scope, $http, $timeout){
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
 		console.log($scope.ot);
-		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == ''){
-			alert('No se ha agregado poblado/Vereda (DANE)');
+		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
+			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
 		}else{
 			$http.post(	  url, { ot: $scope.ot }   ).then(
 				function(response) {
@@ -519,7 +521,7 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.calcularViaticos= function(tr){ $scope.$parent.calcularViaticos(tr, $scope); $scope.$parent.calcularValorOT($scope); }
 	//reembolsables
 	$scope.endReembolsables = function(tag, tr){ $scope.$parent.endReembolsables(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }
-	$scope.addReemb = function(){ $scope.$parent.addReemb($scope); }
+	$scope.addReemb = function(tr){ $scope.$parent.addReemb($scope, tr); }
 	//horas extra
 	$scope.setHorasExtra = function(tag , tr){ $scope.$parent.setHorasExtra(tag , tr, $scope); }
 	$scope.endHorasExtra = function(tag, tr){ $scope.$parent.endHorasExtra(tag, tr, $scope); $scope.$parent.calcularValorOT($scope); }

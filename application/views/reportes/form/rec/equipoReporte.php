@@ -10,7 +10,6 @@
         <th rowspan="2">Equipo</th>
         <th rowspan="2">Operador / Conductor</th>
         <th rowspan="2">Cant.</th>
-        <th rowspan="2">B/O</th>
         <th rowspan="2">UND</th>
         <th colspan="2">Horometro</th>
         <th colspan="3">Reporte horas</th>
@@ -39,12 +38,6 @@
         <td ng-bind="eq.descripcion_equipo"></td>
         <td> <input type="text" style="width:90%" ng-model="eq.nombre_operador"> </td>
         <td class="inputsSmall"> <input type="number" ng-model="eq.cantidad"> </td>
-        <td class="inputsSmall noMaterialStyles">
-          <select class="" ng-model="eq.tipo_equipo">
-            <option value="B">B</option>
-            <option value="O">O</option>
-          </select>
-        </td>
         <td class="inputsSmall"> <input type="text" ng-model="eq.unidad"> </td>
 
         <td class="inputsSmall"> <input type="text" ng-model="eq.horo_inicio"> </td>

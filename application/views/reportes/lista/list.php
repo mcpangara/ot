@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr ng-repeat="rd in listaReportes  track by $index ">
+        <td ng-bind="rd.no" ng-init="rd.no = $index+1"></td>
+        <td ng-bind="rd.fecha_reporte"></td>
+        <td ng-bind="rd.nombre_ot"></td>
+        <td ng-bind="rd.estado"></td>
+        <td> <button type="button" class="btn mini-btn2" data-icon=","> </button></td>
       </tr>
     </tbody>
   </table>

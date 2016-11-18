@@ -14,11 +14,11 @@
 
 	<div class="selectEnabled">
 		<label class="col m1 right-align"><b>fecha inicio: </b></label>
-		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_inicio" placeholder=" fecha" style="cursor: pointer" readonly/>
+		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_inicio"  value="<?= date('Y-m-d') ?>" placeholder=" fecha" style="cursor: pointer" readonly/>
 	</div>
 	<div class="selectEnabled">
 		<label class="col m1 right-align"><b>fecha fin: </b></label>
-		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_fin" placeholder=" fecha" style="cursor: pointer"  readonly/>
+		<input type="text" class="datepicker" ng-init="datepicker_init()" ng-model="tr.fecha_fin"  value="<?= date('Y-m-d') ?>" placeholder=" fecha" style="cursor: pointer"  readonly/>
 	</div>
 
 	<div class="col s12 overflowAuto">

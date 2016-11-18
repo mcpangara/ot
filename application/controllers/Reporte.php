@@ -34,14 +34,15 @@ class Reporte extends CI_Controller{
     // Insertamos el reporte y devolvemos el ID
     $idrepo = $this->repo->add($post->info);
     //Recorremos los arregos de recursos
-    $this->insertarRecursoRep($post->recusos->actividades, $idrepo);
-    $this->insertarRecursoRep($post->recusos->personal, $idrepo);
-    $this->insertarRecursoRep($post->recusos->equipos, $idrepo);
+    $this->insertarRecursoRep($post->recursos->actividades, $idrepo);
+    $this->insertarRecursoRep($post->recursos->personal, $idrepo);
+    $this->insertarRecursoRep($post->recursos->equipos, $idrepo);
     $validProcc = $this->repo->end_transact();
-    if($validProcc){
-      $responsse = new stdClass();
-      $reponse->success = 'succcess';
+    if($validProcc != FALSE){
+      $response = new stdClass();
+      $response->success = 'success';
       $response->idreporte_diario = $idrepo;
+      echo json_encode($response);
     }else{
       show_404();
     }
@@ -49,7 +50,7 @@ class Reporte extends CI_Controller{
   public function insertarRecursoRep($list, $tipo)
   {
     foreach ($list as $key => $value) {
-      $this->repo->addRecusoRepo($value, $tipo);
+      $this->repo->addRecursoRepo($value, $tipo);
     }
   }
   #===========================================================================================================
@@ -93,7 +94,13 @@ class Reporte extends CI_Controller{
     $this->load->view('reportes/lista/getReportesByOT', $data);
   }
 
-
+  public function getReportesByOT()
+  {
+    $post = json_decode(file_get_contents('php://input'));
+    $this->load->model('reporte_db', 'rd');
+    $rows = $this->rd->listaBy($post->idOT);
+    echo json_encode($rows->result());
+  }
   #=============================================================================================================
   # Obtener el reporte siguiente por fecha de la OT
   public function getNext($idOT, $idReporte, $date)

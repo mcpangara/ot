@@ -75,10 +75,10 @@ class Ot extends CI_Controller {
 					$orden->tipo_ot,
 					$orden->actividad,
 					$orden->justificacion,
-					$orden->locacion,
-					$orden->abscisa,
-					$orden->idpoblado,
-					$orden->cc_ecp,
+					isset($orden->locacion)?$orden->locacion:NULL,
+					isset($orden->abscisa)?$orden->abscisa:NULL,
+					isset($orden->idpoblado)?$orden->idpoblado:NULL,
+					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
 					json_encode($orden->json)
 				);
 			#-----------------------
