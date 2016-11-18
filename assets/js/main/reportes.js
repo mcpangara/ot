@@ -240,7 +240,7 @@ var addReporte = function($scope, $http, $timeout) {
       if(!$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion) && val.add){
         val.hora_inicio = 6;
         val.hora_fin = 17;
-        val.ordinario = 8;
+        val.ordinario = 1;
         val.horas_rn = 0;
         val.horas_hed = 0;
         val.horas_hen = 0;

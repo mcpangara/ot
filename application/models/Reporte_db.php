@@ -28,7 +28,10 @@ class Reporte_db extends CI_Model{
   # Insertar un recurso a un reporte con unas cantidades
    public function addRecursoReporte($recurso, $idrepo)
    {
-     # code...
+     $data = array(
+       '' => ,
+     );
+     $this->db->insert('recurso_reporte_diario', $data);
    }
 
   public function getBy($value='')
