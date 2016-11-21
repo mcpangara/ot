@@ -79,7 +79,7 @@
           <td><?= date('Y-m-d', strtotime($ot->fecha_creacion)) ?></td>
           <td><?= date('Y-m-d', strtotime($tr->fecha_inicio)) ?></td>
           <td><?= date('Y-m-d', strtotime($tr->fecha_fin)) ?></td>
-          <td></td>
+          <td> <?= dias_transcurridos($tr->fecha_inicio, $tr->fecha_fin); ?> </td>
         </tr>
       </tbody>
 
