@@ -81,9 +81,14 @@ class Reporte_db extends CI_Model{
             ->get();
   }
 
-  public function getRecursosReporte($idrepo, $tipo)
-  {
-
+  public function getRecursosReporte($idrepo, $tipo){
+    $this->load->database('ot');
+    if ($tipo == 'personal') {
+      $this->db->select('p.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
+    }
+    elseif ($tipo == "equipos") {
+      $this->db->select('e.*');
+    }
   }
 
   public function listaBy($idOT)
