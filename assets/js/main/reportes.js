@@ -317,7 +317,7 @@ var addReporte = function($scope, $http, $timeout) {
   }
 
   $scope.validarRecursos = function(url){
-    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0){
+    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0 && $scope.rd.recursos.actividades.length == 0){
       alert('No hay recurso agregados');
     }else{
         $http.post(
@@ -342,7 +342,7 @@ var addReporte = function($scope, $http, $timeout) {
 
   // Guardar reporte
   $scope.guardarRD = function(url){
-    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0){
+    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0 && $scope.rd.recursos.actividades.length == 0){
       alert('No hay recurso agregados');
     }else{
         $http.post(

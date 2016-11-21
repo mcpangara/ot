@@ -18,7 +18,7 @@
         <td ng-bind="act.itemc_item"></td>
         <td ng-bind="act.descripcion"></td>
         <td ng-bind="act.unidad"></td>
-        <td class="inputsSmall"> <input type="number" ng-model="cantidad"> </td>
+        <td class="inputsSmall"> <input type="number" ng-model="act.cantidad" ng-init="act.cantidad = 0"> </td>
         <td ng-bind="act.planeado"></td>
     </tbody>
   </table>
