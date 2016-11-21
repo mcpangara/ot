@@ -149,4 +149,20 @@ class Tarea_db extends CI_Model{
         ->order_by('itf.codigo','ASC')
         ->get();
   }
+
+  # Obterner un item de una OT por su codigo de facturación
+  public function getItemOTSUM($idOT, $codigo)
+  {
+    $this->load->database('ot');
+    return $this->db->select('OT.*, tr.nombre_tarea, itr.*, SUM(itr.cantidad) AS cant_plan, SUM(itr.duracion) AS dura_plan, itf.*')
+          ->from('OT')
+          ->join('tarea_ot AS tr', 'tr.OT_idOT = OT.idOT')
+          ->join('item_tarea_ot AS itr', 'itr.tarea_ot_idtarea_ot = tr.idtarea_ot')
+          ->join('itemf AS itf','itf.iditemf = itr.itemf_iditemf')
+          ->where('OT.idOT',$idOT)
+          ->where('itf.codigo', $codigo)
+          ->group_by('itr.itemf_iditemf')
+          ->get();
+  }
+
 }

@@ -100,7 +100,8 @@ var listOTReportes = function($scope, $http, $timeout){
   }
 
   $scope.getReportesView = function(site_url){
-      angular.forEach($scope.myOts, function(val, key){
+    $scope.ocultarCalendario('');
+    angular.forEach($scope.myOts, function(val, key){
         if(val.idOT == $scope.consulta.ot){
           var fecha = new Date();
           $scope.rd.fecha = fecha;
@@ -123,7 +124,7 @@ var listOTReportes = function($scope, $http, $timeout){
               }
             );
         }
-      });
+    });
   }
   //Calendario
   $scope.verCalendario = function(url){
@@ -322,6 +323,7 @@ var addReporte = function($scope, $http, $timeout) {
         $http.post(
           url,
           {
+            idOT: $scope.rd.info.idOT,
             fecha: $scope.rd.info.fecha_reporte,
             recursos: $scope.rd.recursos,
             info: $scope.rd.info

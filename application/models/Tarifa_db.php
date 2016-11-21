@@ -15,6 +15,7 @@ class Tarifa_db extends CI_Model{
     $this->db->from('itemf');
     $this->db->join('tarifa', 'itemf.codigo = tarifa.itemf_codigo');
     $this->db->where('itemf.itemc_item', $itemc);
+    $this->db->where('tarifa.estado',TRUE);
     return $this->db->get();
   }
 

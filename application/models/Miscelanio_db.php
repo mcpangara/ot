@@ -49,16 +49,20 @@ class Miscelanio_db extends CI_Model {
 		return $this->db->get('tipo_ot');
 	}
 
-	public function getTarifasGV($value='')
+	public function getTarifasGV()
 	{
 		$this->load->database('ot');
-		return $this->db->get('tarifas_gv');
+		return $this->db->get_where('tarifas_gv', array('estado'=>TRUE));
 	}
 
 	public function getTarifaGV_by($id)
 	{
 		$this->load->database('ot');
-		return $this->db->get_where('tarifas_gv', array('idtarifa_gv'=>$id));
+		return $this->db->select('*')
+				->from('tarifas_gv')
+				->where('idtarifa_gv',$id)
+				->where('estado',TRUE)
+				->get();
 	}
 }
 

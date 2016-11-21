@@ -47,8 +47,7 @@ class Reporte extends CI_Controller{
       show_404();
     }
   }
-  public function insertarRecursoRep($list, $tipo)
-  {
+  public function insertarRecursoRep($list, $tipo){
     foreach ($list as $key => $value) {
       $this->repo->addRecursoRepo($value, $tipo);
     }
@@ -70,17 +69,39 @@ class Reporte extends CI_Controller{
   {
     $this->load->model('reporte_db', 'repo');
     $post = json_decode( file_get_contents("php://input") );
+    $post->succ = TRUE;
     foreach ($post->recursos as $k => $v) {
       if($k!='actividades'){
         foreach ($v as $key => $value) {
+          $value->msj = '';
           $value->valid =  $this->validarRecurso(
             $value->idrecurso_ot,
             $post->fecha
           );
+          $value->valid_item = $this->validarItemByOT($post->idOT, $value->codigo);
+          $value->query = $this->db->last_query();
+          if(!$value->valid){
+            $value->msj .= 'Ya esta reportado en un reporte de esta fecha.';
+          }
+          if(!$value->valid_item){
+            $value->msj .= ' El item no existe en la planificación OT';
+            $value->valid = FALSE;
+          }
         }
       }
     }
     echo json_encode($post);
+  }
+
+  # Valida la existencia de un items en la OT
+  public function validarItemByOT($idOT, $codigo)
+  {
+    $this->load->model('tarea_db', 'tar');
+    $rows = $this->tar->getItemOTSUM($idOT,$codigo);
+    if($rows->num_rows() > 0){
+      return TRUE;
+    }
+    return FALSE;
   }
 
   #=============================================================================================================
@@ -112,6 +133,13 @@ class Reporte extends CI_Controller{
   public function getPrevious($idOT, $idReporte, $date)
   {
     # code...
+  }
+  public function get($idReporte)
+  {
+    $this->load->model('reporte_db','repo');
+    $reporte = $this->repo->get($idReporte);
+    $recursos = new stdClass();
+    $recursos->personal = $this->repo->getRecursoReporte();
   }
   # ============================================================================================================
   # Datos de relleno para pruebas

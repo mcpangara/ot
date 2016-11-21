@@ -29,7 +29,7 @@
 
         <td>
           <div  class="valign-wrapper" >
-            <span ng-if="eq.valid != undefined && !eq.valid" class="valign red-text text-darken-2" style="font-size:3ex" data-icon="f"></span>
+            <span ng-if="eq.valid != undefined && !eq.valid" class="valign red-text text-darken-2" ng-click="mensaje(eq.msj)" style="font-size:3ex" data-icon="f"></span>
             <a ng-bind="eq.itemc_item" class="valign" ng-click="mensaje(eq.placa+' '+eq.descripcion)" href="#" />
           </div>
         </td>

@@ -180,6 +180,7 @@ var OT = function($scope, $http, $timeout){
 		$http.get(url+"/"+itv.destino)
 			.then(
 				function(response){
+					console.log(response.data);
 					datos = response.data;
 					itv.cantidad_gv = 1;
 					itv.duracion_gv = 1;

@@ -85,7 +85,7 @@ class Recurso extends CI_Controller{
 
     if($this->ot->end_transact()){
       $html = $this->load->view('miscelanios/reporteCargaXLS',array("filas"=>$noValid),TRUE);
-      $this->load->view('miscelanios/resultadoUpdateMAestro', array("html"=>$html));
+      $this->load->view('miscelanios/resultadoUpdateMaestro', array("html"=>$html));
     }else{
       echo "Fallo al insertar registros";
     }

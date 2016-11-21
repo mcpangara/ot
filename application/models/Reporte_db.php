@@ -81,10 +81,9 @@ class Reporte_db extends CI_Model{
             ->get();
   }
 
-  public function getRecursosReporte($idrepo)
+  public function getRecursosReporte($idrepo, $tipo)
   {
-    $this->load->database('ot');
-    $this->db->select('rrd.*, rot.');
+    
   }
 
   public function listaBy($idOT)

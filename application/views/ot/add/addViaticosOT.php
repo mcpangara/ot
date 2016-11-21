@@ -26,7 +26,7 @@
 						<td>{{itv.itemc_item}}</td>
 						<td>{{itv.descripcion}}</td>
 						<td>
-							<select name="" ng-model="itv.destino" ng-change="applyViatico(itv, '<?= site_url('miscelanio/getTarifaGV') ?>')">
+							<select name="itv" ng-model="itv.destino" ng-change="applyViatico(itv, '<?= site_url('miscelanio/getTarifaGV') ?>')">
 								<?php foreach ($tarifagv->result() as $tarf): ?>
 									<option value="<?= $tarf->idtarifa_gv ?>"><?= $tarf->destino ?></option>
 								<?php endforeach; ?>

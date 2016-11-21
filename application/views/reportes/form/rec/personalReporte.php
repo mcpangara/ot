@@ -60,7 +60,7 @@
 
         <td>
           <div class="valign-wrapper">
-            <span ng-if="pr.valid != undefined && !pr.valid" class="valign red-text text-darken-2" style="font-size:3ex" data-icon="f"></span>
+            <span ng-if="pr.valid != undefined && !pr.valid" class="valign red-text text-darken-2" ng-click="mensaje(pr.msj)"  style="font-size:3ex" data-icon="f"></span>
             <a href="#" ng-bind="pr.itemc_item" class="valign text-" ng-click="mensaje( pr.idrecurso_ot+' '+pr.descripcion)"></a>
           </div>
         </td>
