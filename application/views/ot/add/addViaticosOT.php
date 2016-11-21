@@ -34,10 +34,10 @@
 						</td>
 						<td> <input type="number" ng-model="itv.cantidad_gv" style="width:7ex" name="name" value=""> </td>
 						<td> <input type="number" ng-model="itv.duracion_gv" style="width:7ex" name="name" value=""> </td>
-						<td>{{ itv.alojamiento | currency:'$':0 }}</td>
-						<td>{{ itv.alimentacion | currency:'$':0 }}</td>
-						<td>{{ itv.transporte | currency:'$':0 }}</td>
-						<td>{{ itv.miscelanios | currency:'$':0 }}</td>
+						<td> <input type="number" ng-model="itv.alojamiento" value=""> {{ itv.alojamiento | currency:'$':0 }}</td>
+						<td> <input type="number" ng-model="itv.alimentacion" value="">{{ itv.alimentacion | currency:'$':0 }}</td>
+						<td> <input type="number" ng-model="itv.transporte" value="">{{ itv.transporte | currency:'$':0 }}</td>
+						<td> <input type="number" ng-model="itv.miscelanios" value=""> {{ itv.miscelanios | currency:'$':0 }}</td>
 						<td>{{ ( (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * 1.6196) | currency:'$':0 }}</td>
 					</tr>
 					<tr>
