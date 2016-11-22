@@ -117,7 +117,6 @@ $db['ot'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
 /*
 $db['ot'] = array(
 	'dsn'	=> '',

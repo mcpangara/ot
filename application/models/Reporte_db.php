@@ -83,12 +83,19 @@ class Reporte_db extends CI_Model{
 
   public function getRecursosReporte($idrepo, $tipo){
     $this->load->database('ot');
+    $this->db->select('rrd.*.');
+    //$this->db->join('item_tarea_ot AS itr', 'itr.iditem_tarea_ot = rrd.iditem_tarea_ot', 'LEFT');
+    $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.recurso_ot_idrecurso_ot', 'LEFT');
     if ($tipo == 'personal') {
       $this->db->select('p.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
+      $this->db->join('persona AS p', 'p.identificacion = r.persona_idpersona','LEFT');
     }
     elseif ($tipo == "equipos") {
-      $this->db->select('e.*');
+      $this->db->select('e.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
+      $this->db->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT');
     }
+    $this->db->where('rrd.idreporte_diario', $idrepo);
+    return $this->db->get();
   }
 
   public function listaBy($idOT)
