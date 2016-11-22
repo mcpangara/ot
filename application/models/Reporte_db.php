@@ -71,7 +71,7 @@ class Reporte_db extends CI_Model{
   {
     $this->load->database('ot');
     return $this->db->from('reporte_diario AS rd')
-            ->join('ot', 'ot.idOT = rd.OT_idOT')
+            ->join('OT', 'OT.idOT = rd.OT_idOT')
             ->get();
   }
   # Consultar Reporte por id
@@ -109,7 +109,7 @@ class Reporte_db extends CI_Model{
   public function listaBy($idOT)
   {
     $this->load->database('ot');
-    return $this->db->select('*')->from('reporte_diario AS rd')->join('ot', 'ot.idOT = rd.OT_idOT')->where('rd.OT_idOT', $idOT)->order_by('fecha_reporte','ASC')->get();
+    return $this->db->select('*')->from('reporte_diario AS rd')->join('OT', 'OT.idOT = rd.OT_idOT')->where('rd.OT_idOT', $idOT)->order_by('fecha_reporte','ASC')->get();
   }
 
   // TRANSACTION
