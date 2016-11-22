@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$config['base_url'] = 'http://192.168.113.94:8080/app/ot/';
 //$config['base_url'] = 'http://local:8080/app/ot/';
 //$config['base_url'] = 'http://localhost/app/ot/';
-//$config['base_url'] = 'http://190.146.10.154/app/ot/';
+$config['base_url'] = 'http://190.146.10.154/app/ot/';
 
 /*
 |--------------------------------------------------------------------------
