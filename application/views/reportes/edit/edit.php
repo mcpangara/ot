@@ -1,13 +1,12 @@
 <div id="add-reporte" class="windowCentered2 row" ng-controller="reportes">
-
-  <div class="" ng-controller="editReporte" ng-init="getDataInfo()">
+  <div class="" ng-controller="editReporte" ng-init="getDataInfo('<?= site_url('reporte/getRecursos/'.$r->idreporte_diario) ?>');">
       <section class="area reportes">
         <div class="btnWindow">
           <img class="logo" src="<?= base_url("assets/img/termotecnica.png") ?>" width="100px" />
           <button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Salir</button>
         </div>
       </section>
-      <h5 class="center-align" style="border:1px solid #2196F3;  padding:2px;"> Nuevo Reporte Diario (producción): <?= $ot->nombre_ot ?> </h5>
+      <h5 class="center-align" style="border:1px solid #2196F3;  padding:2px;"> Nuevo Reporte Diario (producción): <?= $r->nombre_ot ?> </h5>
 
       <style>
         button.btn, button.mini-btn2{
@@ -39,8 +38,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><b><?= $ot->nombre_ot ?></b> <input type="hidden" ng-model="rd.info.nombre_ot" ng-init="rd.info.nombre_ot = '<?= $r->nombre_ot ?>'"> </td>
-              <td> <b><?= date('Y/m/d',strtotime($fecha)) ?></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $r->fecha_reporte ?>'"></td>
+              <td><b><?= $r->nombre_ot ?></b> <input type="hidden" ng-model="rd.info.nombre_ot" ng-init="rd.info.nombre_ot = '<?= $r->nombre_ot ?>'"> </td>
+              <td> <b><?= date('Y/m/d',strtotime($r->fecha_reporte)) ?></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $r->fecha_reporte ?>'"></td>
               <td>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#info', 'nodisplay', '.mypanel > div')" data-icon="&#xe021;"> Detalles Reporte</button>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#recursosOT', 'nodisplay', '.mypanel > div')" data-icon="+"> Tiempo/Recursos</button>
@@ -60,7 +59,7 @@
 
       <div class="mypanel">
         <div id="info" class="font11"> <?php $this->load->view('reportes/form/info'); ?> </div>
-        <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT', array('un_equipos'=>$un_equipos, 'item_equipos'=>$item_equipos)); ?> </div>
+        <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT', array('ot'=>$r, 'un_equipos'=>$un_equipos, 'item_equipos'=>$item_equipos)); ?> </div>
         <div id="firmas" class="font11 nodisplay"> <?php $this->load->view('reportes/form/firmas'); ?> </div>
         <div id="validaciones" class="font11 nodisplay"> <?php $this->load->view('reportes/form/validaciones'); ?> </div>
       </div>

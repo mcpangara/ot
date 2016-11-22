@@ -187,6 +187,9 @@ app.controller('listOTReportes', function($scope, $http, $timeout){
 app.controller('addReporte', function($scope, $http, $timeout){
   addReporte($scope, $http, $timeout);
 });
+app.controller('editReporte', function($scope, $http, $timeout){
+  editReporte($scope, $http, $timeout);
+});
 app.controller('personalUp', function($scope, $http, $timeout){
   personalUp($scope, $http, $timeout);
 });

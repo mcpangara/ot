@@ -16,7 +16,7 @@
         <td ng-bind="rd.fecha_reporte"></td>
         <td ng-bind="rd.nombre_ot"></td>
         <td ng-bind="rd.estado"></td>
-        <td> <button type="button" class="btn mini-btn2" data-icon=","> </button></td>
+        <td> <button type="button" class="btn mini-btn2" data-icon="," ng-click="getReporte('<?= site_url('reporte/get/') ?>', rd.idreporte_diario, $event)"> </button></td>
       </tr>
     </tbody>
   </table>

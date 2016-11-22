@@ -37,15 +37,15 @@
         <td ng-bind="eq.referencia"></td>
         <td ng-bind="eq.descripcion_equipo"></td>
         <td> <input type="text" style="width:90%" ng-model="eq.nombre_operador"> </td>
-        <td class="inputsSmall"> <input type="number" ng-model="eq.cantidad"> </td>
+        <td class="inputsSmall"> <input type="number" ng-model="eq.cantidad" ng-init="eq.cantidad = parseNumb(eq.cantidad)"> </td>
         <td class="inputsSmall"> <input type="text" ng-model="eq.unidad"> </td>
 
-        <td class="inputsSmall"> <input type="text" ng-model="eq.horo_inicio"> </td>
-        <td class="inputsSmall"> <input type="text" ng-model="eq.horo_fin"> </td>
+        <td class="inputsSmall"> <input type="text" ng-model="eq.horometro_ini"> </td>
+        <td class="inputsSmall"> <input type="text" ng-model="eq.horometro_fin"> </td>
 
-        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_oper"> </td>
-        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_disp"> </td>
-        <td class="inputsSmall noMaterialStyles"> <input type="checkbox" ng-model="eq.varado"> </td>
+        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_operacion" ng-init="eq.horas_operacion = parseNumb(eq.horas_operacion)"> </td>
+        <td class="inputsSmall"> <input style="border: green 1px solid; " type="number" ng-model="eq.horas_disponible" ng-init="eq.horas_disponible = parseNumb(eq.horas_disponible)"> </td>
+        <td class="inputsSmall noMaterialStyles"> <input type="checkbox" ng-model="eq.varado" ng-init="eq.varado = parseBool(eq.varado)"> </td>
       </tr>
     </tbody>
   </table>

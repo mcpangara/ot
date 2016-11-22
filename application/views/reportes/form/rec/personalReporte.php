@@ -61,7 +61,7 @@
         <td>
           <div class="valign-wrapper">
             <span ng-if="pr.valid != undefined && !pr.valid" class="valign red-text text-darken-2" ng-click="mensaje(pr.msj)"  style="font-size:3ex" data-icon="f"></span>
-            <a href="#" ng-bind="pr.itemc_item" class="valign text-" ng-click="mensaje( pr.idrecurso_ot+' '+pr.descripcion)"></a>
+            <a href="#" ng-bind="pr.itemc_item" class="valign text-" ng-click="mensaje( pr.idrecurso_ot+' '+pr.descripcion+' '+pr.hr_almuerzo)"></a>
           </div>
         </td>
 
@@ -76,14 +76,14 @@
         <td class="inputsSmall"> <input ng-model="pr.hora_fin" type="text" style="width:5ex" required  />  Hrs.</td>
         <td class="inputsSmall">
           <div class="">
-            <input type="number" style="border: green 1px solid; width:5ex;" ng-model="pr.cantidad">
+            <input type="number" style="border: green 1px solid; width:5ex;" ng-model="pr.cantidad" ng-init="pr.cantidad = parseNumb(pr.cantidad)" >
           </div>
         </td>
-        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_rn"> </td>
-        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_hed"> </td>
-        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_hen"> </td>
-        <td> <input type="checkbox" ng-model="pr.racion" ng-init="false"> </td>
-        <td> <input type="checkbox" ng-model="pr.hr_almuerzo" ng-init="false"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_recargo" ng-init="pr.horas_recargo = parseNumb(pr.horas_recargo)"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_extra_dia" ng-init="pr.horas_extra_dia = parseNumb(pr.horas_extra_dia)"> </td>
+        <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_extra_noc" ng-init="pr.horas_extra_noc = parseNumb(pr.horas_extra_noc)"> </td>
+        <td> <input type="checkbox" ng-model="pr.racion" ng-init="pr.racion = parseBool(pr.racion)"> </td>
+        <td> <input type="checkbox" ng-model="pr.hr_almuerzo" ng-init="pr.hr_almuerzo = parseBool(pr.hr_almuerzo)"> </td>
       </tr>
     </tbody>
   </table>

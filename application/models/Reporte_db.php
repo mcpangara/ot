@@ -19,7 +19,7 @@ class Reporte_db extends CI_Model{
       'valido'=> FALSE,
       'festivo'=>$repo->festivo,
       'OT_idOT'=>$repo->idOT,
-      'json'=>json_encode($repo)
+      'json_r'=>json_encode($repo)
     );
     $this->db->insert('reporte_diario', $data);
     return $this->db->insert_id();
@@ -31,6 +31,7 @@ class Reporte_db extends CI_Model{
      $data = array(
        'idreporte_diario' => $idrepo,
        'cantidad'=> isset($recurso->cantidad)? $recurso->cantidad: '0',
+       'planeado'=> isset($recurso->planeado)?$recurso->planeado:'',
        'facturable'=> isset($recurso->facturable)?$recurso->facturable:TRUE,
        'hora_inicio'=> isset($recurso->hora_inicio)? $recurso->hora_inicio: '',
        'hora_fin'=> isset($recurso->hora_fin)? $recurso->hora_fin: '',
@@ -40,12 +41,14 @@ class Reporte_db extends CI_Model{
        'racion'=> isset($recurso->racion)? $recurso->racion: '',
        'hr_almuerzo'=> isset($recurso->hr_almuerzo)? $recurso->hr_almuerzo: '',
        'nombre_operador'=> isset($recurso->nombre_operador)? $recurso->nombre_operador: '',
-       'horas_operacion'=> isset($recurso->horas_oper)? $recurso->horas_oper: '',
-       'horas_disponible'=> isset($recurso->horas_disp)? $recurso->horas_disp: '',
+       'horas_operacion'=> isset($recurso->horas_oper)? $recurso->horas_operacion: '',
+       'horas_disponible'=> isset($recurso->horas_disp)? $recurso->horas_disponible: '',
        'varado'=> isset($recurso->varado)? $recurso->varado: '',
-       'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horo_inicio: '',
-       'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horo_fin: '',
+       'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horometro_ini: '',
+       'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horometro_fin: '',
        'idrecurso_ot'=>  isset($recurso->idrecurso_ot)?$recurso->idrecurso_ot:NULL,
+       'itemf_iditemf'=> isset($recurso->itemf_iditemf)?$recurso->itemf_iditemf:NULL,
+       'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL
      );
      $this->db->insert('recurso_reporte_diario', $data);
    }
@@ -72,27 +75,32 @@ class Reporte_db extends CI_Model{
             ->get();
   }
   # Consultar Reporte por id
-  public function get($idRepo)
+  public function get($idrepo)
   {
     $this->load->database('ot');
-    return $this->db->from('reporte_diario AS rd')
-            ->join('ot', 'ot.idOT = rd.OT_idOT')
-            ->where('rd.idreporte',$idRepo)
-            ->get();
+    //return $this->db->get_where('reporte_diario', array('idreporte_diario'=>$idrepo));
+    return $this->db->select('*')->from('reporte_diario AS rd')->join('OT','OT.idOT = rd.OT_idOT')->where('rd.idreporte_diario',$idrepo)->get();
   }
 
-  public function getRecursosReporte($idrepo, $tipo){
+  public function getRecursos($idrepo, $tipo){
     $this->load->database('ot');
-    $this->db->select('rrd.*.');
+    $this->db->select('rrd.*, itf.itemc_item, itf.descripcion, itf.unidad');
     //$this->db->join('item_tarea_ot AS itr', 'itr.iditem_tarea_ot = rrd.iditem_tarea_ot', 'LEFT');
-    $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.recurso_ot_idrecurso_ot', 'LEFT');
+    $this->db->from('recurso_reporte_diario AS rrd');
+    $this->db->join('itemf AS itf', 'rrd.itemf_iditemf = itf.iditemf', 'LEFT');
+    $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot', 'LEFT');
+    $this->db->join('recurso AS r', 'r.idrecurso = rot.recurso_idrecurso', 'LEFT');
     if ($tipo == 'personal') {
       $this->db->select('p.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
-      $this->db->join('persona AS p', 'p.identificacion = r.persona_idpersona','LEFT');
+      $this->db->join('persona AS p', 'p.identificacion = r.persona_identificacion','LEFT');
+      $this->db->where('rot.tipo', 'persona');
     }
     elseif ($tipo == "equipos") {
       $this->db->select('e.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
       $this->db->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT');
+      $this->db->where('rot.tipo', 'equipo');
+    }elseif ($tipo == 'actividades') {
+      $this->db->where('rrd.idrecurso_ot', NULL);
     }
     $this->db->where('rrd.idreporte_diario', $idrepo);
     return $this->db->get();

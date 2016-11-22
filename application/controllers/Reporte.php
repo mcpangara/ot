@@ -137,9 +137,40 @@ class Reporte extends CI_Controller{
   public function get($idReporte)
   {
     $this->load->model('reporte_db','repo');
-    $reporte = $this->repo->get($idReporte);
+    $r = $this->repo->get($idReporte)->row();
+    $this->load->model('Ot_db', 'otdb');
+    $ot = $this->otdb->getData($r->OT_idOT);
+    $this->load->model('tarea_db', 'tarea');
+    $item_equipos = $this->tarea->getTareasItemsResumenBy($r->OT_idOT,3);
+    //obtener unidades de negocio
+    $this->load->model('equipo_db', 'equ');
+    $un_equipos = $this->equ->getResumenUN();
+
+    //$recursos = new stdClass();
+    //$recursos->personal = $this->repo->getRecursoReporte();
+    $this->load->view('reportes/edit/edit', array( 'r'=>$r, 'item_equipos'=>$item_equipos->result(), 'un_equipos'=>$un_equipos));
+  }
+
+  public function getInfo($idReporte)
+  {
+    $this->load->model('reporte_db','repo');
+    $r = $this->repo->get($idReporte)->row();
+    return $r->json_r;
+  }
+  public function getRecursos($idReporte)
+  {
+    $this->load->model('reporte_db', 'repo');
+    $acts = $this->repo->getRecursos($idReporte, 'actividades');
+    $pers = $this->repo->getRecursos($idReporte, 'personal');
+    $equs = $this->repo->getRecursos($idReporte, 'equipos');
+
     $recursos = new stdClass();
-    $recursos->personal = $this->repo->getRecursoReporte();
+    $recursos->info = $this->getInfo($idReporte);
+    $recursos->personal = $pers->result();
+    $recursos->equipos = $equs->result();
+    $recursos->actividades = $acts->result();
+
+    echo json_encode($recursos);
   }
   # ============================================================================================================
   # Datos de relleno para pruebas
