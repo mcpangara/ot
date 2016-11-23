@@ -59,7 +59,7 @@ table.mytabla tr th, table.mytabla tr td{
   margin:0;
   padding: 2px;
   border-right: 1px solid #777;
-  max-width: 50%;
+  max-width: 110ex;
 }
 table.mytabla tbody tr:active, table.mytabla tbody tr:hover, table.mytabla tbody tr:focus{
   background: #CEE1FF;
