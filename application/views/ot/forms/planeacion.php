@@ -26,7 +26,7 @@
 			<thead>
 				<tr>
 					<th>Codigo</th>
-					<th>Descripción</th>
+					<th style="max-width: 55%;">Descripción</th>
 					<th>Unidad</th>
 					<th>Cantidad</th>
 					<th>Duración</th>
