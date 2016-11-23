@@ -80,7 +80,7 @@ class Ot extends CI_Controller {
 					isset($orden->abscisa)?$orden->abscisa:NULL,
 					isset($orden->idpoblado)?$orden->idpoblado:NULL,
 					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
-					json_encode($orden->json)
+					isset($orden->json)?json_encode($orden->json):NULL
 				);
 			#-----------------------
 			#Adicionar tarea nueva
