@@ -313,10 +313,11 @@ class Ot extends CI_Controller {
 	# proceso que recorre los items de las tareas e inserta o actualiza los cambios
 	public function recorrerItems($items, $idTr){
 		foreach($items as $it){
-			if(FALSE){//isset($it->iditem_tarea_ot) || FALSE){
+			if(isset($it->iditem_tarea_ot)){
 				$this->update_item_tarea($it);
 			}else{
-				$this->addNewItemTarea($idTr, $it);
+				print_r($it);
+				//$this->addNewItemTarea($idTr, $it);
 			}
 		}
 	}
