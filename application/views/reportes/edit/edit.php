@@ -44,7 +44,7 @@
           <tbody>
             <tr>
               <td><b><?= $r->nombre_ot ?></b> <input type="hidden" ng-model="rd.info.nombre_ot" ng-init="rd.info.nombre_ot = '<?= $r->nombre_ot ?>'"> </td>
-              <td> <b><?= date('Y/m/d',strtotime($r->fecha_reporte)) ?></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $r->fecha_reporte ?>'"></td>
+              <td> <b ng-bind="rd.info.fecha_reporte"></b> <input type="hidden" ng-model="rd.info.fecha_reporte" ng-init="rd.info.fecha_reporte = '<?= $r->fecha_reporte ?>'"></td>
               <td>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#info', 'nodisplay', '.mypanel > div')" data-icon="&#xe021;"> Detalles Reporte</button>
                 <button type="button" style="background:#1261C9" class="btn mini-btn" ng-click="toggleContent('#recursosOT', 'nodisplay', '.mypanel > div')" data-icon="+"> Tiempo/Recursos</button>

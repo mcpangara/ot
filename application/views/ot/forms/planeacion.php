@@ -43,7 +43,7 @@
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
-					<td> <input type="number" ng-model="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
+					<td> <input type="number" ng-model="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" style="width:8ex" ng-change="calcularSubtotales()"> </td>
 					<td> <input type="number" ng-model="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">

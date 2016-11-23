@@ -25,6 +25,8 @@
 					<td> <input type="text" ng-model="filtro.descripcion" placeholder="filtro"/> </td>
 					<td> <input type="text" ng-model="filtro.unidad" placeholder="filtro"/> </td>
 					<td> </td>
+          <td> </td>
+          <td> </td>
 				</tr>
 				<tr ng-repeat="it in myItems | filter: filtro" >
 					<td>
@@ -35,7 +37,7 @@
 					<td>{{ it.descripcion }}</td>
 					<td>{{ it.unidad }}</td>
 					<td style="text-align: right">{{ it.tarifa | currency}}</td>
-          <td> <input type="number" ng-model="it.cantidad" ng-init="it.cantidad = 0" style="width:7ex"> </td>
+          <td> <input type="number" ng-model="it.cantidad" ng-init="it.cantidad = 0" style="width:8ex"> </td>
           <td> <input type="number" ng-model="it.duracion" ng-init="it.duracion = 0" style="width:10ex"> </td>
 				</tr>
 			</tbody>
