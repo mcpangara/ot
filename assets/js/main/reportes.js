@@ -585,7 +585,7 @@ var editReporte = function($scope, $http, $timeout){
   }
 
   $scope.quitarRegistroLista = function( lista, item, url, prop){
-    if(url!='' && prop!=''){
+    if(url!='' && prop!='' && ( items.idrecurso_reporte_diario != undefined || items.idrecurso_reporte_diario != '' ) ){
       $http.post(url, { prop: item[prop], }
       ).then(
         function(response){

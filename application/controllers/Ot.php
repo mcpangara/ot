@@ -282,7 +282,11 @@ class Ot extends CI_Controller {
 		# fin de seguimiento de transacciones concapacidad de RollBack
 		$status = $this->ot_db->end_transact();
 		if($status != FALSE){
-			echo 'Orden de trabajo guardada correctamente';
+			$succ = new stdClass();
+			$succ->success = 'Orden de trabajo guardada correctamente';
+			$succ->ot = $this->get($orden->idOT);
+			echo json_encode($succ);
+			//echo "Orden de trabajo guardada correctamente";
 		}else{
 			echo 'ha sucedido un error inesperado, estamos trabajando para mejorar.';
 		}
@@ -309,7 +313,7 @@ class Ot extends CI_Controller {
 	# proceso que recorre los items de las tareas e inserta o actualiza los cambios
 	public function recorrerItems($items, $idTr){
 		foreach($items as $it){
-			if(isset($it->iditem_tarea_ot)){
+			if(isset($it->iditem_tarea_ot) || FALSE){
 				$this->update_item_tarea($it);
 			}else{
 				$this->addNewItemTarea($idTr, $it);
@@ -335,7 +339,16 @@ class Ot extends CI_Controller {
 	#=================================================================================
 	# Consultas
 	#=================================================================================
-
+	# Obtener datos de una OT
+	public function get($id)
+	{
+		$this->load->model('ot_db');
+		$ot = $this->ot_db->getData($id)->row();
+		$ot->json = json_decode($ot->json);
+		$trs = $this->getTareasByOT($id);
+		$ot->tareas = $trs;
+		return $ot;
+	}
 	# Obtener datos de una OT en JSON
 	public function getData($id)
 	{

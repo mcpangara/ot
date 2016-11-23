@@ -550,14 +550,15 @@ var editarOT = function($scope, $http, $timeout) {
 		console.log($scope.ot);
 		$http.post(	  url, { ot: $scope.ot }   ).then(
 			function(response) {
-				if(response.data == 'Orden de trabajo guardada correctamente'){
-					alert('Orden de trabajo guardada correctamente');
+				if(response.data.success == 'Orden de trabajo guardada correctamente'){
+					alert(response.data.success);
+					$scope.ot = response.data.ot;
 					$timeout(function(){
 						$scope.$parent.refreshTabs();
 					});
 				}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
 			},
-			function(response) {console.log(response.data)}
+			function(response) {console.log(response)}
 		);
 	}
 
