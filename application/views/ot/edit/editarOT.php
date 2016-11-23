@@ -68,7 +68,7 @@
 			<br>
 			<!-- seleccion de tarea -->
 			<div class="noMaterialStyles">
-				<label>Tarea:</label>
+				<label>Selecciona una Tarea:</label>
 				<select id="selected_tarea" ng-model="selected_tarea" ng-init="selected_tarea = '0'" ng-change="selectTarea(ot, selected_tarea)">
 					<option ng-repeat="tar in ot.tareas track by $index" value="{{$index}}" ng-init="selectTarea(ot, 0)">{{tar.nombre_tarea}}</option>
 				</select>
