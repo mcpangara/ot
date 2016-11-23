@@ -172,6 +172,18 @@ class Reporte extends CI_Controller{
 
     echo json_encode($recursos);
   }
+
+  # ===========================================================================================================
+  public function exiteReporte()
+  {
+    $this->load->model('reporte_db','repo');
+    $r = $this->repo->get($idReporte);
+    if ($r->num_rows() < 0) {
+      echo 0;
+    }else{
+      echo 1;
+    }
+  }
   # ============================================================================================================
   # Datos de relleno para pruebas
   public function getByOT($value='')

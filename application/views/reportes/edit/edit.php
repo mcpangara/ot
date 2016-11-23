@@ -1,9 +1,14 @@
 <div id="add-reporte" class="windowCentered2 row" ng-controller="reportes">
   <div class="" ng-controller="editReporte" ng-init="getDataInfo('<?= site_url('reporte/getRecursos/'.$r->idreporte_diario) ?>');">
+
+      <?php $this->load->view('reportes/edit/duplicar'); ?>
+
       <section class="area reportes">
         <div class="btnWindow">
           <img class="logo" src="<?= base_url("assets/img/termotecnica.png") ?>" width="100px" />
           <button type="button" class="waves-effect waves-light btn red" ng-click="cerrarWindow()">Salir</button>
+
+          <button type="button" class="waves-effect waves-light btn" ng-click="formDuplicar()">Duplicar</button>
         </div>
       </section>
       <h5 class="center-align" style="border:1px solid #2196F3;  padding:2px;"> Nuevo Reporte Diario (producción): <?= $r->nombre_ot ?> </h5>

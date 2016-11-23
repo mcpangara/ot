@@ -67,7 +67,7 @@ class Ot extends CI_Controller {
 			#crear la OT
 			$idot = $this->ot->add(
 					$orden->nombre_ot,
-					$orden->ccosto,
+					isset($orden->ccosto)?$orden->ccosto:NULL,
 					$orden->base_idbase,
 					$orden->zona,
 					$orden->fecha_creacion,

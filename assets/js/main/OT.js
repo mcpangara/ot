@@ -461,13 +461,15 @@ var agregarOT = function($scope, $http, $timeout){
 		console.log($scope.ot);
 		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
 			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
+		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefineds) {
+			alert("No has seleccionado nombre de TO");
 		}else{
 			$http.post(	  url, { ot: $scope.ot }   ).then(
 				function(response) {
 					if(response.data == 'Orden de trabajo guardada correctamente'){
 						alert('Orden de trabajo guardada correctamente');
 						$timeout(function(){
-							//$scope.$parent.cerrarWindow();
+							$scope.$parent.cerrarWindow();
 							$scope.$parent.refreshTabs();
 						});
 					}else{	alert('Algo ha salido mal!'); console.log(response.data)	}

@@ -414,6 +414,38 @@ var editReporte = function($scope, $http, $timeout){
       )
   }
 
+  $scope.formDuplicar = function(){
+    $('#duplicar').toggleClass('nodisplay');
+  }
+  // Realiza la actividad de duplicar reporte
+  $scope.duplicar = function(url, $e){
+      if ($scope.fecha_duplicar == undefined ||  $scope.fecha_duplicar == '') {
+        alert('No hay fecha selecionada');
+      }else{
+        $http.post(
+          url,
+          {
+            idOT: $scope.rd.idOT,
+            fecha: $scope.fecha_duplicar
+          }
+        ).then(
+          function (response) {
+            if(response.data.success == 'existe'){
+              alert('Ya hay un reporte para esa fecha');
+            }else if(response.data.success == 'duplicado'){
+              $scope.rd.info.fecha_reporte = response.data.rd.info.fecha_reporte;
+              alert('Reporte duplicado listo para guardar en fecha '+$scope.fecha_duplicar)
+            }else{
+              alert('Proceso en revisión, intenta más tarde')
+            }
+          },
+          function (response) {
+            alert('Falla: '+response.data)
+          }
+        );
+      }
+  }
+
   //Busque de equipos no relacionados
   $scope.consultaEquiposOT = {};
   $scope.resultEquiposBusqueda = [];
