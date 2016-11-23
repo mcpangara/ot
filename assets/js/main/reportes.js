@@ -437,13 +437,13 @@ var editReporte = function($scope, $http, $timeout){
       }else{
         $http.get(url+'/'+$scope.rd.idOT+'/'+$scope.fecha_duplicar).then(
           function (response) {
-            if(response.data.success == 'invalid'){
+            if(response.data == 'invalid'){
               alert('Ya hay un reporte para esa fecha');
-            }else if(response.data.success == 'valid'){
+            }else if(response.data == 'valid'){
               $scope.rd.info.fecha_reporte = $scope.fecha_duplicar;
               alert('Reporte duplicado listo para guardar en fecha '+$scope.fecha_duplicar)
             }else{
-              alert('Proceso en revisión, intenta más tarde')
+              alert('Proceso en revisión, intenta más tarde'+response.data)
             }
           },
           function (response) {
