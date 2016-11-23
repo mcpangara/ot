@@ -74,12 +74,6 @@ var OT = function($scope, $http, $timeout){
 			ambito.tr = ambito.ot.tareas[ambito.ot.tareas.length];
 		console.log(ambito.ot.tareas);
 	}
-
-	$scope.delete_tarea = function(url, tr){
-		if (tr.idtarea_ot == '') {
-			$scope.ot.tareas.splice($scope.ot.tareas.indexOf(tr),1);
-		}
-	}
 	//==============================================================================
 	// Gestion de items de OT
 	//Muestra items por agregar de un tipo en la ventana. Debe llamarse desde un controller hijo.
@@ -545,7 +539,9 @@ var editarOT = function($scope, $http, $timeout) {
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){ $scope.$parent.obtenerMunicipios(depart,url,$scope); }
 	$scope.obtenerVeredas =function(municip,url){ $scope.$parent.obtenerVeredas(municip, url, $scope); }
-	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
+	$scope.getMapa = function(){
+		//$scope.$parent.getMapa($scope);
+	}
 	$scope.guardarOT = function(url){
 		//tinyMCE.triggerSave();
 		$scope.calcularSubtotales();
@@ -563,5 +559,21 @@ var editarOT = function($scope, $http, $timeout) {
 			},
 			function(response) {console.log(response.data)}
 		);
+	}
+
+
+	$scope.delete_tarea = function(url, tr){
+		if (tr.idtarea_ot == undefined || tr.idtarea_ot == '') {
+			$scope.ot.tareas.splice($scope.ot.tareas.indexOf(tr),1);
+		}else{
+			$http.get(url+'/'+tr.idtarea_ot).then(
+				function(response){
+					if(response.data == 'success'){
+						$scope.ot.tareas.splice($scope.ot.tareas.indexOf(tr),1);
+					}
+				},
+				function(response){}
+			);
+		}
 	}
 }
