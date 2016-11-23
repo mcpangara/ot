@@ -1,4 +1,4 @@
-  
+
   <div id="ventana_add_items" class="nodisplay ventanaItems">
 		<div style="position: relative">
 			<button type="button" class="btn green" ng-click="addSelectedItems()" data-icon="">Ok</button>
@@ -12,6 +12,8 @@
 					<th>Descripcion</th>
 					<th>Unidad</th>
 					<th>Tarifa (V. unid)</th>
+          <th>Cant.</th>
+          <th>Duración</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,6 +35,8 @@
 					<td>{{ it.descripcion }}</td>
 					<td>{{ it.unidad }}</td>
 					<td style="text-align: right">{{ it.tarifa | currency}}</td>
+          <td> <input type="text" ng-model="it.cantidad" ng-init="it.cantidad = 0"> </td>
+          <td> <input type="text" ng-model="it.duracion" ng-init="it.duracion = 0"> </td>
 				</tr>
 			</tbody>
 		</table>
