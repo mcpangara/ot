@@ -155,8 +155,19 @@ var listOTReportes = function($scope, $http, $timeout){
 
   $scope.enlazarClick = function(url, $e){
     $e.preventDefault();
-    var link = url+'/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected;
-    $scope.$parent.getAjaxWindow(link, $e, null)
+    $http.get(url+'valid/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected)
+    .then(
+      function(response) {
+        if (response.data == "invalid") {
+          alert('El reporte de esta fecha para esta OT ya existe');
+        }else if(response.data == "valid") {
+          var link = url+'/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected;
+          $scope.$parent.getAjaxWindow(link, $e, null);
+        }
+      },
+      function(response) {
+      }
+    );
   }
 
   $scope.getReporte = function(link, id, $e){
@@ -399,6 +410,8 @@ var editReporte = function($scope, $http, $timeout){
   $scope.personalOT = [];
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
+  $scope.fecha_duplicar = '';
+
   $scope.getDataInfo = function(link){
     $http.post(link, {})
       .then(
@@ -422,18 +435,12 @@ var editReporte = function($scope, $http, $timeout){
       if ($scope.fecha_duplicar == undefined ||  $scope.fecha_duplicar == '') {
         alert('No hay fecha selecionada');
       }else{
-        $http.post(
-          url,
-          {
-            idOT: $scope.rd.idOT,
-            fecha: $scope.fecha_duplicar
-          }
-        ).then(
+        $http.get(url+'/'+$scope.rd.idOT+'/'+$scope.fecha_duplicar).then(
           function (response) {
-            if(response.data.success == 'existe'){
+            if(response.data.success == 'invalid'){
               alert('Ya hay un reporte para esa fecha');
-            }else if(response.data.success == 'duplicado'){
-              $scope.rd.info.fecha_reporte = response.data.rd.info.fecha_reporte;
+            }else if(response.data.success == 'valid'){
+              $scope.rd.info.fecha_reporte = $scope.fecha_duplicar;
               alert('Reporte duplicado listo para guardar en fecha '+$scope.fecha_duplicar)
             }else{
               alert('Proceso en revisión, intenta más tarde')

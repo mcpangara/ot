@@ -12,7 +12,19 @@ class Reporte extends CI_Controller{
 
   function index(){ }
   #===========================================================================================================
-  #
+  # add
+  public function addvalid($idOT, $fecha)
+  {
+    $post = json_decode( file_get_contents("php://input") );
+    $this->load->model('reporte_db', 'repo');
+    $rows = $this->repo->getBy($idOT, $fecha);
+    if($rows->num_rows() > 0){
+      echo 'invalid';
+    }else{
+      echo 'valid';
+    }
+  }
+  # form add reporte
   public function add($idOT, $fecha){
     $this->load->model('Ot_db', 'otdb');
     $ot = $this->otdb->getData($idOT);

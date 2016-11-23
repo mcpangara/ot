@@ -72,6 +72,8 @@ class Reporte_db extends CI_Model{
     $this->load->database('ot');
     return $this->db->from('reporte_diario AS rd')
             ->join('OT', 'OT.idOT = rd.OT_idOT')
+            ->where('OT.idOT', $idOT)
+            ->where('rd.fecha_reporte',$fecha)
             ->get();
   }
   # Consultar Reporte por id

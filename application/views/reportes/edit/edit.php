@@ -11,7 +11,7 @@
           <button type="button" class="waves-effect waves-light btn" ng-click="formDuplicar()">Duplicar</button>
         </div>
       </section>
-      <h5 class="center-align" style="border:1px solid #2196F3;  padding:2px;"> Nuevo Reporte Diario (producción): <?= $r->nombre_ot ?> </h5>
+      <h5 class="center-align" style="border:1px solid #2196F3;  padding:2px;"> Reporte Diario (producción): <?= $r->nombre_ot ?> </h5>
 
       <style>
         button.btn, button.mini-btn2{
