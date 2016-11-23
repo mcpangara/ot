@@ -435,8 +435,9 @@ var editReporte = function($scope, $http, $timeout){
       if ($scope.fecha_duplicar == undefined ||  $scope.fecha_duplicar == '') {
         alert('No hay fecha selecionada');
       }else{
-        $http.get(url+'/'+$scope.rd.idOT+'/'+$scope.fecha_duplicar).then(
+        $http.get(url+'/'+$scope.rd.info.idOT+'/'+$scope.fecha_duplicar).then(
           function (response) {
+            console.log(response.data+" "+$scope.rd.info.idOT);
             if(response.data == 'invalid'){
               alert('Ya hay un reporte para esa fecha');
             }else if(response.data == 'valid'){
