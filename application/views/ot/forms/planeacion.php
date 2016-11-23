@@ -26,7 +26,7 @@
 			<thead>
 				<tr>
 					<th>Codigo</th>
-					<th style="max-width: 55%;">Descripción</th>
+					<th>Descripción</th>
 					<th>Unidad</th>
 					<th>Cantidad</th>
 					<th>Duración</th>
@@ -56,7 +56,7 @@
 				</tr>
 				<tr ng-repeat="per in tr.personal">
 					<td>{{ per.itemc_item }}</td>
-					<td>{{ per.descripcion }}</td>
+					<td style="max-width: 50%;">{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
 					<td><input type="number" ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
 					<td><input type="number" ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
