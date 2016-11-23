@@ -44,6 +44,9 @@ section.area .listasDescriptivas ul li{
   min-width: 500px;
   overflow: auto;
 }
+table.mytabla {
+  width: 100%;
+}
 table.mytabla tr{
   border-top: 1px solid #777;
   border-bottom: 1px solid #777;
@@ -56,6 +59,7 @@ table.mytabla tr th, table.mytabla tr td{
   margin:0;
   padding: 2px;
   border-right: 1px solid #777;
+  max-width: 50%;
 }
 table.mytabla tbody tr:active, table.mytabla tbody tr:hover, table.mytabla tbody tr:focus{
   background: #CEE1FF;
