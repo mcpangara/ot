@@ -397,6 +397,15 @@ class Ot extends CI_Controller {
 	{
 		# code...
 	}
+
+	# ===============================================================================
+	// BORRADOS
+	public function delete_tarea($id)
+	{
+		$this->load->database('ot');
+		$this->db->delete('item_tarea_ot')->where('tarea_ot_idtarea_ot',$id);
+		$this->db->delete('tarea_ot')->where('idtarea_ot',$id);
+	}
 }
 /* End of file Ot.php */
 /* Location: ./application/controllers/Ot.php */

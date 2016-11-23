@@ -104,6 +104,7 @@ class Ot_db extends CI_Model {
 	public function getTareas($id)
 	{
 		$this->load->database('ot');
+		$this->db->select('*');
 		$this->db->from('tarea_ot');
 		$this->db->where('OT_idOT', $id);
 		return $this->db->get();

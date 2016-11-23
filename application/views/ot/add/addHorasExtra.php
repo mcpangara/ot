@@ -52,8 +52,8 @@
                   {{ ( ( (it.salario/8)*2 ) * it.cantidad_hefn) | currency:'$':0 }}
                 </div>
               </td>
-              <td <?= $isEdit?'ng-init="subtotal_he(it, (it.salario/8), 2.5, it.cantidad_hed, \'hfr\')"':'ng-init="it.cantidad_hfr = 0"' ?> >
-                <input type="number" ng-model="it.cantidad_hfr" style="width:7ex" ng-change="subtotal_he(it, (it.salario/8), 2.5, it.cantidad_hed, 'hfr')">
+              <td <?= $isEdit?'ng-init="subtotal_he(it, (it.salario/8), 2.5, it.cantidad_hfr, \'hfr\')"':'ng-init="it.cantidad_hfr = 0"' ?> >
+                <input type="number" ng-model="it.cantidad_hfr" style="width:7ex" ng-change="subtotal_he(it, (it.salario/8), 2.5, it.cantidad_hfr, 'hfr')">
                 <div <?= $isEdit?'':'ng-init="it.total_hfr = 0"'; ?> >
                   {{ ( ( (it.salario/8)*2.5 ) * it.cantidad_hfr) | currency:'$':0 }}
                 </div>

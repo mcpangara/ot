@@ -74,6 +74,12 @@ var OT = function($scope, $http, $timeout){
 			ambito.tr = ambito.ot.tareas[ambito.ot.tareas.length];
 		console.log(ambito.ot.tareas);
 	}
+
+	$scope.delete_tarea = function(url, tr){
+		if (tr.idtarea_ot == '') {
+			$scope.ot.tareas.splice($scope.ot.tareas.indexOf(tr),1);
+		}
+	}
 	//==============================================================================
 	// Gestion de items de OT
 	//Muestra items por agregar de un tipo en la ventana. Debe llamarse desde un controller hijo.
@@ -281,7 +287,7 @@ var OT = function($scope, $http, $timeout){
 		angular.forEach(tr.json_horas_extra.json_horas_extra, function(v,k){
 			val += v.total;
 			tr.json_horas_extra.valor_horas_extra = Math.round(val);
-			tr.json_horas_extra.administracion = Math.round( (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.01 );
+			tr.json_horas_extra.administracion = Math.round( (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.0458 );
 		});
 	}
 	$scope.endHorasExtra = function(tag, tr, ambito){
@@ -473,7 +479,7 @@ var agregarOT = function($scope, $http, $timeout){
 			$http.post(	  url, { ot: $scope.ot }   ).then(
 				function(response) {
 					if(response.data == 'Orden de trabajo guardada correctamente'){
-						alert('Orden de trabajo guardada correctamente');
+						alert('Orden de trabajo guardada correctamente, BASE: '+$scope.ot.base_idbase);
 						$timeout(function(){
 							$scope.$parent.cerrarWindow();
 							$scope.$parent.refreshTabs();

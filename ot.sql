@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-11-2016 a las 23:02:54
+-- Tiempo de generación: 23-11-2016 a las 17:58:26
 -- Versión del servidor: 5.6.31
 -- Versión de PHP: 5.6.17
 
@@ -9966,15 +9966,41 @@ CREATE TABLE `item_tarea_ot` (
 --
 
 INSERT INTO `item_tarea_ot` (`iditem_tarea_ot`, `cantidad`, `duracion`, `unidad`, `tarifa`, `fecha_agregado`, `valor_plan`, `itemf_iditemf`, `itemf_codigo`, `tarea_ot_idtarea_ot`, `debug`) VALUES
-(22, 1, 1, 'm3', 232354, '2016-11-16 12:41:11', 232354, 737, '10101', 30, ''),
-(23, 1, 1, 'Día', 154899, '2016-11-16 12:41:11', 154899, 962, '210101', 30, ''),
-(24, 1, 1, 'dia', 304703, '2016-11-16 12:41:11', 304703, 1196, '31002', 30, ''),
-(25, 1, 1, 'Día', 163105, '2016-11-17 09:32:42', 163105, 1165, '260402', 33, ''),
-(26, 1, 1, 'Día', 154899, '2016-11-17 09:32:42', 154899, 962, '210101', 33, ''),
-(27, 1, 1, 'm3', 348094, '2016-11-17 09:32:42', 348094, 743, '10202', 33, ''),
-(28, 1, 1, 'dia', 304703, '2016-11-17 09:32:42', 304703, 1196, '31002', 33, ''),
+(22, 1, 1, 'm3', 232354, '2016-11-21 12:19:42', 232354, 737, '10101', 30, ''),
+(23, 1, 1, 'Día', 154899, '2016-11-21 12:19:42', 154899, 962, '210101', 30, ''),
+(24, 1, 1, 'dia', 304703, '2016-11-21 12:19:42', 304703, 1196, '31002', 30, ''),
+(25, 1, 1, 'Día', 163105, '2016-11-21 09:43:24', 163105, 1165, '260402', 33, ''),
+(26, 1, 1, 'Día', 154899, '2016-11-21 09:43:24', 154899, 962, '210101', 33, ''),
+(27, 1, 1, 'm3', 348094, '2016-11-21 09:43:24', 348094, 743, '10202', 33, ''),
+(28, 1, 1, 'dia', 304703, '2016-11-21 09:43:24', 304703, 1196, '31002', 33, ''),
 (29, 1, 1, 'm3', 232354, '2016-11-18 16:29:14', 232354, 737, '10101', 34, ''),
-(30, 2, 1, 'Día', 154899, '2016-11-18 16:54:55', 309798, 964, '210103', 36, '');
+(30, 2, 1, 'Día', 154899, '2016-11-18 16:54:55', 309798, 964, '210103', 36, ''),
+(31, 1, 1, 'Día', 215636, '2016-11-21 12:05:04', 215636, 1062, '220606', 30, ''),
+(32, 1, 1, 'Día', 140799, '2016-11-21 11:57:45', 140799, 1186, '260604', 30, ''),
+(33, 1, 1, 'Día', 140799, '2016-11-21 12:19:42', 140799, 1184, '260602', 30, ''),
+(34, 1, 1, 'm3', 232354, '2016-11-23 09:25:55', 232354, 737, '10101', 37, ''),
+(35, 1, 1, 'm3', 232354, '2016-11-23 09:26:02', 232354, 737, '10101', 38, ''),
+(36, 1, 1, 'Día', 154899, '2016-11-23 10:39:30', 154899, 962, '210101', 39, ''),
+(37, 1, 1, 'Día', 154899, '2016-11-23 10:39:30', 154899, 964, '210103', 39, ''),
+(38, 1, 1, 'Día', 154899, '2016-11-23 10:39:30', 154899, 963, '210102', 39, ''),
+(39, 1, 1, 'Día', 160451, '2016-11-23 10:39:30', 160451, 965, '210201', 39, ''),
+(40, 1, 1, 'Día', 160451, '2016-11-23 10:39:30', 160451, 967, '210203', 39, ''),
+(41, 1, 1, 'Día', 168669, '2016-11-23 10:39:30', 168669, 970, '210303', 39, ''),
+(42, 1, 1, 'Día', 168669, '2016-11-23 10:39:30', 168669, 969, '210302', 39, ''),
+(43, 1, 1, 'Día', 168669, '2016-11-23 10:39:30', 168669, 968, '210301', 39, ''),
+(44, 1, 1, 'Día', 174883, '2016-11-23 10:39:30', 174883, 977, '210407', 39, ''),
+(45, 1, 1, 'Día', 174883, '2016-11-23 10:39:30', 174883, 972, '210402', 39, ''),
+(46, 1, 1, 'Día', 174883, '2016-11-23 10:39:30', 174883, 979, '210409', 39, ''),
+(47, 1, 1, 'Día', 174883, '2016-11-23 10:39:30', 174883, 974, '210404', 39, ''),
+(48, 1, 1, 'm3', 232354, '2016-11-23 10:39:30', 232354, 737, '10101', 39, ''),
+(49, 1, 1, 'm3', 302046, '2016-11-23 10:39:30', 302046, 738, '10102', 39, ''),
+(50, 1, 1, 'm3', 240697, '2016-11-23 10:39:30', 240697, 741, '10105', 39, ''),
+(51, 1, 1, 'dia', 95299, '2016-11-23 10:39:30', 95299, 1195, '31001', 39, ''),
+(52, 1, 1, 'dia', 304703, '2016-11-23 10:39:30', 304703, 1196, '31002', 39, ''),
+(53, 1, 1, 'dia', 1135020, '2016-11-23 10:39:30', 1135020, 1197, '31003', 39, ''),
+(54, 1, 1, 'dia', 635225, '2016-11-23 10:39:30', 635225, 1198, '31004', 39, ''),
+(55, 1, 1, 'dia', 596602, '2016-11-23 10:39:30', 596602, 1199, '31005', 39, ''),
+(56, 1, 1, 'dia', 1424499, '2016-11-23 10:39:30', 1424499, 1200, '31007', 39, '');
 
 -- --------------------------------------------------------
 
@@ -18151,7 +18177,13 @@ INSERT INTO `OT` (`idOT`, `ccosto`, `nombre_ot`, `numero_sap`, `actividad`, `jus
 (1675, 'est', 'TEST', NULL, '', '', '2016-11-17 09:04:06', NULL, NULL, NULL, NULL, 'NORTE', 'null', 'TR-001', 168, 5590, 5, 1),
 (1677, NULL, 'TEST0001', NULL, '', '', '2016-11-18 16:29:14', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', NULL, 168, 5598, 1, 1),
 (1678, NULL, 'TEST0002', NULL, '', '', '2016-11-18 16:33:28', NULL, NULL, 'TEST', NULL, 'CENTRO_ORIENTE', '{"p1":true,"p3":true,"p5":true,"p2":true,"p4":true}', NULL, 168, 7867, 5, 1),
-(1679, NULL, 'test0003', NULL, '', '', '2016-11-18 16:54:55', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', NULL, 168, 5571, 1, 1);
+(1679, NULL, 'test0003', NULL, '', '', '2016-11-18 16:54:55', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', NULL, 168, 5571, 1, 1),
+(1680, NULL, '', NULL, '', '', '2016-11-23 09:25:54', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', '1', 168, 5598, 1, 1),
+(1681, NULL, 'TEST01', NULL, '', '', '2016-11-23 09:26:02', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', '1', 168, 5598, 1, 1),
+(1682, NULL, 'asdasd', NULL, '', '', '2016-11-23 10:39:30', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 5647, NULL, NULL),
+(1687, NULL, 't', NULL, '', '', '2016-11-23 11:14:00', NULL, NULL, NULL, NULL, 'NORTE', 'null', NULL, 168, 7544, 1, 1),
+(1692, NULL, 'asdasdd', NULL, '', '', '2016-11-23 11:23:37', NULL, NULL, NULL, NULL, 'NORTE', NULL, NULL, 168, 5574, 1, 1),
+(1693, NULL, 'asdasd1', NULL, '', '', '2016-11-23 11:23:57', NULL, NULL, NULL, NULL, 'NORTE', '{"p1":true}', NULL, 168, 5260, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -20313,6 +20345,7 @@ CREATE TABLE `recurso_reporte_diario` (
   `idrecurso_reporte_diario` int(11) NOT NULL,
   `facturable` tinyint(1) NOT NULL,
   `cantidad` int(11) NOT NULL,
+  `planeado` float NOT NULL,
   `hora_inicio` varchar(15) DEFAULT NULL,
   `hora_fin` varchar(15) DEFAULT NULL,
   `horas_extra_dia` float DEFAULT NULL,
@@ -20327,40 +20360,40 @@ CREATE TABLE `recurso_reporte_diario` (
   `horometro_fin` varchar(20) DEFAULT NULL,
   `varado` tinyint(1) DEFAULT NULL,
   `idrecurso_ot` int(11) DEFAULT NULL,
-  `idreporte_diario` int(11) NOT NULL
+  `idreporte_diario` int(11) NOT NULL,
+  `itemf_iditemf` int(11) DEFAULT NULL,
+  `itemf_codigo` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `recurso_reporte_diario`
 --
 
-INSERT INTO `recurso_reporte_diario` (`idrecurso_reporte_diario`, `facturable`, `cantidad`, `hora_inicio`, `hora_fin`, `horas_extra_dia`, `horas_extra_noc`, `horas_recargo`, `hr_almuerzo`, `racion`, `nombre_operador`, `horas_operacion`, `horas_disponible`, `horometro_ini`, `horometro_fin`, `varado`, `idrecurso_ot`, `idreporte_diario`) VALUES
-(85, 1, 1, '0', '17', 3, 2, 2, 1, 1, '', 0, 0, '', '', 0, 523, 10),
-(86, 1, 1, '6', '17', 2, 1, 2, 0, 0, '', 0, 0, '', '', 0, 523, 11),
-(87, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 523, 12),
-(88, 1, 0, '', '', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 1033, 12),
-(89, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 523, 13),
-(90, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 526, 13),
-(91, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 420, 14),
-(92, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 421, 14),
-(93, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 428, 14),
-(94, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 444, 14),
-(95, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 523, 14),
-(96, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 526, 14),
-(97, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 540, 14),
-(98, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 542, 14),
-(99, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 552, 14),
-(100, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 553, 14),
-(101, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 554, 14),
-(102, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 560, 14),
-(103, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 663, 14),
-(104, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 704, 14),
-(105, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 727, 14),
-(106, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 737, 14),
-(107, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 743, 14),
-(108, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 750, 14),
-(109, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 756, 14),
-(110, 1, 1, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 812, 14);
+INSERT INTO `recurso_reporte_diario` (`idrecurso_reporte_diario`, `facturable`, `cantidad`, `planeado`, `hora_inicio`, `hora_fin`, `horas_extra_dia`, `horas_extra_noc`, `horas_recargo`, `hr_almuerzo`, `racion`, `nombre_operador`, `horas_operacion`, `horas_disponible`, `horometro_ini`, `horometro_fin`, `varado`, `idrecurso_ot`, `idreporte_diario`, `itemf_iditemf`, `itemf_codigo`) VALUES
+(147, 1, 1, 1, '', '', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, NULL, 26, 737, '10101'),
+(148, 1, 1, 0, '6', '17', 0, 0, 0, 1, 1, '', 0, 0, '', '', 0, 523, 26, 1184, NULL),
+(149, 1, 1, 0, '6', '17', 0, 0, 0, 1, 1, '', 0, 0, '', '', 0, 526, 26, 1184, NULL),
+(150, 1, 1, 0, '', '', 0, 0, 0, 0, 0, '', 8, 1, '', '', 1, 1033, 26, 1196, NULL),
+(151, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 420, 27, 1177, NULL),
+(152, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 421, 27, 1192, NULL),
+(153, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 428, 27, 1192, NULL),
+(154, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 444, 27, 1163, NULL),
+(155, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 523, 27, 1184, NULL),
+(156, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 526, 27, 1184, NULL),
+(157, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 540, 27, 1192, NULL),
+(158, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 542, 27, 1192, NULL),
+(159, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 552, 27, 1151, NULL),
+(160, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 553, 27, 1184, NULL),
+(161, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 554, 27, 1177, NULL),
+(162, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 560, 27, 1192, NULL),
+(163, 1, 1, 0, '6', '17', 0, 0, 0, 1, 1, '', 0, 0, '', '', 0, 663, 27, 1161, NULL),
+(164, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 704, 27, 1192, NULL),
+(165, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 727, 27, 1192, NULL),
+(166, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 737, 27, 1145, NULL),
+(167, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 743, 27, 1192, NULL),
+(168, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 750, 27, 1192, NULL),
+(169, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 756, 27, 1192, NULL),
+(170, 1, 1, 0, '6', '17', 0, 0, 0, 0, 0, '', 0, 0, '', '', 0, 812, 27, 1169, NULL);
 
 -- --------------------------------------------------------
 
@@ -20372,7 +20405,7 @@ CREATE TABLE `reporte_diario` (
   `idreporte_diario` int(11) NOT NULL,
   `fecha_reporte` date DEFAULT NULL,
   `festivo` int(11) NOT NULL,
-  `json` varchar(5000) DEFAULT NULL,
+  `json_r` text,
   `estado` tinyint(1) DEFAULT NULL,
   `valido` tinyint(1) DEFAULT NULL,
   `OT_idOT` int(11) NOT NULL
@@ -20382,12 +20415,9 @@ CREATE TABLE `reporte_diario` (
 -- Volcado de datos para la tabla `reporte_diario`
 --
 
-INSERT INTO `reporte_diario` (`idreporte_diario`, `fecha_reporte`, `festivo`, `json`, `estado`, `valido`, `OT_idOT`) VALUES
-(10, '2016-11-01', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-1","festivo":false}', 1, 0, 1543),
-(11, '2016-11-02', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-2","festivo":false}', 1, 0, 1543),
-(12, '2016-11-03', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-3","festivo":false}', 1, 0, 1543),
-(13, '2016-11-04', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-4","festivo":false}', 1, 0, 1543),
-(14, '2016-11-05', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-5","festivo":false}', 1, 0, 1543);
+INSERT INTO `reporte_diario` (`idreporte_diario`, `fecha_reporte`, `festivo`, `json_r`, `estado`, `valido`, `OT_idOT`) VALUES
+(26, '2016-11-01', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-1","festivo":false,"terreno":"Humedo","seguridad_ambiental":"Excelente","noche_anterior":"NO","actividades":{"extension":"SI","diametro":"1","longitud":"1","material":"1","capuchon":"X","camisa":"X","grapa":"X","cascota":"X","tramo":"X","anillo_circunferencial":"30pulg"}}', 1, 0, 1543),
+(27, '2016-11-02', 0, '{"idOT":"1543","ccosto":"CLLT067-16","nombre_ot":"VITPCLLT067-16","fecha_reporte":"2016-11-2","festivo":false}', 1, 0, 1543);
 
 -- --------------------------------------------------------
 
@@ -20403,9 +20433,9 @@ CREATE TABLE `tarea_ot` (
   `valor_recursos` double DEFAULT NULL,
   `valor_tarea_ot` double DEFAULT NULL,
   `json_indirectos` varchar(3000) DEFAULT NULL,
-  `json_recursos` varchar(5000) DEFAULT NULL,
-  `json_viaticos` varchar(3000) DEFAULT NULL,
-  `json_horas_extra` varchar(3000) DEFAULT NULL,
+  `json_recursos` text,
+  `json_viaticos` text,
+  `json_horas_extra` text,
   `json_reembolsables` varchar(3000) DEFAULT NULL,
   `json_raciones` varchar(400) DEFAULT NULL,
   `estado_tarea_ot` tinyint(1) NOT NULL,
@@ -20420,13 +20450,17 @@ INSERT INTO `tarea_ot` (`idtarea_ot`, `nombre_tarea`, `fecha_inicio`, `fecha_fin
 (27, 'TAREA 1', '2016-01-01', '2016-10-31', 267084, NULL, '{"administracion":48075,"imprevistos":2671,"utilidad":10683}', '{}', '{"json_viaticos":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"228","codigo":"210103","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"228","codigo":"210103","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_horas_extra":null,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":null}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1571),
 (28, 'TAREA 1', '1969-12-31', '1969-12-31', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1571),
 (29, 'TAREA 1', '2016-01-01', '2016-12-31', 0, 168583, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"destino":"57","cantidad_gv":1,"duracion_gv":1,"alojamiento":96652,"transporte":16108,"alimentacion":32217,"miscelanios":16108},{"iditemf":"228","codigo":"210103","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"227","codigo":"210102","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE CUBIERTA","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"729","codigo":"210203","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OBRERO A2","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"230","codigo":"210202","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OPERADOR DE EQUIPOS","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"229","codigo":"210201","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OBRERO","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":161085,"administracion":7378}', '{"json_horas_extra":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"228","codigo":"210103","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"227","codigo":"210102","unidad":"DIA","itemc_item":"2,1,1","descripcion":"MARINERO DE CUBIERTA","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"729","codigo":"210203","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OBRERO A2","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"230","codigo":"210202","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OPERADOR DE EQUIPOS","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"229","codigo":"210201","unidad":"DIA","itemc_item":"2,1,2","descripcion":"OBRERO","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"138329","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[{"descripcion":"TEST","unidad":"UND","cantidad":"2","valor_und":"1000"},{"descripcion":"TEST","unidad":"UND","cantidad":"1","valor_und":"2000"}],"valor_reembolsables":4000,"administracion":60}', 'null', 0, 1623),
-(30, 'TAREA 1', '2016-01-01', '2016-12-31', 691956, 851106, '{"administracion":124552,"imprevistos":6920,"utilidad":27678}', '{}', '{"json_viaticos":[{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1543),
-(31, 'TAREA 1', '2016-11-01', '2016-11-30', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1543),
-(32, 'TAREA 1', '2016-11-01', '2016-11-30', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditemf":"226","codigo":"210101","unidad":"DIA","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"133542","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1543),
-(33, 'TAREA 1', '2016-11-01', '2016-11-30', 970801, 2914344, '{"administracion":174744,"imprevistos":9708,"utilidad":38832}', '{}', '{"json_viaticos":[{"iditemf":"1165","codigo":"260402","unidad":"D\\u00eda","itemc_item":"2,6,4","descripcion":"T\\u0090CNICO DE MANTENIMIENTO DE EQUIPOS Y SISTEMAS CONTRAINCENDIO Y CONTINGENCIA","tipo_item":"2","salario":"72278","estado_salario":"1","tarifa":"163105","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"destino":"57","cantidad_gv":1,"duracion_gv":1,"alojamiento":96652,"transporte":16108,"alimentacion":32217,"miscelanios":16108},{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":161085,"administracion":7378}', '{"json_horas_extra":[{"iditemf":"1165","codigo":"260402","unidad":"D\\u00eda","itemc_item":"2,6,4","descripcion":"T\\u0090CNICO DE MANTENIMIENTO DE EQUIPOS Y SISTEMAS CONTRAINCENDIO Y CONTINGENCIA","tipo_item":"2","salario":"72278","estado_salario":"1","tarifa":"163105","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":7,"cantidad_hed":4,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":1536432,"total_hed":45173.75,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":90347.5},{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":1536432,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":15364}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1675),
+(30, 'TAREA 1', '2016-01-01', '2016-12-31', 832755, 1024289, '{"administracion":149896,"imprevistos":8328,"utilidad":33310}', '{}', '{"json_viaticos":[{"iditem_tarea_ot":"23","cantidad":1,"duracion":1,"unidad":"D\\u00eda","fecha_agregado":"2016-11-21 11:57:45","valor_plan":"154899","itemf_iditemf":"962","itemf_codigo":"210101","tarea_ot_idtarea_ot":"30","descripcion":"OBRERO","itemc_item":"2,1,1","iditemf":"962","idot":"1543","tarifa":"154899","salario":"52268"},{"iditemf":"1184","codigo":"260602","unidad":"D\\u00eda","itemc_item":"2,6,6","descripcion":"CONDUCTOR DE VEHICULO PASAJEROS","tipo_item":"2","salario":"51911","estado_salario":"1","tarifa":"140799","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditem_tarea_ot":"23","cantidad":1,"duracion":1,"unidad":"D\\u00eda","fecha_agregado":"2016-11-21 11:57:45","valor_plan":"154899","itemf_iditemf":"962","itemf_codigo":"210101","tarea_ot_idtarea_ot":"30","descripcion":"OBRERO","itemc_item":"2,1,1","iditemf":"962","idot":"1543","tarifa":"154899","salario":"52268","cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"1184","codigo":"260602","unidad":"D\\u00eda","itemc_item":"2,6,6","descripcion":"CONDUCTOR DE VEHICULO PASAJEROS","tipo_item":"2","salario":"51911","estado_salario":"1","tarifa":"140799","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":0,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1543),
+(33, 'TAREA 1', '2016-11-01', '2016-11-30', 970801, 3237873, '{"administracion":174744,"imprevistos":9708,"utilidad":38832}', '{}', '{"json_viaticos":[{"iditemf":"1165","codigo":"260402","unidad":"D\\u00eda","itemc_item":"2,6,4","descripcion":"T\\u0090CNICO DE MANTENIMIENTO DE EQUIPOS Y SISTEMAS CONTRAINCENDIO Y CONTINGENCIA","tipo_item":"2","salario":"72278","estado_salario":"1","tarifa":"163105","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"destino":"57","cantidad_gv":1,"duracion_gv":1,"alojamiento":96652,"transporte":16108,"alimentacion":32292,"miscelanios":16108},{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"destino":"2","cantidad_gv":1,"duracion_gv":1,"alojamiento":193305,"transporte":28995,"alimentacion":57991,"miscelanios":28995}],"valor_viaticos":470446,"administracion":21546}', '{"json_horas_extra":[{"iditemf":"1165","codigo":"260402","unidad":"D\\u00eda","itemc_item":"2,6,4","descripcion":"T\\u0090CNICO DE MANTENIMIENTO DE EQUIPOS Y SISTEMAS CONTRAINCENDIO Y CONTINGENCIA","tipo_item":"2","salario":"72278","estado_salario":"1","tarifa":"163105","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":7,"cantidad_hed":4,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":1536432,"total_hed":45173.75,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":90347.5},{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":1536432,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":15364}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', 'null', 0, 1675),
 (34, 'TAREA 1', '2016-11-01', '2016-11-30', 232354, 285798, '{"administracion":41824,"imprevistos":2324,"utilidad":9294}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[{"descripcion":"TEST","unidad":"UND","cantidad":"1","valor_und":"100"}],"valor_reembolsables":100,"administracion":1}', '', 0, 1677),
 (35, 'TAREA 1', '1969-12-31', '1969-12-31', 0, 200, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[{"descripcion":"TEST","unidad":"UND","cantidad":"1","valor_und":"10000"}],"valor_reembolsables":10000,"administracion":100}', 'null', 0, 1678),
-(36, 'TAREA 1', '2016-10-18', '2016-10-18', 309798, 381056, '{"administracion":55764,"imprevistos":3098,"utilidad":12392}', '{}', '{"json_viaticos":[{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[{"descripcion":"TEST","unidad":"TEST","cantidad":"1","valor_und":"1"},{"descripcion":"TEST","unidad":"TEST","cantidad":"1","valor_und":"200"}],"valor_reembolsables":201,"administracion":2}', '', 0, 1679);
+(36, 'TAREA 1', '2016-10-18', '2016-10-18', 309798, 381056, '{"administracion":55764,"imprevistos":3098,"utilidad":12392}', '{}', '{"json_viaticos":[{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1}],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0}],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[{"descripcion":"TEST","unidad":"TEST","cantidad":"1","valor_und":"1"},{"descripcion":"TEST","unidad":"TEST","cantidad":"1","valor_und":"200"}],"valor_reembolsables":201,"administracion":2}', '', 0, 1679),
+(37, 'TAREA 1', '2016-10-23', '2016-10-23', 232354, 285796, '{"administracion":41824,"imprevistos":2324,"utilidad":9294}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1680),
+(38, 'TAREA 1', '2016-10-23', '2016-10-23', 232354, 285796, '{"administracion":41824,"imprevistos":2324,"utilidad":9294}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1681),
+(39, 'TAREA 1', '2016-10-23', '2016-10-23', 6957583, 8557827, '{"administracion":1252365,"imprevistos":69576,"utilidad":278303}', '{}', '{"json_viaticos":[{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"963","codigo":"210102","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE CUBIERTA","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"965","codigo":"210201","unidad":"D\\u00eda","itemc_item":"2,1,2","descripcion":"OBRERO","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"160451","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"967","codigo":"210203","unidad":"D\\u00eda","itemc_item":"2,1,2","descripcion":"OBRERO A2 LINEA","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"160451","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"970","codigo":"210303","unidad":"D\\u00eda","itemc_item":"2,1,3","descripcion":"CONDUCTOR DE AMBULANCIA","tipo_item":"2","salario":"58454","estado_salario":"1","tarifa":"168669","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"969","codigo":"210302","unidad":"D\\u00eda","itemc_item":"2,1,3","descripcion":"SOCORRISTA","tipo_item":"2","salario":"58454","estado_salario":"1","tarifa":"168669","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"968","codigo":"210301","unidad":"D\\u00eda","itemc_item":"2,1,3","descripcion":"OPERADOR","tipo_item":"2","salario":"58454","estado_salario":"1","tarifa":"168669","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"977","codigo":"210407","unidad":"D\\u00eda","itemc_item":"2,1,4","descripcion":"AYUDANTE TECNICO TUBERO","tipo_item":"2","salario":"61378","estado_salario":"1","tarifa":"174883","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"972","codigo":"210402","unidad":"D\\u00eda","itemc_item":"2,1,4","descripcion":"AYUDANTE TECNICO ELECTRICISTA","tipo_item":"2","salario":"61378","estado_salario":"1","tarifa":"174883","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"979","codigo":"210409","unidad":"D\\u00eda","itemc_item":"2,1,4","descripcion":"APAREJADOR DE CARGA GR,A DE HASTA 30 TON","tipo_item":"2","salario":"61378","estado_salario":"1","tarifa":"174883","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1},{"iditemf":"974","codigo":"210404","unidad":"D\\u00eda","itemc_item":"2,1,4","descripcion":"AYUDANTE TECNICO METALMECANICO","tipo_item":"2","salario":"61378","estado_salario":"1","tarifa":"174883","add":true,"', '{"json_horas_extra":[{"iditemf":"962","codigo":"210101","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"OBRERO","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"964","codigo":"210103","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE MAQUINAS","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"963","codigo":"210102","unidad":"D\\u00eda","itemc_item":"2,1,1","descripcion":"MARINERO DE CUBIERTA","tipo_item":"2","salario":"52268","estado_salario":"1","tarifa":"154899","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"965","codigo":"210201","unidad":"D\\u00eda","itemc_item":"2,1,2","descripcion":"OBRERO","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"160451","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"967","codigo":"210203","unidad":"D\\u00eda","itemc_item":"2,1,2","descripcion":"OBRERO A2 LINEA","tipo_item":"2","salario":"54881","estado_salario":"1","tarifa":"160451","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"970","codigo":"210303","unidad":"D\\u00eda","itemc_item":"2,1,3","descripcion":"CONDUCTOR DE AMBULANCIA","tipo_item":"2","salario":"58454","estado_salario":"1","tarifa":"168669","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"total_hen":0,"total_hefd":0,"total_hefn":0,"total_hfr":0},{"iditemf":"969","codigo":"210302","unidad":"D\\u00eda","itemc_item":"2,1,3","descripcion":"SOCORRISTA","tipo_item":"2","salario":"58454","estado_salario":"1","tarifa":"168669","add":true,"id":null,"fecha_agregado":"","cantidad":1,"duracion":1,"cantidad_he":1,"cantidad_hed":0,"cantidad_hen":0,"cantidad_hefd":0,"cantidad_hefn":0,"cantidad_hfr":0,"total":0,"total_hed":0,"tota', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1682),
+(40, 'TAREA 1', '2016-10-23', '2016-10-23', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1687),
+(41, 'TAREA 1', '2016-10-23', '2016-10-23', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1692),
+(42, 'TAREA 1', '2016-10-23', '2016-10-23', 0, 0, '{"administracion":0,"imprevistos":0,"utilidad":0}', '{}', '{"json_viaticos":[],"valor_viaticos":0,"administracion":0}', '{"json_horas_extra":[],"valor_horas_extra":0,"raciones_cantidad":0,"raciones_valor_und":0,"administracion":0}', '{"json_reembolsables":[],"valor_reembolsables":0,"administracion":0}', '', 0, 1693);
 
 -- --------------------------------------------------------
 
@@ -21255,63 +21289,142 @@ CREATE TABLE `tarifas_gv` (
 --
 
 INSERT INTO `tarifas_gv` (`idtarifa_gv`, `destino`, `alojamiento`, `alimentacion`, `transporte`, `miscelanios`, `terminal_aerea`, `terminal_terrestre`, `estado`, `fecha_creacion`, `idgrupo_tarifas_gv`) VALUES
-(1, 'BOGOTA', 193305, 57991, 28995, 28995, 23000, 23000, 1, '2016-08-08', 1),
-(2, 'CARTAGENA', 193305, 57991, 28995, 28995, 32000, 32000, 1, '2016-08-08', 1),
-(3, 'MEDELLIN', 193305, 57991, 28995, 28995, 20000, 14000, 1, '2016-08-08', 1),
-(4, 'BARRANQUILLA', 180418, 51548, 25774, 25774, 25000, 25000, 1, '2016-08-08', 1),
-(5, 'BUCARAMANGA', 180418, 51548, 25774, 25774, 32000, 14000, 1, '2016-08-08', 1),
-(6, 'CALI', 180418, 51548, 25774, 25774, 45000, 14000, 1, '2016-08-08', 1),
-(7, 'MONTERIA', 180418, 51548, 25774, 25774, 12000, 12000, 1, '2016-08-08', 1),
-(8, 'PEREIRA', 180418, 51548, 25774, 25774, 10000, 10000, 1, '2016-08-08', 1),
-(9, 'SAN ANDRES', 180418, 51548, 25774, 25774, 12000, 12000, 1, '2016-08-08', 1),
-(10, 'SANTA MARTA', 180418, 51548, 25774, 25774, 25000, 25000, 1, '2016-08-08', 1),
-(11, 'ARMENIA', 141757, 45104, 22552, 22552, 25000, 25000, 1, '2016-08-08', 1),
-(12, 'BARRANCABERMEJA', 141757, 45104, 22552, 22552, 20000, 20000, 1, '2016-08-08', 1),
-(13, 'BUENAVENTURA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(14, 'CUCUTA', 141757, 45104, 22552, 22552, 12000, 12000, 1, '2016-08-08', 1),
-(15, 'IBAGUE', 141757, 45104, 22552, 22552, 20000, 20000, 1, '2016-08-08', 1),
-(16, 'LETICIA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(17, 'MANIZALES', 141757, 45104, 22552, 22552, 12000, 12000, 1, '2016-08-08', 1),
-(18, 'MELGAR', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(19, 'NEIVA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(20, 'PAIPA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(21, 'PASTO', 141757, 45104, 22552, 22552, 25000, 25000, 1, '2016-08-08', 1),
-(22, 'VILLAVICENCIO', 141757, 45104, 22552, 22552, 20000, 20000, 1, '2016-08-08', 1),
-(23, 'BUGA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(24, 'DUITAMA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(25, 'GIRARDOT', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(26, 'RIOHACHA', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(27, 'SINCELEJO', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(28, 'VALLEDUPAR', 141757, 45104, 22552, 22552, 10000, 10000, 1, '2016-08-08', 1),
-(29, 'ARAUCA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(30, 'CARTAGO', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(31, 'COVEÑAS', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(32, 'LA DORADA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(33, 'POPAYAN', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(34, 'PTO. BOYACA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(35, 'TULUA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(36, 'TUNJA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(37, 'VILLA DE LEYVA', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(38, 'YOPAL', 115983, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(39, 'MAGANGUE', 96652, 32217, 16108, 16108, 12000, 12000, 1, '2016-08-08', 1),
-(40, 'TUMACO', 96652, 32217, 16108, 16108, 12000, 12000, 1, '2016-08-08', 1),
-(41, 'SAN JOSE DE NUS', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(42, 'LA FLORESTA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(43, 'PUERTO BERRIO', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(44, 'FREDONIA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(45, 'LA PINTADA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(46, 'SANTABARBARA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(47, 'VALPARAISO', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(48, 'CARAMANTA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(49, 'SUPIA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(50, 'LA FELISA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(51, 'MARMATO', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(52, 'COPACABANA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(53, 'FLORIDABLANCA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(54, 'ESTACION ORU', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(55, 'ESTACIÓN BANADIA', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(56, 'TOLEDO', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1),
-(57, 'DEMÁS POBLACIONES', 96652, 32217, 16108, 16108, 10000, 10000, 1, '2016-08-08', 1);
+(1, 'BOGOTA', 193305, 57991, 28995, 28995, 23000, 23000, 0, '2016-08-08', 1),
+(2, 'CARTAGENA', 193305, 57991, 28995, 28995, 32000, 32000, 0, '2016-08-08', 1),
+(3, 'MEDELLIN', 193305, 57991, 28995, 28995, 20000, 14000, 0, '2016-08-08', 1),
+(4, 'BARRANQUILLA', 180418, 51548, 25774, 25774, 25000, 25000, 0, '2016-08-08', 1),
+(5, 'BUCARAMANGA', 180418, 51548, 25774, 25774, 32000, 14000, 0, '2016-08-08', 1),
+(6, 'CALI', 180418, 51548, 25774, 25774, 45000, 14000, 0, '2016-08-08', 1),
+(7, 'MONTERIA', 180418, 51548, 25774, 25774, 12000, 12000, 0, '2016-08-08', 1),
+(8, 'PEREIRA', 180418, 51548, 25774, 25774, 10000, 10000, 0, '2016-08-08', 1),
+(9, 'SAN ANDRES', 180418, 51548, 25774, 25774, 12000, 12000, 0, '2016-08-08', 1),
+(10, 'SANTA MARTA', 180418, 51548, 25774, 25774, 25000, 25000, 0, '2016-08-08', 1),
+(11, 'ARMENIA', 141757, 45104, 22552, 22552, 25000, 25000, 0, '2016-08-08', 1),
+(12, 'BARRANCABERMEJA', 141757, 45104, 22552, 22552, 20000, 20000, 0, '2016-08-08', 1),
+(13, 'BUENAVENTURA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(14, 'CUCUTA', 141757, 45104, 22552, 22552, 12000, 12000, 0, '2016-08-08', 1),
+(15, 'IBAGUE', 141757, 45104, 22552, 22552, 20000, 20000, 0, '2016-08-08', 1),
+(16, 'LETICIA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(17, 'MANIZALES', 141757, 45104, 22552, 22552, 12000, 12000, 0, '2016-08-08', 1),
+(18, 'MELGAR', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(19, 'NEIVA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(20, 'PAIPA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(21, 'PASTO', 141757, 45104, 22552, 22552, 25000, 25000, 0, '2016-08-08', 1),
+(22, 'VILLAVICENCIO', 141757, 45104, 22552, 22552, 20000, 20000, 0, '2016-08-08', 1),
+(23, 'BUGA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(24, 'DUITAMA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(25, 'GIRARDOT', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(26, 'RIOHACHA', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(27, 'SINCELEJO', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(28, 'VALLEDUPAR', 141757, 45104, 22552, 22552, 10000, 10000, 0, '2016-08-08', 1),
+(29, 'ARAUCA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(30, 'CARTAGO', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(31, 'COVEÑAS', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(32, 'LA DORADA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(33, 'POPAYAN', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(34, 'PTO. BOYACA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(35, 'TULUA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(36, 'TUNJA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(37, 'VILLA DE LEYVA', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(38, 'YOPAL', 115983, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(39, 'MAGANGUE', 96652, 32217, 16108, 16108, 12000, 12000, 0, '2016-08-08', 1),
+(40, 'TUMACO', 96652, 32217, 16108, 16108, 12000, 12000, 0, '2016-08-08', 1),
+(41, 'SAN JOSE DE NUS', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(42, 'LA FLORESTA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(43, 'PUERTO BERRIO', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(44, 'FREDONIA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(45, 'LA PINTADA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(46, 'SANTABARBARA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(47, 'VALPARAISO', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(48, 'CARAMANTA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(49, 'SUPIA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(50, 'LA FELISA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(51, 'MARMATO', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(52, 'COPACABANA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(53, 'FLORIDABLANCA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(54, 'ESTACION ORU', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(55, 'ESTACIÓN BANADIA', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(56, 'TOLEDO', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(57, 'DEMÁS POBLACIONES', 96652, 32217, 16108, 16108, 10000, 10000, 0, '2016-08-08', 1),
+(58, 'BOGOTA', 206836, 62051, 31025, 31025, 23000, 23000, 1, '0000-00-00', 2),
+(59, 'CARTAGENA', 206836, 62051, 31025, 31025, 32000, 32000, 1, '0000-00-00', 2),
+(60, 'MEDELLIN', 206836, 62051, 31025, 31025, 0, 14000, 1, '0000-00-00', 2),
+(61, 'BARRANQUILLA', 193047, 55156, 27578, 27578, 25000, 25000, 1, '0000-00-00', 2),
+(62, 'BUCARAMANGA', 193047, 55156, 27578, 27578, 32000, 14000, 1, '0000-00-00', 2),
+(63, 'CALI', 193047, 55156, 27578, 27578, 45000, 14000, 1, '0000-00-00', 2),
+(64, 'MONTERIA', 193047, 55156, 27578, 27578, 12000, 12000, 1, '0000-00-00', 2),
+(65, 'PEREIRA', 193047, 55156, 27578, 27578, 10000, 10000, 1, '0000-00-00', 2),
+(66, 'SAN ANDRES', 193047, 55156, 27578, 27578, 12000, 12000, 1, '0000-00-00', 2),
+(67, 'SANTA MARTA', 193047, 55156, 27578, 27578, 25000, 25000, 1, '0000-00-00', 2),
+(68, 'ARMENIA', 151680, 48262, 24131, 24131, 25000, 25000, 1, '0000-00-00', 2),
+(69, 'BARRANCABERMEJA', 151680, 48262, 24131, 24131, 20000, 20000, 1, '0000-00-00', 2),
+(70, 'BUENAVENTURA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(71, 'CUCUTA', 151680, 48262, 24131, 24131, 12000, 12000, 1, '0000-00-00', 2),
+(72, 'IBAGUE', 151680, 48262, 24131, 24131, 20000, 20000, 1, '0000-00-00', 2),
+(73, 'LETICIA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(74, 'MANIZALES', 151680, 48262, 24131, 24131, 12000, 12000, 1, '0000-00-00', 2),
+(75, 'MELGAR', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(76, 'NEIVA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(77, 'PAIPA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(78, 'PASTO', 151680, 48262, 24131, 24131, 25000, 25000, 1, '0000-00-00', 2),
+(79, 'VILLAVICENCIO', 151680, 48262, 24131, 24131, 20000, 20000, 1, '0000-00-00', 2),
+(80, 'BUGA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(81, 'DUITAMA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(82, 'GIRARDOT', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(83, 'RIOHACHA', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(84, 'SINCELEJO', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(85, 'VALLEDUPAR', 151680, 48262, 24131, 24131, 10000, 10000, 1, '0000-00-00', 2),
+(86, 'ARAUCA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(87, 'CARTAGO', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(88, 'COVEÑAS', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(89, 'LA DORADA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(90, 'POPAYAN', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(91, 'PTO. BOYACA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(92, 'TULUA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(93, 'TUNJA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(94, 'VILLA DE LEYVA', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(95, 'YOPAL', 124102, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(96, 'MAGANGUE', 103418, 34473, 17236, 17236, 12000, 12000, 1, '0000-00-00', 2),
+(97, 'TUMACO', 103418, 34473, 17236, 17236, 12000, 12000, 1, '0000-00-00', 2),
+(98, 'SAN JOSE DE NUS', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(99, 'LA FLORESTA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(100, 'PUERTO BERRIO', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(101, 'FREDONIA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(102, 'LA PINTADA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(103, 'SANTABARBARA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(104, 'VALPARAISO', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(105, 'CARAMANTA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(106, 'SUPIA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(107, 'LA FELISA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(108, 'MARMATO', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(109, 'COPACABANA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(110, 'FLORIDABLANCA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(111, 'ESTACION ORU', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(112, 'ESTACIÓN BANADIA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(113, 'TOLEDO', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(114, 'PUERTO OLAYA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(115, 'PUERTO PARRA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(116, 'PUERTO SALGAR', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(117, 'LOS MORROS', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(118, 'LAS VEGAS', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(119, 'SIMACOTA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(120, 'SANGIL', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(121, 'VUELTA CUÑA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(122, 'LA LIZAMA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(123, 'LA VIZCAINA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(124, 'AGUACHICA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(125, 'SAN MARTIN', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(126, 'EL BRASIL', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(127, 'FUNDACIÓN', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(128, 'CIENAGA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(129, 'COPEY', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(130, 'BOSCONIA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(131, 'CURUMANI', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(132, 'AGUACHICA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(133, 'KP358+750', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(134, 'ORU', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(135, 'OCAÑA', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2),
+(136, 'DEMAS POBLACIONES', 103418, 34473, 17236, 17236, 10000, 10000, 1, '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -21524,12 +21637,12 @@ ALTER TABLE `itemf`
 -- AUTO_INCREMENT de la tabla `item_tarea_ot`
 --
 ALTER TABLE `item_tarea_ot`
-  MODIFY `iditem_tarea_ot` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `iditem_tarea_ot` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT de la tabla `OT`
 --
 ALTER TABLE `OT`
-  MODIFY `idOT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1680;
+  MODIFY `idOT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1694;
 --
 -- AUTO_INCREMENT de la tabla `recurso`
 --
@@ -21544,22 +21657,27 @@ ALTER TABLE `recurso_ot`
 -- AUTO_INCREMENT de la tabla `recurso_reporte_diario`
 --
 ALTER TABLE `recurso_reporte_diario`
-  MODIFY `idrecurso_reporte_diario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `idrecurso_reporte_diario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 --
 -- AUTO_INCREMENT de la tabla `reporte_diario`
 --
 ALTER TABLE `reporte_diario`
-  MODIFY `idreporte_diario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idreporte_diario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `tarea_ot`
 --
 ALTER TABLE `tarea_ot`
-  MODIFY `idtarea_ot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `idtarea_ot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `tarifa`
 --
 ALTER TABLE `tarifa`
   MODIFY `idtarifa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2894;
+--
+-- AUTO_INCREMENT de la tabla `tarifas_gv`
+--
+ALTER TABLE `tarifas_gv`
+  MODIFY `idtarifa_gv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 --
 -- AUTO_INCREMENT de la tabla `tipo_itemc`
 --
