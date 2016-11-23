@@ -35,7 +35,7 @@ var OT = function($scope, $http, $timeout){
 		ambito.ot.tareas.push(
 				{
 					"idtarea_ot": "",
-					"nombre_tarea": "TAREA "+(ambito.ot.tareas.length+1),
+					"nombre_tarea": "TAREA "+( (ambito.ot.tareas.length >= 1)?ambito.ot.tareas.length+1:'INICIAL'),
 					"valor_recursos": "0",
 					"valor_tarea_ot": "0",
 					"fecha_inicio": (d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()),
@@ -71,7 +71,11 @@ var OT = function($scope, $http, $timeout){
 					"equipos": []
 				}
 			);
-		console.log(ambito.ot.tareas);
+			ambito.tr = ambito.ot.tareas[ambito.ot.tareas.length];
+			ambito.selected_tarea = ambito.ot.tareas.length;
+			$('#selected_tarea').val(ambito.ot.tareas.length);
+			console.log(ambito.selected_tarea+' '+ambito.ot.tareas.length);
+		//console.log(ambito.ot.tareas);
 	}
 	//==============================================================================
 	// Gestion de items de OT
@@ -461,7 +465,7 @@ var agregarOT = function($scope, $http, $timeout){
 		console.log($scope.ot);
 		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
 			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
-		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefineds) {
+		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefined) {
 			alert("No has seleccionado nombre de TO");
 		}else{
 			$http.post(	  url, { ot: $scope.ot }   ).then(

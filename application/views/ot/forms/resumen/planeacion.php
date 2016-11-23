@@ -21,8 +21,8 @@
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
-					<td> <input type="number" ng-model="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
-					<td> <input type="number" ng-model="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td ng-bind="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" > </td>
+					<td ng-bind="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" > </td>
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">
 						{{ (act.cantidad * act.duracion)*act.tarifa | currency:'$':0  }}
@@ -35,8 +35,8 @@
 					<td>{{ per.itemc_item }}</td>
 					<td>{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
-					<td><input type="number" ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
-					<td><input type="number" ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)"> </td>
+					<td ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)"> </td>
 					<td style="text-align: right">{{ per.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (per.cantidad * per.duracion)*per.tarifa | currency:'$':0  }}
@@ -50,8 +50,8 @@
 					<td>{{ eq.itemc_item }}</td>
 					<td>{{ eq.descripcion }}</td>
 					<td>{{ eq.unidad }}</td>
-					<td> <input type="number" ng-model="eq.cantidad" ng-init="eq.cantidad = strtonum(eq.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
-					<td> <input type="number" ng-model="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td ng-bind="eq.cantidad" ng-init="eq.cantidad = strtonum(eq.cantidad)" > </td>
+					<td ng-bind="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" > </td>
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}

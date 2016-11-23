@@ -55,7 +55,8 @@ class Ot extends CI_Controller {
 
 	public function saveOT()
 	{
-		$ots = json_decode(file_get_contents('php://input'));
+		$post = file_get_contents('php://input');
+		$ots = json_decode($post);
 		$ot = $ots->ot;
 		#Crear la OT
 		$orden = $ots->ot;
@@ -79,7 +80,7 @@ class Ot extends CI_Controller {
 					isset($orden->abscisa)?$orden->abscisa:NULL,
 					isset($orden->idpoblado)?$orden->idpoblado:NULL,
 					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
-					json_encode($orden->json)
+					$post
 				);
 			#-----------------------
 			#Adicionar tarea nueva
