@@ -72,10 +72,7 @@ var OT = function($scope, $http, $timeout){
 				}
 			);
 			ambito.tr = ambito.ot.tareas[ambito.ot.tareas.length];
-			ambito.selected_tarea = ambito.ot.tareas.length;
-			$('#selected_tarea').val(ambito.ot.tareas.length);
-			console.log(ambito.selected_tarea+' '+ambito.ot.tareas.length);
-		//console.log(ambito.ot.tareas);
+		console.log(ambito.ot.tareas);
 	}
 	//==============================================================================
 	// Gestion de items de OT
@@ -454,7 +451,9 @@ var agregarOT = function($scope, $http, $timeout){
 	//Utils
 	$scope.obtenerMunicipios = function(depart,url){	$scope.$parent.obtenerMunicipios(depart,url,$scope);	}
 	$scope.obtenerVeredas =function(municip,url){	$scope.$parent.obtenerVeredas(municip,url, $scope);	};
-	$scope.getMapa = function(){$scope.$parent.getMapa($scope);}
+	$scope.getMapa = function(){
+		//$scope.$parent.getMapa($scope);
+	}
 	//===================================================================================================================
 	$scope.guardarOT = function(url){
 		//tinyMCE.triggerSave();
@@ -465,8 +464,11 @@ var agregarOT = function($scope, $http, $timeout){
 		console.log($scope.ot);
 		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
 			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
-		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefined) {
-			alert("No has seleccionado nombre de TO");
+		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefined
+						|| $scope.ot.tipo_ot == undefined || $scope.ot.tipo_ot == ''
+						|| $scope.ot.especialidad == undefined || $scope.ot.especialidad == ''
+						|| $scope.ot.zona == '' || $scope.ot.zona == undefined) {
+			alert("No has seleccionado Todos los datos necesarios");
 		}else{
 			$http.post(	  url, { ot: $scope.ot }   ).then(
 				function(response) {
