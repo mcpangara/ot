@@ -199,10 +199,12 @@ var OT = function($scope, $http, $timeout){
 		tr.json_viaticos.valor_viaticos = 0;
 		angular.forEach(tr.json_viaticos.json_viaticos, function(v,k){
 			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){
+				v.total_item = 0;
 				tr.json_viaticos.valor_viaticos += 0;
 			}
 			else {
-				tr.json_viaticos.valor_viaticos += ( v.alojamiento +  v.transporte +  v.alimentacion +  v.miscelanios) * ( v.cantidad_gv *  v.duracion_gv) * $scope.strtonum( v.incidencia);
+				v.total_item = ( v.alojamiento +  v.transporte +  v.alimentacion +  v.miscelanios) * ( v.cantidad_gv *  v.duracion_gv) * $scope.strtonum( v.incidencia);
+				tr.json_viaticos.valor_viaticos += v.total_item;
 			}
 		});
 		if ( tr.json_viaticos.json_viaticos == undefined || tr.json_viaticos.json_viaticos.length == 0 ) {
