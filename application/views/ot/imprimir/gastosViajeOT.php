@@ -9,7 +9,7 @@
   <tbody>
     <tr>
       <td style="width:5%"></td>
-      <td style="width:58%">Viaticos</td>
+      <td style="width:58%">Gastos de viaje</td>
       <td style="width:6%"></td>
       <td style="width:5%"></td>
       <td style="width:5%"></td>

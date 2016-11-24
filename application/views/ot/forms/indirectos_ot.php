@@ -34,14 +34,14 @@
 			<thead>
 				<tr>
 					<td colspan="2">
-						<b>Viaticos:</b>
+						<b>Gastos de viaje:</b>
 						<button type="button" ng-click="setViaticos('#addViaticosOT', tr)" class="btn brown lighten-1 mini-btn2" name="button">Calcular</button>
 					</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Viaticos:</td>
+					<td>Gastos de viaje:</td>
 					<td> {{ tr.json_viaticos.valor_viaticos | currency:'$':0 }} </td>
 				</tr>
 				<tr>
@@ -69,8 +69,8 @@
 					<td> {{ tr.json_reembolsables.valor_reembolsables | currency:'$':0 }} </td>
 				</tr>
 				<tr>
-					<td>Administración (4.58%):</td>
-					<td> {{ tr.json_reembolsables.valor_reembolsables * 0.0458 | currency:'$':0 }} </td>
+					<td>Administración (1%):</td>
+					<td> {{ tr.json_reembolsables.valor_reembolsables * 0.01 | currency:'$':0 }} </td>
 				</tr>
 			</tbody>
 		</table>
@@ -107,7 +107,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Administración (1%):</td>
+					<td>Administración (4.58%):</td>
 					<td> {{ tr.json_horas_extra.administracion | currency:'$':0 }} </td>
 				</tr>
 			</tbody>

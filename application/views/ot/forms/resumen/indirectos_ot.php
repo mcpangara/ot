@@ -31,13 +31,13 @@
 			<thead>
 				<tr>
 					<td colspan="2">
-						<b>Viaticos:</b>
+						<b>Gastos de viaje:</b>
 					</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Viaticos:</td>
+					<td>Gastos de viaje:</td>
 					<td> {{ mytr.json_viaticos.valor_viaticos | currency:'$':0 }} </td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 					<td> {{ mytr.json_reembolsables.valor_reembolsables | currency:'$':0 }} </td>
 				</tr>
 				<tr>
-					<td>Administración (4.58%):</td>
+					<td>Administración (1%):</td>
 					<td> {{ mytr.json_reembolsables.valor_reembolsables * 0.01 | currency:'$':0 }} </td>
 				</tr>
 			</tbody>
@@ -99,8 +99,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Administración (1%):</td>
-					<td> {{ (mytr.json_horas_extra.valor_horas_extra + (mytr.json_horas_extra.raciones_cantidad * mytr.json_horas_extra.raciones_valor_und)) * 0.01 | currency:'$':0 }} </td>
+					<td>Administración (4.58%):</td>
+					<td> {{ mytr.json_horas_extra.administracion | currency:'$':0 }} </td>
 				</tr>
 			</tbody>
 		</table>

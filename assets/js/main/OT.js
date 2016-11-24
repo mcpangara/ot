@@ -196,19 +196,18 @@ var OT = function($scope, $http, $timeout){
 			);
 	}
 	$scope.calcularViaticos =  function(tr, ambito){
-		ambito.viaticos = 0;
+		tr.json_viaticos.valor_viaticos = 0;
 		angular.forEach(tr.json_viaticos.json_viaticos, function(v,k){
 			if (v.destino == '' ||  v.destino == undefined || v.destino == null || v.destino == 'undefined'){
-				ambito.viaticos += 0;
+				tr.json_viaticos.valor_viaticos += 0;
 			}
 			else {
-				ambito.viaticos += (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * $scope.strtonum(itv.incidencia);
+				tr.json_viaticos.valor_viaticos += ( v.alojamiento +  v.transporte +  v.alimentacion +  v.miscelanios) * ( v.cantidad_gv *  v.duracion_gv) * $scope.strtonum( v.incidencia);
 			}
 		});
 		if ( tr.json_viaticos.json_viaticos == undefined || tr.json_viaticos.json_viaticos.length == 0 ) {
-			ambito.viaticos = 0;
+			tr.json_viaticos.valor_viaticos = 0;
 		}
-		tr.json_viaticos.valor_viaticos = ambito.viaticos;
 		tr.json_viaticos.valor_viaticos = Math.round( tr.json_viaticos.valor_viaticos );
 		tr.json_viaticos.administracion = ( tr.json_viaticos.valor_viaticos* ( 4.58 /100) );
 		tr.json_viaticos.administracion = Math.round( tr.json_viaticos.administracion );
