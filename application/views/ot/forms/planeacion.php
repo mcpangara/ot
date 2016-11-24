@@ -74,8 +74,8 @@
 					<td>{{ eq.itemc_item }}</td>
 					<td>{{ eq.descripcion }}</td>
 					<td>{{ eq.unidad }}</td>
-					<td> <input type="number" style="border: 1px solid #E65100"  ng-model="eq.cantidad" ng-init="eq.cantidad = strtonum(eq.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
-					<td> <input type="number" style="border: 1px solid #E65100"  ng-model="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td> <input type="number" style="border: 1px solid #E65100; width:7ex"  ng-model="eq.cantidad" ng-init="eq.cantidad = strtonum(eq.cantidad)" ng-change="calcularSubtotales()"> </td>
+					<td> <input type="number" style="border: 1px solid #E65100; width:10ex"  ng-model="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)"  ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}
