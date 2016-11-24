@@ -43,8 +43,8 @@
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
-					<td> <input type="number" style="border: 1px solid #E65100"  ng-model="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" style="width:8ex" ng-change="calcularSubtotales()"> </td>
-					<td> <input type="number" style="border: 1px solid #E65100"  ng-model="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td> <input type="number" style="border: 1px solid #E65100; width:7ex"   ng-model="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" style="width:8ex" ng-change="calcularSubtotales()"> </td>
+					<td> <input type="number" style="border: 1px solid #E65100; width:10ex"   ng-model="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">
 						{{ (act.cantidad * act.duracion)*act.tarifa | currency:'$':0  }}
@@ -58,8 +58,8 @@
 					<td>{{ per.itemc_item }}</td>
 					<td style="max-width: 50%;">{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
-					<td><input type="number" style="border: 1px solid #E65100" ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
-					<td><input type="number" style="border: 1px solid #E65100" ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
+					<td><input type="number" style="border: 1px solid #E65100; width:7ex"  ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)" style="width:7ex" ng-change="calcularSubtotales()"> </td>
+					<td><input type="number" style="border: 1px solid #E65100; width:10ex" ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)" style="width:10ex" ng-change="calcularSubtotales()"> </td>
 					<td style="text-align: right">{{ per.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (per.cantidad * per.duracion)*per.tarifa | currency:'$':0  }}

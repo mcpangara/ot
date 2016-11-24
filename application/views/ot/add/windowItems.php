@@ -42,7 +42,7 @@
 					<td ng-bind="it.unidad"></td>
 					<td style="text-align: right" ng-bind="it.tarifa | currency"></td>
           <td> <input type="number" style="border: 1px solid #E65100; width:8ex"  ng-model="it.cantidad" ng-init="it.cantidad = 0"> </td>
-          <td> <input type="number" style="border: 1px solid #E65100 width:10ex"  ng-model="it.duracion" ng-init="it.duracion = 0"> </td>
+          <td> <input type="number" style="border: 1px solid #E65100; width:10ex"  ng-model="it.duracion" ng-init="it.duracion = 0"> </td>
           <td ng-bind="it.BO"> </td>
           <td ng-bind="it.CL"> </td>
 				</tr>
