@@ -202,7 +202,7 @@ var OT = function($scope, $http, $timeout){
 				ambito.viaticos += 0;
 			}
 			else {
-				ambito.viaticos += (v.alojamiento + v.transporte + v.alimentacion + v.miscelanios) * (v.cantidad_gv * v.duracion_gv) ;
+				ambito.viaticos += (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * $scope.strtonum(itv.incidencia);
 			}
 		});
 		if ( tr.json_viaticos.json_viaticos == undefined || tr.json_viaticos.json_viaticos.length == 0 ) {
