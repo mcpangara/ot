@@ -19,12 +19,16 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{	
+	{
+		header ("Expires: Fri, 14 Mar 1980 20:53:00 GMT"); //la pagina expira en fecha pasada
+		header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+		header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+		header ("Pragma: no-cache"); //PARANOIA, NO GUARDAR EN CACHE
 		if (TRUE) {
-			$this->load->view('inicio/indice',array("content"=>$this->load->view('inicio/pestanas','',TRUE)));	
+			$this->load->view('inicio/indice',array("content"=>$this->load->view('inicio/pestanas','',TRUE)));
 		}else{
 			$this->load->view('login/login');
-		}		
+		}
 	}
 
 	public function loadOptions()
