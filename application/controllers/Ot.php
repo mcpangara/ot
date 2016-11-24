@@ -420,6 +420,12 @@ class Ot extends CI_Controller {
 		$this->db->delete('tarea_ot')->where('idtarea_ot',$id);
 		echo 'success';
 	}
+	public function del_item_tarea($id)
+	{
+		$this->load->database('ot');
+		$this->db->delete('item_tarea_ot', array('iditem_tarea_ot'=>$id));
+		echo 'success';
+	}
 }
 /* End of file Ot.php */
 /* Location: ./application/controllers/Ot.php */

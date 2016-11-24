@@ -40,10 +40,7 @@
 						<td> <input type="number" ng-model="itv.transporte" value="">{{ itv.transporte | currency:'$':0 }}</td>
 						<td> <input type="number" ng-model="itv.miscelanios" value=""> {{ itv.miscelanios | currency:'$':0 }}</td>
 						<td>
-							<select class="" ng-model="itv.incidencia" ng-init="itv.incidencia = '1.6196' ">
-								<option value="1.6196">1,6196</option>
-								<option value="1.5829">1,5829</option>
-							</select>
+							<input type="text" style="width:7ex" ng-model="itv.incidencia" ng-init="itv.incidencia = getIncidencia(itv) "  disabled="">
 						</td>
 						<td> {{ ( (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * strtonum(itv.incidencia) ) | currency:'$':0 }}</td>
 					</tr>

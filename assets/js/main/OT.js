@@ -1,6 +1,7 @@
 var OT = function($scope, $http, $timeout){
 
 	$scope.getDataITems = function(url, ambito){
+		console.log(url);
 		$http.get(url).then(
 			function(response) {
 				ambito.bases = JSON.parse(response.data.bases);
@@ -22,13 +23,47 @@ var OT = function($scope, $http, $timeout){
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
 			);
 	}
+	$scope.getIncidencia = function(itv){
+		return (itv.CL == 'L')?1.5829:1.6196;
+	}
 	$scope.selectTarea = function(ot, ambito, indice){
 		ambito.tr = ot.tareas[indice];
 	}
-	$scope.unset_item = function(lista, item){
-		lista.splice(lista.indexOf(item),1);
+	// eliminar un item
+	$scope.unset_item = function(lista, item, site_url, tr){
+		if(item.iditem_tarea_ot){
+			$http.get(site_url+'/ot/del_item_tarea/'+item.iditem_tarea_ot).then(
+				function(response){
+					if(response.data =="success"){
+						console.log('Eliminado con exito de la BD');
+						$scope.delete_item(lista, tr, item);
+					}else{
+						alert('Ha ocurrido un error');
+					}
+				},
+				function(response){
+					alert('No hemos podido ralizar la petición al servidor, revisa tu conexión o ponte en contacto con el dpto TIC.');
+				}
+			)
+		}else{
+			$scope.delete_item(lista, tr, item);
+		}
+
+	}
+	$scope.delete_item = function(lista, tr, item){
+		if(lista == tr.personal){
+			lista.splice(lista.indexOf(item),1);
+			tr.json_viaticos.json_viaticos = angular.copy(tr.personal);
+			tr.json_viaticos.valor_viaticos = 0; tr.json_viaticos.administracion = 0;
+			tr.json_horas_extra.json_horas_extra = angular.copy(tr.personal);
+			tr.json_horas_extra.valor_horas_extra = 0; tr.json_horas_extra.administracion = 0;
+			alert('Has modificado personal, debes recalcular los indirectos de la tarea actual, si los ha calculado previamente');
+		}else {
+				lista.splice(lista.indexOf(item),1);
+		}s
 	}
 	$scope.consola = function(tr){console.log(tr)}
+	// Add una nueva tarea
 	$scope.addTarea = function(ambito){
 		var idot = (ambito.ot.idOT != undefined)?ambito.ot.idOT:"";
 		var d = new Date();
@@ -395,7 +430,7 @@ var listaOT = function($scope, $http, $timeout){
 			);
 	}
 }
-
+// ====================================================================================================
 // FUNCIONES PROPIAS DE AGREGAR UNA OT
 var agregarOT = function($scope, $http, $timeout){
 	$scope.ot = {};
@@ -422,8 +457,8 @@ var agregarOT = function($scope, $http, $timeout){
 		});
 	}
 	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
-	$scope.unset_item = function(lista, item){
-		$scope.$parent.unset_item(lista, item);
+	$scope.unset_item = function(lista, item, site_url){
+		$scope.$parent.unset_item(lista, item, site_url, $scope.tr);
 		$scope.itemsEliminados.push(item);
 		$scope.calcularSubtotales();
 	}
@@ -513,8 +548,8 @@ var editarOT = function($scope, $http, $timeout) {
 		});
 	}
 	$scope.addTarea = function(){$scope.$parent.addTarea($scope);}
-	$scope.unset_item = function(lista, item){
-		$scope.$parent.unset_item(lista, item);
+	$scope.unset_item = function(lista, item, site_url){
+		$scope.$parent.unset_item(lista, item, site_url, $scope.tr);
 		$scope.itemsEliminados.push(item);
 		$scope.calcularSubtotales();
 	}
@@ -553,6 +588,7 @@ var editarOT = function($scope, $http, $timeout) {
 			function(response) {
 				if(response.data.success == 'Orden de trabajo guardada correctamente'){
 					alert(response.data.success);
+					console.log(response.data.ot);
 					$scope.ot = response.data.ot;
 					$timeout(function(){
 						$scope.$parent.refreshTabs();

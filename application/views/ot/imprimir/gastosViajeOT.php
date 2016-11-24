@@ -23,7 +23,7 @@
       <td>%</td>
       <td></td>
       <td></td>
-      <td>1%</td>
+      <td>4.58%</td>
       <td></td>
       <td class="textright">$ <?= number_format( round($viaticos->administracion), 0) ?> </td>
     </tr>

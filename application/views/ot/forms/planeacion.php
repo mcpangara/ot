@@ -48,7 +48,7 @@
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">
 						{{ (act.cantidad * act.duracion)*act.tarifa | currency:'$':0  }}
-						<button type="button" ng-click="unset_item(tr.actividades, act)" class="btn red mini-btn2"> x </button></td>
+						<button type="button" ng-click="unset_item(tr.actividades, act, '<?= site_url() ?>')" class="btn red mini-btn2"> x </button></td>
 					<td>{{ act.fecha_agregado }}</td>
 				</tr>
 				<tr>
@@ -63,7 +63,7 @@
 					<td style="text-align: right">{{ per.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (per.cantidad * per.duracion)*per.tarifa | currency:'$':0  }}
-						<button type="button" ng-click="unset_item(tr.personal, per)" class="btn red mini-btn2"> x </button>
+						<button type="button" ng-click="unset_item(tr.personal, per, '<?= site_url() ?>')" class="btn red mini-btn2"> x </button>
 					</td>
 					<td>{{ per.fecha_agregado }}</td>
 				</tr>
@@ -79,7 +79,7 @@
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}
-						<button type="button" ng-click="unset_item(tr.equipos, eq)" class="btn red mini-btn2"> x </button></td>
+						<button type="button" ng-click="unset_item(tr.equipos, eq, '<?= site_url() ?>')" class="btn red mini-btn2"> x </button></td>
 					<td>{{ eq.fecha_agregado }}</td>
 				</tr>
 				<tr>

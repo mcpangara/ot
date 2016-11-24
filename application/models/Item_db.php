@@ -26,9 +26,12 @@ class Item_db extends CI_Model {
 			tarifa.salario,
 			tarifa.estado_salario,
 			tarifa.tarifa,
+			titemc.CL,
+			titemc.BO,
 			0 AS add');
 		$this->db->from('itemf');
 		$this->db->join('itemc','itemf.itemc_iditemc = itemc.iditemc');
+		$this->db->join('tipo_itemc AS titemc','titemc.idtipo_itemc = itemc.idtipo_itemc');
 		$this->db->join('tarifa','tarifa.itemf_iditemf = itemf.iditemf');
 		$this->db->where('tarifa.estado_tarifa', TRUE);
 		//$this->db->where('tarifa.periodo_id = ( SELECT MAX(tarifa.periodo_id) as periodo FROM tarifa)', NULL, FALSE);
@@ -50,9 +53,12 @@ class Item_db extends CI_Model {
 			tarifa.salario,
 			tarifa.estado_salario,
 			tarifa.tarifa,
+			titemc.CL,
+			titemc.BO,
 			0 AS add');
 		$this->db->from('itemf');
 		$this->db->join('itemc','itemf.itemc_iditemc = itemc.iditemc');
+		$this->db->join('tipo_itemc AS titemc','titemc.idtipo_itemc = itemc.idtipo_itemc','LEFT');
 		$this->db->join('tarifa','tarifa.itemf_iditemf = itemf.iditemf');
 		$this->db->where('itemf.tipo', $value);
 		$this->db->where('tarifa.periodo_id = ( SELECT MAX(tarifa.periodo_id) as periodo FROM tarifa)', NULL, FALSE);
