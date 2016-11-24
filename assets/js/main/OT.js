@@ -60,7 +60,7 @@ var OT = function($scope, $http, $timeout){
 			alert('Has modificado personal, debes recalcular los indirectos de la tarea actual, si los ha calculado previamente');
 		}else {
 				lista.splice(lista.indexOf(item),1);
-		}s
+		}
 	}
 	$scope.consola = function(tr){console.log(tr)}
 	// Add una nueva tarea
