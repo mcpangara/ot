@@ -39,7 +39,7 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">ACTIVIDADES DE MTTO.</th>
 				</tr>
-				<tr ng-repeat="act in tr.actividades | orderBy: 'itemc_item'">
+				<tr ng-repeat="act in tr.actividades | orderBy: 'codigo'">
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
@@ -54,7 +54,7 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">PERSONAL</th>
 				</tr>
-				<tr ng-repeat="per in tr.personal | orderBy: 'itemc_item'">
+				<tr ng-repeat="per in tr.personal | orderBy: 'codigo'">
 					<td>{{ per.itemc_item }}</td>
 					<td style="max-width: 50%;">{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
@@ -70,7 +70,7 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">EQUIPOS</th>
 				</tr>
-				<tr ng-repeat="eq in tr.equipos | orderBy: 'itemc_item'">
+				<tr ng-repeat="eq in tr.equipos | orderBy: 'codigo'">
 					<td>{{ eq.itemc_item }}</td>
 					<td>{{ eq.descripcion }}</td>
 					<td>{{ eq.unidad }}</td>

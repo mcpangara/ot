@@ -299,6 +299,7 @@ var OT = function($scope, $http, $timeout){
 		item.total = Math.round( (item.total * 1.6196) * item.cantidad_he );
 	}
 	$scope.subtotal_he = function(item, base, porcentaje, cantidad, tipo){
+		//cantidad = $scope.strtonum(cantidad);
 		if (tipo == 'hed') {
 			item.total_hed = (base*porcentaje)*cantidad;
 		}else if (tipo=='hen') {
@@ -352,6 +353,9 @@ var OT = function($scope, $http, $timeout){
   		});
 	}
 	$scope.strtonum = function(model){
+		if(model == undefined || model == ''){
+			model == 0;
+		}
 		return parseFloat(model);
 	}
 	//--------------------------------------------------------------------------------------
