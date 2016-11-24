@@ -32,7 +32,7 @@ class Ot_db extends CI_Model {
 			"municipio_idpoblado"=>$idpoblado,
 			"cc_ecp"=>$cc_ecp,
 			'json'=>$json,
-			'sap'=>$sap
+			'numero_sap'=>$sap
 		);
 		$this->db->insert('OT', $data);
 		return $this->db->insert_id();
@@ -54,7 +54,7 @@ class Ot_db extends CI_Model {
 			"abscisa"=>$abscisa,
 			"municipio_idpoblado"=>$idpoblado,
 			'json'=>$json,
-			'sap'=>$sap
+			'numero_sap'=>$sap
 		);
 		return $this->db->update('OT', $data, "idOT =".$idot);
 	}

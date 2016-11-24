@@ -81,7 +81,7 @@ class Ot extends CI_Controller {
 					isset($orden->idpoblado)?$orden->idpoblado:NULL,
 					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
 					isset($orden->json)?json_encode($orden->json):NULL,
-					isset($orden->sap)?json_encode($orden->sap):NULL
+					isset($orden->numero_sap)?json_encode($orden->numero_sap):NULL
 				);
 			#-----------------------
 			#Adicionar tarea nueva
@@ -278,7 +278,7 @@ class Ot extends CI_Controller {
 				$orden->abscisa,
 				$orden->idpoblado,
 				json_encode($orden->json),
-				isset($orden->sap)?json_encode($orden->sap):NULL
+				isset($orden->numero_sap)?json_encode($orden->numero_sap):NULL
 			);
 		foreach($orden->tareas as $tr){
 			if(isset($tr->idtarea_ot) &&  $tr->idtarea_ot != 0 ){
