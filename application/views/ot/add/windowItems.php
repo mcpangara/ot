@@ -41,8 +41,8 @@
 					<td ng-bind="it.descripcion"></td>
 					<td ng-bind="it.unidad"></td>
 					<td style="text-align: right" ng-bind="it.tarifa | currency"></td>
-          <td> <input type="number" ng-model="it.cantidad" ng-init="it.cantidad = 0" style="width:8ex"> </td>
-          <td> <input type="number" ng-model="it.duracion" ng-init="it.duracion = 0" style="width:10ex"> </td>
+          <td> <input type="number" style="border: 1px solid #E65100"  ng-model="it.cantidad" ng-init="it.cantidad = 0" style="width:8ex"> </td>
+          <td> <input type="number" style="border: 1px solid #E65100"  ng-model="it.duracion" ng-init="it.duracion = 0" style="width:10ex"> </td>
           <td ng-bind="it.BO"> </td>
           <td ng-bind="it.CL"> </td>
 				</tr>
