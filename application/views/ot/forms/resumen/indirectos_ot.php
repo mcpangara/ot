@@ -64,7 +64,7 @@
 					<td> {{ mytr.json_reembolsables.valor_reembolsables | currency:'$':0 }} </td>
 				</tr>
 				<tr>
-					<td>Administración (1%):</td>
+					<td>Administración (4.58%):</td>
 					<td> {{ mytr.json_reembolsables.valor_reembolsables * 0.01 | currency:'$':0 }} </td>
 				</tr>
 			</tbody>

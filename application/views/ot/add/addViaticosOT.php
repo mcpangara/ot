@@ -18,7 +18,7 @@
 						<th>Alimientación</th>
 						<th>Transporte</th>
 						<th>Miscelanios</th>
-						<th> * </th>
+						<th> Incidencia </th>
 						<th> total </th>
 					</tr>
 				</thead>
@@ -40,8 +40,8 @@
 						<td> <input type="number" ng-model="itv.transporte" value="">{{ itv.transporte | currency:'$':0 }}</td>
 						<td> <input type="number" ng-model="itv.miscelanios" value=""> {{ itv.miscelanios | currency:'$':0 }}</td>
 						<td>
-							<select class="" ng-model="itv.incidencia">
-								<option value="1.6296">1,6196</option>
+							<select class="" ng-model="itv.incidencia" ng-init="itv.incidencia = 1.6196">
+								<option value="1.6196">1,6196</option>
 								<option value="1.5829">1,5829</option>
 							</select>
 						</td>
