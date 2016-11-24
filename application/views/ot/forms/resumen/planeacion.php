@@ -17,12 +17,12 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">ACTIVIDADES DE MTTO.</th>
 				</tr>
-				<tr ng-repeat="act in mytr.actividades">
+				<tr ng-repeat="act in mytr.actividades order by act.itemc_item">
 					<td>{{ act.itemc_item }}</td>
 					<td>{{ act.descripcion }}</td>
 					<td>{{ act.unidad }}</td>
-					<td ng-bind="act.cantidad" ng-init="act.cantidad = strtonum(act.cantidad)" > </td>
-					<td ng-bind="act.duracion" ng-init="act.duracion = strtonum(act.duracion)" > </td>
+					<td> {{ act.cantidad }} </td>
+					<td> {{ act.duracion }} </td>
 					<td style="text-align: right">{{ act.tarifa | currency:'$':0}}</td>
 					<td style="text-align: right">
 						{{ (act.cantidad * act.duracion)*act.tarifa | currency:'$':0  }}
@@ -31,12 +31,12 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">PERSONAL</th>
 				</tr>
-				<tr ng-repeat="per in mytr.personal">
+				<tr ng-repeat="per in mytr.personal order by per.itemc_item">
 					<td>{{ per.itemc_item }}</td>
 					<td>{{ per.descripcion }}</td>
 					<td>{{ per.unidad }}</td>
-					<td ng-model="per.cantidad" ng-init="per.cantidad = strtonum(per.cantidad)"> </td>
-					<td ng-model="per.duracion" ng-init="per.duracion = strtonum(per.duracion)"> </td>
+					<td> {{per.cantidad}} </td>
+					<td> {{per.duracion}} </td>
 					<td style="text-align: right">{{ per.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (per.cantidad * per.duracion)*per.tarifa | currency:'$':0  }}
@@ -46,12 +46,12 @@
 				<tr>
 					<th colspan="8" rowspan="" style="background:#ddedd0">EQUIPOS</th>
 				</tr>
-				<tr ng-repeat="eq in mytr.equipos">
+				<tr ng-repeat="eq in mytr.equipos order by eq.itemc_item">
 					<td>{{ eq.itemc_item }}</td>
 					<td>{{ eq.descripcion }}</td>
 					<td>{{ eq.unidad }}</td>
-					<td ng-bind="eq.cantidad" ng-init="eq.cantidad = strtonum(eq.cantidad)" > </td>
-					<td ng-bind="eq.duracion" ng-init="eq.duracion = strtonum(eq.duracion)" > </td>
+					<td> {{eq.cantidad}} </td>
+					<td> {{eq.duracion}} </td>
 					<td style="text-align: right">{{ eq.tarifa | currency:'$':0 }}</td>
 					<td style="text-align: right">
 						{{ (eq.cantidad * eq.duracion)*eq.tarifa | currency:'$':0 }}

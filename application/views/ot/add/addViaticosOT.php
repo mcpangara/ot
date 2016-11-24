@@ -18,6 +18,7 @@
 						<th>Alimientación</th>
 						<th>Transporte</th>
 						<th>Miscelanios</th>
+						<th> * </th>
 						<th> total </th>
 					</tr>
 				</thead>
@@ -38,7 +39,13 @@
 						<td> <input type="number" ng-model="itv.alimentacion" value="">{{ itv.alimentacion | currency:'$':0 }}</td>
 						<td> <input type="number" ng-model="itv.transporte" value="">{{ itv.transporte | currency:'$':0 }}</td>
 						<td> <input type="number" ng-model="itv.miscelanios" value=""> {{ itv.miscelanios | currency:'$':0 }}</td>
-						<td>{{ ( (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * 1.6196) | currency:'$':0 }}</td>
+						<td>
+							<select class="" ng-model="itv.incidencia" ng-change="itv.incidencia = strtonum(itv.incidencia)">
+								<option value="1.6296">1,6196</option>
+								<option value="1.5829">1,5829</option>
+							</select>
+						</td>
+						<td> {{ ( (itv.alojamiento + itv.transporte + itv.alimentacion + itv.miscelanios) * (itv.cantidad_gv * itv.duracion_gv) * itv.incidencia) | currency:'$':0 }}</td>
 					</tr>
 					<tr>
 						<td colspan="10">
