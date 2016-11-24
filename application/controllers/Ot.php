@@ -80,7 +80,8 @@ class Ot extends CI_Controller {
 					isset($orden->abscisa)?$orden->abscisa:NULL,
 					isset($orden->idpoblado)?$orden->idpoblado:NULL,
 					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
-					isset($orden->json)?json_encode($orden->json):NULL
+					isset($orden->json)?json_encode($orden->json):NULL,
+					isset($orden->sap)?json_encode($orden->sap):NULL
 				);
 			#-----------------------
 			#Adicionar tarea nueva
@@ -262,9 +263,22 @@ class Ot extends CI_Controller {
 		# inicio de seguimiento de transacciones
 		$this->ot_db->init_transact();
 
-		$this->ot_db->update(	$orden->idOT,	$orden->nombre_ot, $orden->ccosto,	$orden->base_idbase, $orden->zona, $orden->fecha_creacion,
-				$orden->especialidad_idespecialidad, $orden->tipo_ot_idtipo_ot,	$orden->actividad, $orden->justificacion,
-				$orden->locacion,	$orden->abscisa, $orden->idpoblado,	json_encode($orden->json)
+		$this->ot_db->update(
+				$orden->idOT,
+				$orden->nombre_ot,
+				$orden->ccosto,
+				$orden->base_idbase,
+				$orden->zona,
+				$orden->fecha_creacion,
+				$orden->especialidad_idespecialidad,
+				$orden->tipo_ot_idtipo_ot,
+				$orden->actividad,
+				$orden->justificacion,
+				$orden->locacion,
+				$orden->abscisa,
+				$orden->idpoblado,
+				json_encode($orden->json),
+				isset($orden->sap)?json_encode($orden->sap):NULL
 			);
 		foreach($orden->tareas as $tr){
 			if(isset($tr->idtarea_ot) &&  $tr->idtarea_ot != 0 ){
