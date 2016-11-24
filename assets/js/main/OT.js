@@ -185,10 +185,10 @@ var OT = function($scope, $http, $timeout){
 					datos = response.data;
 					itv.cantidad_gv = 1;
 					itv.duracion_gv = 1;
-					itv.alojamiento = parseInt(datos.alojamiento);
-					itv.transporte = parseInt(datos.transporte);
-					itv.alimentacion = parseInt(datos.alimentacion);
-					itv.miscelanios = parseInt(datos.miscelanios);
+					itv.alojamiento = parseFloat(datos.alojamiento);
+					itv.transporte = parseFloat(datos.transporte);
+					itv.alimentacion = parseFloat(datos.alimentacion);
+					itv.miscelanios = parseFloat(datos.miscelanios);
 				},
 				function(response){
 					alert(JSON.stringify(response.data))
@@ -204,7 +204,7 @@ var OT = function($scope, $http, $timeout){
 			}
 			else {
 				v.total_item = ( v.alojamiento +  v.transporte +  v.alimentacion +  v.miscelanios) * ( v.cantidad_gv *  v.duracion_gv) * $scope.strtonum( v.incidencia);
-				tr.json_viaticos.valor_viaticos += v.total_item;
+				tr.json_viaticos.valor_viaticos += $scope.strtonum(v.total_item);
 			}
 		});
 		if ( tr.json_viaticos.json_viaticos == undefined || tr.json_viaticos.json_viaticos.length == 0 ) {

@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<td colspan="11">
-							Total G.V.: {{ viaticos | currency:'$':0 }}
+							Total G.V.: {{ tr.json_viaticos.valor_viaticos | currency:'$':0 }}
 						</td>
 					</tr>
 				</tbody>
