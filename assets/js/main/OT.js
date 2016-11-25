@@ -151,8 +151,8 @@ var OT = function($scope, $http, $timeout){
 				}else if(v.tipo_item == 2) {
 					tr.personal.push(v);
 					//generar listado de items de personal para calc. gastos de viaje.
-					tr.json_viaticos.json_viaticos = angular.copy(tr.personal);
-					tr.json_horas_extra.json_horas_extra = angular.copy(tr.personal);
+					tr.json_viaticos.json_viaticos.push(v);
+					tr.json_horas_extra.json_horas_extra.push(v);
 				}else if(v.tipo_item == 3){
 					tr.equipos.push(v);
 				}
@@ -250,6 +250,11 @@ var OT = function($scope, $http, $timeout){
 		tr.json_viaticos.administracion = Math.round( tr.json_viaticos.administracion );
 		$("#addViaticosOT").addClass('nodisplay');
 	}
+
+	$scope.reiniciarViaticos = function(tr){
+		tr.json_viaticos.json_viaticos = angular.copy(tr.personal)
+		tr.json_viaticos.administracion = 0;
+	}
 	//===================================================================================================================
 	// Reembolsables
 	$scope.setReembolsables = function(tag, tr){
@@ -325,6 +330,11 @@ var OT = function($scope, $http, $timeout){
 		$scope.calcularHorasExtra(tr, ambito);
 		$(tag).toggleClass('nodisplay');
 	}
+	$scope.reiniciarHorasExtra = function(tr){
+		tr.json_horas_extra.json_horas_extra = angular.copy(tr.personal)
+		tr.json_horas_extra.administracion = Math.round( (tr.json_horas_extra.valor_horas_extra + (tr.json_horas_extra.raciones_cantidad * tr.json_horas_extra.raciones_valor_und)) * 0.0458 );
+	}
+	// ----------------------------------------
 	//Calculos de OT
 	$scope.calcularValorOT = function(ambito){
 		ambito.ot.valor_ot = 0;
@@ -423,6 +433,10 @@ var OT = function($scope, $http, $timeout){
 			function(response){	alert(response.data);	},
 			function(response){ alert(response.data); }
 		);
+	}
+
+	$scope.unset_elemt = function(list, item){
+		list.splice(list.indexOf(item),1);
 	}
 
 }

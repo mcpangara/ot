@@ -4,12 +4,15 @@
       <div class="">
         <big>Gestion de Horas extra:</big>
         <button type="button" ng-click="endHorasExtra('#addHorasExtra', tr)" class="btn green mini-btn2" name="button">Finalizar</button>
+
+        <button type="button" class="btn mini-btn2 orange" ng-click="reiniciarHorasExtra(tr)" name="button"> Finalizar </button>
       </div>
 
       <div class="" style="overflow:auto">
         <table class="mytabla">
           <thead>
             <tr>
+              <th></th>
               <th>item</th>
               <th>Descripción</th>
               <th>Cant. personal</th>
@@ -24,6 +27,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="it in tr.json_horas_extra.json_horas_extra" ng-init="validateValues(it)">
+              <td>
+  							<button type="button" class="btn red mini-btn2" ng-click="unset_elemt(tr.json_horas_extra.json_horas_extra, item)" >x</button>
+  						</td>
               <td>{{ it.itemc_item }}</td>
               <td>{{ it.descripcion }}</td>
               <td><input type="number" ng-model="it.cantidad_he" <?= $isEdit?'':'ng-init="it.cantidad_he = it.cantidad"'; ?> ng-change="calcularTotalItem(it)" style="width:7ex" value=""></td>
