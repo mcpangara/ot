@@ -96,7 +96,7 @@ var listOTReportes = function($scope, $http, $timeout){
 
   $scope.getOTs= function(url){
     console.log(url+"/"+$scope.consulta.base);
-    $http.post(url+"/"+$scope.consulta.base, {})
+    $http.post(url+"/"+$scope.consulta.base, {indicio_nombre_ot: $scope.consulta.indicio_nombre_ot})
     .then(
       function(response){
         $scope.myOts = response.data;

@@ -118,19 +118,19 @@
 		<!-- panel de contenidos -->
 		<div class="mypanel inset">
 
-			<div id="descripcion" class="font11 nodisplay">
+			<div id="descripcion" class="font12 nodisplay">
 				<?php $this->load->view('ot/forms/info'); ?>
 			</div>
 
-			<div id="planeacion" class="font11 nodisplay">
+			<div id="planeacion" class="font12 nodisplay">
 				<?php $this->load->view('ot/forms/planeacion') ?>
 			</div>
 
-			<div id="indirectos_ot" class="font11 nodisplay">
+			<div id="indirectos_ot" class="font12 nodisplay">
 				<?php $this->load->view('ot/forms/indirectos_ot') ?>
 			</div>
 
-			<div id="general" class="font11 nodisplay">
+			<div id="general" class="font12 nodisplay">
 				<?php $this->load->view('ot/forms/resumen') ?>
 			</div>
 

@@ -5,29 +5,44 @@
     <fieldset style="padding:1ex;">
       <div class="col l12">
 
-          <div class="noMaterialStyles row col l12">
-            <b class="col s3 l3">Centro de operacion:</b>
-            <select ng-model="consulta.base" class="col s5 l5" ng-init="consulta.base='169'" ng-change="setDefaultFilter()" style="height:4ex;">
-              <?php foreach ($bases->result() as $b): ?>
-                <option value="<?= $b->idbase ?>"><?= $b->idbase." - ".$b->nombre_base ?></option>
-              <?php endforeach; ?>
-            </select>
-            <div class="col s2 l2">
-              <button type="button" class="btn blue mini-btn" style="margin:0" ng-click="getOTs('<?= site_url('ot/getByBase/') ?>')" data-icon="," > Listar ordenes</button>
-            </div>
-            <br>
-            <br>
+        <div class="noMaterialStyles row col l4" style="border:1px solid #999; padding:4px">
+          <b class="col s4 l4">Buscar OT por No.:</b>
+          <input class="col s6 l6" type="text" ng-model="consulta.indicio_nombre_ot" style="padding: 5px;" placeholder="Ej: 350-16">
+          <div class="col s1 l1">
+            <button type="button" class="btn blue mini-btn" style="margin:0" ng-click="getOTs('<?= site_url('ot/getByBase/') ?>')" data-icon="," ></button>
           </div>
+        </div>
 
-          <div class="noMaterialStyles row col l12">
-            <b class="col s3 l3">Ordenes de trabajo:</b>
-            <select class="col s5 l5" ng-model="consulta.ot" style="height:4ex;">
-              <option ng-repeat="ot in myOts" value="{{ot.idOT}}">{{ot.nombre_ot}}</option>
-            </select>
-            <div class="col s2 l2">
-              <button type="button" class="btn mini-btn" data-icon="," style="margin:0px;" ng-click="getReportesView('<?= site_url() ?>')"> ver reportes</button>
-            </div>
+        <div class="noMaterialStyles row col l8" style="border:1px solid #999; padding:4px">
+          <b class="col s4 l4">OT por base:</b>
+          <select ng-model="consulta.base" class="col s6 l6" ng-init="consulta.base='169'" ng-change="setDefaultFilter()" style="height:4ex;">
+            <?php foreach ($bases->result() as $b): ?>
+              <option value="<?= $b->idbase ?>"><?= $b->idbase." - ".$b->nombre_base ?></option>
+            <?php endforeach; ?>
+          </select>
+          <div class="col s1 l1">
+            <button type="button" class="btn blue mini-btn" style="margin:0" ng-click="getOTs('<?= site_url('ot/getByBase/') ?>')" data-icon="," ></button>
           </div>
+          <br>
+          <br>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="noMaterialStyles row col l12">
+          <b class="col s3 l3">Orden de trabajo:</b>
+          <div class="col s4 l4">
+            <span ng-model="consulta.nombre_ot"></span>
+            <input type="hidden" ng-model="consulta.ot">
+          </div>
+          <!-- <select class="col s5 l5" ng-model="consulta.ot" style="height:4ex;">
+            <option ng-repeat="ot in myOts" value="{{ot.idOT}}">{{ot.nombre_ot}}</option>
+          </select> -->
+          <div class="col s2 l2">
+            <button type="button" class="btn mini-btn" data-icon="," style="margin:0px;" ng-click="getReportesView('<?= site_url() ?>')"> ver reportes</button>
+          </div>
+        </div>
 
       </div>
 

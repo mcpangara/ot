@@ -65,7 +65,7 @@ table.mytabla tbody tr:active, table.mytabla tbody tr:hover, table.mytabla tbody
   background: #CEE1FF;
 }
 .mytabla tr td input, .mytabla tr th input{
-  height: 2.5ex;
+  height: 3ex;
   width: auto;
 }
 section .font10, section .font10 *, section .font10 label, .font10, .font10 * {

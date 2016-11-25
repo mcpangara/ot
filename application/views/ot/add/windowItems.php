@@ -58,7 +58,6 @@
 		padding: 1px;
 	}
 	.mytabla.filtered tr td input{
-		height: auto;
 		line-height: 0;
 	}
 	</style>
