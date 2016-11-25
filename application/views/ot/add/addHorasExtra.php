@@ -5,7 +5,6 @@
         <big>Gestion de Horas extra:</big>
         <button type="button" ng-click="endHorasExtra('#addHorasExtra', tr)" class="btn green mini-btn2" name="button">Finalizar</button>
 
-        <button type="button" class="btn mini-btn2 orange" ng-click="reiniciarHorasExtra(tr)" name="button"> Finalizar </button>
       </div>
 
       <div class="" style="overflow:auto">
@@ -71,6 +70,6 @@
           </tbody>
         </table>
       </div>
-
     </div>
+    <button type="button" class="btn mini-btn2 orange" ng-click="reiniciarHorasExtra(tr)" name="button"> Reiniciar Valores </button>
   </section>

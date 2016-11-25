@@ -3,8 +3,6 @@
 		<div class="">
 			<big>CALCULO DE GASTOS DE VIAJE: </big>
 			<button type="button" class="btn mini-btn2" ng-click="calcularViaticos(tr)" name="button"> Finalizar </button>
-
-			<button type="button" class="btn mini-btn2 orange" ng-click="reiniciarViaticos(tr)" name="button"> Finalizar </button>
 		</div>
 		<br>
 		<div style="height:90%; overflow: auto;">
@@ -58,4 +56,5 @@
 				</tbody>
 			</table>
 		</div>
+		<button type="button" class="btn mini-btn2 orange" ng-click="reiniciarViaticos(tr)" name="button"> Reiniciar valores </button>
 	</section>
