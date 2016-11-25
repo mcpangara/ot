@@ -105,7 +105,7 @@ class Ot extends CI_Controller {
 					$this->insetarITemsTarea($idTr, $tar->equipos);
 				}
 				$status = $this->ot->end_transact();
-				if($status){echo "Orden de trabajo guardada correctamente, BASE; ".$orden->base_idbase;}else { echo "No se ha guardado";	}
+				if($status){echo "Orden de trabajo guardada correctamente";}else { echo "No se ha guardado";	}
 			} catch (Exception $e) {
 				echo "Error al insertar la OT: ".$e->getMessege();
 			}
