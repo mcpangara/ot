@@ -66,6 +66,7 @@
         <div id="info" class="font11"> <?php $this->load->view('reportes/form/info'); ?> </div>
         <div id="recursosOT" class="font11 nodisplay"> <?php $this->load->view('reportes/form/recursosOT', array('ot'=>$r, 'un_equipos'=>$un_equipos, 'item_equipos'=>$item_equipos)); ?> </div>
         <div id="firmas" class="font11 nodisplay"> <?php $this->load->view('reportes/form/firmas'); ?> </div>
+        <div id="observacion" class="font11 nodisplay"> <?php $this->load->view('reportes/form/observaciones'); ?> </div>
         <div id="validaciones" class="font11 nodisplay"> <?php $this->load->view('reportes/form/validaciones'); ?> </div>
       </div>
       <br>
@@ -77,7 +78,7 @@
         <br>
         <br>
 
-        <button type="button" class="waves-effect waves-light btn mini-btn2" ng-click="guardarRD('<?= site_url('reporte/insert') ?>')">
+        <button type="button" class="waves-effect waves-light btn mini-btn2" ng-click="guardarRD('<?= site_url('reporte/insert') ?>', '<?= site_url('reporte/update') ?>')">
           <b data-icon="&#xe015;"></b> Guardar
         </button>
         <button type="button" class="waves-effect waves-light btn grey mini-btn2" ng-click="toggleWindow()" data-icon="&#xe036;"> Ocultar</button>

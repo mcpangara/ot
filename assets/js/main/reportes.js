@@ -174,13 +174,15 @@ var listOTReportes = function($scope, $http, $timeout){
     $scope.$parent.getAjaxWindow(link+'/'+id, $e, null);
   }
 }
-
-//=============================================================================
+//==================================================================================================================================
+//==================================================================================================================================
 // controlador de agregar reporte
+//==================================================================================================================================
 var addReporte = function($scope, $http, $timeout) {
   // estructuras JSON y array
   $scope.rd = {
     info:{
+      observaciones:[]
     },
     recursos:{
       personal:[],
@@ -362,6 +364,7 @@ var addReporte = function($scope, $http, $timeout) {
         );
     }
   }
+  $scope.addObervacion = function(){$scope.rd.info.observaciones.push({msj:''})}
 
   // Guardar reporte
   $scope.guardarRD = function(url){
@@ -393,13 +396,15 @@ var addReporte = function($scope, $http, $timeout) {
     }
   }
 }
-
+//==================================================================================================================================
 //==================================================================================================================================
 // Edit
+//==================================================================================================================================
 var editReporte = function($scope, $http, $timeout){
   // estructuras JSON y array
   $scope.rd = {
     info:{
+      observaciones:[]
     },
     recursos:{
       personal:[],
@@ -411,13 +416,15 @@ var editReporte = function($scope, $http, $timeout){
   $scope.equiposOT = [];
   $scope.actividadesOT = [];
   $scope.fecha_duplicar = '';
+  $scope.tipoGuardado = 0;
 
   $scope.getDataInfo = function(link){
     $http.post(link, {})
       .then(
         function(response){
-          //console.log(response.data);
-          $scope.rd.info = JSON.parse(response.data.info);
+          console.log(response.data);
+          $scope.rd.idreporte_diario = response.data.idreporte_diario;
+          $scope.rd.info = response.data.info;
           $scope.rd.recursos.personal = response.data.personal;
           $scope.rd.recursos.equipos = response.data.equipos;
           $scope.rd.recursos.actividades = response.data.actividades;
@@ -441,8 +448,10 @@ var editReporte = function($scope, $http, $timeout){
             if(response.data == 'invalid'){
               alert('Ya hay un reporte para esa fecha');
             }else if(response.data == 'valid'){
+              $scope.tipoGuardado = 1;
               $scope.rd.info.fecha_reporte = $scope.fecha_duplicar;
-              alert('Reporte duplicado listo para guardar en fecha '+$scope.fecha_duplicar)
+              alert('Reporte duplicado listo para guardar en fecha '+$scope.fecha_duplicar);
+              $('#duplicar').toggleClass('nodisplay');
             }else{
               alert('Proceso en revisión, intenta más tarde'+response.data)
             }
@@ -617,6 +626,45 @@ var editReporte = function($scope, $http, $timeout){
           function(response){
             console.log(response.data);
             $scope.rd.recursos = response.data.recursos;
+          },
+          function(response) {
+            console.log(response.data);
+          }
+        );
+    }
+  }
+  $scope.addObervacion = function(){$scope.rd.info.observaciones.push({msj:''})}
+
+  // Guardar reporte
+  $scope.guardarRD = function(link, link2) {
+    var data = {
+      fecha: $scope.rd.info.fecha_reporte,
+      recursos: $scope.rd.recursos,
+      info: $scope.rd.info
+    };
+
+    if ($scope.tipoGuardado == 1) {
+      $scope.guardarReporte(link, data);
+    }else{
+      data.idreporte_diario = $scope.rd.idreporte_diario;
+      console.log(data);
+      $scope.guardarReporte(link2, data);
+    }
+  }
+
+  $scope.guardarReporte = function(url, data){
+    if($scope.rd.recursos.personal.length == 0 && $scope.rd.recursos.equipos.length == 0 && $scope.rd.recursos.actividades.length == 0){
+      alert('No hay recurso agregados');
+    }else{
+        $http.post(
+          url,
+          data
+        ).then(
+          function(response){
+            console.log(response.data);
+            if(response.data.success == 'success'){
+              alert("reporte guardado correctamente");
+            }
           },
           function(response) {
             console.log(response.data);

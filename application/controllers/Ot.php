@@ -52,7 +52,12 @@ class Ot extends CI_Controller {
 			);
 		echo json_encode($arr);
 	}
-
+	public function saveOTValid()
+	{
+		if( $this->existeOT() ){
+			echo "La Orden de trabajo ya existe";
+		}
+	}
 	public function saveOT()
 	{
 		$post = file_get_contents('php://input');
@@ -60,48 +65,51 @@ class Ot extends CI_Controller {
 		$ot = $ots->ot;
 		#Crear la OT
 		$orden = $ots->ot;
-		$this->load->model('Ot_db','ot');
-		$orden->fecha_creacion = date('Y-m-d H:i:s');
-		try {
-			$this->ot->init_transact();
-			# --------------------
-			#crear la OT
-			$idot = $this->ot->add(
-					$orden->nombre_ot,
-					isset($orden->ccosto)?$orden->ccosto:NULL,
-					$orden->base_idbase,
-					$orden->zona,
-					$orden->fecha_creacion,
-					$orden->especialidad,
-					$orden->tipo_ot,
-					$orden->actividad,
-					$orden->justificacion,
-					isset($orden->locacion)?$orden->locacion:NULL,
-					isset($orden->abscisa)?$orden->abscisa:NULL,
-					isset($orden->idpoblado)?$orden->idpoblado:NULL,
-					isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
-					isset($orden->json)?json_encode($orden->json):NULL,
-					isset($orden->numero_sap)?$orden->numero_sap:NULL
-				);
-			#-----------------------
-			#Adicionar tarea nueva
-			$this->load->model('Tarea_db','tarea');
-			$i = 0;
-			foreach ($ot->tareas as $tar){
-				$i++;
-				# creamos la tarea
-				$idTr = $this->crearTareaOT($tar, $idot, 'TAREA '.$i);
-				#insertamos los items planeados a la tarea
-				$this->insetarITemsTarea($idTr, $tar->personal);
-				$this->insetarITemsTarea($idTr, $tar->actividades);
-				$this->insetarITemsTarea($idTr, $tar->equipos);
+		if( $this->existeOT($orden->nombre_ot) ){
+			echo "La Orden de trabajo ya existe";
+		}else{
+			$this->load->model('Ot_db','ot');
+			$orden->fecha_creacion = date('Y-m-d H:i:s');
+			try {
+				$this->ot->init_transact();
+				# --------------------
+				#crear la OT
+				$idot = $this->ot->add(
+						$orden->nombre_ot,
+						isset($orden->ccosto)?$orden->ccosto:NULL,
+						$orden->base_idbase,
+						$orden->zona,
+						$orden->fecha_creacion,
+						$orden->especialidad,
+						$orden->tipo_ot,
+						$orden->actividad,
+						$orden->justificacion,
+						isset($orden->locacion)?$orden->locacion:NULL,
+						isset($orden->abscisa)?$orden->abscisa:NULL,
+						isset($orden->idpoblado)?$orden->idpoblado:NULL,
+						isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
+						isset($orden->json)?json_encode($orden->json):NULL,
+						isset($orden->numero_sap)?$orden->numero_sap:NULL
+					);
+				#-----------------------
+				#Adicionar tarea nueva
+				$this->load->model('Tarea_db','tarea');
+				$i = 0;
+				foreach ($ot->tareas as $tar){
+					$i++;
+					# creamos la tarea
+					$idTr = $this->crearTareaOT($tar, $idot, 'TAREA '.$i);
+					#insertamos los items planeados a la tarea
+					$this->insetarITemsTarea($idTr, $tar->personal);
+					$this->insetarITemsTarea($idTr, $tar->actividades);
+					$this->insetarITemsTarea($idTr, $tar->equipos);
+				}
+				$status = $this->ot->end_transact();
+				if($status){echo "Orden de trabajo guardada correctamente, BASE; ".$orden->base_idbase;}else { echo "No se ha guardado";	}
+			} catch (Exception $e) {
+				echo "Error al insertar la OT: ".$e->getMessege();
 			}
-			$status = $this->ot->end_transact();
-			if($status){echo "Orden de trabajo guardada correctamente";}else { echo "No se ha guardado";	}
-		} catch (Exception $e) {
-			echo "Error al insertar la OT: ".$e->getMessege();
 		}
-
 	}
 
 	private function crearTareaOT($tar, $idot, $nombre_tarea)
@@ -420,9 +428,22 @@ class Ot extends CI_Controller {
 	}
 
 	# Existe orden de trabajo
-	public function existeOT($nombre_ot)
+	public function existeOT($nombre_ot = NULL)
 	{
-		# code...
+		if(!isset($nombre_ot)){
+			$post = json_decode(file_get_contents('php://input'));
+			$nombre_ot = $post->nombre_ot;
+		}
+
+		$this->load->database('ot');
+		$this->db->from('OT');
+		$this->db->where('nombre_ot', $nombre_ot);
+		$rows = $this->db->get();
+
+		if($rows->num_rows() > 0){
+			return true;
+		}
+		return false;
 	}
 
 	# ===============================================================================

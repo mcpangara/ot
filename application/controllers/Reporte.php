@@ -59,18 +59,26 @@ class Reporte extends CI_Controller{
       show_404();
     }
   }
-  public function insertarRecursoRep($list, $tipo){
+  public function insertarRecursoRep($list, $idr){
     foreach ($list as $key => $value) {
-      $this->repo->addRecursoRepo($value, $tipo);
+      $this->repo->addRecursoRepo($value, $idr);
     }
   }
   #===========================================================================================================
   # Validaciones para guardar el reporte
 
-  # valida si un Recurso ya esta registrado en una fecha dada
+  # valida si un Recurso ya esta registrado en una fecha dada, TRUE si se puede insertar y FALSE si ya existe en esa fecha
   public function validarRecurso($idrecurso_ot, $fecha)
   {
     $rows = $this->repo->recursoRepoFecha($idrecurso_ot, $fecha);
+    if($rows->num_rows() > 0){
+      return FALSE;
+    }
+    return TRUE;
+  }
+  public function validarRecursoUpdate($idrecurso_reporte_diario, $fecha)
+  {
+    $rows = $this->repo->recursoRepoFechaID($idrecurso_ot, $fecha);
     if($rows->num_rows() > 0){
       return FALSE;
     }
@@ -177,12 +185,48 @@ class Reporte extends CI_Controller{
     $equs = $this->repo->getRecursos($idReporte, 'equipos');
 
     $recursos = new stdClass();
-    $recursos->info = $this->getInfo($idReporte);
+    $recursos->idreporte_diario = $idReporte;
+    $recursos->info = json_decode( $this->getInfo($idReporte) );
     $recursos->personal = $pers->result();
     $recursos->equipos = $equs->result();
     $recursos->actividades = $acts->result();
 
     echo json_encode($recursos);
+  }
+  # ===========================================================================================================
+  public function update($value='')
+  {
+    $post = json_decode( file_get_contents("php://input") );
+    $info = $post->info;
+    $this->load->model('reporte_db', 'repo');
+    $this->repo->init_transact();
+    $this->repo->update($post);
+
+    $this->actualizarRecursos($post->recursos->actividades, $post->idreporte_diario, $post->fecha);
+    $this->actualizarRecursos($post->recursos->personal, $post->idreporte_diario, $post->fecha);
+    $this->actualizarRecursos($post->recursos->equipos, $post->idreporte_diario, $post->fecha);
+
+    if($this->repo->end_transact() != FALSE){
+      $response = new stdClass();
+      $response->success = 'success';
+      $response->recursos = $post;
+      echo json_encode($response);
+    }else{
+      echo "Falló la inserción";
+    }
+  }
+
+  public function actualizarRecursos($recursos, $idr, $fecha_reporte)
+  {
+    foreach ($recursos as $key => $rec) {
+      if( !isset($rec->idrecurso_reporte_diario) ){
+        // insertar
+        $this->repo->addRecursoRepo($rec, $idr);
+      }else{
+        //actualizar
+        $this->repo->editRecursoRepo($rec, $idr);
+      }
+    }
   }
 
   # ===========================================================================================================

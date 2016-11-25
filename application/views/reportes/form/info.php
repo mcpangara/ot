@@ -27,8 +27,8 @@
               Clima:
               <select class="" ng-model="rd.info.seguridad_ambiental">
                 <option value="Excelente">Excelente</option>
-                <option value="Excelente">Normal</option>
-                <option value="Excelente">Deficiente</option>
+                <option value="Normal">Normal</option>
+                <option value="Deficiente">Deficiente</option>
               </select>
             </label>
           </div>

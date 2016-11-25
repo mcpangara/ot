@@ -115,7 +115,8 @@ $db['ot'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);/*
+);
+/*
 $db['ot'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',

@@ -25,6 +25,20 @@ class Reporte_db extends CI_Model{
     return $this->db->insert_id();
   }
 
+  # Actualizar|
+  public function update($repo)
+  {
+    $data = array(
+      'fecha_reporte' => $repo->fecha,
+      'estado'=> TRUE,
+      'valido'=> FALSE,
+      'festivo'=>$repo->info->festivo,
+      'OT_idOT'=>$repo->info->idOT,
+      'json_r'=>json_encode($repo->info)
+    );
+    $this->db->update('reporte_diario', $data, 'idreporte_diario = '.$repo->idreporte_diario);
+  }
+
   # Insertar un recurso a un reporte con unas cantidades
    public function addRecursoRepo($recurso, $idrepo)
    {
@@ -35,14 +49,14 @@ class Reporte_db extends CI_Model{
        'facturable'=> isset($recurso->facturable)?$recurso->facturable:TRUE,
        'hora_inicio'=> isset($recurso->hora_inicio)? $recurso->hora_inicio: '',
        'hora_fin'=> isset($recurso->hora_fin)? $recurso->hora_fin: '',
-       'horas_extra_dia'=> isset($recurso->horas_hed)? $recurso->horas_hed: '',
-       'horas_extra_noc'=> isset($recurso->horas_hen)? $recurso->horas_hen: '',
-       'horas_recargo'=> isset($recurso->horas_rn)? $recurso->horas_rn: '',
+       'horas_extra_dia'=> isset($recurso->horas_extra_dia)? $recurso->horas_extra_dia: '',
+       'horas_extra_noc'=> isset($recurso->horas_extra_noc)? $recurso->horas_extra_noc: '',
+       'horas_recargo'=> isset($recurso->horas_recargo)? $recurso->horas_recargo: '',
        'racion'=> isset($recurso->racion)? $recurso->racion: '',
        'hr_almuerzo'=> isset($recurso->hr_almuerzo)? $recurso->hr_almuerzo: '',
        'nombre_operador'=> isset($recurso->nombre_operador)? $recurso->nombre_operador: '',
-       'horas_operacion'=> isset($recurso->horas_oper)? $recurso->horas_operacion: '',
-       'horas_disponible'=> isset($recurso->horas_disp)? $recurso->horas_disponible: '',
+       'horas_operacion'=> isset($recurso->horas_operacion)? $recurso->horas_operacion: '',
+       'horas_disponible'=> isset($recurso->horas_disponible)? $recurso->horas_disponible: '',
        'varado'=> isset($recurso->varado)? $recurso->varado: '',
        'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horometro_ini: '',
        'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horometro_fin: '',
@@ -52,14 +66,44 @@ class Reporte_db extends CI_Model{
      );
      $this->db->insert('recurso_reporte_diario', $data);
    }
+  #Actualiar un recurso reporte
+  public function editRecursoRepo($recurso, $idrepo)
+  {
+    $data = array(
+      'idreporte_diario' => $idrepo,
+      'cantidad'=> isset($recurso->cantidad)?$recurso->cantidad: '0',
+      'planeado'=> isset($recurso->planeado)?$recurso->planeado:'',
+      'facturable'=> isset($recurso->facturable)?$recurso->facturable:TRUE,
+      'hora_inicio'=> isset($recurso->hora_inicio)? $recurso->hora_inicio: '',
+      'hora_fin'=> isset($recurso->hora_fin)? $recurso->hora_fin: '',
+      'horas_extra_dia'=> isset($recurso->horas_extra_dia)? $recurso->horas_extra_dia: '',
+      'horas_extra_noc'=> isset($recurso->horas_extra_noc)? $recurso->horas_extra_noc: '',
+      'horas_recargo'=> isset($recurso->horas_recargo)? $recurso->horas_recargo: '',
+      'racion'=> isset($recurso->racion)? $recurso->racion: '',
+      'hr_almuerzo'=> isset($recurso->hr_almuerzo)? $recurso->hr_almuerzo: '',
+      'nombre_operador'=> isset($recurso->nombre_operador)? $recurso->nombre_operador: '',
+      'horas_operacion'=> isset($recurso->horas_operacion)? $recurso->horas_operacion: '',
+      'horas_disponible'=> isset($recurso->horas_disponible)? $recurso->horas_disponible: '',
+      'varado'=> isset($recurso->varado)? $recurso->varado: '',
+      'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horometro_ini: '',
+      'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horometro_fin: '',
+      'idrecurso_ot'=>  isset($recurso->idrecurso_ot)?$recurso->idrecurso_ot:NULL,
+      'itemf_iditemf'=> isset($recurso->itemf_iditemf)?$recurso->itemf_iditemf:NULL,
+      'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL
+    );
+    $this->db->update('recurso_reporte_diario', $data, 'idrecurso_reporte_diario = '.$recurso->idrecurso_reporte_diario);
+  }
   public function recursoRepoFecha($idRecOt, $fecha)
   {
     $this->load->database('ot');
     return $this->db->from('recurso_reporte_diario AS rrd')
-        ->join('reporte_diario AS rd', 'rd.idreporte_diario = rrd.idreporte_diario')
-        ->where('rrd.idrecurso_ot',$idRecOt)
-        ->where('rd.fecha_reporte',$fecha)
-        ->get();
+        ->join('reporte_diario AS rd', 'rd.idreporte_diario = rrd.idreporte_diario')->where('rrd.idrecurso_ot',$idRecOt)->where('rd.fecha_reporte',$fecha)->get();
+  }
+  public function recursoRepoFechaID($id, $fecha)
+  {
+    $this->load->database('ot');
+    return $this->db->from('recurso_reporte_diario AS rrd')->join('reporte_diario AS rd', 'rd.idreporte_diario = rrd.idreporte_diario')
+        ->where('rrd.idrecurso_reporte_diario',$id)->where('rd.fecha_reporte',$fecha)->get();
   }
 
   # =============================================================================================
@@ -86,7 +130,7 @@ class Reporte_db extends CI_Model{
 
   public function getRecursos($idrepo, $tipo){
     $this->load->database('ot');
-    $this->db->select('rrd.*, itf.itemc_item, itf.descripcion, itf.unidad');
+    $this->db->select('rrd.*, itf.itemc_item, itf.codigo, itf.descripcion, itf.unidad');
     //$this->db->join('item_tarea_ot AS itr', 'itr.iditem_tarea_ot = rrd.iditem_tarea_ot', 'LEFT');
     $this->db->from('recurso_reporte_diario AS rrd');
     $this->db->join('itemf AS itf', 'rrd.itemf_iditemf = itf.iditemf', 'LEFT');

@@ -417,6 +417,14 @@ var OT = function($scope, $http, $timeout){
 	$scope.validVal = function(val){
 		return (val==undefined || val=='')?parseInt(0):val;
 	}
+
+	$scope.existeOT = function(url,  ambito){
+		$http.post(url, { nombre_ot: ambito.ot.nombre_ot } ).then(
+			function(response){	alert(response.data);	},
+			function(response){ alert(response.data); }
+		);
+	}
+
 }
 
 // Listado de OTs
@@ -496,12 +504,14 @@ var agregarOT = function($scope, $http, $timeout){
 	}
 	//===================================================================================================================
 	$scope.guardarOT = function(url){
+
 		//tinyMCE.triggerSave();
 		$scope.calcularSubtotales();
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
 		$scope.ot.idpoblado = $scope.poblado;
 		console.log($scope.ot);
+		$scope.existeOT(url+'Valid', $scope);
 		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
 			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
 		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefined
