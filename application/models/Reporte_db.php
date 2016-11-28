@@ -159,6 +159,50 @@ class Reporte_db extends CI_Model{
   }
   # =====================================================================================
   # Obtener historial de la OT
+  public function getHistoryBy($idOT)
+  {
+    $this->load->database('ot');
+    return $this->db->select(
+      '
+      OT.nombre_ot AS No_OT,
+      rd.fecha_reporte,
+      rd.festivo,
+      itf.codigo,
+      itf.itemc_item AS item,
+      rrd.facturable,
+      rrd.cantidad,
+      rrd.planeado,
+      rrd.hora_inicio,
+      rrd.hora_fin,
+      rrd.horas_extra_dia,
+      rrd.horas_extra_noc,
+      rrd.horas_recargo,
+      rrd.hr_almuerzo,
+      rrd.racion,
+      rrd.nombre_operador,
+      rrd.horas_operacion,
+      rrd.horas_disponible,
+      rrd.horometro_ini,
+      rrd.horometro_fin,
+      rrd.varado,
+      rot.tipo,
+      rot.unidad_negocio,
+      p.identificacion,
+      p.nombre_completo,
+      e.codigo_siesa,
+      e.referencia,
+      e.descripcion
+      '
+      )->from('reporte AS rd')
+      ->join('recurso_reporte_diario AS rrd', 'rrd.idreporte_diario = rd.idreporte_diario')
+      ->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot','LEFT')
+      ->join('recurso AS r','r.idrecurso = rot.recurso_idrecurso','LEFT')
+      ->join('personal AS p', 'p.identificacion = r.persona_identificacion','LEFT')
+      ->join('equipo AS e', 'e.idequipo = r.equipo_idequipo')
+      ->join('OT', 'OT.idOT = rd.OT_idOT')
+      ->join('itemf AS itf', 'itf.iditemf = rrd.itemf_iditemf')
+      ->where();
+  }
 
   // TRANSACTION
 
