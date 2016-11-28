@@ -34,15 +34,16 @@
 
         <div class="noMaterialStyles row col l12">
           <b class="col s3 l3">Orden de trabajo:</b>
-          <div class="col s4 l4">
+          <div class="col s3 l3">
             <span ng-bind="consulta.nombre_ot"></span>
             <input type="hidden" ng-model="consulta.ot">
           </div>
           <!-- <select class="col s5 l5" ng-model="consulta.ot" style="height:4ex;">
             <option ng-repeat="ot in myOts" value="{{ot.idOT}}">{{ot.nombre_ot}}</option>
           </select> -->
-          <div class="col s2 l2">
+          <div class="col s3 l3 row">
             <button type="button" class="btn mini-btn" data-icon="," style="margin:0px;" ng-click="getReportesView('<?= site_url() ?>')"> ver reportes</button>
+            <a id="historialByOT" target="_blank" ng-href="<?= site_url('export/historyRepoByOT') ?>/{{consulta.idOT}}/{{consulta.nombre_ot}}" class="nodisplay btn mini-btn" style="margin:0px;">historial</a>
           </div>
         </div>
 

@@ -14,12 +14,11 @@ class Export extends CI_Controller{
 
   }
 
-  public function historyRepoByOT()
+  public function historyRepoByOT($idOT, $nombre_ot)
   {
-    $post = json_decode( file_get_contents('php://input') );
     $this->load->model('reporte_db', 'repo');
-    $rows = $this->repo->getHistoryBy($post->idOT);
-
+    $rows = $this->repo->getHistoryBy($idOT);
+    $this->load->view('miscelanios/history/infoReportes', array('rows'=>$rows, 'nombre_ot'=>$nombre_ot) );
   }
 
 }

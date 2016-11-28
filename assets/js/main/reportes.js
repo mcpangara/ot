@@ -120,6 +120,7 @@ var listOTReportes = function($scope, $http, $timeout){
     $scope.consulta.idOT = ot.idOT;
     $scope.consulta.nombre_ot = ot.nombre_ot;
     $("#seleccionar-ot").toggleClass('nodisplay');
+    $('#historialByOT').removeClass('nodisplay');
   }
 
   $scope.getReportesView = function(site_url){

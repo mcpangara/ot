@@ -168,10 +168,11 @@ class Reporte_db extends CI_Model{
       rd.fecha_reporte,
       rd.festivo,
       itf.codigo,
+      rot.tipo,
       itf.itemc_item AS item,
+      itf.descripcion,
       rrd.facturable,
       rrd.cantidad,
-      rrd.planeado,
       rrd.hora_inicio,
       rrd.hora_fin,
       rrd.horas_extra_dia,
@@ -185,23 +186,24 @@ class Reporte_db extends CI_Model{
       rrd.horometro_ini,
       rrd.horometro_fin,
       rrd.varado,
-      rot.tipo,
-      rot.unidad_negocio,
       p.identificacion,
       p.nombre_completo,
       e.codigo_siesa,
       e.referencia,
-      e.descripcion
+      e.descripcion AS equipo
       '
-      )->from('reporte AS rd')
+      )->from('reporte_diario AS rd')
       ->join('recurso_reporte_diario AS rrd', 'rrd.idreporte_diario = rd.idreporte_diario')
       ->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot','LEFT')
       ->join('recurso AS r','r.idrecurso = rot.recurso_idrecurso','LEFT')
-      ->join('personal AS p', 'p.identificacion = r.persona_identificacion','LEFT')
-      ->join('equipo AS e', 'e.idequipo = r.equipo_idequipo')
+      ->join('persona AS p', 'p.identificacion = r.persona_identificacion','LEFT')
+      ->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT')
       ->join('OT', 'OT.idOT = rd.OT_idOT')
       ->join('itemf AS itf', 'itf.iditemf = rrd.itemf_iditemf')
-      ->where();
+      ->where('rd.OT_idOT', $idOT)
+      ->order_by('rd.fecha_reporte','ASC')
+      ->order_by('rd.idreporte_diario','ASC')
+      ->get();
   }
 
   // TRANSACTION
