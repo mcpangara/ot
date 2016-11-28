@@ -21,4 +21,6 @@ class Export extends CI_Controller{
     $this->load->view('miscelanios/history/infoReportes', array('rows'=>$rows, 'nombre_ot'=>$nombre_ot) );
   }
 
+  
+
 }
