@@ -289,4 +289,9 @@ class Reporte extends CI_Controller{
 		$this->load->view('reportes/calendar', array('ot'=>$ot->row()));
 	}
 
+  public function historialByOT()
+  {
+    $post = json_decode( file_get_contents('php://input') );
+    $this->load->model('', 'model_alias');
+  }
 }

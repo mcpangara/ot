@@ -157,6 +157,8 @@ class Reporte_db extends CI_Model{
     $this->load->database('ot');
     return $this->db->select('*')->from('reporte_diario AS rd')->join('OT', 'OT.idOT = rd.OT_idOT')->where('rd.OT_idOT', $idOT)->order_by('fecha_reporte','ASC')->get();
   }
+  # =====================================================================================
+  # Obtener historial de la OT
 
   // TRANSACTION
 

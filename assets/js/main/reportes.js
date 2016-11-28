@@ -115,6 +115,7 @@ var listOTReportes = function($scope, $http, $timeout){
     );
   }
   $scope.seleccionarOT = function(ot){
+    $scope.consulta.ot = ot;
     $scope.consulta.idOT = ot.idOT;
     $scope.consulta.nombre_ot = ot.nombre_ot;
     $("#seleccionar-ot").toggleClass('nodisplay');
@@ -128,7 +129,7 @@ var listOTReportes = function($scope, $http, $timeout){
           $scope.rd.fecha = fecha;
           $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
           $scope.ot = val;
-          $scope.verCalendario(site_url+'/reporte/calendar'+"/"+$scope.consulta.ot);
+          $scope.verCalendario(site_url+'/reporte/calendar'+"/"+$scope.consulta.idOT);
           $scope.ot.selected = true;
           $http.post(
               site_url+'/reporte/getReportesByOT',
