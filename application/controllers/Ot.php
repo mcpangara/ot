@@ -24,7 +24,7 @@ class Ot extends CI_Controller {
 		$post = json_decode( file_get_contents('php://input') );
 		$this->load->database('ot');
 		if(isset($post->indicio_nombre_ot)){
-			$rows = $this->db->select('*')->from('ot')->like('nombre_ot',$post->indicio_nombre_ot)->get();
+			$rows = $this->db->select('*')->from('OT')->like('nombre_ot',$post->indicio_nombre_ot)->get();
 			// echo $this->db->last_query();
 			echo json_encode($rows->result());
 		}

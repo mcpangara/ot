@@ -112,7 +112,7 @@ var listOTReportes = function($scope, $http, $timeout){
           $("#seleccionar-ot").toggleClass('nodisplay');
         }
       },
-      function(){}
+      function(response){alert('nodata')}
     );
   }
   $scope.seleccionarOT = function(ot){
