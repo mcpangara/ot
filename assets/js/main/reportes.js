@@ -105,7 +105,8 @@ var listOTReportes = function($scope, $http, $timeout){
         console.log(response.data);
         if(response.data.length == 0 || response.data[0] == undefined){alert('No hay OT activas para esta base')}
         else{
-          $scope.consulta.ot  = response.data[0].idOT;
+          $scope.consulta.ot = response.data[0];
+          $scope.consulta.idOT  = response.data[0].idOT;
           $scope.consulta.nombre_ot = response.data.nombre_ot;
           $scope.myOts = response.data;
           $("#seleccionar-ot").toggleClass('nodisplay');
@@ -123,30 +124,26 @@ var listOTReportes = function($scope, $http, $timeout){
 
   $scope.getReportesView = function(site_url){
     $scope.ocultarCalendario('');
-    angular.forEach($scope.myOts, function(val, key){
-        if(val.idOT == $scope.consulta.idOT){
-          var fecha = new Date();
-          $scope.rd.fecha = fecha;
-          $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
-          $scope.ot = val;
-          $scope.verCalendario(site_url+'/reporte/calendar'+"/"+$scope.consulta.idOT);
-          $scope.ot.selected = true;
-          $http.post(
-              site_url+'/reporte/getReportesByOT',
-              {
-                idOT: val.idOT
-              }
-            ).then(
-              function(response) {
-                $scope.listaReportes = undefined;
-                $scope.listaReportes = response.data;
-                console.log(response.data)
-              },
-              function(response) {
-              }
-            );
+    var fecha = new Date();
+    $scope.rd.fecha = fecha;
+    $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
+    $scope.verCalendario(site_url+'/reporte/calendar'+"/"+$scope.consulta.idOT);
+    $scope.ot.selected = true;
+    $http.post(
+        site_url+'/reporte/getReportesByOT',
+        {
+          idOT: $scope.consulta.idOT
         }
-    });
+      ).then(
+        function(response) {
+          $scope.listaReportes = undefined;
+          $scope.listaReportes = response.data;
+          console.log(response.data)
+        },
+        function(response) {
+          alert(response.data)
+        }
+      );
   }
   //Calendario
   $scope.verCalendario = function(url){
@@ -168,13 +165,13 @@ var listOTReportes = function($scope, $http, $timeout){
 
   $scope.enlazarClick = function(url, $e){
     $e.preventDefault();
-    $http.get(url+'valid/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected)
+    $http.get(url+'valid/'+$scope.consulta.idOT+'/'+$scope.rd.fecha_selected)
     .then(
       function(response) {
         if (response.data == "invalid") {
           alert('El reporte de esta fecha para esta OT ya existe');
         }else if(response.data == "valid") {
-          var link = url+'/'+$scope.consulta.ot+'/'+$scope.rd.fecha_selected;
+          var link = url+'/'+$scope.consulta.idOT+'/'+$scope.rd.fecha_selected;
           $scope.$parent.getAjaxWindow(link, $e, null);
         }
       },

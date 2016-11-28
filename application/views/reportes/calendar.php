@@ -6,7 +6,7 @@
       color:red;
     }
   </style>
-  <table ng-init="getMyReportes('<?= site_url('ot/getMyReportes') ?>')">
+  <table>
     <thead>
       <tr>
         <th class="textcenter" colspan="7" style="width:auto; height: auto; padding:5px;">
