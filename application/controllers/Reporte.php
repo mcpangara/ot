@@ -41,9 +41,11 @@ class Reporte extends CI_Controller{
     $post = json_decode( file_get_contents("php://input") );
     $info = $post->info;
 
-    if($this->addvalid($post->info->idOT, $post->info->fecha_reporte) == 'valid'){
+    $this->load->model('reporte_db', 'repo');
+    $rows = $this->repo->getBy($post->info->idOT, $post->info->fecha_reporte);
+
+    if($rows->num_rows() == 0){
       $recusos = $post->recursos;
-      $this->load->model('reporte_db', 'repo');
       $this->repo->init_transact();
       // Insertamos el reporte y devolvemos el ID
       $idrepo = $this->repo->add($post->info);
