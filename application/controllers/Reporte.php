@@ -40,23 +40,26 @@ class Reporte extends CI_Controller{
   public function insert(){
     $post = json_decode( file_get_contents("php://input") );
     $info = $post->info;
-    $recusos = $post->recursos;
-    $this->load->model('reporte_db', 'repo');
-    $this->repo->init_transact();
-    // Insertamos el reporte y devolvemos el ID
-    $idrepo = $this->repo->add($post->info);
-    //Recorremos los arregos de recursos
-    $this->insertarRecursoRep($post->recursos->actividades, $idrepo);
-    $this->insertarRecursoRep($post->recursos->personal, $idrepo);
-    $this->insertarRecursoRep($post->recursos->equipos, $idrepo);
-    $validProcc = $this->repo->end_transact();
-    if($validProcc != FALSE){
-      $response = new stdClass();
-      $response->success = 'success';
-      $response->idreporte_diario = $idrepo;
-      echo json_encode($response);
-    }else{
-      show_404();
+
+    if($this->addvalid($post->info->idOT, $post->info->fecha_reporte) == 'valid'){
+      $recusos = $post->recursos;
+      $this->load->model('reporte_db', 'repo');
+      $this->repo->init_transact();
+      // Insertamos el reporte y devolvemos el ID
+      $idrepo = $this->repo->add($post->info);
+      //Recorremos los arregos de recursos
+      $this->insertarRecursoRep($post->recursos->actividades, $idrepo);
+      $this->insertarRecursoRep($post->recursos->personal, $idrepo);
+      $this->insertarRecursoRep($post->recursos->equipos, $idrepo);
+      $validProcc = $this->repo->end_transact();
+      if($validProcc != FALSE){
+        $response = new stdClass();
+        $response->success = 'success';
+        $response->idreporte_diario = $idrepo;
+        echo json_encode($response);
+      }else{
+        show_404();
+      }
     }
   }
   public function insertarRecursoRep($list, $idr){

@@ -19,6 +19,17 @@ class Ot extends CI_Controller {
 		echo json_encode($ots->result());
 	}
 
+	public function getByName($value='')
+	{
+		$post = json_decode( file_get_contents('php://input') );
+		$this->load->database('ot');
+		if(isset($post->indicio_nombre_ot)){
+			$rows = $this->db->select('*')->from('ot')->like('nombre_ot',$post->indicio_nombre_ot)->get();
+			// echo $this->db->last_query();
+			echo json_encode($rows->result());
+		}
+	}
+
 	#=============================================================================
 	# GUARDAR UNA ORDEN DE TRABAJO
 	public function addNew($value='')

@@ -77,6 +77,8 @@ var reportes = function($scope, $http, $timeout) {
   }
 }
 
+// ============================================================================================
+// Reportes
 var listOTReportes = function($scope, $http, $timeout){
   $scope.ot = {};
   $scope.rd = {};
@@ -100,11 +102,22 @@ var listOTReportes = function($scope, $http, $timeout){
     .then(
       function(response){
         $scope.myOts = response.data;
+        console.log(response.data);
         if(response.data.length == 0 || response.data[0] == undefined){alert('No hay OT activas para esta base')}
-        else{$scope.consulta.ot  = response.data[0].idOT;}
+        else{
+          $scope.consulta.ot  = response.data[0].idOT;
+          $scope.consulta.nombre_ot = response.data.nombre_ot;
+          $scope.myOts = response.data;
+          $("#seleccionar-ot").toggleClass('nodisplay');
+        }
       },
       function(){}
     );
+  }
+  $scope.seleccionarOT = function(ot){
+    $scope.consulta.idOT = ot.idOT;
+    $scope.consulta.nombre_ot = ot.nombre_ot;
+    $("#seleccionar-ot").toggleClass('nodisplay');
   }
 
   $scope.getReportesView = function(site_url){
@@ -141,7 +154,6 @@ var listOTReportes = function($scope, $http, $timeout){
   $scope.ocultarCalendario = function(){
     $timeout(function(){ $scope.calendarLink = ''; });
   }
-
   $scope.seleccionarFecha = function(fecha, mes, year, url, $e){
     if( url != undefined ){
       var d = new Date(year, mes, fecha.dia);

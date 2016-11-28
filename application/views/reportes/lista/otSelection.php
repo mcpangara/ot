@@ -1,5 +1,5 @@
-<section>
-  <h4>Seleciona la OT buscada</h4>
+<section id="seleccionar-ot" class="nodisplay" style="position: fixed;  padding: 2ex; box-shadow: 0px 0px 5px #333; z-index:3; background:#FEFEFE">
+  <h5>Seleciona la OT buscada</h5>
   <hr>
   <div class="">
     <table class="mytabla">

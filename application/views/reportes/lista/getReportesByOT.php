@@ -9,7 +9,7 @@
           <b class="col s4 l4">Buscar OT por No.:</b>
           <input class="col s6 l6" type="text" ng-model="consulta.indicio_nombre_ot" style="padding: 5px;" placeholder="Ej: 350-16">
           <div class="col s1 l1">
-            <button type="button" class="btn blue mini-btn" style="margin:0" ng-click="getOTs('<?= site_url('ot/getByBase/') ?>')" data-icon="," ></button>
+            <button type="button" class="btn blue mini-btn" style="margin:0" ng-click="getOTs('<?= site_url('ot/getByName/') ?>')" data-icon="," ></button>
           </div>
         </div>
 
@@ -30,10 +30,12 @@
         <br>
         <hr>
 
+        <?php $this->load->view('reportes/lista/otSelection'); ?>
+
         <div class="noMaterialStyles row col l12">
           <b class="col s3 l3">Orden de trabajo:</b>
           <div class="col s4 l4">
-            <span ng-model="consulta.nombre_ot"></span>
+            <span ng-bind="consulta.nombre_ot"></span>
             <input type="hidden" ng-model="consulta.ot">
           </div>
           <!-- <select class="col s5 l5" ng-model="consulta.ot" style="height:4ex;">
