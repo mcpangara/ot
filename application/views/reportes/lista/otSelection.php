@@ -1,4 +1,4 @@
-<section id="seleccionar-ot" class="nodisplay col s12 m12 l12" style="background:#F5F5F5">
+<section id="seleccionar-ot" class="nodisplay col s12 m12 l12" style="background:#F5F5F5; max-heigth: 230px; overflow: auto">
   <h5>Seleciona la OT buscada</h5>
   <hr>
   <div class="">
