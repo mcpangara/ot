@@ -123,7 +123,7 @@ var listOTReportes = function($scope, $http, $timeout){
   $scope.getReportesView = function(site_url){
     $scope.ocultarCalendario('');
     angular.forEach($scope.myOts, function(val, key){
-        if(val.idOT == $scope.consulta.ot){
+        if(val.idOT == $scope.consulta.idOT){
           var fecha = new Date();
           $scope.rd.fecha = fecha;
           $scope.rd.fecha_selected = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate();
