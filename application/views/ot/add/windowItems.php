@@ -21,28 +21,27 @@
 			<tbody>
 				<tr style="border:1px solid #999">
 					<td class="noMaterialStyles">
-						<button type="button" ng-click="changeFilterSelect(filtro)" class="btn mini-btn2"> <span data-icon="&#xe04c;"></span> </button>
+						<button type="button" ng-click="changeFilterSelect(filtroItems)" class="btn mini-btn2"> <span data-icon="&#xe04c;"></span> </button>
 					</td>
-					<td style="width: 102px"> <input style="width: 100px" type="text" ng-model="filtro.itemc_item" placeholder="filtro"/> </td>
-					<td> <input type="text" ng-model="filtro.descripcion" placeholder="filtro"/> </td>
-					<td> <input type="text" ng-model="filtro.unidad" placeholder="filtro"/> </td>
+					<td style="width: 102px"> <input style="width: 100px" type="text" ng-model="filtroItems.itemc_item" placeholder="filtroItems"/> </td>
+					<td> <input type="text" ng-model="filtroItems.descripcion" placeholder="filtroItems"/> </td>
+					<td> <input type="text" ng-model="filtroItems.unidad" placeholder="filtroItems"/> </td>
 					<td> </td>
           <td> </td>
           <td> </td>
           <td> </td>
           <td> </td>
 				</tr>
-				<tr ng-repeat="it in myItems | filter: filtro" >
-					<td>
-						<input type="checkbox" class="nomaterialstyle" id="add{{it.iditemf}}" ng-model="it.add" />
-						<label for="add{{ it.iditemf }}"  ng-click="setSelecteState(it.add)"></label>
+				<tr ng-repeat="it in myItems | filter: filtroItems" >
+					<td class="noMaterialStyles">
+						<input type="checkbox" ng-model="it.add" ng-click="setSelecteState(it.add)" />
 					</td>
 					<td style="width: 100px" ng-bind="it.itemc_item" ></td>
 					<td ng-bind="it.descripcion"></td>
 					<td ng-bind="it.unidad"></td>
 					<td style="text-align: right" ng-bind="it.tarifa | currency"></td>
-          <td> <input type="number" style="border: 1px solid #E65100; width:8ex"  ng-model="it.cantidad" ng-init="it.cantidad = 0"> </td>
-          <td> <input type="number" style="border: 1px solid #E65100; width:10ex"  ng-model="it.duracion" ng-init="it.duracion = 0"> </td>
+          <td> <input type="number" style="border: 1px solid #E65100; width:8ex"  ng-model="it.cantidad" ng-init="it.cantidad = 0" min="0"> </td>
+          <td> <input type="number" style="border: 1px solid #E65100; width:10ex"  ng-model="it.duracion" ng-init="it.duracion = 0" min="0"> </td>
           <td ng-bind="it.BO"> </td>
           <td ng-bind="it.CL"> </td>
 				</tr>

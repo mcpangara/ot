@@ -24,7 +24,7 @@
         <td style="width:25%"></td>
         <td style="width:25%"></td>
         <td style="text-align: right">Orden  de trabajo No.</td>
-        <td> <?= $ot->nombre_ot ?></td>
+        <td> <?= $ot->nombre_ot.' '.$nombre_tarea ?></td>
       </tr>
       <tr>
         <td style="text-align: right">ZONA </td>
@@ -51,15 +51,22 @@
         <tr>
           <td><?= $ot->actividad ?></td>
           <td colspan="4">
-            PERMISO DE PREDIO
-            &nbsp;
-            PERMISO OCUPACION CAUSE
-            &nbsp;
-            CURSO F.T.S
-            &nbsp;
-            DIVULGACION DE COMUNIDAD
-            &nbsp;
-            PERMISO DE APROVECHAMIENTO FORESTAL
+            <?php foreach (json_decode($ot->json) as $key => $value){
+              if($value == TRUE){
+                switch ($key) {
+                  case 'p1': echo'<div> > PERMISO DE PREDIO </div>';
+                    break;
+                  case 'p2': echo'<div> > PERMISO DE OCUPACION DE CAUSE </div>';
+                    break;
+                  case 'p3': echo'<div> > CURSO F.T.S </div>';
+                    break;
+                  case 'p4': echo'<div> > PERMISO APROVECHAMIENTO FORESTAL </div>';
+                    break;
+                  case 'p5': echo'<div> > DIVULGACION A COMUNIDAD </div>';
+                    break;
+                }
+              }
+            }?>
           </td>
         </tr>
       </tbody>
@@ -107,7 +114,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan="2"><?= $ot->centropoblado ?></td>
+          <td colspan="2"><?= $ot->vereda ?></td>
           <td><?= $ot->municipio ?></td>
           <td colspan="2"><?= $ot->departamento ?></td>
         </tr>

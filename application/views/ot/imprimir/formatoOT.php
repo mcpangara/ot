@@ -52,7 +52,7 @@
 
   <div id="cabecera">
     <?php
-    $this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot));
+    $this->load->view('ot/imprimir/descripcionOT', array('ot'=>$ot, 'nombre_tarea'=>$tr->nombre_tarea));
     ?>
   </div>
   <div class="spacer">

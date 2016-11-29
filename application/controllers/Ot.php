@@ -63,12 +63,7 @@ class Ot extends CI_Controller {
 			);
 		echo json_encode($arr);
 	}
-	public function saveOTValid()
-	{
-		if( $this->existeOT() ){
-			echo "La Orden de trabajo ya existe";
-		}
-	}
+
 	public function saveOT()
 	{
 		$post = file_get_contents('php://input');
@@ -77,7 +72,7 @@ class Ot extends CI_Controller {
 		#Crear la OT
 		$orden = $ots->ot;
 		if( $this->existeOT($orden->nombre_ot) ){
-			echo "La Orden de trabajo ya existe";
+			echo "La Orden de trabajo ya existe. ";
 		}else{
 			$this->load->model('Ot_db','ot');
 			$orden->fecha_creacion = date('Y-m-d H:i:s');
@@ -97,7 +92,9 @@ class Ot extends CI_Controller {
 						$orden->justificacion,
 						isset($orden->locacion)?$orden->locacion:NULL,
 						isset($orden->abscisa)?$orden->abscisa:NULL,
-						isset($orden->idpoblado)?$orden->idpoblado:NULL,
+						isset($orden->departamento)?$orden->departamento:NULL,
+						isset($orden->municipio)?$orden->municipio:NULL,
+						isset($orden->vereda)?$orden->vereda:NULL,
 						isset($orden->cc_ecp)?$orden->cc_ecp:NULL,
 						isset($orden->json)?json_encode($orden->json):NULL,
 						isset($orden->numero_sap)?$orden->numero_sap:NULL
@@ -109,7 +106,7 @@ class Ot extends CI_Controller {
 				foreach ($ot->tareas as $tar){
 					$i++;
 					# creamos la tarea
-					$idTr = $this->crearTareaOT($tar, $idot, 'TAREA '.$i);
+					$idTr = $this->crearTareaOT($tar, $idot, $tar->nombre_tarea);
 					#insertamos los items planeados a la tarea
 					$this->insetarITemsTarea($idTr, $tar->personal);
 					$this->insetarITemsTarea($idTr, $tar->actividades);
@@ -295,7 +292,9 @@ class Ot extends CI_Controller {
 				$orden->justificacion,
 				$orden->locacion,
 				$orden->abscisa,
-				$orden->idpoblado,
+				$orden->departamento,
+				$orden->municipio,
+				$orden->vereda,
 				json_encode($orden->json),
 				isset($orden->numero_sap)?$orden->numero_sap:NULL
 			);

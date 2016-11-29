@@ -15,7 +15,7 @@ class Ot_db extends CI_Model {
 		return $this->db->get('base');
 	}
 	// Registrar una nueva OT.
-	public function add( $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $cc_ecp, $json, $sap) {
+	public function add( $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $departamento, $municipio, $vereda, $cc_ecp, $json, $sap) {
 		$this->load->database('ot');
 		$data = array(
 			"nombre_ot"=>$nombre_ot,
@@ -29,7 +29,9 @@ class Ot_db extends CI_Model {
 			"justificacion"=>$justificacion,
 			"locacion"=>$locacion,
 			"abscisa"=>$abscisa,
-			"municipio_idpoblado"=>$idpoblado,
+			"departamento"=>$departamento,
+			"municipio"=>$municipio,
+			"vereda"=>$vereda,
 			"cc_ecp"=>$cc_ecp,
 			'json'=>$json,
 			'numero_sap'=>$sap
@@ -38,7 +40,7 @@ class Ot_db extends CI_Model {
 		return $this->db->insert_id();
 	}
 	//Editar daos info de una OT.
-	public function update( $idot, $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $idpoblado, $json, $sap) {
+	public function update( $idot, $nombre_ot, $ccosto, $base, $zona, $fecha_creacion, $especialidad, $tipo_ot, $actividad, $justificacion, $locacion, $abscisa, $departamento, $municipio, $vereda,  $json, $sap) {
 		$this->load->database('ot');
 		$data = array(
 			"nombre_ot"=>$nombre_ot,
@@ -52,7 +54,9 @@ class Ot_db extends CI_Model {
 			"justificacion"=>$justificacion,
 			"locacion"=>$locacion,
 			"abscisa"=>$abscisa,
-			"municipio_idpoblado"=>$idpoblado,
+			"departamento"=>$departamento,
+			"municipio"=>$municipio,
+			"vereda"=>$vereda,
 			'json'=>$json,
 			'numero_sap'=>$sap
 		);
@@ -64,7 +68,6 @@ class Ot_db extends CI_Model {
 		$this->db->from('OT');
 		$this->db->join('especialidad AS esp', 'OT.especialidad_idespecialidad = esp.idespecialidad');
 		$this->db->join('base AS b', 'OT.base_idbase = b.idbase');
-		$this->db->join('municipio AS mun', 'OT.municipio_idpoblado = mun.idpoblado');
 		$this->db->join('tipo_ot AS tp', 'OT.tipo_ot_idtipo_ot = tp.idtipo_ot');
 		$this->db->where('OT.idOT', $idot);
 		return $this->db->get();
@@ -76,7 +79,6 @@ class Ot_db extends CI_Model {
 		$this->db->from('OT');
 		$this->db->join('especialidad AS esp', 'OT.especialidad_idespecialidad = esp.idespecialidad');
 		$this->db->join('base AS b', 'OT.base_idbase = b.idbase');
-		$this->db->join('municipio AS mun', 'mun.idpoblado = OT.municipio_idpoblado');
 		$this->db->join('tipo_ot AS tp', 'tp.idtipo_ot = OT.tipo_ot_idtipo_ot');
 		if (isset($base)) {
 			$this->db->where('b.idbase', $base);

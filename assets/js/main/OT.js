@@ -18,6 +18,7 @@ var OT = function($scope, $http, $timeout){
 					ambito.ot = response.data;
 					if(edit){
 						ambito.recorrerTareas();
+						ambito.obtenerMunicipios(ambito.ot.departamento, $("#depart").data('getmunis'));
 					}
 				},
 				function(response){		alert('Algo ha salido mal al cargar informacion de la OT');		}
@@ -352,9 +353,9 @@ var OT = function($scope, $http, $timeout){
 			var tar = tarea.valor_recursos;
 			tarea.valor_tarea_ot = (he + rm + gv + id + tar);
 			ambito.ot.valor_ot += tarea.valor_tarea_ot;
-			console.log('>> Valor OT: '+ambito.ot.valor_ot);
+			//console.log('>> Valor OT: '+ambito.ot.valor_ot);
 		});
-		console.log(ambito.ot.tareas);
+		//console.log(ambito.ot.tareas);
 	}
 	//Vendors
 	$scope.tinyMCE = function(){
@@ -371,12 +372,13 @@ var OT = function($scope, $http, $timeout){
 	//--------------------------------------------------------------------------------------
 	// Municipios y locaciones
 	$scope.obtenerMunicipios = function(depart,url,ambito){
-		ambito.poblado = '';
-		console.log(depart)
-		$http.post(url, {departamento: depart}).then(
-				function(response){ ambito.munis= response.data; console.log(response.data)	},
-				function(response){ alert("Falló comunicación con server");	}
-			);
+		if(depart != undefined && depart != ''){
+			console.log(depart)
+			$http.post(url, {departamento: depart}).then(
+					function(response){ ambito.munis= response.data; console.log(response.data)	},
+					function(response){ alert("Falló comunicación con server");	}
+				);
+		}
 	}
 
 	$scope.obtenerVeredas = function(municip,url, ambito){
@@ -463,7 +465,7 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.ot.tareas = [];
 	$scope.ot.departamento = '';
 	$scope.ot.municipio = '';
-	$scope.ot.idpoblado = '';
+	$scope.ot.vereda = '';
 	$scope.myItems;
 	$scope.items = {};
 	$scope.itemsEliminados = [];
@@ -472,6 +474,7 @@ var agregarOT = function($scope, $http, $timeout){
 	$scope.persubtotal=0;
 	$scope.reembs=[];
 	$scope.viaticos = 0;
+	$scope.filtroItems = {};
 	////$scope.$parent.tinyMCE();
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope); }
@@ -523,11 +526,9 @@ var agregarOT = function($scope, $http, $timeout){
 		$scope.calcularSubtotales();
 		$scope.ot.justificacion = $('#justificacion').val();
 		$scope.ot.actividad = $('#actividad').val();
-		$scope.ot.idpoblado = $scope.poblado;
 		console.log($scope.ot);
-		$scope.existeOT(url+'Valid', $scope);
-		if($scope.ot.idpoblado == undefined || $scope.ot.idpoblado == '' || $scope.ot.tareas.length == 0){
-			alert('No se ha agregado poblado/Vereda (DANE) ó Mala Planeacion de tareas');
+		if($scope.ot.vereda == undefined || $scope.ot.vereda == '' || $scope.ot.tareas.length == 0){
+			alert('Faltan datos por registrar');
 		}else if ($scope.ot.nombre_ot == '' || $scope.ot.nombre_ot == undefined
 						|| $scope.ot.tipo_ot == undefined || $scope.ot.tipo_ot == ''
 						|| $scope.ot.especialidad == undefined || $scope.ot.especialidad == ''
@@ -542,7 +543,7 @@ var agregarOT = function($scope, $http, $timeout){
 							$scope.$parent.cerrarWindow();
 							$scope.$parent.refreshTabs();
 						});
-					}else{	alert('Algo ha salido mal!'); console.log(response.data)	}
+					}else{	alert(response.data)	}
 				},
 				function(response) {console.log(response.data)}
 			);
@@ -560,6 +561,8 @@ var editarOT = function($scope, $http, $timeout) {
 	$scope.persubtotal=0;
 	$scope.reembs=[];
 	$scope.viaticos = 0;
+	$scope.filtroItems = {};
+	$scope.munis = [];
 
 	$scope.recorrerTareas = function(){
 		angular.forEach($scope.ot.tareas, function(val, key){
@@ -568,7 +571,7 @@ var editarOT = function($scope, $http, $timeout) {
 	}
 
 	$scope.getItemsBy = function(url){ $scope.$parent.getDataITems(url, $scope);}
-	$scope.getData = function(url){ $scope.$parent.getData(url, $scope, true); }
+	$scope.getData = function(url){	$scope.$parent.getData(url, $scope, true);	}
 	$scope.selectTarea = function(ot, indice){
 		$timeout(function(){
 			$scope.$parent.selectTarea(ot, $scope, indice);

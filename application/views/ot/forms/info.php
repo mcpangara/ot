@@ -67,9 +67,10 @@
   </div>
 
   <div class="col l12 s12 row">
-    <label><b>Departamento (*):</b></label>
-    <span ng-bind="ot.departamento"></span>
-    <select id="depart" ng-model="depart" ng-init="depart = ot.departamento" ng-change="obtenerMunicipios(depart, '<?= site_url('Miscelanio/getMunicipios') ?>')">
+    <label><b>Departamento:</b></label>
+    <span ng-bind="ot.departamento" ng-init="obtenerMunicipios(ot.departamento, '<?= site_url('miscelanio/getMunicipios') ?>')"></span>
+    <select id="depart" ng-model="ot.departamento" data-getmunis="<?= site_url('miscelanio/getMunicipios') ?>"
+        ng-change="obtenerMunicipios(ot.departamento, '<?= site_url('miscelanio/getMunicipios') ?>')">
       <option value="">Seleccione nuevo departamento del país</option>
       <?php foreach ($depars->result() as $depar) {
       ?>
@@ -79,23 +80,16 @@
     </select>
   </div>
   <div class="col l6 s12 row">
-    <label><b>Municipio (*):</b></label>
+    <label><b>Municipio:</b></label>
     <span ng-bind="ot.municipio"></span>
-    <select id="munic" ng-model="munic" ng-change="obtenerVeredas(munic, '<?= site_url('Miscelanio/getVeredas') ?>')">
+    <select id="munic" ng-model="ot.municipio">
       <option value="">seleccione nuevo municipio</option>
       <option ng-repeat="m in munis track by $index" value="{{ m.municipio }}">{{ m.municipio }}</option>
     </select>
   </div>
   <div class="col l6 s12 row">
     <label><b> Poblado/Vereda </b></label>
-    <span ng-bind="ot.centropoblado"></span>
-    <select id="poblado" ng-model="ot.idpoblado" ng-change="getMapa()">
-      <option ng-repeat="p in poblados" value="{{ p.idpoblado }}">{{ p.centropoblado }}</option>
-    </select>
-  </div>
-
-  <div class="col s8" id="mapa">
-
+    <input type="text" ng-model="ot.vereda">
   </div>
 
   <br class="clear-left">

@@ -58,11 +58,12 @@ class Reporte_db extends CI_Model{
        'horas_operacion'=> isset($recurso->horas_operacion)? $recurso->horas_operacion: '',
        'horas_disponible'=> isset($recurso->horas_disponible)? $recurso->horas_disponible: '',
        'varado'=> isset($recurso->varado)? $recurso->varado: '',
-       'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horometro_ini: '',
-       'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horometro_fin: '',
+       'horometro_ini'=> isset($recurso->horometro_ini)? $recurso->horometro_ini: '',
+       'horometro_fin'=> isset($recurso->horometro_fin)? $recurso->horometro_fin: '',
        'idrecurso_ot'=>  isset($recurso->idrecurso_ot)?$recurso->idrecurso_ot:NULL,
        'itemf_iditemf'=> isset($recurso->itemf_iditemf)?$recurso->itemf_iditemf:NULL,
-       'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL
+       'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL,
+       'gasto_viaje'=> isset($recurso->gasto_viaje)?$recurso->gasto_viaje:NULL
      );
      $this->db->insert('recurso_reporte_diario', $data);
    }
@@ -85,11 +86,12 @@ class Reporte_db extends CI_Model{
       'horas_operacion'=> isset($recurso->horas_operacion)? $recurso->horas_operacion: '',
       'horas_disponible'=> isset($recurso->horas_disponible)? $recurso->horas_disponible: '',
       'varado'=> isset($recurso->varado)? $recurso->varado: '',
-      'horometro_ini'=> isset($recurso->horo_inicio)? $recurso->horometro_ini: '',
-      'horometro_fin'=> isset($recurso->horo_fin)? $recurso->horometro_fin: '',
+      'horometro_ini'=> isset($recurso->horometro_ini)? $recurso->horometro_ini: '',
+      'horometro_fin'=> isset($recurso->horometro_fin)? $recurso->horometro_fin: '',
       'idrecurso_ot'=>  isset($recurso->idrecurso_ot)?$recurso->idrecurso_ot:NULL,
       'itemf_iditemf'=> isset($recurso->itemf_iditemf)?$recurso->itemf_iditemf:NULL,
-      'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL
+      'itemf_codigo'=> isset($recurso->itemf_codigo)?$recurso->itemf_codigo:NULL,
+      'gasto_viaje'=> isset($recurso->gasto_viaje)?$recurso->gasto_viaje:NULL
     );
     $this->db->update('recurso_reporte_diario', $data, 'idrecurso_reporte_diario = '.$recurso->idrecurso_reporte_diario);
   }

@@ -2,17 +2,10 @@
     <meta charset="utf-8">
     <!-- -->
     <link rel="stylesheet" href="<?= base_url('assets/fontastic/styles.css') ?>" />
-
-    <!-- Range Slider -->
-    <link rel="stylesheet" href="<?= base_url('assets/js/vendor/rangeSlider/css/normalize.css') ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/js/vendor/rangeSlider/css/ion.rangeSlider.skinNice.css') ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/js/vendor/rangeSlider/css/ion.rangeSlider.css') ?>" />
-
     <!-- Materialize -->
     <link rel="stylesheet" href="<?= base_url('assets/materialize/css/materialize.min.css') ?>" />
     <!--  -->
     <link rel="stylesheet" href="<?= base_url('assets/css/principal.css') ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/css/informe_creator.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/menu_opciones.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/tablas.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/calendario.css') ?>" />
@@ -29,11 +22,9 @@
     <script type="text/javascript" src="<?= base_url('assets/js/vendor/jquery-ui/jquery-ui.min.js') ?>"></script>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/vendor/jquery-ui/jquery-ui.css') ?>" />
 
-    <!-- rangeSlider JS -->
-    <script type="text/javascript" src="<?= base_url('assets/js/vendor/rangeSlider/js/ion.rangeSlider.min.js') ?>"></script>
-
-    <!-- Materialize -->
+    <!-- Materialize
     <script type="text/javascript" src="<?= base_url('assets/materialize/js/materialize.min.js') ?>"></script>
+    -->
 
     <!-- uploadfile JS -->
     <script src="<?= base_url('assets/js/vendor/jquery.form.js') ?>" type="text/javascript"></script>
@@ -56,15 +47,15 @@
     var task = {url:'<?= site_url('welcome/loadOptions') ?>'}
     var baseUrl = '<?= site_url() ?>';
     </script>
-    <script src="<?= base_url('assets/js/main/OT.js?n=1') ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/main/reportes.js?n=1') ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/main/calendario.js?n=1') ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/main/persona.js?n=1') ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/main/equipo.js?n=1') ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/main/tabs.js?n=1') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/OT.js') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/reportes.js') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/calendario.js') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/persona.js') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/equipo.js') ?>" type="text/javascript"></script>
+    <script src="<?= base_url('assets/js/main/tabs.js') ?>" type="text/javascript"></script>
 
     <meta charset="utf-8">
-    <title>Informes WebApp</title>
+    <title> WebApp</title>
 
     <style media="screen">
       .mce-item-table, .mce-item-table td, .mce-item-table th, .mce-item-table caption{

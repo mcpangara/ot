@@ -21,7 +21,6 @@ var reportes = function($scope, $http, $timeout) {
       $scope.CalendarLink = '';
     });
   }
-
   $scope.changeFilterSelect = function(fil,propiedad){
     console.log(propiedad);
 		if(fil[propiedad] == undefined){
@@ -30,7 +29,6 @@ var reportes = function($scope, $http, $timeout) {
 			fil[propiedad] = undefined;
 		};
 	}
-
   // Relacionar un equipo a una OT
   $scope.relacionarEquipoAOt = function(it, url,ambito){
       if(it.item == undefined || it.item == ''){
@@ -59,19 +57,15 @@ var reportes = function($scope, $http, $timeout) {
         );
     }
   }
-
   $scope.selectionAll = function(listObj, prop){
     angular.forEach(listObj, function(val, key){
       val[prop] = val[prop]==undefined?true:undefined;
     });
   }
-
   $scope.mensaje = function(text){alert(text);}
-
   $scope.parseNumb = function(i){
     return parseFloat(i);
   }
-
   $scope.parseBool = function(i){
     return (i==1)? true: false;
   }
@@ -297,6 +291,7 @@ var addReporte = function($scope, $http, $timeout) {
         val.horas_hed = 0;
         val.horas_hen = 0;
         $scope.rd.recursos.personal.push(val);
+        val.gasto_viaje = false;
       }
     });
   }

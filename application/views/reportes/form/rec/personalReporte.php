@@ -18,6 +18,7 @@
         <th style="max-width: 9ex">H.E.N.</th>
         <th>Racion</th>
         <th>Hr. <br> Almuer.</th>
+        <th>G. viaje</th>
       </tr>
     </thead>
     <tbody>
@@ -42,6 +43,7 @@
 
         <td class="red lighten-3 inputsSmall"><input type="number" ng-model="defaultH.hora_inicio" ng-change="changeHora(defaultH,'hora_inicio')"></td>
         <td class="red lighten-3 inputsSmall"><input type="number" ng-model="defaultH.hora_fin" ng-change="changeHora(defaltH,'hora_fin')"></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -84,6 +86,7 @@
         <td class="inputsSmall"> <input type="number" style="border: green 1px solid; " ng-model="pr.horas_extra_noc" ng-init="pr.horas_extra_noc = parseNumb(pr.horas_extra_noc)"> </td>
         <td> <input type="checkbox" ng-model="pr.racion" ng-init="pr.racion = parseBool(pr.racion)"> </td>
         <td> <input type="checkbox" ng-model="pr.hr_almuerzo" ng-init="pr.hr_almuerzo = parseBool(pr.hr_almuerzo)"> </td>
+        <td> <input type="checkbox" ng-model="pr.gasto_viaje" ng-init="pr.gasto_viaje = parseBool(pr.gasto_viaje)"> </td>
       </tr>
     </tbody>
   </table>
