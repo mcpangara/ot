@@ -443,7 +443,9 @@ var OT = function($scope, $http, $timeout){
 
 }
 
+// ====================================================================================================
 // Listado de OTs
+// ====================================================================================================
 var listaOT = function($scope, $http, $timeout){
 	$scope.linkLista = '';
 	$scope.consulta = {};
@@ -460,8 +462,10 @@ var listaOT = function($scope, $http, $timeout){
 }
 // ====================================================================================================
 // FUNCIONES PROPIAS DE AGREGAR UNA OT
+// ====================================================================================================
 var agregarOT = function($scope, $http, $timeout){
 	$scope.ot = {};
+	$scope.ot.json = [];
 	$scope.ot.tareas = [];
 	$scope.ot.departamento = '';
 	$scope.ot.municipio = '';
@@ -550,7 +554,10 @@ var agregarOT = function($scope, $http, $timeout){
 		}
 	}
 }
+
+// ====================================================================================================
 // FUNCIONES PROPIAS DE EDICION DE OT
+// ====================================================================================================
 var editarOT = function($scope, $http, $timeout) {
 	$scope.ot = {};
 	$scope.myItems;

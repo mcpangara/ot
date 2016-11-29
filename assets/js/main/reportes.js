@@ -284,8 +284,8 @@ var addReporte = function($scope, $http, $timeout) {
   $scope.agregarPersonal = function(){
     angular.forEach($scope.personalOT, function(val, key){
       if(!$scope.existeRegistro($scope.rd.recursos.personal, 'identificacion', val.identificacion) && val.add){
-        val.hora_inicio = 6;
-        val.hora_fin = 17;
+        val.hora_inicio = 7;
+        val.hora_fin = 18;
         val.cantidad = 1;
         val.horas_rn = 0;
         val.horas_hed = 0;

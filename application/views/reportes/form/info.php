@@ -2,6 +2,7 @@
   <table class="mytabla centered">
     <thead>
       <tr class="noHoverColor">
+        <th>PK</th>
         <th style="width:15%">Terreno</th>
         <th>Seguridad ambiental</th>
         <th>Noche Ant.</th>
@@ -10,6 +11,7 @@
     </thead>
     <tbody>
       <tr class="noMaterialStyles left-align font10 noHoverColor">
+        <td>PK: <input type="text" ng-model="rd.info.pk"></td>
         <td>
           <label for="">
             Terreno:

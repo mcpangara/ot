@@ -24,7 +24,7 @@
         <td style="width:25%"></td>
         <td style="width:25%"></td>
         <td style="text-align: right">Orden  de trabajo No.</td>
-        <td> <?= $ot->nombre_ot.' '.$nombre_tarea ?></td>
+        <td> <?= $ot->nombre_ot.' / '.$nombre_tarea ?></td>
       </tr>
       <tr>
         <td style="text-align: right">ZONA </td>
