@@ -6,7 +6,7 @@
         <th style="width:15%">Terreno</th>
         <th>Seguridad ambiental</th>
         <th>Noche Ant.</th>
-        <th colspan="2">Condiciones Climaticas</th>
+        <th colspan="3">Condiciones Climaticas</th>
       </tr>
     </thead>
     <tbody>
@@ -39,10 +39,13 @@
           <input type="text" ng-model="rd.info.noche_anterior">
         </td>
         <td class="inputsSmall">
-            Hr. inicio lluvia: <input type="number" ng-model="rd.info.hr_inicio_lluvia" >
+            Hr. inicio lluvia: <input type="text" ng-model="rd.info.hr_inicio_lluvia" >
         </td>
         <td class="inputsSmall">
-            Hr. fin lluvia: <input type="number" ng-model="rd.info.hr_fin_lluvia" >
+            Hr. fin lluvia: <input type="text" ng-model="rd.info.hr_fin_lluvia" >
+        </td>
+        <td>
+          Total horas: <input type="text" ng-model="rd.info.total_hr_clima">
         </td>
       </tr>
     </tbody>
@@ -100,6 +103,9 @@
                 ANILLO CIRCUNFERENCIAL: <input type="text" ng-model="rd.info.actividades.anillo_circunferencial">
               </label>
           </div>
+        </td>
+        <td>
+          <label for="">Otros: <input type="text" ng-model="rd.info.actividad.otros"></label>
         </td>
       </tr>
     </tbody>

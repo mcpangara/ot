@@ -173,7 +173,7 @@ class Ot extends CI_Controller {
 
 		$this->load->helper('pdf');
 		$this->load->helper('file');
-		$this->load->helper('download');
+		//$this->load->helper('download');
 		$this->load->model(array('ot_db', 'item_db'));
 		$ot = $this->ot_db->getData($id)->row();
 		$tr = $this->ot_db->getTarea($id, $idtr)->row();
