@@ -113,16 +113,20 @@ class Reporte_db extends CI_Model{
   # =============================================================================================
 
   # Consultar Reporte por fecha y OT
-  public function getBy($idOT, $fecha)
+  public function getBy($idOT, $fecha, $idrepo)
   {
     $this->load->database('ot');
-    return $this->db->from('reporte_diario AS rd')
-            ->join('OT', 'OT.idOT = rd.OT_idOT')
-            ->join('base','base.idbase = OT.base_idbase')
-            ->join('especialidad AS esp','esp.idespecialidad = OT.especialidad_idespecialidad')
-            ->where('OT.idOT', $idOT)
-            ->where('rd.fecha_reporte',$fecha)
-            ->get();
+    $this->db->from('reporte_diario AS rd');
+    $this->db->join('OT', 'OT.idOT = rd.OT_idOT');
+    $this->db->join('base','base.idbase = OT.base_idbase');
+    $this->db->join('especialidad AS esp','esp.idespecialidad = OT.especialidad_idespecialidad');
+    $this->db->where('OT.idOT', $idOT);
+    if(isset($fecha)){
+      $this->db->where('rd.fecha_reporte',$fecha);
+    }elseif(isset($idrepo)) {
+      $this->db->where('rd.idreporte_diario',$idrepo);
+    }
+    return $this->db->get();
   }
   # Consultar Reporte por id
   public function get($idrepo)
@@ -138,15 +142,18 @@ class Reporte_db extends CI_Model{
     //$this->db->join('item_tarea_ot AS itr', 'itr.iditem_tarea_ot = rrd.iditem_tarea_ot', 'LEFT');
     $this->db->from('recurso_reporte_diario AS rrd');
     $this->db->join('itemf AS itf', 'rrd.itemf_iditemf = itf.iditemf', 'LEFT');
+    $this->db->join('itemc AS itc', 'itf.itemc_iditemc = itc.iditemc', 'LEFT');
     $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot', 'LEFT');
     $this->db->join('recurso AS r', 'r.idrecurso = rot.recurso_idrecurso', 'LEFT');
     if ($tipo == 'personal') {
-      $this->db->select('p.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
+      $this->db->select('p.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*, titc.BO, titc.CL');
+      $this->db->join('tipo_itemc AS titc', 'itc.idtipo_itemc = titc.idtipo_itemc');
       $this->db->join('persona AS p', 'p.identificacion = r.persona_identificacion','LEFT');
       $this->db->where('rot.tipo', 'persona');
     }
     elseif ($tipo == "equipos") {
-      $this->db->select('e.*, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*');
+      $this->db->select('e.codigo_siesa, e.referencia, e.descripcion AS descripcion_equipo, e.ccosto, e.ccosto, desc_un, r.idrecurso, r.centro_costo, r.unidad_negocio, r.fecha_ingreso, rot.*, titc.BO, titc.CL');
+      $this->db->join('tipo_itemc AS titc', 'itc.idtipo_itemc = titc.idtipo_itemc');
       $this->db->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT');
       $this->db->where('rot.tipo', 'equipo');
     }elseif ($tipo == 'actividades') {
