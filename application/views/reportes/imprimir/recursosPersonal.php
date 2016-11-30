@@ -1,10 +1,11 @@
 <table class="font9">
   <thead style="background:#EEE">
     <tr>
+      <th rowspan="2"> Ref.</th>
       <th rowspan="2" class="">identificacion</th>
       <th rowspan="2" class="w20">Nombre Completo</th>
       <th rowspan="2" class="">Item</th>
-      <th rowspan="2" class="w25">Cargo</th>
+      <th rowspan="2" class="w20">Cargo</th>
       <th rowspan="2" class="">C/L</th>
       <th rowspan="2" class="">B/O/N</th>
       <th rowspan="2" class="">Und.</th>
@@ -24,8 +25,11 @@
     </tr>
   </thead>
   <tbody>
-      <?php foreach ($recursos->personal as $k => $v): ?>
+      <?php
+      $i = 0;
+      foreach ($recursos->personal as $k => $v): ?>
         <tr>
+          <td><?php $i++; echo $i; ?></td>
           <td><?= $v->identificacion ?></td>
           <td><?= $v->nombre_completo ?></td>
           <td><?= $v->itemc_item ?></td>
@@ -44,6 +48,27 @@
           <td><?= (isset($v->gasto_viaje) && $v->gasto_viaje)?'SI':''; ?></td>
         </tr>
       <?php endforeach; ?>
+      <?php for ($i=0; $i <= (10 - sizeof($recursos->equipos) ); $i++) { ?>
+        <tr>
+          <td> - </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <?php } ?>
         <tr>
           <td colspan="8">
             Convenciones para novedadesd del personal: B: Basico/ O: Opcional / N: No Facturable/ D: Descanso compensario/ A: Ausente sin permiso/ I: Incapacidad por accidente de trabajo/

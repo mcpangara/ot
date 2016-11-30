@@ -204,20 +204,20 @@ class Reporte_db extends CI_Model{
       e.descripcion AS equipo
       '
     );
-      $this->db->from('reporte_diario AS rd');
-      $this->db->join('recurso_reporte_diario AS rrd', 'rrd.idreporte_diario = rd.idreporte_diario');
-      $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot','LEFT');
-      $this->db->join('recurso AS r','r.idrecurso = rot.recurso_idrecurso','LEFT');
-      $this->db->join('persona AS p', 'p.identificacion = r.persona_identificacion','LEFT');
-      $this->db->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT');
-      $this->db->join('OT', 'OT.idOT = rd.OT_idOT');
-      $this->db->join('itemf AS itf', 'itf.iditemf = rrd.itemf_iditemf');
-      if (isset($idOT)) {
-        $this->db->where('rd.OT_idOT', $idOT);
-      }
-      $this->db->order_by('rd.fecha_reporte','ASC');
-      $this->db->order_by('rd.idreporte_diario','ASC');
-      $this->db->get();
+    $this->db->from('reporte_diario AS rd');
+    $this->db->join('recurso_reporte_diario AS rrd', 'rrd.idreporte_diario = rd.idreporte_diario');
+    $this->db->join('recurso_ot AS rot', 'rot.idrecurso_ot = rrd.idrecurso_ot','LEFT');
+    $this->db->join('recurso AS r','r.idrecurso = rot.recurso_idrecurso','LEFT');
+    $this->db->join('persona AS p', 'p.identificacion = r.persona_identificacion','LEFT');
+    $this->db->join('equipo AS e', 'e.idequipo = r.equipo_idequipo','LEFT');
+    $this->db->join('OT', 'OT.idOT = rd.OT_idOT');
+    $this->db->join('itemf AS itf', 'itf.iditemf = rrd.itemf_iditemf');
+    if (isset($idOT)) {
+      $this->db->where('rd.OT_idOT', $idOT);
+    }
+    $this->db->order_by('rd.fecha_reporte','ASC');
+    $this->db->order_by('rd.idreporte_diario','ASC');
+    return $this->db->get();
   }
 
   // TRANSACTION

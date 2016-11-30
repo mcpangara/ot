@@ -37,5 +37,21 @@
           <td><?= (isset($v->varado) && $v->varado )?'SI':''; ?></td>
         </tr>
       <?php endforeach; ?>
+      <?php for ($i=0; $i <= (10 - sizeof($recursos->equipos) ); $i++) { ?>
+      <tr>
+        <td> - </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <?php } ?>
     </tbody>
   </table>

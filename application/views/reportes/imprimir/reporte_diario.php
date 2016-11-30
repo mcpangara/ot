@@ -50,6 +50,8 @@
     <?php $this->load->view('reportes/imprimir/info', array('r'=>$r, 'json_r'=>$json_r)); ?>
     <?php $this->load->view('reportes/imprimir/recursosPersonal', array('recursos'=>$recursos)); ?>
     <?php $this->load->view('reportes/imprimir/recursosEquipos', array('recursos'=>$recursos)); ?>
+    <?php $this->load->view('reportes/imprimir/recursosActividades', array('recursos'=>$recursos)); ?>
+    <?php $this->load->view('reportes/imprimir/observaciones', array('observaciones'=>$json_r->observaciones, 'json_r'=>$json_r)); ?>
 
   </body>
 </html>

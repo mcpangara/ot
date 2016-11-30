@@ -14,7 +14,7 @@
           <td>Nombre: <input type="text" ng-model="rd.info.ecopetrol_nombre" value=""> </td>
         </tr>
         <tr>
-          <td>Cargo: <input type="text" ng-model="rd.info.elaborado_cargo" value=""> </td>
+          <td>Cargo: <input type="text" ng-model="rd.info.elaborador_cargo" value=""> </td>
           <td>Cargo: <input type="text" ng-model="rd.info.contratista_cargo" value=""> </td>
           <td>Cargo: <input type="text" ng-model="rd.info.ecopetrol_cargo" value=""> </td>
         </tr>

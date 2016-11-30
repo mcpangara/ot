@@ -32,8 +32,10 @@ class Export extends CI_Controller{
     $recursos = new stdClass();
     $rpers = $this->repo->getRecursos($idrepo,"personal");
     $requs = $this->repo->getRecursos($idrepo,"equipos");
+    $racts = $this->repo->getRecursos($idrepo,"actividades");
     $recursos->personal = $rpers->result();
     $recursos->equipos = $requs->result();
+    $recursos->actividades = $racts->result();
     $html = $this->load->view('reportes/imprimir/reporte_diario', array('r'=>$row, 'json_r'=>$json_r, 'recursos'=>$recursos), TRUE);
     doPDF($html);
     //echo $html;

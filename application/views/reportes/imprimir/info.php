@@ -1,13 +1,13 @@
 <table>
   <thead>
     <tr class="font10">
-      <th colspan="1 "> <img src="<?= base_url('assets/img/termotecnica.jpg') ?>" style="max-width: 70px" alt=""> </th>
-      <th colspan="6">REPORTE DIARIO DE TIEMPO TRABAJADO Y ACTIVIDADES DE OBRA EJECUTADA</th>
+      <th colspan="2"> <img src="<?= base_url('assets/img/termotecnica.jpg') ?>" style="max-width: 70px" alt=""> </th>
+      <th colspan="5">REPORTE DIARIO DE TIEMPO TRABAJADO Y ACTIVIDADES DE OBRA EJECUTADA</th>
     </tr>
   </thead>
   <tbody class="font8">
     <tr>
-      <td>CONTRATO: MA-0032887</td>
+      <td>CONTRATO: <br> MA-0032887</td>
       <td  colspan="2">
         EJECUCIÓN DE OBRAS Y TRABAJOS DE MANTENIMIENTO DE SISTEMAS DE TRANSPORTE DE HIDROCARBUROS
       </td>
